@@ -1,0 +1,15 @@
+*
+!*.json
+!*.c
+!*.h
+!*.hpp
+!*.cpp
+!*.md
+!.gitignore
+!meson.build
+!*.txt
+!*.fet
+
+!*/
+build
+

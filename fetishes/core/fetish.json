@@ -1,0 +1,127 @@
+{
+	"name": "core",
+	"description": "This is the core fetish. It effectively defines the language.",
+
+	"operators": [
+	{
+        "name": "spank",
+        "description": "The `spank` operator subtracts the RHO from the LHO",
+        "grammars": ["have", "plain"],
+        "examples": ["Spank Linus nine times", "Have Richard spank Linus"],
+        "code":
+		{
+            "fraction/fraction": "LHO=subtract_fractions(LHO, RHO)"
+        }
+    },
+	{
+        "name": "worship",
+        "description": "The `worship` operator multiplies the LHO with the RHO",
+        "grammars": ["have", "plain"],
+        "examples": ["Worship Amanda's feet", "Have Amanda worship Bruce's throbbing cock"],
+        "code":
+		{
+            "fraction/fraction": "LHO=multiply_fractions(LHO, RHO)"
+        }
+    },
+	{
+        "name": "lick",
+        "description": "The `lick` operator adds the RHO from the LHO",
+        "grammars": ["have", "plain"],
+        "examples": ["Lick Linus's face nine times", "Have Richard lick Linus's tummy"],
+        "code":
+		{
+            "fraction/fraction": "LHO=add_fractions(LHO, RHO)"
+		}
+	},
+	{
+        "name": "moan",
+        "description": "assign RHO to LHO",
+        "grammars": ["make"],
+        "code":
+		{
+            "fraction/fraction": "LHO=RHO",
+            "fraction/chain": "LHO=chain_to_fraction(RHO)",
+            "chain/fraction": "clear_chain(&LHO);append_fraction_to_chain(&LHO, RHO)",
+            "chain/chain": "clear_chain(&LHO); append_chain_to_chain(&LHO, RHO)"
+        }
+	},
+	{
+        "name": "scream",
+        "description": "assign RHO to LHO, with new line",
+        "grammars": ["make"],
+        "code":
+		{
+            "chain/fraction": "clear_chain(&LHO);append_fraction_to_chain(&LHO, RHO);append_flink_to_chain(&LHO, construct_fraction(10,1));",
+            "chain/chain": "clear_chain(&LHO);append_chain_to_chain(&LHO, RHO);append_flink_to_chain(&LHO, construct_fraction(10,1));"
+        }
+	},
+
+	{
+        "name": "tie up",
+        "description": "concat RHO to LHO",
+        "grammars": ["have"],
+        "code":
+		{
+            "chain/fraction": "append_fraction_to_chain(&LHO, RHO)",
+            "chain/chain": "append_chain_to_chain(&LHO, RHO)"
+        }
+	},
+	{
+		"name": "to",
+		"document": false,
+		"grammars": ["bind"],
+		"code":
+		{
+			"reference/chain": "--this should never enter the C code--"
+		}
+	}
+
+    ],
+
+    "comparison_operators": [
+	{
+        "name": "is",
+        "description": "Returns true if LHO==RHO, else returns false",
+        "code": {
+            "fraction/fraction": "(compare_fractions(LHO, RHO)==0)"
+		}
+    },
+	{
+        "name": "is not",
+        "description": "Returns true if LHO!=RHO, else returns false",
+        "code": {
+            "fraction/fraction": "(compare_fractions(LHO, RHO)!=0)"
+		}
+    },
+
+	{
+        "name": "is submissive to",
+        "description": "Returns true if LHO<RHO, else returns false",
+        "code": {
+            "fraction/fraction": "(compare_fractions(LHO, RHO)==-1)"
+		}
+    },
+	{
+        "name": "is dominant towards",
+        "description": "Returns true if LHO>RHO, else returns false",
+        "code": {
+            "fraction/fraction": "(compare_fractions(LHO, RHO)==1)"
+		}
+    }
+    ],
+
+	"builtins":[{
+		"name": "slave",
+		"gender": "unassigned",
+		"type": "stream",
+		"code": "stdout"
+	},
+	{
+		"name": "mistress",
+		"gender": "female",
+		"type": "stream",
+		"code": "stdin"
+	}
+	]
+
+}

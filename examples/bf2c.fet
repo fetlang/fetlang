@@ -1,0 +1,41 @@
+(Another Brainfuck-to-C transpiler, but written in Fetlang)
+(This takes a Brainfuck from program from stdin and writes ouput
+to stdout)
+
+make slave scream "#include <iostream>\nint main(){char array[3000]={0};\nchar* pointer = array;"
+lick Ada's feet forty three times
+lick Sasha's left nipple forty five times
+lick Leo's balls sixty times
+lick Randy's cock sixty two times
+lick Wendy's asshole ninety one times
+lick Ender's belly ninety three times
+lick Orange's nose forty six times
+lick Inky's forhead forty four times
+bind Joe to mistress
+	if Joe is Ada's bitch
+		make slave scream "*pointer++;"
+	end if
+	if Joe is Sasha's bitch
+		make slave scream "*pointer--;"
+	end if
+	if Joe is Leo's bitch
+		make slave scream "pointer--;"
+	end if
+	if Joe is Randy's bitch
+		make slave scream "pointer ++;"
+	end if
+	if Joe is Wendy's bitch
+		make slave scream "while(*pointer){"
+	end if
+	if Joe is Ender's bitch
+		make slave scream "}"
+	end if
+	if Joe is Orange's bitch
+		make slave scream "putchar(*pointer);"
+	end if
+	if Joe is Inky's bitch
+		make slave scream "*pointer = getchar();"
+	end if
+more please
+
+make slave scream "return 0;}"

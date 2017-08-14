@@ -1,0 +1,4 @@
+(This is a basic Hello World program)
+(Anything assigned/appended to "slave" pipes to stdout)
+
+make slave scream "Hello World!"
