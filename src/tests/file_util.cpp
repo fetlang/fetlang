@@ -32,6 +32,7 @@ TEST_CASE("FileUtil function-integration test"){
 	REQUIRE_THROWS(getFileContents(path+"/boop"));
 	REQUIRE_NOTHROW(ensureFileDoesNotExist(path+"/boop"));
 	REQUIRE_NOTHROW(setFileContents(path+"/boop", contents_export));
+	REQUIRE(getParentPath(path+"/boop") == path);
 	REQUIRE(getFilesInDirectory(path).size() == 1);
 	REQUIRE(getFilesInDirectory(path)[0] == "boop");
 	REQUIRE(getFileContents(path+"/boop") == contents_import);

@@ -28,6 +28,10 @@ std::string Transpiler::transpileBranch(Node& node){
 	switch(node.getToken().getKeyphraseCategory()){
 	case CONTROL_KEYPHRASE:
 	{
+		if(node.getToken().getValue() == "call safeword")
+		{
+			return "/* Safeword called */\nbreak;\n";
+		}
 		if(node.getToken().getValue() == "bind"){
 			std::string pre_code="/* Bondage */\n";
 			std::string post_code = "\n\n";
@@ -278,12 +282,13 @@ std::string Transpiler::transpile(){
 	// Include headers
 	for(const Fetish& fetish: manager.getFetishes()){
 		for(const std::string& header_path : fetish.getIncludes()){
-			code+="#include "+QuoteUtil::quote(header_path)+"\n";
+			code+="#include "+QuoteUtil::quote(fetish.getName()+"/include/"+header_path)+"\n";
 		}
 	}
 
 	// Head code
 	code += "int main(){\n";
+	code += "do{\n";
 
 	// Declare Variables
 	code += "/* Initializing variables */\n";
@@ -335,7 +340,7 @@ std::string Transpiler::transpile(){
 	code += "\n";
 
 	// Tail code
-	code+= "/* Finished */\nreturn 0;\n}\n";
+	code+= "/* Finished */\n}while(0);\nreturn 0;\n}\n";
 
 	return code;
 }

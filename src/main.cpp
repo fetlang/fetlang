@@ -24,7 +24,7 @@ int main(int argc, const char* argv[]){
 	args::Flag optimize(parser, "optimize", "Optimize binary", {'O'});
 	args::Flag show_tokens(parser, "show tokens", "Show tokens", {'t'});
 	args::Flag show_tree(parser, "show tree", "Show abstract syntax tree", {'T'});
-	args::Flag no_compile(parser, "no compile", "Export as C file", {'c'});
+	args::Flag no_compile(parser, "no compile", "Export as C file(don't compile)", {'c'});
 	args::Flag scrub(parser, "scrub", "Clean /tmp/ fetlang folder", {'s'});
 	args::Group required(parser, "", args::Group::Validators::AtLeastOne);
 	args::Positional<std::string> input_file(required, "input file", "The source file");
@@ -82,7 +82,6 @@ int main(int argc, const char* argv[]){
 		return 1;
 	}catch(const FetlangException& e){
 		showError(e);
-		std::cout<<"Error: line "<< e.getLine() << ": "<<e.what()<<"\n";
 		return 1;
 	}catch(const std::exception& e){
 		std::cout<<"Generic Exception: "<<e.what()<<"\n";

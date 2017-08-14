@@ -41,5 +41,7 @@ namespace FileUtil{
 	// sense in this context
 	void ensureFileDoesNotExist(const std::string& path);
 
+	std::string getParentPath(std::string path);
+
 
 }

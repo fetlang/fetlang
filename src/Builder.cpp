@@ -130,18 +130,24 @@ void Builder::build(){
 	FileUtil::ensureDirectoryExists(fetish_path);
 	FileUtil::ensureDirectoryExists(build_path+STAGE_FOLDER_RELATIVE);
 
+	// General include path
+	std::string include_path = manager.getFetishes()[0].getIncludePath();
+	include_path = FileUtil::getParentPath(include_path);
+	include_path = FileUtil::getParentPath(include_path);
+
 	// And compile each fetish
-	std::vector<std::string> all_includes;
 	std::vector<std::string> all_objects;
 	for(const Fetish& fetish: manager.getFetishes()){
 		for(const std::string& source_file : fetish.getSources()){
 			FileUtil::ensureDirectoryExists(fetish_path+"/"+fetish.getName());
 			all_objects.push_back(fetish_path+"/"+fetish.getName()+"/"+source_file+".o");
-			compile({"-c", fetish.getSourcePath()+source_file,
-				"-I"+fetish.getIncludePath(), "-o",
-					all_objects.back()});
+			compile({
+				"-c", fetish.getSourcePath()+source_file,
+				"-I"+include_path,
+				"-I"+fetish.getIncludePath(),
+				"-o", all_objects.back()
+			});
 		}
-		all_includes.push_back("-I"+fetish.getIncludePath());
 	}
 
 	// Write the generated C file
@@ -153,9 +159,7 @@ void Builder::build(){
 
 	// Compile the generated C file
 	std::vector<std::string> c_args = {"-c", c_file_path, "-o", all_objects.back()};
-	for (const std::string& include_arg: all_includes){
-		c_args.push_back(include_arg);
-	}
+	c_args.push_back("-I"+include_path+"/");
 	compile(c_args);
 
 	// And link to create the output

@@ -24,10 +24,10 @@ million:
 
 
 ## Features
-Case insensitive  
-Numbers represented internally as fractions instead of floating point
-Transpiles to C
-Probably turing complete. Or not. I don't know  
+* Case insensitive  
+* Numbers represented internally as fractions instead of floating point
+* Transpiles to C
+* Probably turing complete. Or not. I don't know  
 
 ## Building
 Requirements:

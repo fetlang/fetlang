@@ -235,7 +235,7 @@ void FetlangManager::initialize(){
 	// Static keyphrases
 	loadPronouns();
 	const char* control_keyphrases[] = {"have", "times","time","make", "if", "end if", "more please", "while",
-	"until", "bind", "just bind", "the safeword is"};
+	"until", "bind", "just bind", "call safeword"};
 	for(const auto& kp: pronouns){keyphrases[kp.first] = PRONOUN_KEYPHRASE;}
 	for(const auto& kp: control_keyphrases){keyphrases[kp] = CONTROL_KEYPHRASE;}
 	

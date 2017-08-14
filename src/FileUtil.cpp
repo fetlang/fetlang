@@ -144,4 +144,22 @@ void destroyDirectory(const std::string& path){
 	}
 	ensureDirectoryDoesNotExist(path);
 }
+
+std::string getParentPath(std::string path){
+	if(path == ""){
+		throw FetlangException("Can't get parent path of empty string");
+	}
+	while(path.back() == '/'){
+		if(path != "/"){
+			path.pop_back();
+		}
+	}
+
+	fs::path fp = path;
+	if(!fs::exists(fp)){
+		throw FetlangException("Can't get parent directory of path that doesn't exist"+path);
+	}
+	return fp.parent_path().string();
+	
+}
 }

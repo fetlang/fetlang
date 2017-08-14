@@ -1,0 +1,16 @@
+{
+	"name": "assertiveness",
+	"description": "Runtime assertions",
+
+	"operators": [
+	{
+        "name": "assert dominance over",
+        "description": "The `assert dominance over` operator asserts that the rho is over the lho",
+        "grammars": ["have"],
+        "examples": ["Have Alice assert dominance over Bob"],
+        "code":
+		{
+            "fraction/fraction": "fetlang_assert(compare_fractions(RHO, LHO) == 1);"
+        }
+    }]
+}

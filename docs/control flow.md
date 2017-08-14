@@ -32,13 +32,5 @@ A variable in bondage will remain in bondage
     ...
     MORE PLEASE
 
-## Safewords
-Safewords allow you to exit a scope prematurely.  
-Safewords are not bound to any particular scope,
-making them effectively `break` or `return`
-statements.  
-
-    THE SAFEWORD IS <safeword>
-    ...
-    <safeword>
-
+## Safeword
+`call safeword` allows you to exit a scope prematurely.  
