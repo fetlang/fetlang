@@ -32,7 +32,7 @@ Requirements:
 * gcc
 * g++
 
-Build Fetlang:
+Build Fetlang:  
     git clone https://github.com/Property404/fetlang
 	cd fetlang
 	meson src build
@@ -42,13 +42,13 @@ Build Fetlang:
 	# Make sure it worked
 	./fetlang ../examples/hello.fet && ./a.out
 
-Install:
+Install:  
     ninja install
 
 ## Documentaton
 [Comments](docs/comments.md)  
-[Control flow](docs/control flow.md)  
-[Grammar](docs/grammar.md)
+[Control flow](docs/control\ flow.md)  
+[Grammar](docs/grammar.md)  
 [Types](docs/gtypes.md)  
 [Variables](docs/variables.md)  
 
