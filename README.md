@@ -3,6 +3,9 @@ Fetlang is a typed, procedural, fetish-themed, esoteric language and reference
 implementation. It is designed such that source code, at first glance, might
 look like poorly written erotica.  
 
+This is currently incomplete, but usable. It is not recommended to use this for
+production code at this moment.
+
 ## Example
 The following example outputs all numbers in the Fibonacci sequence under a
 million:
@@ -49,9 +52,9 @@ Install:
 
 ## Documentaton
 [Comments](docs/comments.md)  
-[Control-flow](docs/control flow.md)  
+[Control Flow](docs/control%20flow.md)  
 [Grammar](docs/grammar.md)  
-[Types](docs/gtypes.md)  
+[Types](docs/types.md)  
 [Variables](docs/variables.md)  
 
 ## License
