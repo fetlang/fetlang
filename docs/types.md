@@ -1,6 +1,7 @@
 ## Fractions
 All numbers in Fetlang are represented as fractions: a numerator over a
 denominator.
+As a result, there is very little floating point math in Fetlang.
 
 Fraction literals are represented by words. For example, -45153/71 is
 represented by:
@@ -16,8 +17,6 @@ When printed to stdout, fractions are written with commas:
 When read from stdin, fractions are inputed as:
 
     -45153/71
-
-As a result, there is very little floating point math in Fetlang.
 
 Normally, 0/0 is not allowed, but when inputed by the user it is equal
 to 1/1.

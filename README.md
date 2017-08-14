@@ -3,12 +3,13 @@ Fetlang is a typed, procedural, fetish-themed, esoteric language and reference
 implementation. It is designed such that source code, at first glance, might
 look like poorly written erotica.  
 
-This is currently incomplete, but usable. It is not recommended to use this for
-production code at this moment.
+This is currently incomplete, but almost usable. It is not recommended to use
+this for production code at this moment.
 
 ## Example
 The following example outputs all numbers in the Fibonacci sequence under a
 million:
+
     lick Bob's cock
     lick Duke's left nipple one million times
     
