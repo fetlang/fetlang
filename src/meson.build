@@ -1,4 +1,4 @@
-project('Fetlang', 'cpp', default_options : ['cpp_std=c++14'])
+project('Fetlang', 'cpp', default_options : ['cpp_std=c++11'])
 incdir = include_directories('thirdparty/boost/')
 boost_sources = [
 'thirdparty/boost/libs/filesystem/src/operations.cpp',
