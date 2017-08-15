@@ -271,6 +271,9 @@ std::vector<Token> Tokenizer::removePossessions(const std::vector<Token>& old_to
 					it++;
 					have_skipped=true;
 				}
+				if(!have_skipped){
+					throw TokenException("Expected possesions to follow possesive pronoun", *it);
+				}
 				
 			}
 			
