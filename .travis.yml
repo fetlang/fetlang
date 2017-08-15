@@ -1,0 +1,20 @@
+sudo: false
+
+before_install:
+  - sudo apt-get install python3
+  - sudo apt-get install g++
+  - sudo apt-get install meson
+  
+# Enable C++ support
+language: cpp
+
+# Compiler selection
+compiler:
+  - g++
+  
+# Build steps
+script:
+  - meson src build
+  - cd build
+  - ninja test
+
