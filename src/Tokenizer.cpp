@@ -1,6 +1,8 @@
+#include <sstream>
 #include "Tokenizer.h"
 #include "FetlangManager.h"
 #include "FractionParser.h"
+#include "thirdparty/boost/boost/algorithm/string/trim.hpp"
 
 
 Tokenizer::Tokenizer(){}
@@ -17,12 +19,15 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 		if(code[i] == '\n'){
 			line++;
 		}else if(code[i] == '('){
+			token = "";
 			tokens.push_back(Token("(", line));
 			parenthesis_on = true;
 		}else if(code[i] == ')'){
 			if(!parenthesis_on){
 				throw TokenizerException(line, "Did not expect ')' at this time (not in a comment)");
 			}
+			tokens.push_back(Token(token, line));
+			token = "";
 			tokens.push_back(Token(")", line));
 			parenthesis_on = false;
 			
@@ -58,6 +63,13 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 				token = ""; // Make clean for next time
 			
 			}
+		} else {
+			token += tolower(code[i]);
+			if(token == "i have a fetish for")
+			{
+				tokens.push_back(Token(token, line));
+				token = "";
+			}
 		}
 	}
 
@@ -67,6 +79,8 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const{
 	std::vector<Token> new_tokens;
 	bool parenthesis_on = false;
+	bool loading_fetishes = false;
+	std::string load_string = "";
 	for(Token token : tokens){
 		if(token.isNullToken()){
 			throw TokenizerException("Encountered NULL token while removing gags");
@@ -77,12 +91,41 @@ std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const
 			parenthesis_on = true;
 		}else if(token.getValue() == ")") {
 			parenthesis_on = false;
+
+			// Load fetishes specified
+			if(loading_fetishes)
+			{
+				std::istringstream ss(load_string);
+				std::string fetish;
+				while(std::getline(ss, fetish, ','))
+				{
+					boost::algorithm::trim(fetish);
+					manager.loadFetish(fetish);
+				}
+			}
+			loading_fetishes = false;
 			continue;
 		}
 
-		if(!parenthesis_on){
+		if(!parenthesis_on)
+		{
 			new_tokens.push_back(token);
 		}
+		// Check if we're loading fetishes
+		else if(!loading_fetishes)
+		{
+			if(token.getValue() == "i have a fetish for")
+			{
+				loading_fetishes = true;
+				load_string = "";
+			}
+		}
+		else
+		{
+			load_string += token.getValue();
+		}
+
+
 
 	}
 	return new_tokens;
@@ -203,6 +246,7 @@ inline static bool tokenIsPossessivePronoun(const Token& t){
 	}
 	return false;
 }
+
 std::vector<Token> Tokenizer::removePossessions(const std::vector<Token>& old_tokens){
 	try{
 		std::vector<Token> tokens;

@@ -41,14 +41,13 @@ int main(int argc, const char* argv[]){
 		return 0;
 	}
 	// Some args related error
-
 	catch (args::ParseError e)
 	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << parser;
 		return 1;
 	}
-	// Some args related error
+	// Some args validation related error
 	catch (args::ValidationError e)
 	{
 

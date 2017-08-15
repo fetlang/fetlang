@@ -1,13 +1,9 @@
 #include "FileUtil.h"
 #include "FetlangException.h"
+#include "thirdparty/whereami.h"
 #include <sstream>
 #include <fstream>
 #include <iostream>
-#ifdef __WIN32
-#include "thirdparty/dirent.h"
-#else
-#include <dirent.h>
-#endif
 
 namespace FileUtil {
 
@@ -161,5 +157,13 @@ std::string getParentPath(std::string path){
 	}
 	return fp.parent_path().string();
 	
+}
+
+std::string getExecutableParentPath(){
+	constexpr int buffer_size = 256;
+	char buffer[buffer_size];
+	int size;
+	wai_getExecutablePath(buffer, buffer_size, &size);
+	return std::string(buffer, size);
 }
 }

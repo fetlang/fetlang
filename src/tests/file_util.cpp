@@ -47,5 +47,9 @@ TEST_CASE("FileUtil function-integration test"){
 	REQUIRE_THROWS(destroyDirectory(path));
 	REQUIRE_THROWS(destroyFile(path+"/boop"));
 
+	// This is hard to test, since we basically need it to test it
+	REQUIRE(getExecutableParentPath() == getExecutableParentPath());
+	REQUIRE(getExecutableParentPath() != "");
+
 }
 

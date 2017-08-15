@@ -101,7 +101,7 @@ void Builder::build(){
 	if(!compilation){
 		// Should end with ".c"
 		if(destination_path == DEFAULT_DESTINATION_PATH){
-			destination_path = "out.c";
+			destination_path = "a.c";
 		}
 
 		// Write the c code

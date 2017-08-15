@@ -1,6 +1,6 @@
 {
 	"name": "assertiveness",
-	"description": "Runtime assertions",
+	"description": "Runtime assertions - intended for unit testing",
 
 	"operators": [
 	{
@@ -10,7 +10,19 @@
         "examples": ["Have Alice assert dominance over Bob"],
         "code":
 		{
-            "fraction/fraction": "fetlang_assert(compare_fractions(RHO, LHO) == 1);"
+            "fraction/fraction": "fetlang_assert(compare_fractions(RHO, LHO) == 1, \"assertion of dominance failed\");"
         }
-    }]
+    },
+	{
+		"name": "assert equality with",
+		"description": "Assertion of equality",
+		"grammars": ["have"],
+		"examples": ["Have Alice assert equality with Eve"],
+		"code":
+		{
+			"fraction/fraction":"fetlang_assert(!compare_fractions(RHO, LHO), \"assertionf ailed\");"
+		}
+	}
+	
+	]
 }

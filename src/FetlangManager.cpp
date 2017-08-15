@@ -182,7 +182,8 @@ std::vector<Fetish> FetlangManager::getFetishes() const{
 
 void FetlangManager::loadFetish(const std::string& fetishname){
 	std::vector<std::string> directories_to_try;
-	directories_to_try.push_back("../share/fetlang/fetishes/"+fetishname);
+
+	directories_to_try.push_back(FileUtil::getExecutableParentPath()+"/../share/fetlang/fetishes/"+fetishname);
 	directories_to_try.push_back("../fetishes/"+fetishname);
 
 	// Fine out where exactly the fetish is located and load the fetish.json
@@ -212,22 +213,17 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 			}
 			
 			fetishes.push_back(fetish);
-
+			doLoading();
 			return;
 		}
 	}
 	throw FetlangException("No fetish file for `"+fetishname+"` exists");
 }
 
-void FetlangManager::initialize(){
-	static bool initialized = false;
-	if(initialized){
-		throw FetlangException("Can't initialize FetlangManager twice");
-	}
-	initialized = true;
-
-	loadFetish("core");
-
+void FetlangManager::doLoading()
+{
+	keyphrases.clear();
+	keywords.clear();
 	// Dynamic keyphrases
 	for(const auto& kp : operators) keyphrases[kp.first] = OPERATOR_KEYPHRASE;
 	for(const auto& kp : comparison_operators) keyphrases[kp.first] = COMPARISON_OPERATOR_KEYPHRASE;
@@ -249,16 +245,26 @@ void FetlangManager::initialize(){
 		copy(std::istream_iterator<std::string>(temp),
 			std::istream_iterator<std::string>(),
 			back_inserter(words_of_keyphrase));
+
+		// Check size
 		if(static_cast<int>(words_of_keyphrase.size()) > max_keyphrase_size){
 			max_keyphrase_size = words_of_keyphrase.size();
 		}
 		
-
 		// And add those words
 		for(const auto& word : words_of_keyphrase){
 			keywords.insert(word);
 		}
 	}
+}
+
+void FetlangManager::initialize(){
+	static bool initialized = false;
+	if(initialized){
+		throw FetlangException("Can't initialize FetlangManager twice");
+	}
+	initialized = true;
+	loadFetish("core");
 }
 
 int FetlangManager::getMaxKeyphraseSize() const{

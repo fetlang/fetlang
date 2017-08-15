@@ -41,7 +41,11 @@ namespace FileUtil{
 	// sense in this context
 	void ensureFileDoesNotExist(const std::string& path);
 
+	// Get the path of the parent element
 	std::string getParentPath(std::string path);
+
+	// Get the parent path of the executable
+	std::string getExecutableParentPath();
 
 
 }

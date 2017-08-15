@@ -1,5 +1,6 @@
 #include "../thirdparty/catch.hpp"
 #include "../Tokenizer.h"
+using namespace std;
 
 TEST_CASE("Tokenizer, in general, works as expected", "[Tokenizer]"){
 	const std::string code =
@@ -58,3 +59,12 @@ TEST_CASE("Possesives", "[Tokenizer]"){
 	REQUIRE(tokens[2].getValue() == "their");
 }
 
+TEST_CASE("Loading fetishes", "[Tokenizer]"){	
+	string code = "(I have a fetish for assertiveness)\nhave a assert dominance over b\n";
+	Tokenizer tokenizer = Tokenizer();
+	vector<Token> tokens;
+	REQUIRE_NOTHROW(tokens = tokenizer.tokenize(code));
+	REQUIRE(tokens[0].getValue() == "have");
+	REQUIRE(tokens[1].getValue() == "a");
+	REQUIRE(tokens[2].getValue() == "assert dominance over");
+}

@@ -1,9 +1,9 @@
 #include "assert.h"
-#include "core/error.h"
-void fetlang_assert(int condition)
+#include "core/include/error.h"
+void fetlang_assert(int condition, const char* message)
 {
 	if(!condition)
 	{
-		runtime_error("assertion failed");
+		runtime_error("%s", message);
 	}
 }

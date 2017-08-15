@@ -102,8 +102,11 @@ private:
 	FetlangManager(){};
 
 	// This MUST be called before proper use
-	// it fills out all the properties of this class
 	void initialize();
+
+	// This fills out all the properties of this class
+	// Called everytime a fetish is loaded (inc. core)
+	void doLoading();
 public:
 	// Create the singleton and initialize() it
 	static FetlangManager& getInstance();
