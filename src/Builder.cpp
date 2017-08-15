@@ -92,7 +92,7 @@ int Builder::compile(const std::vector<std::string>& args){
 	{
 		command += " "+sanitize(arg);
 	}
-	command+=" >out.std";
+	//command+=" > /dev/null";
 	FILE* compiler_process = popen(command.c_str(), "r");
 	return pclose(compiler_process);
 }

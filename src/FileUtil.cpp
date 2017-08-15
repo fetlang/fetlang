@@ -28,6 +28,27 @@ std::vector<std::string> getFilesInDirectory(const std::string& directory_name){
 	return filenames;
 }
 
+std::vector<std::string> getDirectoriesInDirectory(const std::string& directory_name){
+	std::vector<std::string> filenames;
+	fs::path directory(directory_name);
+
+	fs::directory_iterator end_iterator;
+
+	if(!fs::exists(directory)){
+		throw FetlangException(directory_name + " does not exist");
+	}
+	if(!fs::is_directory(directory)){
+		throw FetlangException(directory_name + " is not a directory");
+	}
+
+	for(fs::directory_iterator it(directory); it!=end_iterator; it++){
+		if(fs::is_directory(it->path())){
+			filenames.push_back(it->path().filename().string());
+		}
+	}
+	return filenames;
+}
+
 std::string extractFileExtension(const std::string& filename){
 	for(int i=filename.size()-1; i>=0; i--){
 		if(filename[i] == '.'){

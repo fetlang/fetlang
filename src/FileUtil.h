@@ -10,6 +10,8 @@ namespace FileUtil{
 	// throw an exception if directory doesn't exist
 	// Non-recursive
 	std::vector<std::string> getFilesInDirectory(const std::string& directory);
+	// Same but with directories
+	std::vector<std::string> getDirectoriesInDirectory(const std::string& directory);
 
 	// Get file contents as ASCII
 	// Throw exception if it DNE

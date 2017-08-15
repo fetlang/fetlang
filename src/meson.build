@@ -18,9 +18,11 @@ common_sources = boost_sources+['Fraction.cpp', 'FractionParser.cpp', 'QuoteUtil
 	'thirdparty/whereami.cpp']
 release_sources = common_sources + ['main.cpp']
 test_sources = common_sources + ['tests/main.cpp','tests/fraction_parser.cpp','tests/quote_util.cpp', 'tests/parser.cpp',
-'tests/tokenizer.cpp', 'tests/file_util.cpp']
+'tests/tokenizer.cpp', 'tests/file_util.cpp', 'tests/compilation.cpp']
 
 install_subdir('../fetishes', install_dir:'share/fetlang')
 executable('fetlang', release_sources, include_directories: incdir, install:true, install_dir: 'bin')
-unit_test_executable = executable('fetlang_unit_test', test_sources, include_directories: incdir)
-test('unit', unit_test_executable)
+
+
+unit_tests_executable = executable('unit_tests', test_sources, include_directories: incdir)
+test('unit_tests', unit_tests_executable)

@@ -20,7 +20,7 @@
 		"examples": ["Have Alice assert equality with Eve"],
 		"code":
 		{
-			"fraction/fraction":"fetlang_assert(!compare_fractions(RHO, LHO), \"assertionf ailed\");"
+			"fraction/fraction":"fetlang_assert(!compare_fractions(RHO, LHO), \"assertion failed\");"
 		}
 	}
 	

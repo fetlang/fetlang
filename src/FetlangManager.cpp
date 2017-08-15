@@ -181,6 +181,15 @@ std::vector<Fetish> FetlangManager::getFetishes() const{
 }
 
 void FetlangManager::loadFetish(const std::string& fetishname){
+	{
+		for (const Fetish& fetish : fetishes)
+		{
+			if(fetish.getName() == fetishname)
+			{
+				return;
+			}
+		}
+	}
 	std::vector<std::string> directories_to_try;
 
 	directories_to_try.push_back(FileUtil::getExecutableParentPath()+"/../share/fetlang/fetishes/"+fetishname);
