@@ -75,3 +75,7 @@ bind reference to chain
 	end if
 	lick count
 more please
+
+(Make sure safeword breaks away)
+call safeword
+have 0 assert equality with 1

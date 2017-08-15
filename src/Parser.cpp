@@ -269,6 +269,14 @@ void Parser::formBranch(Node& node){
 		switch(token_iterator->getKeyphraseCategory()){
 		case CONTROL_KEYPHRASE:
 		{
+			if(token_iterator->getValue() == "call safeword")
+			{
+				// This is a 1-1 translation with break, so we don't need to do
+				// anything special other than just add the token as a node
+				node.addChild(*token_iterator);
+				token_iterator++;
+				return;
+			}
 			if(token_iterator->getValue() == "bind"){
 				// Bind syntax:
 				// bind <lho> to <rho>

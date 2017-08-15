@@ -1,7 +1,7 @@
 sudo: required
 
 before_install:
-  - sudo apt-get install g++
+  - sudo apt-get install clang
 
 install:
   - curl -L "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip" -o ninja-linux.zip
@@ -14,7 +14,7 @@ language: cpp
 
 # Compiler selection
 compiler:
-  - g++
+  - clang++
   
 # Build steps
 script:
