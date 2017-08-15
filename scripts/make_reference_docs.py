@@ -14,6 +14,14 @@ def getReferenceDirectory():
 def getContentsPath():
 	return getDocsDirectory()+"/reference.md"
 
+def getCodePairPossibilities():
+	types = ["fraction", "chain", "stream", "reference"]
+	pairs = []
+	for a in types:
+		for b in types:
+			pairs.append(f"{a}/{b}")
+	return pairs
+
 def loadJsonFile(filename):
 	a = open(filename, "r")
 	j = json.loads(a.read())
@@ -34,16 +42,24 @@ def getMarkdownSection(fetish_file, section):
 			if "description" in element:
 				markdown += element["description"]+"\n"
 			if "examples" in element:
-				markdown += "#### Examples:  \n"
+				markdown += "Examples:  \n"
 				for example in element["examples"]:
-					markdown += "`"+example+"`\n"
+					markdown += "`"+example+"`  \n"
+			if "code" in element:
+				markdown += "C Code:  \n"
+				if section == "builtins":
+					markdown += element["code"]
+				else:
+					for pair in getCodePairPossibilities():
+						if pair in element["code"]:
+							markdown += (f"{pair} - `{element['code'][pair]}`  \n")
 		return markdown
 	return ""
 
 def getReferencePageMarkdown(fetish_name):
 	fetish_file = loadJsonFile(getFetishFileOfFetish(fetish_name))
 
-	markdown = f"# {fetish_name}\n{fetish_file['description']}\n"
+	markdown = f"# {fetish_name.title()}\n{fetish_file['description']}\n"
 	markdown += getMarkdownSection(fetish_file, "operators")
 	markdown += getMarkdownSection(fetish_file, "comparison operators")
 	markdown += getMarkdownSection(fetish_file, "builtins")
@@ -61,7 +77,7 @@ def makeReferencePages():
 	contents = "# Fetish Reference\n"
 	for fetish in getListOfFetishes():
 		ref_page = makeReferencePage(fetish)
-		contents += f"[{fetish}](docs/reference/{fetish}.md) - <description>  \n"
+		contents += f"[{fetish.title()}](reference/{fetish}.md) - <description>  \n"
 	fp = open(getContentsPath(), "w")
 	fp.write(contents)
 	fp.close()

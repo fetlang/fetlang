@@ -53,6 +53,7 @@ Install:
 ## Documentaton
 [Comments](docs/comments.md)  
 [Control Flow](docs/control%20flow.md)  
+[Fetish Reference](docs/reference.md)  
 [Grammar](docs/grammar.md)  
 [Types](docs/types.md)  
 [Variables](docs/variables.md)  

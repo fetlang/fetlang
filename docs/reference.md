@@ -1,3 +1,3 @@
 # Fetish Reference
-[assertiveness](docs/reference/assertiveness.md) - <description>  
-[core](docs/reference/core.md) - <description>  
+[Assertiveness](reference/assertiveness.md) - <description>  
+[Core](reference/core.md) - <description>  
