@@ -1,6 +1,77 @@
 (I have a fetish for assertiveness)
+
+(numbers as numbers, oh wee wow)
+lick 0 zero times
+lick 1 one time
+lick 2 two times
+lick 3 three times
+lick 4 four times
+lick 5 five times
+lick 6 six times
+lick 7 seven times
+
+(Test Lick)
 Lick Alice five times
 Lick Bob four times
-Lick Eve four times
+Lick Charlie four times
 have Alice assert dominance over Bob
-Have Bob assert equality with Eve
+Have Bob assert equality with Charlie
+
+(reset)
+worship Alice zero times
+worship Bob zero times
+worship Charlie zero times
+
+(Test Spank)
+Spank Alice five times (should be -5)
+Spank Bob four times (should be -4)
+Spank Charlie four times (should be -4)
+have Bob assert dominance over Alice (-4 > -5)
+Have Bob assert equality with Charlie
+
+(reset)
+worship Alice zero times
+worship Bob zero times
+worship Charlie zero times
+
+(Test Worship)
+spank Alice five times
+worship Alice five times
+spank Bob twenty five times
+Have Bob assert equality with Alice
+
+(reset)
+worship Alice zero times
+worship Bob zero times
+worship Charlie zero times
+
+(general bind test)
+lick count zero times
+make chain moan "012"
+bind reference to chain
+	spank reference forty eight times
+	if count is 0
+		have reference assert equality with 0
+	end if
+	if count is 1
+		have reference assert equality with 1
+	end if
+	if count is 2
+		have reference assert equality with 2
+	end if
+	lick count
+more please
+have reference assert equality with 2
+(Chain has been reduced now - so same test without subtracting)
+bind reference to chain
+	if count is 0
+		have reference assert equality with 0
+	end if
+	if count is 1
+		have reference assert equality with 1
+	end if
+	if count is 2
+		have reference assert equality with 2
+	end if
+	lick count
+more please

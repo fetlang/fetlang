@@ -83,14 +83,16 @@
         "name": "is",
         "description": "Returns true if LHO==RHO, else returns false",
         "code": {
-            "fraction/fraction": "(compare_fractions(LHO, RHO)==0)"
+            "fraction/fraction": "(compare_fractions(LHO, RHO)==0)",
+			"chain/chain": "(compare_chains(LHO, RHO)==0)"
 		}
     },
 	{
         "name": "is not",
         "description": "Returns true if LHO!=RHO, else returns false",
         "code": {
-            "fraction/fraction": "(compare_fractions(LHO, RHO)!=0)"
+            "fraction/fraction": "(compare_fractions(LHO, RHO)!=0)",
+			"chain/chain": "(compare_chains(LHO, RHO)==0)"
 		}
     },
 
