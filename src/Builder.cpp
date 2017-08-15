@@ -83,16 +83,17 @@ int Builder::compile(const std::vector<std::string>& args){
 	std::string command = compiler;
 	if(optimization){
 		command += " -O2 -s -std=c99 ";
-		#ifdef __linux__
-		// Linux has a separate math library
-		command += " -lm ";
-		#endif
 	}
+	#ifdef __linux__
+	// Linux has a separate math library
+	command += " -lm ";
+	#endif
 	for(const std::string& arg : args)
 	{
 		command += " "+sanitize(arg);
 	}
 	command+=" >out.std";
+	std::cout<<command<<std::endl;
 	FILE* compiler_process = popen(command.c_str(), "r");
 	return pclose(compiler_process);
 }
