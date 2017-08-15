@@ -78,4 +78,5 @@ more please
 
 (Make sure safeword breaks away)
 call safeword
+make Dungeon Master scream "Safeword was not obeyed"
 have 0 assert equality with 1

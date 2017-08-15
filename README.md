@@ -1,7 +1,7 @@
 # Fetlang
-Fetlang is a typed, procedural, fetish-themed, esoteric language and reference
-implementation. It is designed such that source code, at first glance, might
-look like poorly written erotica.  
+Fetlang is a statically typed, procedural, esoteric programming language and
+reference implementation. It is designed such that source code, at first
+glance, might look like poorly written erotica.  
 
 This is currently incomplete, but almost usable. It is not recommended to use
 this for production code at this moment.
@@ -33,8 +33,7 @@ million:
 Requirements:
 * meson
 * ninja
-* gcc
-* g++
+* gcc/g++ or clang
 
 Build Fetlang:  
 
@@ -42,7 +41,7 @@ Build Fetlang:
 	cd fetlang
 	meson src build
 	cd build
-	# Builds and runs tests
+	# Build and runs tests
 	ninja test
 	# Make sure it worked
 	./fetlang ../examples/hello.fet && ./a.out
