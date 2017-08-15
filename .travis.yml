@@ -1,7 +1,6 @@
 sudo: false
 
 before_install:
-  - sudo apt-get install python3
   - sudo apt-get install g++
   - sudo apt-get install meson
   
