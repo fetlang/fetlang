@@ -2,7 +2,7 @@
 Runtime assertions - intended for unit testing
 ## Operators
 ### assert dominance over
-The `assert dominance over` operator asserts that the rho is over the lho  
+Assert that the RHO is greater than the LHO  
 
 Examples:  
 `Have Alice assert dominance over Bob`  
@@ -11,7 +11,7 @@ C Code:
 fraction/fraction - `fetlang_assert(compare_fractions(RHO, LHO) == 1, "assertion of dominance failed");`  
 
 ### assert equality with
-Assertion of equality  
+Assert that the LHO and RHO are equal  
 
 Examples:  
 `Have Alice assert equality with Eve`  

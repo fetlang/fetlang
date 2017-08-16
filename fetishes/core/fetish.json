@@ -5,7 +5,7 @@
 	"operators": [
 	{
         "name": "spank",
-        "description": "The `spank` operator subtracts the RHO from the LHO",
+        "description": "Subtract the RHO from the LHO",
         "grammars": ["have", "plain"],
         "examples": ["Spank Linus nine times", "Have Richard spank Linus"],
         "code":
@@ -15,7 +15,7 @@
     },
 	{
         "name": "worship",
-        "description": "The `worship` operator multiplies the LHO with the RHO",
+        "description": "Multiply the LHO with the RHO",
         "grammars": ["have", "plain"],
         "examples": ["Worship Amanda's feet", "Have Amanda worship Bruce's throbbing cock"],
         "code":
@@ -25,7 +25,7 @@
     },
 	{
         "name": "flog",
-        "description": "The `flog` operator divides the LHO with the RHO",
+        "description": "Divide the LHO by the RHO",
         "grammars": ["have", "plain"],
         "examples": ["Flog Amanda", "Have Amanda flog Bruce"],
         "code":
@@ -35,7 +35,7 @@
     },
 	{
         "name": "lick",
-        "description": "The `lick` operator adds the RHO from the LHO",
+        "description": "Add the RHO from the LHO",
         "grammars": ["have", "plain"],
         "examples": ["Lick Linus's face nine times", "Have Richard lick Linus's tummy"],
         "code":
@@ -45,7 +45,7 @@
 	},
 	{
         "name": "tickle",
-        "description": "The `tickle` operator sets the LHO to the remainder of the LHO divided by the RHO",
+        "description": "Set the LHO to the remainder of the LHO divided by the RHO",
         "grammars": ["have", "plain"],
         "examples": ["ticke Richard", "Have Richard tickle Linus"],
         "code":
@@ -55,7 +55,7 @@
 	},
 	{
         "name": "moan",
-        "description": "assign RHO to LHO",
+        "description": "Assign RHO to LHO",
         "grammars": ["make"],
         "code":
 		{
@@ -67,7 +67,7 @@
 	},
 	{
         "name": "scream",
-        "description": "assign RHO to LHO, with new line",
+        "description": "Assign RHO to LHO, with new line",
         "grammars": ["make"],
         "code":
 		{
@@ -78,7 +78,7 @@
 
 	{
         "name": "tie up",
-        "description": "concat RHO to LHO",
+        "description": "Concat RHO to LHO",
         "grammars": ["have"],
         "code":
 		{
@@ -97,7 +97,7 @@
 	},
 	{
 		"name": "obey",
-		"description": "write a chain to file, given a filename",
+		"description": "Write a chain to file, given a filename",
 		"grammars": ["have"],
 		"code":
 		{
@@ -106,7 +106,6 @@
 	},
 	{
 		"name": "to",
-		"document": false,
 		"grammars": ["bind"],
 		"code":
 		{
@@ -119,7 +118,7 @@
     "comparison_operators": [
 	{
         "name": "is",
-        "description": "Returns true if LHO==RHO, else returns false",
+        "description": "Return true if LHO==RHO, else returns false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)==0)",
 			"chain/chain": "(compare_chains(LHO, RHO)==0)"
@@ -127,7 +126,7 @@
     },
 	{
         "name": "is not",
-        "description": "Returns true if LHO!=RHO, else returns false",
+        "description": "Return true if LHO!=RHO, else returns false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)!=0)",
 			"chain/chain": "(compare_chains(LHO, RHO)!=0)"
@@ -136,14 +135,14 @@
 
 	{
         "name": "is submissive to",
-        "description": "Returns true if LHO<RHO, else returns false",
+        "description": "Return true if LHO<RHO, else returns false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)==-1)"
 		}
     },
 	{
         "name": "is dominant towards",
-        "description": "Returns true if LHO>RHO, else returns false",
+        "description": "Return true if LHO>RHO, else returns false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)==1)"
 		}
@@ -152,18 +151,21 @@
 
 	"builtins":[{
 		"name": "slave",
+		"description": "Standard output",
 		"gender": "unassigned",
 		"type": "stream",
 		"code": "stdout"
 	},
 	{
 		"name": "mistress",
+		"description": "Standard input",
 		"gender": "female",
 		"type": "stream",
 		"code": "stdin"
 	},
 	{
 		"name": "dungeon master",
+		"description": "Standard error",
 		"gender": "unassigned",
 		"type": "stream",
 		"code": "stderr"

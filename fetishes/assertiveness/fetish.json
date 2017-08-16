@@ -5,7 +5,7 @@
 	"operators": [
 	{
         "name": "assert dominance over",
-        "description": "The `assert dominance over` operator asserts that the rho is over the lho",
+        "description": "Assert that the RHO is greater than the LHO",
         "grammars": ["have"],
         "examples": ["Have Alice assert dominance over Bob"],
         "code":
@@ -15,7 +15,7 @@
     },
 	{
 		"name": "assert equality with",
-		"description": "Assertion of equality",
+		"description": "Assert that the LHO and RHO are equal",
 		"grammars": ["have"],
 		"examples": ["Have Alice assert equality with Eve"],
 		"code":

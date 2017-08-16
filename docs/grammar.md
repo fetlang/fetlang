@@ -1,4 +1,4 @@
-## Grammar
+# Grammar
 There are three functional grammars, as well as a conditional grammar and bind
 grammar (see control flow)  
 
@@ -11,7 +11,7 @@ operator will be on the right. A left hand operator must be a mutable value
 
 The three functional grammars are: `make`, `have`, and `plain`
 
-### Make Grammar:
+## Make Grammar:
 Make grammar can follow these formats:
 `make` <lho> <operator>
 `make` <lho> <operator> <rho - mutable>
