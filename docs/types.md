@@ -35,7 +35,7 @@ Chains are lists of fractions. They can be used as strings, or just an
 array of numbers. When printed as a string, each fraction is converted
 into an ASCII code.
 
-Chain literals are the same as C `char*` literals:
+Chain literals are similar to C `char*` literals:
 
     "Hello World!\n"
 
@@ -48,8 +48,6 @@ Chains are not null-terminated, but their literals are.
 
 
 ## Streams
-Streams are treated like chains in Fetlang. The three stream types are:
-stdout, stdin, and stderr. They are referred to by identifiers
-as shown in `builtins.md`
-
-Streams decay to chains  
+Streams are treated like chains in Fetlang. The three stream builtin variables
+are: stdout, stdin, and stderr. They are referred to by identifiers
+as shown in `reference/core.md`

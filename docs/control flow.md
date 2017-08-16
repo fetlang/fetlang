@@ -1,22 +1,22 @@
 # Control Flow
 ## Comparison operators
-`IS` - `==`  
-`IS NOT` - `!=`  
-`IS SUBMISSIVE TO` - `>=`  
-`IS DOMINANT TOWARDS` - `<=`  
+`is` - `==`  
+`is not` - `!=`  
+`is submissive to` - `>=`  
+`is dominant towardds` - `<=`  
 
-## `IF` statements
-    IF <lho> [COMPARISON OPERATOR] <rho>
+## If statements
+    if <lho> <comparison operator> <rho>
     ...
-    END IF
+    end if
 
-## `WHILE`/`UNTIL` loops
+## While/until loops
 While loops repeat as long as the condition is fulfilled.
 Until loops repeat as long as the condition is NOT fulfilled.
 
-    [WHILE | UNTIL] <lho> [COMPARISON] <rho>
+    [while | until] <lho> <comparison operator> <rho>
     ...
-    MORE PLEASE
+    more please
 
 ## Bondage loops
 Bondage loops allow you to iterate through a chain.  
@@ -29,9 +29,9 @@ to RHO
 
 A variable in bondage will remain in bondage
 
-    BIND <lho> TO <rho>
+    bind <lho> to <rho>
     ...
-    MORE PLEASE
+    more please
 
 ## Safeword
 `call safeword` allows you to exit a scope prematurely.  
