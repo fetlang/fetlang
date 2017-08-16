@@ -81,13 +81,14 @@ static std::string sanitize(const std::string& argument){
 	
 int Builder::compile(const std::vector<std::string>& args){
 	std::string command = compiler;
-	command += " -std=c99 ";
 	if(optimization){
 		command += " -O2 -s ";
 	}
 	#if defined(__linux__) || defined(linux)
 	// Linux has a separate math library
-	command += " -lm ";
+	command += " -lm -std=gnu99";
+	#else
+	command += " -std=c99 ";
 	#endif
 	for(const std::string& arg : args)
 	{
