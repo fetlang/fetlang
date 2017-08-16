@@ -29,6 +29,9 @@ namespace FileUtil{
 	// Similar to above, but create a file instead if it doesn't exist
 	void ensureFileExists(const std::string& path);
 
+	// Check if file exists
+	bool fileExists(const std::string& path);
+
 	// Recrusively destroy directory, but throw exception if it doesn't exist
 	void destroyDirectory(const std::string& path);
 

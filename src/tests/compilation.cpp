@@ -10,10 +10,11 @@ TEST_CASE("Build and compile Fetish unit tests", "[Builder][Integration]"){
 	const auto fetishes = getDirectoriesInDirectory(fetish_dir);
 
 	ensureFileDoesNotExist(out);
+	Builder bob;
+	REQUIRE_NOTHROW(bob.clean());
 
 	for(const string& fetish : fetishes)
 	{
-		Builder bob;
 		REQUIRE_NOTHROW(bob.setSource(fetish_dir + fetish + "/unit.fet"));
 		REQUIRE_NOTHROW(bob.setDestination(out));
 		REQUIRE_NOTHROW(bob.build());

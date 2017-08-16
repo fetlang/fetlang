@@ -1,4 +1,4 @@
-#Variables
+# Variables
 ## Tokenizing/Identifiers
 Variables names are case insensitive. Characters that can be used in an identifier
 can be, but is not limited to: alphanumeric, an underscore, a hyphen, or a

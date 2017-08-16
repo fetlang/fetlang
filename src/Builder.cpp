@@ -82,7 +82,11 @@ static std::string sanitize(const std::string& argument){
 int Builder::compile(const std::vector<std::string>& args){
 	std::string command = compiler;
 	if(optimization){
-		command += " -O2 -s ";
+		command += " -O2 "
+		#ifndef __APPLE__
+		"-s "
+		#endif
+		;
 	}
 
 	command += " -std=c99 ";
@@ -149,12 +153,15 @@ void Builder::build(){
 		for(const std::string& source_file : fetish.getSources()){
 			FileUtil::ensureDirectoryExists(fetish_path+"/"+fetish.getName());
 			all_objects.push_back(fetish_path+"/"+fetish.getName()+"/"+source_file+".o");
-			compile({
-				"-c", fetish.getSourcePath()+source_file,
-				"-I"+include_path,
-				"-I"+fetish.getIncludePath(),
-				"-o", all_objects.back()
-			});
+			std::string source_path = fetish.getSourcePath()+source_file;
+			if(!FileUtil::fileExists(all_objects.back())){
+				compile({
+					"-c", source_path,
+					"-I"+include_path,
+					"-I"+fetish.getIncludePath(),
+					"-o", all_objects.back()
+				});
+			}
 		}
 	}
 
@@ -179,5 +186,10 @@ void Builder::build(){
 	c_args.push_back(destination_path);
 	compile(c_args);
 
+}
+
+void Builder::clean() const{
+	FileUtil::ensureDirectoryDoesNotExist(build_path);
+	FileUtil::ensureDirectoryExists(build_path);
 }
 

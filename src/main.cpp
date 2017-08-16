@@ -69,6 +69,7 @@ int main(int argc, const char* argv[]){
 		if(show_tree) bob.showTree();
 		if(optimize) bob.setOptimization();
 		if(output_file) bob.setDestination(args::get(output_file));
+		if(scrub) bob.clean();
 		bob.setSource(args::get(input_file));
 		bob.build();
 	}catch(const TokenException& e){

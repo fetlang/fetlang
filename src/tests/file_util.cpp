@@ -31,7 +31,9 @@ TEST_CASE("FileUtil function-integration test"){
 	// Create a file
 	REQUIRE_THROWS(getFileContents(path+"/boop"));
 	REQUIRE_NOTHROW(ensureFileDoesNotExist(path+"/boop"));
+	REQUIRE_FALSE(fileExists(path+"/boop"));
 	REQUIRE_NOTHROW(setFileContents(path+"/boop", contents_export));
+	REQUIRE(fileExists(path+"/boop"));
 	REQUIRE(getParentPath(path+"/boop") == path);
 	REQUIRE(getFilesInDirectory(path).size() == 1);
 	REQUIRE(getFilesInDirectory(path)[0] == "boop");

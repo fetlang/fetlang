@@ -1,4 +1,4 @@
-#Types
+# Types
 ## Fractions
 All numbers in Fetlang are represented as fractions: a numerator over a
 denominator.

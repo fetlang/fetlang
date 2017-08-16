@@ -120,6 +120,17 @@ void ensureFileExists(const std::string& path){
 	}
 }
 
+bool fileExists(const std::string& path){
+	fs::path fp = path;
+	if(fs::exists(fp)){
+		if(!fs::is_regular_file(fp)){
+			throw FetlangException("Entity "+path+" exists, but is not a regular file");
+		}
+		return true;
+	}
+	return false;
+}
+
 void ensureFileDoesNotExist(const std::string& path){
 	fs::path fp = path;
 	if(fs::exists(fp)){
