@@ -84,17 +84,19 @@ int Builder::compile(const std::vector<std::string>& args){
 	if(optimization){
 		command += " -O2 -s ";
 	}
-	#if defined(__linux__) || defined(linux)
-	// Linux has a separate math library
-	command += " -lm -std=gnu99";
-	#else
+
 	command += " -std=c99 ";
-	#endif
+
 	for(const std::string& arg : args)
 	{
 		command += " "+sanitize(arg);
 	}
-	//command+=" > /dev/null";
+
+	#if defined(__linux__) || defined(linux)
+	// Linux has a separate math library
+	command += " -lm";
+	#endif
+	
 	FILE* compiler_process = popen(command.c_str(), "r");
 	return pclose(compiler_process);
 }
