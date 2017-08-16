@@ -43,15 +43,15 @@ private:
 	// Is the Right Hand Operand the EXACT(i.e. not decayed) type given?
 	bool hasExactRHO(FetType t) const;
 
-	// check if the type pair or code key is assigned to any C code
-	bool hasCodeForExactly(FetType lho, FetType rho) const;
-
 	// Get C code for exact types
 	std::string getCodeForExactly(FetType, FetType) const;
 public:
 	Operator(){};
 	Operator(const std::string& name);
 	virtual ~Operator(){}
+
+	// check if the type pair or code key is assigned to any C code
+	bool hasCodeForExactly(FetType lho, FetType rho) const;
 
 	// Create string version of code key
 	static std::string makeCodeKeyFrom(FetType lho, FetType rho);

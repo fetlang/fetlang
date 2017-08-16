@@ -121,6 +121,30 @@ void chain_to_stream(Chain chain, FILE * stream)
 	}
 }
 
+int chain_to_cstr(Chain chain, char * buffer)
+{
+	/* Iterator */
+	Link *it = chain.start;
+	int count = 0;
+
+	/* Print out chain */
+	while (it != NULL) {
+		/* Print character */
+		buffer[count] = (char)(it->value.num / it->value.den);
+
+		/* Forward iterator */
+		it = it->next;
+
+		count++;
+	}
+	if(count != chain.length)
+	{
+		runtime_error("Chain length does not represent true chain length in chain_to_cstr (you should not see this)"); 
+	}
+	return count;
+}
+	
+
 void append_stream_to_chain(Chain * chain, FILE * stream)
 {
 	char character;

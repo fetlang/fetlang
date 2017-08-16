@@ -155,7 +155,9 @@ FetType Operator::inferLeftByRight(FetType rho) const{
 		return STREAM_TYPE;
 	if(hasCodeFor(REFERENCE_TYPE, rho))
 		return REFERENCE_TYPE;
-	throw FetlangException("Can't infer left type in operator " + getName());
+	throw FetlangException("Can't infer left type in operator `" +
+		getName()+
+			"`(no overloaded form of the operator exists for these types)");
 }
 
 FetType Operator::inferRightByLeft(FetType lho) const{
@@ -167,7 +169,9 @@ FetType Operator::inferRightByLeft(FetType lho) const{
 		return STREAM_TYPE;
 	if(hasCodeFor(lho, REFERENCE_TYPE))
 		return REFERENCE_TYPE;
-	throw FetlangException("Can't infer the right type in operator " + getName());
+	throw FetlangException("Can't infer the right type in operator `" +
+		getName()+
+			"`(no overloaded form of the operator exists for these types)");
 }
 
 void Operator::verifyGrammar(const std::string& grammar) const{

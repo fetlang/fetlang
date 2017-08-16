@@ -45,6 +45,7 @@ worship Alice zero times
 worship Bob zero times
 worship Charlie zero times
 
+
 (general bind test)
 lick count zero times
 make chain moan "012"
@@ -61,7 +62,9 @@ bind reference to chain
 	end if
 	lick count
 more please
-have reference assert equality with 2
+(have reference assert equality with 0
+)
+
 (Chain has been reduced now - so same test without subtracting)
 bind reference to chain
 	if count is 0
@@ -75,6 +78,23 @@ bind reference to chain
 	end if
 	lick count
 more please
+
+(file handling)
+(
+make hello moan "Hello!"
+make filename moan "test.txt"
+have filename fist file
+make file moan hello
+have file assert equality with hello
+)
+
+(
+have filename fist file2
+have file assert equality with file2
+have file2 assert equality with file
+have file2 assert equality with hello
+)
+
 
 (Make sure safeword breaks away)
 call safeword

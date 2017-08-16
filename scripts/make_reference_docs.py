@@ -40,19 +40,20 @@ def getMarkdownSection(fetish_file, section):
 		for element in fetish_file[section.replace(" ", "_")]:
 			markdown += f"### {element['name']}\n"
 			if "description" in element:
-				markdown += element["description"]+"\n"
+				markdown += element["description"]+"  \n\n"
 			if "examples" in element:
 				markdown += "Examples:  \n"
 				for example in element["examples"]:
-					markdown += "`"+example+"`  \n"
+					markdown += "`"+example+"`  \n\n"
 			if "code" in element:
 				markdown += "C Code:  \n"
 				if section == "builtins":
-					markdown += element["code"]
+					markdown += element["code"]+"  \n\n"
 				else:
 					for pair in getCodePairPossibilities():
 						if pair in element["code"]:
 							markdown += (f"{pair} - `{element['code'][pair]}`  \n")
+					markdown += "\n";
 		return markdown
 	return ""
 

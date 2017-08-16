@@ -1,6 +1,6 @@
 {
 	"name": "core",
-	"description": "This is the core fetish. It effectively defines the language.",
+	"description": "This is the core fetish. It effectively defines the language. You do not need to manually include it.",
 
 	"operators": [
 	{
@@ -65,6 +65,15 @@
             "chain/fraction": "append_fraction_to_chain(&LHO, RHO)",
             "chain/chain": "append_chain_to_chain(&LHO, RHO)"
         }
+	},
+	{
+		"name": "fist",
+		"description": "open file as stream",
+		"grammars": ["have"],
+		"code":
+		{
+			"stream/chain": "{char* buffer=(char*)malloc(sizeof(char)*(RHO.length+1)); int x=chain_to_cstr(RHO, buffer);buffer[x]=0;LHO = fopen(buffer, \"rw\");}"
+		}
 	},
 	{
 		"name": "to",

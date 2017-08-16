@@ -39,6 +39,9 @@ void append_stream_to_chain(Chain * chain, FILE * stream);
 /* Print each fraction to stream as char */
 void chain_to_stream(Chain chain, FILE * stream);
 
+/* Convert chain to c_string */
+int chain_to_cstr(Chain chain, char * buffer);
+
 /* Compare chain: 0 if they are the same, 1 if not */
 int compare_chains(Chain a, Chain b);
 
