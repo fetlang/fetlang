@@ -5,17 +5,21 @@ using namespace FileUtil;
 using namespace std;
 
 TEST_CASE("Build and compile Fetish unit tests", "[Builder][Integration]"){
-	string fetish_dir = "../fetishes/";
-	auto fetishes = getDirectoriesInDirectory(fetish_dir);
+	const string fetish_dir = "../fetishes/";
+	const string out = "./output_from_unit_tests.exe";
+	const auto fetishes = getDirectoriesInDirectory(fetish_dir);
+
+	ensureFileDoesNotExist(out);
 
 	for(const string& fetish : fetishes)
 	{
 		Builder bob;
 		REQUIRE_NOTHROW(bob.setSource(fetish_dir + fetish + "/unit.fet"));
+		REQUIRE_NOTHROW(bob.setDestination(out));
 		REQUIRE_NOTHROW(bob.build());
-		if(system("./a.out"))
+		if(system(out.c_str()))
 		{
-			CAPTURE(fetish)
+			CAPTURE(fetish);
 			FAIL("Compiled fetish unit test returned error");
 		}
 	}

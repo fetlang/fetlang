@@ -42,8 +42,9 @@ void chain_to_stream(Chain chain, FILE * stream);
 /* Convert chain to c_string */
 int chain_to_cstr(Chain chain, char * buffer);
 
-/* Open file as stream based on filename as chain */
-FILE* open_file_as_stream(Chain filename);
+/* File IO */
+void write_chain_to_file(Chain chain, Chain filename);
+void read_file_to_chain(Chain * chain, Chain filename);
 
 /* Compare chain: 0 if they are the same, 1 if not */
 int compare_chains(Chain a, Chain b);

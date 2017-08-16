@@ -24,6 +24,16 @@
         }
     },
 	{
+        "name": "flog",
+        "description": "The `flog` operator divides the LHO with the RHO",
+        "grammars": ["have", "plain"],
+        "examples": ["Flog Amanda", "Have Amanda flog Bruce"],
+        "code":
+		{
+            "fraction/fraction": "LHO=divide_fractions(LHO, RHO)"
+        }
+    },
+	{
         "name": "lick",
         "description": "The `lick` operator adds the RHO from the LHO",
         "grammars": ["have", "plain"],
@@ -31,6 +41,16 @@
         "code":
 		{
             "fraction/fraction": "LHO=add_fractions(LHO, RHO)"
+		}
+	},
+	{
+        "name": "tickle",
+        "description": "The `tickle` operator sets the LHO to the remainder of the LHO divided by the RHO",
+        "grammars": ["have", "plain"],
+        "examples": ["ticke Richard", "Have Richard tickle Linus"],
+        "code":
+		{
+            "fraction/fraction": "LHO=modulus_fractions(LHO, RHO)"
 		}
 	},
 	{
@@ -68,11 +88,20 @@
 	},
 	{
 		"name": "fist",
-		"description": "open file as stream",
+		"description": "Read a file to a chain, given a filename",
 		"grammars": ["have"],
 		"code":
 		{
-			"stream/chain": "LHO=open_file_as_stream(RHO);"
+			"chain/chain": "read_file_to_chain(&LHO, RHO);"
+		}
+	},
+	{
+		"name": "obey",
+		"description": "write a chain to file, given a filename",
+		"grammars": ["have"],
+		"code":
+		{
+			"chain/chain": "write_chain_to_file(LHO, RHO)"
 		}
 	},
 	{

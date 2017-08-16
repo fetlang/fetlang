@@ -13,5 +13,3 @@ make Duke moan "Hello Neighbor"
 make Emily moan Duke's name
 Have Emily assert equality with Duke
 Have Duke assert equality with Emily
-
-make slave scream "Assertiveness - test passed"
