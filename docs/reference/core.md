@@ -23,6 +23,17 @@ Examples:
 C Code:  
 fraction/fraction - `LHO=multiply_fractions(LHO, RHO)`  
 
+### flog
+The `flog` operator divides the LHO with the RHO  
+
+Examples:  
+`Flog Amanda`  
+
+`Have Amanda flog Bruce`  
+
+C Code:  
+fraction/fraction - `LHO=divide_fractions(LHO, RHO)`  
+
 ### lick
 The `lick` operator adds the RHO from the LHO  
 
@@ -33,6 +44,17 @@ Examples:
 
 C Code:  
 fraction/fraction - `LHO=add_fractions(LHO, RHO)`  
+
+### tickle
+The `tickle` operator sets the LHO to the remainder of the LHO divided by the RHO  
+
+Examples:  
+`ticke Richard`  
+
+`Have Richard tickle Linus`  
+
+C Code:  
+fraction/fraction - `LHO=modulus_fractions(LHO, RHO)`  
 
 ### moan
 assign RHO to LHO  
@@ -58,10 +80,16 @@ chain/fraction - `append_fraction_to_chain(&LHO, RHO)`
 chain/chain - `append_chain_to_chain(&LHO, RHO)`  
 
 ### fist
-open file as stream  
+Read a file to a chain, given a filename  
 
 C Code:  
-stream/chain - `{char* buffer=(char*)malloc(sizeof(char)*(RHO.length+1)); int x=chain_to_cstr(RHO, buffer);buffer[x]=0;LHO = fopen(buffer, "rw");}`  
+chain/chain - `read_file_to_chain(&LHO, RHO);`  
+
+### obey
+write a chain to file, given a filename  
+
+C Code:  
+chain/chain - `write_chain_to_file(LHO, RHO)`  
 
 ### to
 C Code:  

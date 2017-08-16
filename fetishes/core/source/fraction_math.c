@@ -5,16 +5,6 @@
 #define POW_ACCURACY (1<<8)	/*256 */
 #define REDUCTION_ACCURACY (1<<20)	/*one million */
 
-/* Instill compatibility between ANSI/C99 */
-#if __STDC_VERSION__ >= 199901L
-#define abs llabs
-#define pow powl
-#define long_double long double
-#else
-#define abs labs
-#define long_double double
-#endif
-
 
 void reduce_fraction(Fraction * a)
 {
@@ -54,7 +44,7 @@ void reduce_fraction(Fraction * a)
 	}
 
 	/* Get maximum */
-	max = (abs(a->num) < a->den ? a->num : a->den) / 2 + 1;
+	max = (llabs(a->num) < a->den ? a->num : a->den) / 2 + 1;
 	max = max > 0 ? max : -max;
 
 	/* Reduce Max if too big */
@@ -164,10 +154,10 @@ Fraction pow_fractions(Fraction a, Fraction b)
 
 	/* Root a */
 	if (b.den != 1) {
-		a.num = (FractionInt) pow((long_double) a.num,
-					  1 / ((long_double) b.den));
-		a.den = (FractionInt) pow((long_double) a.den,
-					  1 / ((long_double) b.den));
+		a.num = (FractionInt) powl((long double) a.num,
+					  1 / ((long double) b.den));
+		a.den = (FractionInt) powl((long double) a.den,
+					  1 / ((long double) b.den));
 	}
 
 	/* Reduce, and inverse if necessary */
