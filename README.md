@@ -24,10 +24,16 @@ million:
 
 
 ## Features
-* Case insensitive  
+* Input/output with standard streams and files
+* Statically typed - four types: fractions, chains, streams, references
+* Gendered variables
+* Access previously mentioned variables using pronouns
 * Numbers represented internally as fractions instead of floating point
 * Transpiles to C
-* Probably turing complete. Or not. I don't know  
+* Case insensitive
+* Confusing English-like syntax and unhelpful error messages
+* Probably turing complete
+* Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building
 Requirements:

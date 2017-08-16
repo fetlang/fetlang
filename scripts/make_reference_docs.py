@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 # This script creates markdown files in the docs directory documenting elements
 # of each fetish, as well as creates a table of contents
+#
+# Requires Python >=3.6
 
 import json
 import os
+import sys
 
 def getFetishDirectory():
 	return "../fetishes/"
