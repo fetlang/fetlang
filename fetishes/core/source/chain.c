@@ -381,6 +381,31 @@ Fraction chain_to_fraction(Chain chain)
 	return frac;
 }
 
+
+FILE* open_file_as_stream(Chain filename)
+{
+	int max_size = sizeof(char)*(filename.length+1);
+	char* buffer = (char*)malloc(max_size);
+	if(buffer == NULL)
+	{
+		runtime_error("Could not allocate buffer for file");
+	}
+
+	int actual_size = chain_to_cstr(filename, buffer);
+	if(actual_size > filename.length)
+	{
+		runtime_error("Something's terribly wrong in open_file_as_stream");
+	}
+
+	FILE* fp = fopen(buffer, "w+b");
+	if(fp == NULL){
+		perror("perror result: ");
+		runtime_error("Could not open file %s", buffer);
+	}
+	return fp;
+}
+
+
 int compare_chains(Chain a, Chain b)
 {
 	Link *a_iterator = a.start;
@@ -407,6 +432,7 @@ int compare_chains(Chain a, Chain b)
 
 	return 0;
 }
+
 
 /*
 void print_chain_numerically(Chain chain)

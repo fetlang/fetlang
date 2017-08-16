@@ -80,11 +80,13 @@ bind reference to chain
 more please
 
 (file handling)
-(
+
+
 make hello moan "Hello!"
 make filename moan "test.txt"
 have filename fist file
-make file moan hello
+make file scream hello
+(
 have file assert equality with hello
 )
 

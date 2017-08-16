@@ -21,5 +21,4 @@ script:
   - meson src build
   - cd build
   - ninja test
-  - cd ../scripts
 

@@ -13,7 +13,11 @@ TEST_CASE("Build and compile Fetish unit tests", "[Builder][Integration]"){
 		Builder bob;
 		REQUIRE_NOTHROW(bob.setSource(fetish_dir + fetish + "/unit.fet"));
 		REQUIRE_NOTHROW(bob.build());
-		system("./a.out");
+		if(system("./a.out"))
+		{
+			CAPTURE(fetish)
+			FAIL("Compiled fetish unit test returned error");
+		}
 	}
 
 }

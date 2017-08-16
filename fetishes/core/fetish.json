@@ -72,7 +72,7 @@
 		"grammars": ["have"],
 		"code":
 		{
-			"stream/chain": "{char* buffer=(char*)malloc(sizeof(char)*(RHO.length+1)); int x=chain_to_cstr(RHO, buffer);buffer[x]=0;LHO = fopen(buffer, \"rw\");}"
+			"stream/chain": "LHO=open_file_as_stream(RHO);"
 		}
 	},
 	{
