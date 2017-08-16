@@ -84,7 +84,7 @@ int Builder::compile(const std::vector<std::string>& args){
 	if(optimization){
 		command += " -O2 -s -std=c99 ";
 	}
-	#ifdef __linux__
+	#if defined(__linux__) || defined(linux)
 	// Linux has a separate math library
 	command += " -lm ";
 	#endif
