@@ -43,7 +43,7 @@ TEST_CASE("Tokenizer, in general, works as expected", "[Tokenizer]"){
 		{"ada lovelace",Token::IDENTIFIER_TOKEN},
 	};
 
-	for(int i=0; i<expected_values.size(); i++)
+	for(unsigned int i=0; i<expected_values.size(); i++)
 	{
 		REQUIRE(expected_values[i].first == tokens[i].getValue());
 		REQUIRE(expected_values[i].second == tokens[i].getCategory());
