@@ -1,21 +1,29 @@
 sudo: required
 
-before_install:
-  - sudo apt-get update
-  - sudo apt-get install clang
-
-install:
-  - curl -L "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip" -o ninja-linux.zip
-  - sudo unzip ninja-linux.zip -d /usr/local/bin
-  - sudo chmod 755 /usr/local/bin/ninja
-  - pip3 install meson
-  
 # Enable C++ support
 language: cpp
+
+os:
+  - linux
+  - osx
 
 # Compiler selection
 compiler:
   - clang++
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install clang; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python3; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install ninja; fi
+
+install:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; curl -L "https://github.com/ninja-build/ninja/releases/download/v1.7.2/ninja-linux.zip" -o ninja-linux.zip; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo unzip ninja-linux.zip -d /usr/local/bin; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; sudo chmod 755 /usr/local/bin/ninja; fi
+  - pip3 install meson
+  
+
   
 # Build steps
 script:
