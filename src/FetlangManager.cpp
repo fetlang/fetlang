@@ -151,13 +151,16 @@ void FetlangManager::loadFile(const std::string& filename){
 			gender = MALE_GENDER;
 		}else if(gender_as_string == "neutral"){
 			gender = NEUTRAL_GENDER;
+		}else if(gender_as_string == "nonperson"){
+			gender = NONPERSON_GENDER;
 		}else if(gender_as_string == "unassigned"){
 			gender = UNASSIGNED_GENDER;
 		}else if(gender_as_string == "n/a"){
 			gender = NA_GENDER;
 		}else{
-			throw FetlangException("`"+gender_as_string+"is not a valid Fetlang gender");
+			throw FetlangException("`"+gender_as_string+" is not a valid Fetlang gender");
 		}
+
 
 		// "And the rest!"
 		if(builtin_data.find("name") == builtin_data.end()){
@@ -172,6 +175,14 @@ void FetlangManager::loadFile(const std::string& filename){
 		BuiltinVariable var(name_as_string, type, code_as_string, gender);
 
 		builtins.push_back(var);
+	}
+
+	// Load extra code (preloop, postloop)
+	if(data.find("preloop_code") != data.end()){
+		preloop_code += data["preloop_code"];
+	}
+	if(data.find("postloop_code") != data.end()){
+		postloop_code += data["postloop_code"];
 	}
 
 }

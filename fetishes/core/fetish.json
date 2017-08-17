@@ -87,6 +87,15 @@
         }
 	},
 	{
+        "name": "hogtie",
+        "description": "Concat RHO as fraction to LHO",
+        "grammars": ["have"],
+        "code":
+		{
+            "chain/fraction": "append_flink_to_chain(&LHO, RHO)"
+        }
+	},
+	{
 		"name": "fist",
 		"description": "Read a file to a chain, given a filename",
 		"grammars": ["have"],
@@ -169,7 +178,18 @@
 		"gender": "unassigned",
 		"type": "stream",
 		"code": "stderr"
+	},
+	{
+		"name": "saint andrew",
+		"description": "Chain version of argv with arguments separated by \\0, intended to be invoked as `Saint Andrew's Cross`",
+		"gender": "nonperson",
+		"type": "chain",
+		"code": "argv_chain"
 	}
-	]
+
+	],
+
+	"preloop_code": "Fraction argc_fraction = construct_fraction(argc, 1);\nChain argv_chain;\ninit_chain(&argv_chain);for(int i=0;i<argc;i++){append_cstr_to_chain(&argv_chain, argv[i]); append_flink_to_chain(&argv_chain, construct_fraction(0,1));}\n",
+	"postloop_code": "clear_chain(&argv_chain);"
 
 }

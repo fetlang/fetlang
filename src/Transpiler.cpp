@@ -295,7 +295,7 @@ std::string Transpiler::transpile(){
 	}
 
 	// Head code
-	code += "int main(){\n";
+	code += "int main(int argc, char* argv[]){\n";
 
 	// Declare Variables
 	code += "/* Initializing variables */\n";
@@ -331,6 +331,7 @@ std::string Transpiler::transpile(){
 		}
 	}
 	code += "\n";
+	code += manager.getPreloopCode();
 	code += "do{\n";
 
 	// User's code
@@ -340,6 +341,7 @@ std::string Transpiler::transpile(){
 
 	// End "main 'loop'"
 	code += "}while(0);\n";
+	code += manager.getPostloopCode();
 
 	// Free memory
 	code += "/* Deconstructing variables */\n";

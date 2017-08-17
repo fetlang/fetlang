@@ -89,6 +89,12 @@ private:
 	std::map<std::string, Operator> operators; 
 	std::map<std::string, ComparisonOperator> comparison_operators;
 
+	// Code inserted into the final .c file
+	// Before main do-while loop
+	std::string preloop_code;
+	// After main do-while loop
+	std::string postloop_code;
+
 	// Add operators etc
 	void loadFile(const std::string&);
 
@@ -135,6 +141,10 @@ public:
 	Pronoun getPronoun(const std::string&) const;
 
 	int getMaxKeyphraseSize() const;
+
+	// Return code
+	inline std::string getPreloopCode() const{return preloop_code;}
+	inline std::string getPostloopCode() const{return postloop_code;}
 	
 };
 

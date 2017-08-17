@@ -6,7 +6,6 @@
 
 import json
 import os
-import sys
 
 def getFetishDirectory():
 	return "../fetishes/"
