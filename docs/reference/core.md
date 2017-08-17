@@ -79,6 +79,12 @@ C Code:
 chain/fraction - `append_fraction_to_chain(&LHO, RHO)`  
 chain/chain - `append_chain_to_chain(&LHO, RHO)`  
 
+### hogtie
+Concat RHO as fraction to LHO  
+
+C Code:  
+chain/fraction - `append_flink_to_chain(&LHO, RHO)`  
+
 ### fist
 Read a file to a chain, given a filename  
 
@@ -136,4 +142,10 @@ Standard error
 
 C Code:  
 stderr  
+
+### saint andrew
+Chain version of argv with arguments separated by \0, intended to be invoked as `Saint Andrew's Cross`  
+
+C Code:  
+argv_chain  
 
