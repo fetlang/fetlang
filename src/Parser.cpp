@@ -358,6 +358,8 @@ void Parser::formBranch(Node& node){
 				// 'end if' instead of 'more please'
 				std::string controller = token_iterator->getValue();
 
+				int indent_level = manager.getLineIndent(token_iterator->getLine());
+
 				// Make sure we hve enough to do our thing
 				//	lho+operator+rho+ending statement = 4
 				if(!nextTokensAreAvailable(4)){
@@ -410,7 +412,7 @@ void Parser::formBranch(Node& node){
 					expected_ending = "more please";
 				}
 
-				while(token_iterator != tokens.end() && token_iterator->getValue() != expected_ending){
+				while(token_iterator != tokens.end() && (token_iterator->getValue() != expected_ending || ){
 					formBranch(conditional_node);
 				}
 
