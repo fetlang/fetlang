@@ -68,11 +68,8 @@ have Alice assert equality with Charlie
 (general bind test)
 lick count zero times
 make chain moan "012"
-make slave scream chain
 bind reference to chain
-	make slave scream reference
 	spank reference forty eight times
-	make slave scream reference
 	if count is 0
 		have reference assert equality with 0
 	if count is 1
@@ -80,8 +77,7 @@ bind reference to chain
 	if count is 2
 		have reference assert equality with 2
 	lick count
-(have reference assert equality with 0
-)
+have reference assert equality with 0
 
 (Chain has been reduced now - so same test without subtracting)
 bind reference to chain
