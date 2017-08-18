@@ -6,17 +6,20 @@
 `is dominant towardds` - `<=`  
 
 ## If statements
+The scope of if statements and the like are determined by preceding tabs or spaces,
+as in Python. And, as in Python 2, it is not recommended to mix the two
+
     if <lho> <comparison operator> <rho>
-    ...
-    end if
+        ...
+		...
 
 ## While/until loops
 While loops repeat as long as the condition is fulfilled.
 Until loops repeat as long as the condition is NOT fulfilled.
 
     [while | until] <lho> <comparison operator> <rho>
-    ...
-    more please
+        ...
+        ...
 
 ## Bondage loops
 Bondage loops allow you to iterate through a chain.  
@@ -30,8 +33,8 @@ to RHO
 A variable in bondage will remain in bondage
 
     bind <lho> to <rho>
-    ...
-    more please
+        ...
+		...
 
 ## Safeword
 `call safeword` allows you to exit a scope prematurely.  

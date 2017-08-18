@@ -65,23 +65,21 @@ lick Charlie three times
 have Bob tickle Alice
 have Alice assert equality with Charlie
 
-
 (general bind test)
 lick count zero times
 make chain moan "012"
+make slave scream chain
 bind reference to chain
+	make slave scream reference
 	spank reference forty eight times
+	make slave scream reference
 	if count is 0
 		have reference assert equality with 0
-	end if
 	if count is 1
 		have reference assert equality with 1
-	end if
 	if count is 2
 		have reference assert equality with 2
-	end if
 	lick count
-more please
 (have reference assert equality with 0
 )
 
@@ -89,15 +87,11 @@ more please
 bind reference to chain
 	if count is 0
 		have reference assert equality with 0
-	end if
 	if count is 1
 		have reference assert equality with 1
-	end if
 	if count is 2
 		have reference assert equality with 2
-	end if
 	lick count
-more please
 
 (file handling)
 make hello moan "That's *burp* right, they blew up"

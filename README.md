@@ -7,20 +7,16 @@ This is currently incomplete, but almost usable. It is not recommended to use
 this for production code at this moment.
 
 ## Example
-The following example outputs all numbers in the Fibonacci sequence under a
-million:
+The following example outputs the arguments given to the executable:
 
-    lick Bob's cock
-    lick Duke's left nipple one million times
+    Make Betty moan
+    Worship Carrie's feet
     
-    while Ada is submissive to Duke
-        make slave scream Ada's name
-        Have Charlie spank himself
-        Have Ada lick his tight little ass
-        Have Bob lick Charlie's tight little ass, as well
-        make Ada moan Bob's name
-        make Bob moan Charlie's name
-    more please
+    Bind Amy to Saint Andrew's Cross
+        Have Amy hogtie Betty
+        If Amy is Carrie's bitch
+            Make Slave scream Betty's name
+            Make Betty moan
 
 
 ## Features

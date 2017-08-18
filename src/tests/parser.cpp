@@ -96,9 +96,9 @@ TEST_CASE("Parser Test 3 - verification that pronouns are interpreted correctly"
 }
 
 TEST_CASE("Parser Test 4 - Binding test"){
+	manager.reset();
 	std::string code = "bind alpha to beta\n"
-						"spank Linus one time\n"
-						"more please";
+						"\tspank Linus one time\n";
 
 	Tokenizer tokenizer;
 	std::vector<Token> tokens;
@@ -114,7 +114,6 @@ TEST_CASE("Parser Test 4 - Binding test"){
 	REQUIRE(tokens[5].getValue() == "linus");
 	REQUIRE(tokens[6].getValue() == "one");
 	REQUIRE(tokens[7].getValue() == "time");
-	REQUIRE(tokens[8].getValue() == "more please");
 	Parser parser(tokens);
 	REQUIRE_NOTHROW(parser.formTree());
 	VariableCollection vars = parser.getVariables();

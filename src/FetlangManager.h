@@ -150,8 +150,16 @@ public:
 	inline std::string getPostloopCode() const{return postloop_code;}
 
 	// Deal with line indents
-	inline int getLineIndent(int line) const{return line_indents.at(line-1);}
+	inline int getLineIndent(int line) const{
+		if(line <=0 || line > line_indents.size()){
+			throw FetlangException("Invalid line number for indent request");
+		}
+		return line_indents.at(line-1);
+	}
 	inline void addLineIndent(int indent) {line_indents.push_back(indent);}
+
+	// Do all resets necessary to build another thing
+	void reset();
 	
 };
 

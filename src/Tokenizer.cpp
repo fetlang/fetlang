@@ -14,12 +14,18 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 	int line = 1;// The convention is to start at 1
 	int parenthesis_on = 0; // Are we in parenthetical commment?
 
-	
-	for(int i=0;code[i]!='\0';i++){
+	int i = 0;	
+	int indent = 0;
+	while(code[i+1] == '\t' || code[i+1] == ' '){
+		indent++;
+		i++;
+	}
+	manager.addLineIndent(indent);
+	for(i=0;code[i]!='\0';i++){
 		if(code[i] == '\n'){
 			line++;
 			int indent = 0;
-			while(code[i+1]=='\t'){
+			while(code[i+1]=='\t' || code[i+1] == ' '){
 				indent++;
 				i++;
 			}

@@ -280,9 +280,10 @@ void Parser::formBranch(Node& node){
 			if(token_iterator->getValue() == "bind"){
 				// Bind syntax:
 				// bind <lho> to <rho>
-				// ...
-				// more please
+				// 	...
+				//	...
 
+				int indent_level = manager.getLineIndent(token_iterator->getLine());
 
 				// Make sure we got enough to do our thing
 				// lho+to+rho+more please = 4
@@ -328,19 +329,12 @@ void Parser::formBranch(Node& node){
 				bind_grammar.setAllowedRightwardOperands({Grammar::IDENTIFIER, Grammar::PRONOUN, Grammar::CHAIN_LITERAL}); 
 				parseOperation(bind_grammar, lho, op, rho, bind_node);
 
-				// Now add all following root tokens until we get a "more
-				// please"
-				while(token_iterator != tokens.end() && token_iterator->getValue() != "more please"){
+				// BUT we also have to add the other children, at least until
+				// we reach the same level of indent
+				while(token_iterator != tokens.end() && indent_level < manager.getLineIndent(token_iterator->getLine())){
 					formBranch(bind_node);
 				}
 
-				if(token_iterator != tokens.end() && token_iterator->getValue() == "more please"){
-					token_iterator++;
-				}else{
-					throw TokenException("Expected `"
-						"more please` after this",
-						*(token_iterator - 1));
-				}
 				return;
 
 			
@@ -349,13 +343,11 @@ void Parser::formBranch(Node& node){
 				|| token_iterator->getValue() == "until"){
 				// If/while/until syntax:
 				//	if/while/until <lho> <comparison operator> <rho>
-				//	...
-				//	end if / more please
+				//		...
+				//		...
 				
 				// We have to know exactly what we're doing
-				// These are all similar, but slightly different,
-				// ESPECIALLY the 'if' statement because it ends with
-				// 'end if' instead of 'more please'
+				// For, like, error messages
 				std::string controller = token_iterator->getValue();
 
 				int indent_level = manager.getLineIndent(token_iterator->getLine());
@@ -404,24 +396,10 @@ void Parser::formBranch(Node& node){
 				parseOperation(comparison_grammar, lho, comparison_operator, rho, conditional_node);
 
 				// BUT we also have to add the other children, at least until
-				// we reach "end if" or "more please", depending
-				std::string expected_ending;
-				if(controller=="if"){
-					expected_ending = "end if";
-				}else{
-					expected_ending = "more please";
-				}
+				// we reach the same level of indent
 
-				while(token_iterator != tokens.end() && (token_iterator->getValue() != expected_ending || ){
+				while(token_iterator != tokens.end() && indent_level < manager.getLineIndent(token_iterator->getLine())){
 					formBranch(conditional_node);
-				}
-
-				if(token_iterator != tokens.end() && token_iterator->getValue() == expected_ending){
-					token_iterator++;
-				}else{
-					throw TokenException("Expected `"
-						+expected_ending+"` after this",
-						*(token_iterator - 1));
 				}
 
 				return;
