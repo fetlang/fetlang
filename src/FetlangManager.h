@@ -70,6 +70,9 @@ private:
 	// Fetishes we've loaded
 	std::vector<Fetish> fetishes;
 
+	// How much each line is indented
+	std::vector<int> line_indents;
+
 	// Builtin variables we've loaded (from the fetishes)
 	std::vector<BuiltinVariable> builtins;
 
@@ -145,6 +148,10 @@ public:
 	// Return code
 	inline std::string getPreloopCode() const{return preloop_code;}
 	inline std::string getPostloopCode() const{return postloop_code;}
+
+	// Deal with line indents
+	inline int getLineIndent(int line) const{return line_indents.at(line-1);}
+	inline void addLineIndent(int indent) {line_indents.push_back(indent);}
 	
 };
 

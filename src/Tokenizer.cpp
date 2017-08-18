@@ -18,6 +18,12 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 	for(int i=0;code[i]!='\0';i++){
 		if(code[i] == '\n'){
 			line++;
+			int indent = 0;
+			while(code[i+1]=='\t'){
+				indent++;
+				i++;
+			}
+			manager.addLineIndent(indent);
 		}else if(code[i] == '('){
 			token = "";
 			tokens.push_back(Token("(", line));
