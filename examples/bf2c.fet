@@ -1,5 +1,5 @@
 (Another Brainfuck-to-C transpiler, but written in Fetlang)
-(This takes a Brainfuck from program from a file and writes ouput
+(This takes a Brainfuck program from a file and writes the C code
 to stdout)
 
 (Get first argument as executable name and second argument as filename)

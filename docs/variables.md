@@ -18,7 +18,7 @@ will default to fraction.
 Chain type variables are initiated to `""`, while fraction type variables
 are initiated to `zero`
 
-To see types, see `types.md`
+To see types, see [types.md](types.md)
 
 ## Gender
 Variables can be assigned one of four genders: male, female, neutral,

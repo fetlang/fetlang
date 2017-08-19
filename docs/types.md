@@ -25,7 +25,7 @@ to 1/1.
 ## Variables in Bondage, or Reference Types
 A variable in bondage (reference type) is bound to particular fraction,
 and decays to that fraction. The major difference is that it can be 
-rebound to a different fraction, including a fraction in a chain  
+rebound to a different fraction, namely a fraction in a chain  
 
 This is the only way to iterate a chain using the core fetish
 
