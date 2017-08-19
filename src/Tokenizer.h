@@ -7,8 +7,16 @@
 
 /* Pre-lexer class */
 class Tokenizer {
+	/* Actual list of tokens */
+	std::vector<Token> actual_tokens;
+
+	/*  List of the indent level per line */
+	std::vector<int> line_indents;
+
+	std::string code;
+
 	/* Split string into real basic tokens, words and quote onlys*/
-	std::vector<Token> splitCode(const std::string&) const;
+	std::vector<Token> splitCode();
 
 	/* Remove gag/ungag tokens and everything inbetween them */
 	std::vector<Token> removeGags(const std::vector<Token>&) const;
@@ -19,18 +27,23 @@ class Tokenizer {
 	/* Return list of individual keywords (words that make up a keyphrase) */
 	std::unordered_set<std::string> getAllKeywords() const;
 
-
 	// Convert identifiers from possesive form into their true form
 	std::vector<Token> removePossessions(const std::vector<Token>& tokens);
 public:
-	Tokenizer();
+	Tokenizer(const std::string& code);
+	
+	std::vector<Token> tokenize();
 
-	/* Call private functions only - possibly minimal logic*/
-	std::vector<Token> tokenize(const std::string&);
+	/* Get tokens */
+	std::vector<Token> getTokens() const;
+
+	/* Get line indents */
+	std::vector<int> getLineIndents() const;
 };
 
 class TokenizerException : public FetlangException{
 public:
 	TokenizerException(const std::string& message) : FetlangException(message) {}
 	TokenizerException(int line, const std::string& message) : FetlangException(line, message) {}
+
 };

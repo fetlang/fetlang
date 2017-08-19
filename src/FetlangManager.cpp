@@ -303,8 +303,3 @@ FetlangManager& FetlangManager::getInstance(){
 	return manager;
 }
 FetlangManager& manager = FetlangManager::getInstance();
-
-// Reset instance
-void FetlangManager::reset(){
-	line_indents.clear();
-}

@@ -283,7 +283,7 @@ void Parser::formBranch(Node& node){
 				// 	...
 				//	...
 
-				int indent_level = manager.getLineIndent(token_iterator->getLine());
+				int indent_level = getLineIndent(token_iterator->getLine());
 
 				// Make sure we got enough to do our thing
 				// lho+to+rho+more please = 4
@@ -331,7 +331,7 @@ void Parser::formBranch(Node& node){
 
 				// BUT we also have to add the other children, at least until
 				// we reach the same level of indent
-				while(token_iterator != tokens.end() && indent_level < manager.getLineIndent(token_iterator->getLine())){
+				while(token_iterator != tokens.end() && indent_level < getLineIndent(token_iterator->getLine())){
 					formBranch(bind_node);
 				}
 
@@ -350,7 +350,7 @@ void Parser::formBranch(Node& node){
 				// For, like, error messages
 				std::string controller = token_iterator->getValue();
 
-				int indent_level = manager.getLineIndent(token_iterator->getLine());
+				int indent_level = getLineIndent(token_iterator->getLine());
 
 				// Make sure we hve enough to do our thing
 				//	lho+operator+rho+ending statement = 4
@@ -398,7 +398,7 @@ void Parser::formBranch(Node& node){
 				// BUT we also have to add the other children, at least until
 				// we reach the same level of indent
 
-				while(token_iterator != tokens.end() && indent_level < manager.getLineIndent(token_iterator->getLine())){
+				while(token_iterator != tokens.end() && indent_level < getLineIndent(token_iterator->getLine())){
 					formBranch(conditional_node);
 				}
 

@@ -23,7 +23,6 @@ TEST_CASE("Build and compile Fetish unit tests", "[Builder][Integration]"){
 			CAPTURE(fetish);
 			FAIL("Compiled fetish unit test returned error");
 		}
-		manager.reset();
 	}
 
 }

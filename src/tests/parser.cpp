@@ -10,9 +10,9 @@ TEST_CASE("Parser Test 1 - verification that variables are correctly added, no p
 "have c spank d\n";
 
 	// Tokenizing
-	Tokenizer tokenizer;
+	Tokenizer tokenizer(code);
 	std::vector<Token> tokens;
-	REQUIRE_NOTHROW(tokens = tokenizer.tokenize(code));
+	REQUIRE_NOTHROW(tokens = tokenizer.tokenize());
 
 	// Intermediate - require that no token is a NULL token or an UNSET token
 	for(const auto& token: tokens){
@@ -22,7 +22,7 @@ TEST_CASE("Parser Test 1 - verification that variables are correctly added, no p
 		
 
 	// Parsing
-	Parser parser(tokens);
+	Parser parser(tokens, tokenizer.getLineIndents());
 	REQUIRE_NOTHROW(parser.formTree());
 
 	
@@ -36,7 +36,7 @@ TEST_CASE("Parser Test 1 - verification that variables are correctly added, no p
 	
 }
 
-TEST_CASE("Parser Test 2 - verification that bullshit code is detected"){
+TEST_CASE("Parser Test 2 - verification that bullshit code is detected", "[Parser]"){
 	std::vector<std::string> bullshit =
 	{
 		"if while until",
@@ -54,16 +54,16 @@ TEST_CASE("Parser Test 2 - verification that bullshit code is detected"){
 	};
 	for(const std::string& code : bullshit){
 		try{
-			Tokenizer tokenizer;
+			Tokenizer tokenizer(code);
 			std::vector<Token> tokens;
 			try{
-				tokens = tokenizer.tokenize(code);
+				tokens = tokenizer.tokenize();
 			}catch(const FetlangException&){
 				throw;
 			}catch(const std::exception& e){
 				FAIL(std::string("Tokenizer failed with: ")+e.what());
 			}
-			Parser parser(tokens);
+			Parser parser(tokens, tokenizer.getLineIndents());
 			try{
 				parser.formTree();
 			}catch(const FetlangException&){
@@ -78,15 +78,15 @@ TEST_CASE("Parser Test 2 - verification that bullshit code is detected"){
 	}
 }
 
-TEST_CASE("Parser Test 3 - verification that pronouns are interpreted correctly"){
+TEST_CASE("Parser Test 3 - verification that pronouns are interpreted correctly", "[Parser]"){
 
 	std::string code = "Spank Ada\n"
 	"Have Richard spank her\n"
 	"spank him";
-	Tokenizer tokenizer;
+	Tokenizer tokenizer(code);
 	std::vector<Token> tokens;
-	REQUIRE_NOTHROW(tokens = tokenizer.tokenize(code));
-	Parser parser(tokens);
+	REQUIRE_NOTHROW(tokens = tokenizer.tokenize());
+	Parser parser(tokens, tokenizer.getLineIndents());
 	REQUIRE_NOTHROW(parser.formTree());
 	auto vars = parser.getVariables();
 	REQUIRE(vars.get("ada").getGender() == FEMALE_GENDER);
@@ -96,13 +96,12 @@ TEST_CASE("Parser Test 3 - verification that pronouns are interpreted correctly"
 }
 
 TEST_CASE("Parser Test 4 - Binding test"){
-	manager.reset();
 	std::string code = "bind alpha to beta\n"
 						"\tspank Linus one time\n";
 
-	Tokenizer tokenizer;
+	Tokenizer tokenizer(code);
 	std::vector<Token> tokens;
-	REQUIRE_NOTHROW(tokens = tokenizer.tokenize(code));
+	REQUIRE_NOTHROW(tokens = tokenizer.tokenize());
 	REQUIRE(tokens[0].getValue() == "bind");
 	REQUIRE(tokens[0].getKeyphraseCategory() == CONTROL_KEYPHRASE);
 	REQUIRE(tokens[1].getValue() == "alpha");
@@ -114,7 +113,7 @@ TEST_CASE("Parser Test 4 - Binding test"){
 	REQUIRE(tokens[5].getValue() == "linus");
 	REQUIRE(tokens[6].getValue() == "one");
 	REQUIRE(tokens[7].getValue() == "time");
-	Parser parser(tokens);
+	Parser parser(tokens, tokenizer.getLineIndents());
 	REQUIRE_NOTHROW(parser.formTree());
 	VariableCollection vars = parser.getVariables();
 	SyntaxTree::RootNode tree = parser.getTree();
@@ -136,13 +135,13 @@ TEST_CASE("Parser Test 4 - Binding test"){
 
 }
 
-TEST_CASE("Parser Test 4 - yet another gender test")
+TEST_CASE("Parser Test 4 - yet another gender test", "[Parser]")
 {
 	std::string code = "Have Rufus spank Ada\nHave Linus Worship her feet";
-	Tokenizer tokenizer;
+	Tokenizer tokenizer(code);
 	std::vector<Token> tokens;
-	REQUIRE_NOTHROW(tokens = tokenizer.tokenize(code));
-	Parser parser(tokens);
+	REQUIRE_NOTHROW(tokens = tokenizer.tokenize());
+	Parser parser(tokens, tokenizer.getLineIndents());
 	REQUIRE_NOTHROW(parser.formTree());
 	auto vars = parser.getVariables();
 	REQUIRE(vars.get("rufus").getGender() == UNASSIGNED_GENDER);

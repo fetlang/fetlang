@@ -5,9 +5,11 @@
 #include "thirdparty/boost/boost/algorithm/string/trim.hpp"
 
 
-Tokenizer::Tokenizer(){}
+Tokenizer::Tokenizer(const std::string& code){
+	this->code = code;
+}
 
-std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
+std::vector<Token> Tokenizer::splitCode(){
 	std::vector<Token> tokens;
 	std::string token = "";
 	// Record line number 
@@ -20,7 +22,7 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 		indent++;
 		i++;
 	}
-	manager.addLineIndent(indent);
+	line_indents.push_back(indent);
 	for(i=0;code[i]!='\0';i++){
 		if(code[i] == '\n'){
 			line++;
@@ -29,7 +31,7 @@ std::vector<Token> Tokenizer::splitCode(const std::string& code) const{
 				indent++;
 				i++;
 			}
-			manager.addLineIndent(indent);
+			line_indents.push_back(indent);
 		}else if(code[i] == '('){
 			token = "";
 			tokens.push_back(Token("(", line));
@@ -299,26 +301,22 @@ std::vector<Token> Tokenizer::removePossessions(const std::vector<Token>& old_to
 }
 			
 			
-			
-/*			
-
-		auto tokens = removePossessions(
-						mergeTokens(
-							removeGags(
-								splitCode(code)
-							)
-						)
-					);
-*/
-
-
-std::vector<Token> Tokenizer::tokenize(const std::string& code){
-	return removePossessions(
+std::vector<Token> Tokenizer::tokenize(){
+	actual_tokens = removePossessions(
 				mergeTokens(
 					removeGags(
-						splitCode(code)
+						splitCode()
 					)
 				)
 			);
+	return getTokens();
+}
+
+std::vector<Token> Tokenizer::getTokens() const{
+	return actual_tokens;
+}
+
+std::vector<int> Tokenizer::getLineIndents() const{
+	return line_indents;
 }
 	

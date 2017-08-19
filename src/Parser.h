@@ -13,6 +13,10 @@ class Parser {
 	// Tokens what was received as input
 	std::vector<Token> tokens;
 
+	std::vector<int> line_indents;
+
+	inline int getLineIndent(int line){if(line<0 || line>line_indents.size()){throw FetlangException("Invalid line number while getting indent level");}return line_indents.at(line-1);}
+
 	// Where we currently are in tokens
 	std::vector<Token>::iterator token_iterator;
 
@@ -66,7 +70,7 @@ class Parser {
 	void formBranch(SyntaxTree::Node&);
 
 public:
-	Parser(std::vector<Token> tokens_arg) : tokens(tokens_arg){}
+	Parser(std::vector<Token> tokens_arg, std::vector<int> line_indent_args) : tokens(tokens_arg), line_indents(line_indent_args){}
 
 	// Calls fromBranch iteratively
 	void formTree();

@@ -52,8 +52,8 @@ std::string Builder::transpile() const{
 	fetfile.close();
 
 	// Tokenize
-	Tokenizer tokenizer;
-	std::vector<Token> tokens = tokenizer.tokenize(source);
+	Tokenizer tokenizer(source);
+	std::vector<Token> tokens = tokenizer.getTokens();
 	if(show_tokens){
 		std::cout<<"Displaying tokens:\n";
 		for(const Token& token: tokens){
@@ -62,7 +62,7 @@ std::string Builder::transpile() const{
 	}
 
 	// Parse
-	Parser parser(tokens);
+	Parser parser(tokens, tokenizer.getLineIndents());
 	parser.formTree();
 	if(show_tree){
 		std::cout<<"Displaying tree:\n";
