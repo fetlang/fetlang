@@ -34,7 +34,7 @@
 
 ## Members
 
-#### `public void `[`init_chain`](#chain_8h_1ac96eb7de4c8b1a7e3570d9200ef2cc8f)`(`[`Chain`](#struct_chain)` * chain)` 
+#### `public void `[`init_chain`](#chain_8h_1ac96eb7de4c8b1a7e3570d9200ef2cc8f)`(`[`Chain`](#struct_chain)` * chain)` {#chain_8h_1ac96eb7de4c8b1a7e3570d9200ef2cc8f}
 
 Construct chain
 
@@ -43,7 +43,7 @@ Set defaults for chain: length to 0 and start to NULL
 #### Parameters
 * `chain` The chain being constructed
 
-#### `public void `[`clear_chain`](#chain_8h_1aa4212f13a8d699b80b5c8fe4a5fab60b)`(`[`Chain`](#struct_chain)` * chain)` 
+#### `public void `[`clear_chain`](#chain_8h_1aa4212f13a8d699b80b5c8fe4a5fab60b)`(`[`Chain`](#struct_chain)` * chain)` {#chain_8h_1aa4212f13a8d699b80b5c8fe4a5fab60b}
 
 Clear chain
 
@@ -52,7 +52,7 @@ Free all links in chain and set start to NULL
 #### Parameters
 * `chain` The chain being cleared
 
-#### `public void `[`append_cstr_to_chain`](#chain_8h_1ad442feef450b8b012044dfd726af81a8)`(`[`Chain`](#struct_chain)` * chain,const char * text)` 
+#### `public void `[`append_cstr_to_chain`](#chain_8h_1ad442feef450b8b012044dfd726af81a8)`(`[`Chain`](#struct_chain)` * chain,const char * text)` {#chain_8h_1ad442feef450b8b012044dfd726af81a8}
 
 Append a cstring to a chain
 
@@ -63,7 +63,7 @@ Append each character of the cstring as a [Link](#struct_link) to the chain.
 
 * `text` The string being added to the chain
 
-#### `public void `[`append_flink_to_chain`](#chain_8h_1a2ae440a996132423425f5721b5c14d1b)`(`[`Chain`](#struct_chain)` * chain,`[`Fraction`](#struct_fraction)` fraction)` 
+#### `public void `[`append_flink_to_chain`](#chain_8h_1a2ae440a996132423425f5721b5c14d1b)`(`[`Chain`](#struct_chain)` * chain,`[`Fraction`](#struct_fraction)` fraction)` {#chain_8h_1a2ae440a996132423425f5721b5c14d1b}
 
 Append fraction as single [Link](#struct_link) to chain
 
@@ -72,7 +72,7 @@ Append fraction as single [Link](#struct_link) to chain
 
 * `fraction` The fraction being added to the chain
 
-#### `public void `[`append_fraction_to_chain`](#chain_8h_1a116c3ec771d4a979a77eded5fdfc05a5)`(`[`Chain`](#struct_chain)` * chain,`[`Fraction`](#struct_fraction)` fraction)` 
+#### `public void `[`append_fraction_to_chain`](#chain_8h_1a116c3ec771d4a979a77eded5fdfc05a5)`(`[`Chain`](#struct_chain)` * chain,`[`Fraction`](#struct_fraction)` fraction)` {#chain_8h_1a116c3ec771d4a979a77eded5fdfc05a5}
 
 Append fraction as string to chain
 
@@ -83,7 +83,7 @@ Append fraction as string to chain
 
 * `fraction` The fraction being added to the chain
 
-#### `public void `[`append_chain_to_chain`](#chain_8h_1a902710243ebcd47c428a1dd41029ec2a)`(`[`Chain`](#struct_chain)` * chain1,`[`Chain`](#struct_chain)` chain2)` 
+#### `public void `[`append_chain_to_chain`](#chain_8h_1a902710243ebcd47c428a1dd41029ec2a)`(`[`Chain`](#struct_chain)` * chain1,`[`Chain`](#struct_chain)` chain2)` {#chain_8h_1a902710243ebcd47c428a1dd41029ec2a}
 
 Append the contents in one chain to another
 
@@ -92,7 +92,7 @@ Append the contents in one chain to another
 
 * `chain2` The chain being appended to chain1
 
-#### `public void `[`append_stream_to_chain`](#chain_8h_1a05e36086654b1484594e617f0abf364b)`(`[`Chain`](#struct_chain)` * chain,FILE * stream)` 
+#### `public void `[`append_stream_to_chain`](#chain_8h_1a05e36086654b1484594e617f0abf364b)`(`[`Chain`](#struct_chain)` * chain,FILE * stream)` {#chain_8h_1a05e36086654b1484594e617f0abf364b}
 
 Append the contents of a stream to a chain
 
@@ -103,7 +103,7 @@ Each char is read from the stream and copied to the chain as a fraction/Link.
 
 * `stream` The stream whose contents are read
 
-#### `public void `[`chain_to_stream`](#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0)`(`[`Chain`](#struct_chain)` chain,FILE * stream)` 
+#### `public void `[`chain_to_stream`](#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0)`(`[`Chain`](#struct_chain)` chain,FILE * stream)` {#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0}
 
 Copy chain to stream
 
@@ -114,7 +114,7 @@ Print each fraction of chain to the stream to be appended as a char
 
 * `stream` The stream being appended to
 
-#### `public int `[`chain_to_cstr`](#chain_8h_1a784425b6bbc1c074e52e109871b526c0)`(`[`Chain`](#struct_chain)` chain,char * buffer)` 
+#### `public int `[`chain_to_cstr`](#chain_8h_1a784425b6bbc1c074e52e109871b526c0)`(`[`Chain`](#struct_chain)` chain,char * buffer)` {#chain_8h_1a784425b6bbc1c074e52e109871b526c0}
 
 Convert chain to cstring
 
@@ -128,7 +128,7 @@ Print each fraction of chain to the cstring buffer to be appended as a char This
 #### Returns
 The length of the buffer.
 
-#### `public void `[`write_chain_to_file`](#chain_8h_1a897accbfb97acae9ff091b3dc13921c2)`(`[`Chain`](#struct_chain)` chain,`[`Chain`](#struct_chain)` filename)` 
+#### `public void `[`write_chain_to_file`](#chain_8h_1a897accbfb97acae9ff091b3dc13921c2)`(`[`Chain`](#struct_chain)` chain,`[`Chain`](#struct_chain)` filename)` {#chain_8h_1a897accbfb97acae9ff091b3dc13921c2}
 
 Set file contents to chain's contents
 
@@ -139,7 +139,7 @@ Open a file and set its contents to that of the chain's. As with other functions
 
 * `filename` A chain holding the filename of the file we're opening
 
-#### `public void `[`read_file_to_chain`](#chain_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(`[`Chain`](#struct_chain)` * chain,`[`Chain`](#struct_chain)` filename)` 
+#### `public void `[`read_file_to_chain`](#chain_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(`[`Chain`](#struct_chain)` * chain,`[`Chain`](#struct_chain)` filename)` {#chain_8h_1a008ca35b36cfa01cebd59a6dddd79671}
 
 Set chain contents to file's contents
 
@@ -150,7 +150,7 @@ Open a file and read its contents to the chain's, replacing any previous values(
 
 * `filename` A chain holding the filename of the file we're opening
 
-#### `public int `[`compare_chains`](#chain_8h_1aebea70af9ccbc3d25da67b8f836dba3d)`(`[`Chain`](#struct_chain)` a,`[`Chain`](#struct_chain)` b)` 
+#### `public int `[`compare_chains`](#chain_8h_1aebea70af9ccbc3d25da67b8f836dba3d)`(`[`Chain`](#struct_chain)` a,`[`Chain`](#struct_chain)` b)` {#chain_8h_1aebea70af9ccbc3d25da67b8f836dba3d}
 
 Compare chains
 
@@ -164,7 +164,7 @@ Check if chaims are equivalent. Will return 0 if they are, and another value if 
 #### Returns
 The comparison value
 
-#### `public `[`Fraction`](#struct_fraction)` `[`chain_to_fraction`](#chain_8h_1ae351d3cf295fd95456e64cb1bb9216da)`(`[`Chain`](#struct_chain)` chain)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`chain_to_fraction`](#chain_8h_1ae351d3cf295fd95456e64cb1bb9216da)`(`[`Chain`](#struct_chain)` chain)` {#chain_8h_1ae351d3cf295fd95456e64cb1bb9216da}
 
 Convert chain to fraction
 
@@ -176,7 +176,7 @@ Parse chain to convert to a fraction value. Return 0/1 if chain is invalid.
 #### Returns
 The fraction value of the chain
 
-#### `public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)` 
+#### `public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)` {#error_8h_1aa4581c050961a458136ec8bdd556d5b5}
 
 Show error message and exit
 
@@ -187,7 +187,7 @@ Shows an error in the style of fprintf in red text, then exit with EXIT_FAILURE
 
 * `...` Any values referenced by the format string
 
-#### `public `[`Fraction`](#struct_fraction)` `[`construct_fraction`](#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf)`(FractionInt num,FractionInt den)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`construct_fraction`](#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf)`(FractionInt num,FractionInt den)` {#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf}
 
 Construct [Fraction](#struct_fraction)
 
@@ -199,28 +199,28 @@ Construct [Fraction](#struct_fraction)
 #### Returns
 The fraction constructed
 
-#### `public `[`Fraction`](#struct_fraction)` `[`random_fraction`](#fraction_8h_1aff0108be8808ee831aaac374030930b4)`()` 
+#### `public `[`Fraction`](#struct_fraction)` `[`random_fraction`](#fraction_8h_1aff0108be8808ee831aaac374030930b4)`()` {#fraction_8h_1aff0108be8808ee831aaac374030930b4}
 
 Get random fraction
 
 #### Returns
 A random fraction
 
-#### `public `[`Fraction`](#struct_fraction)` `[`time_fraction`](#fraction_8h_1a1287cf8ca974a6713dd6af32e2016524)`()` 
+#### `public `[`Fraction`](#struct_fraction)` `[`time_fraction`](#fraction_8h_1a1287cf8ca974a6713dd6af32e2016524)`()` {#fraction_8h_1a1287cf8ca974a6713dd6af32e2016524}
 
 Get time as fraction
 
 #### Returns
 Unix time as fraction
 
-#### `public void `[`reduce_fraction`](#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)` 
+#### `public void `[`reduce_fraction`](#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)` {#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1}
 
 Reduce fraction to most basic form
 
 #### Parameters
 * `a` The fraction to be reduced
 
-#### `public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction__math_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction__math_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1a61a421cc3f02c994922da7b24aa4c4e1}
 
 Add two fractions
 
@@ -232,7 +232,7 @@ Add two fractions
 #### Returns
 a+b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction__math_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction__math_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d}
 
 Subtract two fractions
 
@@ -244,7 +244,7 @@ Subtract two fractions
 #### Returns
 a-b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`multiply_fractions`](#fraction__math_8h_1a4b4e5ede06559519a9a6894aeef10526)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`multiply_fractions`](#fraction__math_8h_1a4b4e5ede06559519a9a6894aeef10526)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1a4b4e5ede06559519a9a6894aeef10526}
 
 Multiply two fractions
 
@@ -256,7 +256,7 @@ Multiply two fractions
 #### Returns
 a*b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`divide_fractions`](#fraction__math_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`divide_fractions`](#fraction__math_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8}
 
 Divide two fractions
 
@@ -268,7 +268,7 @@ Divide two fractions
 #### Returns
 a/b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`modulus_fractions`](#fraction__math_8h_1a8b3e9f3e279ccb842a61ae8490c96959)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`modulus_fractions`](#fraction__math_8h_1a8b3e9f3e279ccb842a61ae8490c96959)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1a8b3e9f3e279ccb842a61ae8490c96959}
 
 Modulus fractions
 
@@ -282,7 +282,7 @@ Get remainder after dividing two fractions. Throw an error if the fractions are 
 #### Returns
 ab
 
-#### `public `[`Fraction`](#struct_fraction)` `[`factorial_fraction`](#fraction__math_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09)`(`[`Fraction`](#struct_fraction)` a)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`factorial_fraction`](#fraction__math_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09)`(`[`Fraction`](#struct_fraction)` a)` {#fraction__math_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09}
 
 Get factorial of fraction
 
@@ -294,7 +294,7 @@ Return the factorial of a fraction. Throw an error if the fractions are non-inte
 #### Returns
 a!
 
-#### `public int `[`compare_fractions`](#fraction__math_8h_1a50c53ea17596e7cf28eb58aadd7042d2)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public int `[`compare_fractions`](#fraction__math_8h_1a50c53ea17596e7cf28eb58aadd7042d2)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1a50c53ea17596e7cf28eb58aadd7042d2}
 
 Compare fractions
 
@@ -308,7 +308,7 @@ Return 0 if fractions are equal, -1 if a<b, and 1 if a>b
 #### Returns
 The comparison result
 
-#### `public `[`Fraction`](#struct_fraction)` `[`pow_fractions`](#fraction__math_8h_1afa5a6802e6d6acfa2ac36cabce0574a1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`pow_fractions`](#fraction__math_8h_1afa5a6802e6d6acfa2ac36cabce0574a1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` {#fraction__math_8h_1afa5a6802e6d6acfa2ac36cabce0574a1}
 
 Exponentiate fractions
 
@@ -322,7 +322,7 @@ Return a to the bth power. This uses floating point math, so the answer will not
 #### Returns
 a^b
 
-# struct `Chain` 
+# struct `Chain` {#struct_chain}
 
 ## Summary
 
@@ -334,13 +334,13 @@ a^b
 
 ## Members
 
-#### `public ChainLengthInt `[`length`](#struct_chain_1ae64f4a8b9dbb74363022186a1f144047) 
+#### `public ChainLengthInt `[`length`](#struct_chain_1ae64f4a8b9dbb74363022186a1f144047) {#struct_chain_1ae64f4a8b9dbb74363022186a1f144047}
 
-#### `public `[`Link`](#struct_link)` * `[`start`](#struct_chain_1aebc021af7c08e2c738c00d126273fb7d) 
+#### `public `[`Link`](#struct_link)` * `[`start`](#struct_chain_1aebc021af7c08e2c738c00d126273fb7d) {#struct_chain_1aebc021af7c08e2c738c00d126273fb7d}
 
-#### `public `[`Link`](#struct_link)` * `[`end`](#struct_chain_1a9eee303efd53905eea33e45a17d9a1e7) 
+#### `public `[`Link`](#struct_link)` * `[`end`](#struct_chain_1a9eee303efd53905eea33e45a17d9a1e7) {#struct_chain_1a9eee303efd53905eea33e45a17d9a1e7}
 
-# struct `Fraction` 
+# struct `Fraction` {#struct_fraction}
 
 ## Summary
 
@@ -351,11 +351,11 @@ a^b
 
 ## Members
 
-#### `public FractionInt `[`num`](#struct_fraction_1a6c8a33596e97b6c6f8de71c1d9e673a3) 
+#### `public FractionInt `[`num`](#struct_fraction_1a6c8a33596e97b6c6f8de71c1d9e673a3) {#struct_fraction_1a6c8a33596e97b6c6f8de71c1d9e673a3}
 
-#### `public FractionInt `[`den`](#struct_fraction_1ad4fff92faa36ed5197a3a10ca97519df) 
+#### `public FractionInt `[`den`](#struct_fraction_1ad4fff92faa36ed5197a3a10ca97519df) {#struct_fraction_1ad4fff92faa36ed5197a3a10ca97519df}
 
-# struct `Link` 
+# struct `Link` {#struct_link}
 
 ## Summary
 
@@ -367,10 +367,10 @@ a^b
 
 ## Members
 
-#### `public `[`Fraction`](#struct_fraction)` `[`value`](#struct_link_1a398f21bd9c8db3bf5e788b0495bc623d) 
+#### `public `[`Fraction`](#struct_fraction)` `[`value`](#struct_link_1a398f21bd9c8db3bf5e788b0495bc623d) {#struct_link_1a398f21bd9c8db3bf5e788b0495bc623d}
 
-#### `public struct `[`Link`](#struct_link)` * `[`prev`](#struct_link_1af1e5687bdfac2994b98c23f359f4e0fd) 
+#### `public struct `[`Link`](#struct_link)` * `[`prev`](#struct_link_1af1e5687bdfac2994b98c23f359f4e0fd) {#struct_link_1af1e5687bdfac2994b98c23f359f4e0fd}
 
-#### `public struct `[`Link`](#struct_link)` * `[`next`](#struct_link_1a4c0511c20c869c43fda58d1eeeed7e73) 
+#### `public struct `[`Link`](#struct_link)` * `[`next`](#struct_link_1a4c0511c20c869c43fda58d1eeeed7e73) {#struct_link_1a4c0511c20c869c43fda58d1eeeed7e73}
 
 Generated by [Moxygen](https://sourcey.com/moxygen)
