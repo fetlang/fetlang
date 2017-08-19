@@ -51,12 +51,12 @@ def getMarkdownSection(fetish_file, section):
 				if "code" in element:
 					markdown += "C Code:  \n"
 					if section == "builtins":
-						markdown += element["code"]+"  \n\n"
+						markdown += "`"+element["code"]+"`  \n\n"
 					else:
+						markdown += "\n"
 						for pair in getCodePairPossibilities():
 							if pair in element["code"]:
-								markdown += (f"{pair} - `{element['code'][pair]}`  \n")
-						markdown += "\n";
+								markdown += (f"    /* {pair} overload */\n    {element['code'][pair]}  \n\n")
 		return markdown
 	return ""
 

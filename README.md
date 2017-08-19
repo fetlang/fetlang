@@ -21,14 +21,15 @@ The following example outputs the arguments given to the executable:
 
 ## Features
 * Input/output with standard streams and files
-* Statically typed - four types: fractions, chains, streams, references
+* Statically typed
+* Only four types: fractions, chains, streams, and references
 * Gendered variables
 * Access previously mentioned variables using pronouns
 * Numbers represented internally as fractions instead of floating point
 * Transpiles to C
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
-* Probably turing complete
+* Probably turing complete, but not a tarpit
 * Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building
