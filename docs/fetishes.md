@@ -8,6 +8,7 @@ Will load the fetish `assertiveness`. Fetish loading takes place during tokeniza
 
 ## Writing fetishes
 You can create your own custom fetishes to exend Fetlang. A fetish is a directory structured as follows
+
     // Directory with name of fetish
     assertiveness 
         // Fetish file - wraps the C code with Fetlang operators, conditional operators, and variables
