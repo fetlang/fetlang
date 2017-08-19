@@ -1,7 +1,8 @@
-#include "chain.h"
-#include "error.h"
-#include "fraction_math.h"
+#include "core/include/chain.h"
+#include "core/include/error.h"
+#include "core/include/fraction_math.h"
 #include <stdlib.h>
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 #include <tgmath.h>
@@ -107,6 +108,10 @@ void append_chain_to_chain(Chain * chain1, Chain chain2)
 
 void chain_to_stream(Chain chain, FILE * stream)
 {
+	if(stream == stdin)
+	{
+		return;
+	}
 	/* Iterator */
 	Link *it = chain.start;
 
@@ -148,19 +153,36 @@ int chain_to_cstr(Chain chain, char * buffer)
 
 void append_stream_to_chain(Chain * chain, FILE * stream)
 {
-	char character;
+	if(stream == stdout || stream == stderr)
+	{
+		return;
+	}
+	char character = 5;
+	errno = 0;
 
-	/* While not end of file or end of line */
-	do {
+	if(stream == NULL){
+		runtime_error("Stream given does not exist");
+	}
+	if(stream != stdin)
+	{
+		rewind(stream);
+	}
 
-		/* Get character from stream */
-		character = (char) fgetc(stream);
+	/* While not end of file */
+    character = (char) fgetc(stream);
+	while (character != EOF)
+	{
+		if(errno)
+			runtime_error("Stream read error");
 
 		/* Append to chain */
 		append_flink_to_chain(chain,
 				      construct_fraction((FractionInt)
 							 character, 1));
-	} while (character != '\n' && character != EOF);
+
+		/* Get character from stream */
+		character = (char) fgetc(stream);
+	}
 }
 
 static void num_to_cstr(char *str, FractionInt num)

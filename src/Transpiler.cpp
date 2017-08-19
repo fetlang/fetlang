@@ -237,7 +237,7 @@ std::string Transpiler::transpileBranch(Node& node){
 				pre_code += "/* Stream chain(rho) initialization */\n"
 							"Chain "+rho_code+";\n"
 							"init_chain(&"+rho_code+");\n"
-							"chain_to_stream("+rho_code+ ", "+
+							"append_stream_to_chain(&"+rho_code+ ", "+
 							variables.get(rho.getValue()).getCode()+");\n\n";
 				post_code += "/* Stream chain(rho) deconstruction */\n"
 							"clear_chain(&"+rho_code+");\n\n";

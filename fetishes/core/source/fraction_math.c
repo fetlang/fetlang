@@ -1,7 +1,7 @@
 #include <math.h>
 #include <stdlib.h>
-#include "fraction_math.h"
-#include "error.h"
+#include "core/include/fraction_math.h"
+#include "core/include/error.h"
 #define POW_ACCURACY (1<<8)	/*256 */
 #define REDUCTION_ACCURACY (1<<20)	/*one million */
 

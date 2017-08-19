@@ -1,5 +1,8 @@
 #ifndef FETLANG_ERROR_H_
 #define FETLANG_ERROR_H_
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**
  * Show error message and exit
  *
@@ -10,4 +13,8 @@
  * @param ... Any values referenced by the format string
  */
 void runtime_error(const char *msg, ...);
+
+#ifdef __cplusplus
+}
+#endif
 #endif

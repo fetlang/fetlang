@@ -1,7 +1,10 @@
 #ifndef FETLANG_FRACTION_MATH_H_
 #define FETLANG_FRACTION_MATH_H_
+#include "core/include/fraction.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#include "fraction.h"
 /*
 	Fraction math rules:
 		1) 0/0 is not allowed
@@ -103,4 +106,8 @@ int compare_fractions(Fraction a, Fraction b);
  * @result a^b
  */
 Fraction pow_fractions(Fraction a, Fraction b);
+
+#ifdef __cplusplus
+}
+#endif
 #endif

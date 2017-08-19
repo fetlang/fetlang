@@ -1,6 +1,9 @@
 #ifndef FETLANG_FRACTION_H_
 #define FETLANG_FRACTION_H_
-#include "typedefs.h"
+#include "core/include/typedefs.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Fraction structure for Fetlang */
 typedef struct Fraction {
@@ -33,4 +36,8 @@ Fraction random_fraction();
  * @return Unix time as fraction
  */
 Fraction time_fraction();
+
+#ifdef __cplusplus
+}
+#endif
 #endif

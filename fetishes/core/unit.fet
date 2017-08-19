@@ -104,6 +104,9 @@ if flappy is not floppy:
 	make Dungeon Master scream "Empty chains failed to be compared as equivalent"
 	call safeword
 
+(Finish)
+make slave scream "Core unit test completed"
+
 (Make sure safeword breaks away)
 call safeword
 make Dungeon Master scream "Safeword was not obeyed"

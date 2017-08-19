@@ -1,6 +1,6 @@
-#include "fraction.h"
-#include "fraction_math.h"
-#include "error.h"
+#include "core/include/fraction.h"
+#include "core/include/fraction_math.h"
+#include "core/include/error.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,7 +1,10 @@
 #ifndef FETLANG_CHAIN_H_
 #define FETLANG_CHAIN_H_
-#include "fraction.h"
+#include "core/include/fraction.h"
 #include <stdio.h>
+#ifdef __cplusplus
+extern "C"{
+#endif
 
 /* Chains (strings) are represented as doubly linked lists */
 typedef struct Link {
@@ -150,4 +153,8 @@ int compare_chains(Chain a, Chain b);
  * @return The fraction value of the chain
  */
 Fraction chain_to_fraction(Chain chain);
+
+#ifdef __cplusplus
+}
+#endif
 #endif
