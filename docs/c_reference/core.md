@@ -2,8 +2,8 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public void `[`init_chain`](#chain_8h_1ac96eb7de4c8b1a7e3570d9200ef2cc8f)`(`[`Chain`](#struct_orgy_chain_structure)` * chain)`            | 
-`public void `[`clear_chain`](#chain_8h_1aa4212f13a8d699b80b5c8fe4a5fab60b)`(`[`Chain`](#struct_orgy_chain_structure)` * chain)`            | 
+`public void `[`init_chain`](#chain_8h_1ac96eb7de4c8b1a7e3570d9200ef2cc8f)`(`[`Chain`](#struct_orgy_chain_structure)` * chain)`            | Construct chain
+`public void `[`clear_chain`](#chain_8h_1aa4212f13a8d699b80b5c8fe4a5fab60b)`(`[`Chain`](#struct_orgy_chain_structure)` * chain)`            | Clear chain
 `public void `[`append_cstr_to_chain`](#chain_8h_1ad442feef450b8b012044dfd726af81a8)`(`[`Chain`](#struct_orgy_chain_structure)` * chain,const char * text)`            | 
 `public void `[`append_flink_to_chain`](#chain_8h_1a2ae440a996132423425f5721b5c14d1b)`(`[`Chain`](#struct_orgy_chain_structure)` * chain,`[`Fraction`](#struct_orgy_fraction_structure)` fraction)`            | 
 `public void `[`append_fraction_to_chain`](#chain_8h_1a116c3ec771d4a979a77eded5fdfc05a5)`(`[`Chain`](#struct_orgy_chain_structure)` * chain,`[`Fraction`](#struct_orgy_fraction_structure)` fraction)`            | 
@@ -15,7 +15,7 @@
 `public void `[`read_file_to_chain`](#chain_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(`[`Chain`](#struct_orgy_chain_structure)` * chain,`[`Chain`](#struct_orgy_chain_structure)` filename)`            | 
 `public int `[`compare_chains`](#chain_8h_1aebea70af9ccbc3d25da67b8f836dba3d)`(`[`Chain`](#struct_orgy_chain_structure)` a,`[`Chain`](#struct_orgy_chain_structure)` b)`            | 
 `public `[`Fraction`](#struct_orgy_fraction_structure)` `[`chain_to_fraction`](#chain_8h_1ae351d3cf295fd95456e64cb1bb9216da)`(`[`Chain`](#struct_orgy_chain_structure)` chain)`            | 
-`public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)`            | 
+`public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)`            | Show error message and exit
 `public `[`Fraction`](#struct_orgy_fraction_structure)` `[`construct_fraction`](#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf)`(FractionInt num,FractionInt den)`            | 
 `public `[`Fraction`](#struct_orgy_fraction_structure)` `[`random_fraction`](#fraction_8h_1aff0108be8808ee831aaac374030930b4)`()`            | 
 `public `[`Fraction`](#struct_orgy_fraction_structure)` `[`cryptorandom_fraction`](#fraction_8h_1a78d8f5be26e020fd33f5928b2aaf36b1)`()`            | 
@@ -37,7 +37,21 @@
 
 #### `public void `[`init_chain`](#chain_8h_1ac96eb7de4c8b1a7e3570d9200ef2cc8f)`(`[`Chain`](#struct_orgy_chain_structure)` * chain)` 
 
+Construct chain
+
+Set defaults for chain: length to 0 and start to NULL
+
+#### Parameters
+* `chain` The chain being constructed
+
 #### `public void `[`clear_chain`](#chain_8h_1aa4212f13a8d699b80b5c8fe4a5fab60b)`(`[`Chain`](#struct_orgy_chain_structure)` * chain)` 
+
+Clear chain
+
+Free all links in chain and set start to NULL
+
+#### Parameters
+* `chain` The chain being cleared
 
 #### `public void `[`append_cstr_to_chain`](#chain_8h_1ad442feef450b8b012044dfd726af81a8)`(`[`Chain`](#struct_orgy_chain_structure)` * chain,const char * text)` 
 
@@ -62,6 +76,15 @@
 #### `public `[`Fraction`](#struct_orgy_fraction_structure)` `[`chain_to_fraction`](#chain_8h_1ae351d3cf295fd95456e64cb1bb9216da)`(`[`Chain`](#struct_orgy_chain_structure)` chain)` 
 
 #### `public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)` 
+
+Show error message and exit
+
+Shows an error in the style of fprintf in red text, then exit with EXIT_FAILURE
+
+#### Parameters
+* `msg` The fprintf-style format string 
+
+* `...` Any values referenced by the format string
 
 #### `public `[`Fraction`](#struct_orgy_fraction_structure)` `[`construct_fraction`](#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf)`(FractionInt num,FractionInt den)` 
 

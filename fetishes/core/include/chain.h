@@ -15,10 +15,22 @@ typedef struct OrgyChainStructure {
 	Link *end;
 } Chain;
 
-/* Set defaults for chain, length to 0 and start to NULL */
+/**
+ * Construct chain
+ *
+ * Set defaults for chain: length to 0 and start to NULL
+ *
+ * @param chain The chain being constructed
+ */
 void init_chain(Chain * chain);
 
-/* Delete all links in chain and set start to NULL */
+/**
+ * Clear chain
+ *
+ * Free all links in chain and set start to NULL
+ *
+ * @param chain The chain being cleared
+ */
 void clear_chain(Chain * chain);
 
 /* Append a cstring to a chain */
