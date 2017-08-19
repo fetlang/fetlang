@@ -7,9 +7,9 @@
 
 ## Members
 
-#### `define `[`FETLANG_ASSERT_H_`](#assert_8h_1a4e3ffb6684eb589684044f4846d5ec21) {#assert_8h_1a4e3ffb6684eb589684044f4846d5ec21}
+#### `define `[`FETLANG_ASSERT_H_`](#assert_8h_1a4e3ffb6684eb589684044f4846d5ec21) 
 
-#### `public void `[`fetlang_assert`](#assert_8h_1a4fff71c9c919250017d104f73f2b82b7)`(int condition,const char * message)` {#assert_8h_1a4fff71c9c919250017d104f73f2b82b7}
+#### `public void `[`fetlang_assert`](#assert_8h_1a4fff71c9c919250017d104f73f2b82b7)`(int condition,const char * message)` 
 
 Throw runtime_error if condition is not met
 
