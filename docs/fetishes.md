@@ -1,5 +1,5 @@
 # Fetishes
-A fetish is a loadable module written in C that extends Fetlang. By default, a fetish called `core` automatically and contains the main language functionality.
+A fetish is a loadable module written in C that extends Fetlang. By default, a fetish called `core` loads automatically and contains the main language functionality.
 
 ## Loading Fetishes
 Using the phrase `I have a fetish for` in a comment will load a fetish. Example:  
@@ -8,14 +8,18 @@ Will load the fetish `assertiveness`. Fetish loading takes place during tokeniza
 
 ## Writing fetishes
 You can create your own custom fetishes to exend Fetlang. A fetish is a directory structured as follows
-
-    assertiveness // Directory with name of fetish
-    	fetish.json // Fetish file - wraps the C code with Fetlang operators, conditional operators, and variables
-    	unit.fet // A unit test written in Fetlang
-	    include // public C headers directory
-	        ...
-    	source // C source and private C headers
-    		...
+    // Directory with name of fetish
+    assertiveness 
+        // Fetish file - wraps the C code with Fetlang operators, conditional operators, and variables
+        fetish.json
+        // A unit test written in Fetlang
+        unit.fet
+        // public C headers directory
+        include
+            ...
+        // C source and private C headers
+        source 
+            ...
 
 ### C code
 The C headers and source contains whatever you want. The files in ./include should contain functions and the like you reference either from fetish.json or another fetish. To access another fetish's members, you can `#include "fetish_name/file_name"`

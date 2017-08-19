@@ -56,6 +56,7 @@ Install:
 ## Documentaton
 [Comments](docs/comments.md)  
 [Control Flow](docs/control%20flow.md)  
+[Fetishes](docs/fetishes.md)  
 [Fetish Reference](docs/reference.md)  
 [Grammar](docs/grammar.md)  
 [Types](docs/types.md)  
