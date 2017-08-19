@@ -6,6 +6,8 @@ language: cpp
 os:
   - linux
   - osx
+  - osx
+    osx_image: xcode8.3
 
 # Compiler selection
 compiler:
