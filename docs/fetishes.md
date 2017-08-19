@@ -23,7 +23,7 @@ The C headers and source contains whatever you want. The files in ./include shou
 ### Fetish.json
 Every fetish must contain a fetish.json file. You can use fetishes/core/fetish.json as a good example.
 
-Fields:
+Fields:  
 `description`: A string description of the fetish. Used for documentation generation  
 `operators`:  An array of objects describing a Fetlang operator  
 `comparison_operators`: An array of objects describing a Fetlang comparison operator  

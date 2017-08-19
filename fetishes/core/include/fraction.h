@@ -18,10 +18,19 @@ typedef struct Fraction {
  */
 Fraction construct_fraction(FractionInt num, FractionInt den);
 
-/* Get Random Fraction */
+/**
+ * Get random fraction
+ *
+ *
+ * @return A random fraction
+ */
 Fraction random_fraction();
-Fraction cryptorandom_fraction();	/* Cryptographically secure version */
 
-/* Get time as Fraction */
+/**
+ * Get time as fraction
+ *
+ *
+ * @return Unix time as fraction
+ */
 Fraction time_fraction();
 #endif

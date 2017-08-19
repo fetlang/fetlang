@@ -13,25 +13,94 @@
 		7) Only numerators can be negative
 */
 
-/* Exact rational math */
-/* Reduction */
+/**
+ * Reduce fraction to most basic form
+ *
+ *
+ * @param a The fraction to be reduced
+ */
 void reduce_fraction(Fraction * a);
+
 /* Fraction math */
+/**
+ * Add two fractions
+ *
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result a+b
+ */
 Fraction add_fractions(Fraction a, Fraction b);
+/**
+ * Subtract two fractions
+ *
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result a-b
+ */
 Fraction subtract_fractions(Fraction a, Fraction b);
+/**
+ * Multiply two fractions
+ *
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result a*b
+ */
 Fraction multiply_fractions(Fraction a, Fraction b);
+/**
+ * Divide two fractions
+ *
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result a/b
+ */
 Fraction divide_fractions(Fraction a, Fraction b);
-/* Integer math (error if non integer) */
+
+/**
+ * Modulus fractions
+ *
+ * Get remainder after dividing two fractions. Throw an error if the fractions
+ * are non-integers
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result a%b
+ */
 Fraction modulus_fractions(Fraction a, Fraction b);
+/**
+ * Get factorial of fraction
+ *
+ * Return the factorial of a fraction. Throw an error if the fractions
+ * are non-integers
+ *
+ * @param a The fraction to be factorialized
+ * @result a!
+ */
 Fraction factorial_fraction(Fraction a);
 
-/* Comparative math
-   1 : a>b
-   0 : a==b
-   -1 : a<b
-*/
+/**
+ * Compare fractions
+ *
+ * Return 0 if fractions are equal, -1 if a<b, and 1 if a>b
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result The comparison result
+ */
 int compare_fractions(Fraction a, Fraction b);
 
-/* Estimation math */
+/**
+ * Exponentiate fractions
+ *
+ * Return a to the bth power. This uses floating point math, so the answer will
+ * not be exact. Invalid arguments will throw an error.
+ *
+ * @param a The first fraction
+ * @param b The second fraction
+ * @result a^b
+ */
 Fraction pow_fractions(Fraction a, Fraction b);
 #endif
