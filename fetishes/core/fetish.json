@@ -127,7 +127,7 @@
     "comparison_operators": [
 	{
         "name": "is",
-        "description": "Return true if LHO==RHO, else returns false",
+        "description": "Return true if LHO==RHO, else return false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)==0)",
 			"chain/chain": "(compare_chains(LHO, RHO)==0)"
@@ -135,7 +135,7 @@
     },
 	{
         "name": "is not",
-        "description": "Return true if LHO!=RHO, else returns false",
+        "description": "Return true if LHO!=RHO, else return false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)!=0)",
 			"chain/chain": "(compare_chains(LHO, RHO)!=0)"
@@ -144,14 +144,14 @@
 
 	{
         "name": "is submissive to",
-        "description": "Return true if LHO<RHO, else returns false",
+        "description": "Return true if LHO<RHO, else return false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)==-1)"
 		}
     },
 	{
         "name": "is dominant towards",
-        "description": "Return true if LHO>RHO, else returns false",
+        "description": "Return true if LHO>RHO, else return false",
         "code": {
             "fraction/fraction": "(compare_fractions(LHO, RHO)==1)"
 		}
@@ -181,7 +181,7 @@
 	},
 	{
 		"name": "saint andrew",
-		"description": "Chain version of argv with arguments separated by \\0, intended to be invoked as `Saint Andrew's Cross`",
+		"description": "Chain version of argv with arguments separated by `zero`, intended to be invoked as `Saint Andrew's Cross`",
 		"gender": "nonperson",
 		"type": "chain",
 		"code": "argv_chain"

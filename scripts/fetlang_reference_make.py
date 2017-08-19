@@ -5,12 +5,8 @@
 # Requires Python >=3.6
 
 import json
-import os
+from common import*
 
-def getFetishDirectory():
-	return "../fetishes/"
-def getDocsDirectory():
-	return "../docs/"
 def getReferenceDirectory():
 	return getDocsDirectory()+"/reference/"
 def getContentsPath():
@@ -30,11 +26,6 @@ def loadJsonFile(filename):
 	a.close()
 	return j
 
-def getListOfFetishes():
-	return [x[1] for x in os.walk(getFetishDirectory())][0]
-
-def getFetishFileOfFetish(fetish_name):
-	return getFetishDirectory()+fetish_name+"/fetish.json"
 
 def getMarkdownSection(fetish_file, section):
 	if section.replace(" ", "_") in fetish_file:
@@ -48,12 +39,16 @@ def getMarkdownSection(fetish_file, section):
 					markdown += "Examples:  \n"
 					for example in element["examples"]:
 						markdown += "`"+example+"`  \n\n"
+				if "type" in element:
+					markdown += "Type: {element['type']}  \n"
+				if "gender" in element:
+					markdown += "Gender: {element['gender']}  \n"
 				if "code" in element:
-					markdown += "C Code:  \n"
+					markdown += "C Code: "
 					if section == "builtins":
 						markdown += "`"+element["code"]+"`  \n\n"
 					else:
-						markdown += "\n"
+						markdown += " \n\n"
 						for pair in getCodePairPossibilities():
 							if pair in element["code"]:
 								markdown += (f"    /* {pair} overload */\n    {element['code'][pair]}  \n\n")

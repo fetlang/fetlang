@@ -131,7 +131,7 @@ C Code:
 
 ## Comparison Operators
 ### is
-Return true if LHO==RHO, else returns false  
+Return true if LHO==RHO, else return false  
 
 C Code:  
 
@@ -142,7 +142,7 @@ C Code:
     (compare_chains(LHO, RHO)==0)  
 
 ### is not
-Return true if LHO!=RHO, else returns false  
+Return true if LHO!=RHO, else return false  
 
 C Code:  
 
@@ -153,7 +153,7 @@ C Code:
     (compare_chains(LHO, RHO)!=0)  
 
 ### is submissive to
-Return true if LHO<RHO, else returns false  
+Return true if LHO<RHO, else return false  
 
 C Code:  
 
@@ -161,7 +161,7 @@ C Code:
     (compare_fractions(LHO, RHO)==-1)  
 
 ### is dominant towards
-Return true if LHO>RHO, else returns false  
+Return true if LHO>RHO, else return false  
 
 C Code:  
 
@@ -172,24 +172,28 @@ C Code:
 ### slave
 Standard output  
 
-C Code:  
-`stdout`  
+Type: {element['type']}  
+Gender: {element['gender']}  
+C Code: `stdout`  
 
 ### mistress
 Standard input  
 
-C Code:  
-`stdin`  
+Type: {element['type']}  
+Gender: {element['gender']}  
+C Code: `stdin`  
 
 ### dungeon master
 Standard error  
 
-C Code:  
-`stderr`  
+Type: {element['type']}  
+Gender: {element['gender']}  
+C Code: `stderr`  
 
 ### saint andrew
 Chain version of argv with arguments separated by `zero`, intended to be invoked as `Saint Andrew's Cross`  
 
-C Code:  
-`argv_chain`  
+Type: {element['type']}  
+Gender: {element['gender']}  
+C Code: `argv_chain`  
 
