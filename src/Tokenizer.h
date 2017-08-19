@@ -10,6 +10,10 @@ class Tokenizer {
 	/* Actual list of tokens */
 	std::vector<Token> actual_tokens;
 
+	/* Check if we've tokenized yet */
+	bool have_tokenized;
+
+
 	/*  List of the indent level per line */
 	std::vector<int> line_indents;
 

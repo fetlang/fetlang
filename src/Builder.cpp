@@ -40,19 +40,11 @@ Builder::Builder(){
 
 std::string Builder::transpile() const{
 	// get source code
-	std::ifstream fetfile(source_path);
-	std::string source;
-	std::stringstream buffer;
-	if(fetfile.bad()){
-		fetfile.close();
-		throw FetlangException("Could not open file "+ source_path);
-	}
-	buffer << fetfile.rdbuf();
-	source = buffer.str();
-	fetfile.close();
+	std::string source = FileUtil::getFileContents(source_path);
 
 	// Tokenize
 	Tokenizer tokenizer(source);
+	tokenizer.tokenize();
 	std::vector<Token> tokens = tokenizer.getTokens();
 	if(show_tokens){
 		std::cout<<"Displaying tokens:\n";

@@ -97,6 +97,12 @@ have filename fist contents
 have contents assert equality with hello
 
 
+(Some comparison)
+make flappy moan
+make floppy moan
+if flappy is not floppy:
+	make Dungeon Master scream "Empty chains failed to be compared as equivalent"
+	call safeword
 
 (Make sure safeword breaks away)
 call safeword

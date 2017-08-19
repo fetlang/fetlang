@@ -7,6 +7,7 @@
 
 Tokenizer::Tokenizer(const std::string& code){
 	this->code = code;
+	have_tokenized = false;
 }
 
 std::vector<Token> Tokenizer::splitCode(){
@@ -302,6 +303,10 @@ std::vector<Token> Tokenizer::removePossessions(const std::vector<Token>& old_to
 			
 			
 std::vector<Token> Tokenizer::tokenize(){
+	if(have_tokenized){
+		throw FetlangException("Cannot tokenize twice");
+	}
+	have_tokenized = true;
 	actual_tokens = removePossessions(
 				mergeTokens(
 					removeGags(
@@ -313,10 +318,16 @@ std::vector<Token> Tokenizer::tokenize(){
 }
 
 std::vector<Token> Tokenizer::getTokens() const{
+	if(!have_tokenized){
+		throw FetlangException("Can't getTokens without tokenizing first");
+	}
 	return actual_tokens;
 }
 
 std::vector<int> Tokenizer::getLineIndents() const{
+	if(!have_tokenized){
+		throw FetlangException("Can't getLineIndents without tokenizing first");
+	}
 	return line_indents;
 }
 	
