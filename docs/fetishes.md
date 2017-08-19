@@ -21,9 +21,12 @@ You can create your own custom fetishes to exend Fetlang. A fetish is a director
 The C headers and source contains whatever you want. The files in ./include should contain functions and the like you reference either from fetish.json or another fetish. To access another fetish's members, you can `#include "fetish_name/file_name"`
 
 ### Fetish.json
-Every fetish must contain a fetish.json file. You can use core/fetish.json as a good example.
+Every fetish must contain a fetish.json file. You can use fetishes/core/fetish.json as a good example.
 
-
-	    
-
-
+Fields:
+`description`: A string description of the fetish. Used for documentation generation  
+`operators`:  An array of objects describing a Fetlang operator  
+`comparison_operators`: An array of objects describing a Fetlang comparison operator  
+`builtins`: An array ob objects describing a Fetlang builtin variable  
+`preloop_code` : Code that runs before the main do-while loop  
+`postloop_code` : Cleanup code that runs after the main do-while loop  

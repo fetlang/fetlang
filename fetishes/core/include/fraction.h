@@ -1,14 +1,21 @@
-#ifndef ORGY_FRACTION_H_
-#define ORGY_FRACTION_H_
+#ifndef FETLANG_FRACTION_H_
+#define FETLANG_FRACTION_H_
 #include "typedefs.h"
 
-/* Fraction structure for Orgy */
-typedef struct OrgyFractionStructure {
+/* Fraction structure for Fetlang */
+typedef struct Fraction {
 	FractionInt num;	/* numerator */
 	FractionInt den;	/* denominator */
 } Fraction;
 
-/* Fake constructor for Fraction */
+/**
+ * Construct Fraction
+ *
+ *
+ * @param num The numerator
+ * @param den The denominator
+ * @return The fraction constructed
+ */
 Fraction construct_fraction(FractionInt num, FractionInt den);
 
 /* Get Random Fraction */

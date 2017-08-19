@@ -1,5 +1,5 @@
-#ifndef ORGY_FRACTION_MATH_H_
-#define ORGY_FRACTION_MATH_H_
+#ifndef FETLANG_FRACTION_MATH_H_
+#define FETLANG_FRACTION_MATH_H_
 
 #include "fraction.h"
 /*

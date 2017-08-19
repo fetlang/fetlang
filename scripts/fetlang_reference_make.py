@@ -40,9 +40,9 @@ def getMarkdownSection(fetish_file, section):
 					for example in element["examples"]:
 						markdown += "`"+example+"`  \n\n"
 				if "type" in element:
-					markdown += "Type: {element['type']}  \n"
+					markdown += f"Type: {element['type']}  \n"
 				if "gender" in element:
-					markdown += "Gender: {element['gender']}  \n"
+					markdown += f"Gender: {element['gender']}  \n"
 				if "code" in element:
 					markdown += "C Code: "
 					if section == "builtins":
@@ -71,12 +71,18 @@ def makeReferencePage(fetish_name):
 	fp.write(markdown)
 	fp.close()
 	return filename
+def getShortDescription(fetish):
+	descriptions = {"core" : "The included-by-default fetish that defines the language",
+	"assertiveness": "Assert operations"}
+	return descriptions[fetish]
 
 def makeReferencePages():
 	contents = "# Fetish Reference\n"
 	for fetish in getListOfFetishes():
 		ref_page = makeReferencePage(fetish)
-		contents += f"[{fetish.title()}](reference/{fetish}.md) - <description>  \n"
+		contents += f"""{fetish.title()} - {getShortDescription(fetish)}  
+[C Reference](c_reference/{fetish}.md)  
+[Fetlang Reference](reference/{fetish}.md)  \n\n"""
 	fp = open(getContentsPath(), "w")
 	fp.write(contents)
 	fp.close()

@@ -1,5 +1,5 @@
-#ifndef ORGY_ERROR_H_
-#define ORGY_ERROR_H_
+#ifndef FETLANG_ERROR_H_
+#define FETLANG_ERROR_H_
 /**
  * Show error message and exit
  *

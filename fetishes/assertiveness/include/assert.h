@@ -1,6 +1,6 @@
 #pragma once
-#ifndef FETLANG_ASSERT
-#define FETLANG_ASSERT
+#ifndef FETLANG_ASSERT_H_
+#define FETLANG_ASSERT_H_
 
 /**
  * Throw runtime_error if condition is not met

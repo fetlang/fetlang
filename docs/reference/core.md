@@ -172,28 +172,28 @@ C Code:
 ### slave
 Standard output  
 
-Type: {element['type']}  
-Gender: {element['gender']}  
+Type: stream  
+Gender: unassigned  
 C Code: `stdout`  
 
 ### mistress
 Standard input  
 
-Type: {element['type']}  
-Gender: {element['gender']}  
+Type: stream  
+Gender: female  
 C Code: `stdin`  
 
 ### dungeon master
 Standard error  
 
-Type: {element['type']}  
-Gender: {element['gender']}  
+Type: stream  
+Gender: unassigned  
 C Code: `stderr`  
 
 ### saint andrew
 Chain version of argv with arguments separated by `zero`, intended to be invoked as `Saint Andrew's Cross`  
 
-Type: {element['type']}  
-Gender: {element['gender']}  
+Type: chain  
+Gender: nonperson  
 C Code: `argv_chain`  
 
