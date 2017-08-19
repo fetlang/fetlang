@@ -33,7 +33,7 @@ def runDoxygen():
 def runMoxygen():
 	fetishes = getListOfFetishes()
 	for fetish in fetishes:
-		os.system(f"moxygen -a ./doxygen/output/{fetish}_c_reference_xml -o ../docs/c_reference/{fetish}.md")
+		os.system(f"moxygen ./doxygen/output/{fetish}_c_reference_xml -o ../docs/c_reference/{fetish}.md")
 
 if __name__ == "__main__":
 	makeDoxygenConfigFiles()
