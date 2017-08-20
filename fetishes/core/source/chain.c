@@ -3,7 +3,6 @@
 #include "core/include/fraction_math.h"
 #include <stdlib.h>
 #include <errno.h>
-#include <stdio.h>
 #include <string.h>
 #include <tgmath.h>
 #include <unistd.h>

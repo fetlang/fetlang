@@ -3,7 +3,6 @@
 #include "obedience/include/fileio.h"
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
 void write_chain_to_file(Chain chain, Chain filename_as_chain)
 {

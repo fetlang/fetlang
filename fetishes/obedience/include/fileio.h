@@ -29,7 +29,15 @@ void write_chain_to_file(Chain chain, Chain filename);
  */
 void read_file_to_chain(Chain * chain, Chain filename);
 
-// Experimental
+/**
+ * Open file as a stream
+ *
+ * Use a filename encoded in a chain to return a stream pointing to a file of
+ * that name, with a particular mode.
+ *
+ * @param filename A chain holding the filename of the file we're opening
+ * @param mode The fopen mode
+ */
 FILE* open_file_as_stream(Chain filename, const char* mode);
 #ifdef __cplusplus
 }

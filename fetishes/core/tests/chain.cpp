@@ -2,7 +2,7 @@
 #include "core/include/chain.h"
 #include "FileUtil.h"
 #include <cstring>
-TEST_CASE("Chain Test", "[chain]"){
+TEST_CASE("Chain Test", "[chain][core]"){
 	const char*const sample_text = "A human has fallen from\n\t the surface world\n";
 	const char*const sample_text2 = "Mama's scary; Mama hates\t\nyou\n";
 	const char*const sample_text3 = "Welcome home, dear friends, how long we've all been waiting\n";
