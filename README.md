@@ -51,7 +51,7 @@ Build Fetlang:
 
 Install:  
 
-    ninja install
+    sudo ninja install
 
 ## Documentaton
 [Comments](docs/comments.md)  

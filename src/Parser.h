@@ -15,7 +15,13 @@ class Parser {
 
 	std::vector<int> line_indents;
 
-	inline int getLineIndent(int line){if(line<0 || line>line_indents.size()){throw FetlangException("Invalid line number while getting indent level");}return line_indents.at(line-1);}
+	inline int getLineIndent(int line){
+		if(line<0 || static_cast<unsigned int>(line) >
+				line_indents.size()){
+			throw FetlangException("Invalid line number while getting indent level");
+		}
+		return line_indents.at(line-1);
+	}
 
 	// Where we currently are in tokens
 	std::vector<Token>::iterator token_iterator;
