@@ -6,6 +6,7 @@ TEST_CASE("Chain Test", "[chain]"){
 	const char*const sample_text = "A human has fallen from\n\t the surface world\n";
 	const char*const sample_text2 = "Mama's scary; Mama hates\t\nyou\n";
 	const char*const sample_text3 = "Welcome home, dear friends, how long we've all been waiting\n";
+	const char*const sample_text4 = "I am the mastermind; he's my apprentice.\nYou're only still alive because I made a promise\n";
 
 	SECTION("Chain/Cstring test"){
 		Chain chain;
@@ -22,6 +23,36 @@ TEST_CASE("Chain Test", "[chain]"){
 		delete[] buffer;
 	}
 
+	SECTION("FILE IO")
+	{
+		std::string filename = "/tmp/boop2.txt";
+		FileUtil::setFileContents(filename, sample_text4);
+		REQUIRE(FileUtil::getFileContents(filename) == sample_text4);
+
+		Chain filename_as_chain;
+		init_chain(&filename_as_chain);
+		append_cstr_to_chain(&filename_as_chain, filename.c_str());
+
+		Chain chain;
+		init_chain(&chain);
+		REQUIRE(chain.length == 0);
+
+		FILE* stream = open_file_as_stream(filename_as_chain, "r+b");
+		append_stream_to_chain(&chain, stream);
+		REQUIRE(chain.length == strlen(sample_text4));
+		clear_chain(&chain);
+		append_cstr_to_chain(&chain, sample_text);
+		append_chain_to_stream(chain, stream);
+		clear_chain(&chain);
+		append_stream_to_chain(&chain, stream);
+		REQUIRE(chain.length== strlen(sample_text)+strlen(sample_text4));
+
+		fclose(stream);
+		clear_chain(&chain);
+		clear_chain(&filename_as_chain);
+
+	}
+
 	SECTION("Chain/stream test"){
 		std::string filename = "/tmp/bla.txt";
 		FILE* stream = NULL;
@@ -31,7 +62,7 @@ TEST_CASE("Chain Test", "[chain]"){
 
 		// Open the stream
 		FileUtil::ensureFileDoesNotExist(filename);
-		stream = fopen("/tmp/bla.txt", "w+b");
+		stream = fopen(filename.c_str(), "w+b");
 		REQUIRE_FALSE(stream == NULL);
 
 		// Make sure stream is empty
@@ -57,7 +88,6 @@ TEST_CASE("Chain Test", "[chain]"){
 		clear_chain(&chain);
 		REQUIRE(chain.length == 0);
 		append_stream_to_chain(&chain, stream);
-		append_chain_to_stream(chain, stdout);
 		REQUIRE(chain.length == 2*strlen(sample_text2));
 		REQUIRE(chain.start->value.num == sample_text2[0]);
 		// Now assign
