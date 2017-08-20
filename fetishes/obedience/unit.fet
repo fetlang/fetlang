@@ -10,7 +10,6 @@ have contents assert equality with hello
 
 (Stream file handling)
 make fp serve "test.text"
-make slave scream fp
 have fp assert equality with hello
 make goodbye moan "I'm gonna tell mama"
 make fp moan goodbye

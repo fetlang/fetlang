@@ -81,7 +81,7 @@ int Builder::compile(const std::vector<std::string>& args, bool link){
 		;
 	}
 
-	command += " -std=c99 ";
+	command += " -std=gnu99 ";
 
 	for(const std::string& arg : args)
 	{
