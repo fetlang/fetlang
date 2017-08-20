@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <tgmath.h>
+#include <unistd.h>
 
 void init_chain(Chain * chain)
 {
@@ -106,7 +107,28 @@ void append_chain_to_chain(Chain * chain1, Chain chain2)
 
 }
 
-void chain_to_stream(Chain chain, FILE * stream)
+void clear_stream(FILE* stream)
+{
+	// Don't bother with this standard stream nonsense
+	if(stream == stdin || stream == stdout || stream == stderr)
+	{
+		return;
+	}
+
+	rewind(stream);
+	if(ftruncate(fileno(stream), 0))
+	{
+		runtime_error("Failed to truncate stream");
+	}
+}
+
+void chain_to_stream(Chain chain, FILE* stream)
+{
+	clear_stream(stream);
+	append_chain_to_stream(chain, stream);
+}
+
+void append_chain_to_stream(Chain chain, FILE * stream)
 {
 	if(stream == stdin)
 	{

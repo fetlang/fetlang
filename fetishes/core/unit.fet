@@ -91,7 +91,7 @@ bind reference to chain
 
 (file handling)
 make hello moan "That's *burp* right, they blew up"
-make filename moan "test.txt"
+make filename moan "test.text"
 have filename obey hello
 have filename fist contents
 have contents assert equality with hello

@@ -9,7 +9,9 @@
 `public void `[`append_fraction_to_chain`](#chain_8h_1a116c3ec771d4a979a77eded5fdfc05a5)`(`[`Chain`](#struct_chain)` * chain,`[`Fraction`](#struct_fraction)` fraction)`            | Append fraction as string to chain
 `public void `[`append_chain_to_chain`](#chain_8h_1a902710243ebcd47c428a1dd41029ec2a)`(`[`Chain`](#struct_chain)` * chain1,`[`Chain`](#struct_chain)` chain2)`            | Append the contents in one chain to another
 `public void `[`append_stream_to_chain`](#chain_8h_1a05e36086654b1484594e617f0abf364b)`(`[`Chain`](#struct_chain)` * chain,FILE * stream)`            | Append the contents of a stream to a chain
-`public void `[`chain_to_stream`](#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0)`(`[`Chain`](#struct_chain)` chain,FILE * stream)`            | Copy chain to stream
+`public void `[`clear_stream`](#chain_8h_1a7380a3c04a041f4fb656497ff7a50510)`(FILE * stream)`            | Erase stream contents
+`public void `[`append_chain_to_stream`](#chain_8h_1aee4b1e3e6023ca24b3eb69187396b869)`(`[`Chain`](#struct_chain)` chain,FILE * stream)`            | Append chain to stream
+`public void `[`chain_to_stream`](#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0)`(`[`Chain`](#struct_chain)` chain,FILE * stream)`            | Assign chain to stream
 `public int `[`chain_to_cstr`](#chain_8h_1a784425b6bbc1c074e52e109871b526c0)`(`[`Chain`](#struct_chain)` chain,char * buffer)`            | Convert chain to cstring
 `public void `[`write_chain_to_file`](#chain_8h_1a897accbfb97acae9ff091b3dc13921c2)`(`[`Chain`](#struct_chain)` chain,`[`Chain`](#struct_chain)` filename)`            | Set file contents to chain's contents
 `public void `[`read_file_to_chain`](#chain_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(`[`Chain`](#struct_chain)` * chain,`[`Chain`](#struct_chain)` filename)`            | Set chain contents to file's contents
@@ -103,9 +105,16 @@ Each char is read from the stream and copied to the chain as a fraction/Link.
 
 * `stream` The stream whose contents are read
 
-#### `public void `[`chain_to_stream`](#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0)`(`[`Chain`](#struct_chain)` chain,FILE * stream)` 
+#### `public void `[`clear_stream`](#chain_8h_1a7380a3c04a041f4fb656497ff7a50510)`(FILE * stream)` 
 
-Copy chain to stream
+Erase stream contents
+
+#### Parameters
+* `stream` The stream being cleared
+
+#### `public void `[`append_chain_to_stream`](#chain_8h_1aee4b1e3e6023ca24b3eb69187396b869)`(`[`Chain`](#struct_chain)` chain,FILE * stream)` 
+
+Append chain to stream
 
 Print each fraction of chain to the stream to be appended as a char
 
@@ -113,6 +122,17 @@ Print each fraction of chain to the stream to be appended as a char
 * `chain` The chain being read 
 
 * `stream` The stream being appended to
+
+#### `public void `[`chain_to_stream`](#chain_8h_1aa3115ee4f4c5671ac35c33102fd3e2d0)`(`[`Chain`](#struct_chain)` chain,FILE * stream)` 
+
+Assign chain to stream
+
+Clear the stream, then call append_chain_to_stream
+
+#### Parameters
+* `chain` The chain being read 
+
+* `stream` The stream being copied to
 
 #### `public int `[`chain_to_cstr`](#chain_8h_1a784425b6bbc1c074e52e109871b526c0)`(`[`Chain`](#struct_chain)` chain,char * buffer)` 
 

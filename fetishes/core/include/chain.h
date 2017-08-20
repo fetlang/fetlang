@@ -84,12 +84,29 @@ void append_chain_to_chain(Chain * chain1, Chain chain2);
 void append_stream_to_chain(Chain * chain, FILE * stream);
 
 /**
- * Copy chain to stream
+ * Erase stream contents
+ *
+ * @param stream The stream being cleared
+ */
+void clear_stream(FILE * stream);
+
+/**
+ * Append chain to stream
  *
  * Print each fraction of chain to the stream to be appended as a char 
  *
  * @param chain The chain being read
  * @param stream The stream being appended to
+ */
+void append_chain_to_stream(Chain chain, FILE * stream);
+
+/**
+ * Assign chain to stream
+ *
+ * Clear the stream, then call append_chain_to_stream
+ *
+ * @param chain The chain being read
+ * @param stream The stream being copied to
  */
 void chain_to_stream(Chain chain, FILE * stream);
 

@@ -46,30 +46,35 @@ TEST_CASE("Chain Test", "[chain]"){
 		// Write to it
 		append_cstr_to_chain(&chain, sample_text2);
 		REQUIRE(chain.length == strlen(sample_text2));
-		chain_to_stream(chain, stream);
+		append_chain_to_stream(chain, stream);
 		clear_chain(&chain);
 		REQUIRE(chain.length == 0);
 		append_stream_to_chain(&chain, stream);
 		REQUIRE(chain.length == strlen(sample_text2));
+		// and again
+		chain.start->value.num = 65;
+		append_chain_to_stream(chain, stream);
+		clear_chain(&chain);
+		REQUIRE(chain.length == 0);
+		append_stream_to_chain(&chain, stream);
+		append_chain_to_stream(chain, stdout);
+		REQUIRE(chain.length == 2*strlen(sample_text2));
+		REQUIRE(chain.start->value.num == sample_text2[0]);
+		// Now assign
+		clear_chain(&chain);
+		REQUIRE(chain.length == 0);
+		append_cstr_to_chain(&chain, sample_text3);
+		REQUIRE(chain.length == strlen(sample_text3));
+		chain_to_stream(chain, stream);
+		clear_chain(&chain);
+		REQUIRE(chain.length == 0);
+		append_stream_to_chain(&chain, stream);
+		REQUIRE(chain.length == strlen(sample_text3));
+
 
 		// Cleanup
 		fclose(stream);
 		clear_chain(&chain);
 	}
 
-	SECTION("Std stream test"){
-		Chain chain;
-		FILE* stream = stderr;
-		init_chain(&chain);
-		append_stream_to_chain(&chain, stream);
-		REQUIRE(chain.length == 0);
-
-
-		append_cstr_to_chain(&chain, sample_text3);
-		REQUIRE(chain.length == strlen(sample_text3));
-
-		//chain_to_stream(chain, stream);
-	
-		clear_chain(&chain);
-	}
 }
