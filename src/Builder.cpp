@@ -71,7 +71,7 @@ static std::string sanitize(const std::string& argument){
 	return QuoteUtil::quote(argument);
 }
 	
-int Builder::compile(const std::vector<std::string>& args){
+int Builder::compile(const std::vector<std::string>& args, bool link){
 	std::string command = compiler;
 	if(optimization){
 		command += " -O2 "
@@ -89,8 +89,11 @@ int Builder::compile(const std::vector<std::string>& args){
 	}
 
 	#if defined(__linux__) || defined(linux)
-	// Linux has a separate math library
-	command += " -lm";
+	if(link)
+	{
+		// Linux has a separate math library
+		command += " -lm";
+	}
 	#endif
 	
 	FILE* compiler_process = popen(command.c_str(), "r");
@@ -176,7 +179,7 @@ void Builder::build(){
 	}
 	c_args.push_back("-o");
 	c_args.push_back(destination_path);
-	compile(c_args);
+	compile(c_args, true);
 
 }
 

@@ -58,7 +58,7 @@ class Builder{
 	// from the Fetlang code in source_path
 	std::string transpile() const;
 	
-	int compile(const std::vector<std::string>& args = {});
+	int compile(const std::vector<std::string>& args = {}, bool link = false);
 public:
 	// Set defaults
 	Builder();
