@@ -73,7 +73,9 @@ def makeReferencePage(fetish_name):
 	return filename
 def getShortDescription(fetish):
 	descriptions = {"core" : "The included-by-default fetish that defines the language",
-	"assertiveness": "Assert operations"}
+	"assertiveness": "Assert operations",
+	"obedience": "File interaction"}
+
 	return descriptions[fetish]
 
 def makeReferencePages():

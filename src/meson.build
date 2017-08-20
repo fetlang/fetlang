@@ -24,8 +24,9 @@ common_sources = boost_sources+['Fraction.cpp', 'FractionParser.cpp', 'QuoteUtil
 release_sources = common_sources + ['main.cpp']
 
 fetish_sources = [
-'../fetishes/core/source/chain.c', '../fetishes/core/source/error.c', '../fetishes/core/source/fraction.c', '../fetishes/core/source/fraction_math.c',
-'../fetishes/core/tests/chain.cpp']
+'../fetishes/core/source/chain.c', '../fetishes/core/source/error.c', '../fetishes/core/source/fraction.c',
+'../fetishes/core/source/fraction_math.c','../fetishes/obedience/source/fileio.c',
+'../fetishes/core/tests/chain.cpp', '../fetishes/obedience/tests/fileio.cpp']
 test_sources = common_sources + fetish_sources + ['tests/main.cpp','tests/fraction_parser.cpp','tests/quote_util.cpp', 'tests/parser.cpp',
 'tests/tokenizer.cpp', 'tests/file_util.cpp', 'tests/compilation.cpp']
 

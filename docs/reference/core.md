@@ -113,22 +113,6 @@ C Code:
     /* chain/fraction overload */
     append_flink_to_chain(&LHO, RHO)  
 
-### fist
-Read a file to a chain, given a filename  
-
-C Code:  
-
-    /* chain/chain overload */
-    read_file_to_chain(&LHO, RHO);  
-
-### obey
-Write a chain to file, given a filename  
-
-C Code:  
-
-    /* chain/chain overload */
-    write_chain_to_file(LHO, RHO)  
-
 ## Comparison Operators
 ### is
 Return true if LHO==RHO, else return false  

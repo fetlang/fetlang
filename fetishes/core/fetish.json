@@ -96,33 +96,6 @@
         }
 	},
 	{
-		"name": "demand obedience of",
-		"description": "Read a file to a chain, given a filename",
-		"grammars": ["have"],
-		"code":
-		{
-			"chain/chain": "read_file_to_chain(&LHO, RHO);"
-		}
-	},
-	{
-		"name": "obey",
-		"description": "Write a chain to file, given a filename",
-		"grammars": ["have"],
-		"code":
-		{
-			"chain/chain": "write_chain_to_file(LHO, RHO)"
-		}
-	},
-	{
-		"name": "serve",
-		"description": "Set LHO as a stream pointing to a file, given a filename",
-		"grammars": ["make"],
-		"code":
-		{
-			"stream/chain": "LHO = open_file_as_stream(RHO, \"r+b\")"
-		}
-	},
-	{
 		"name": "to",
 		"grammars": ["bind"],
 		"code":

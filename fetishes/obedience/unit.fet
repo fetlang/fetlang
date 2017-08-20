@@ -1,93 +1,5 @@
 (I have a fetish for assertiveness)
-
-(numbers as numbers, oh wee wow)
-lick 0 zero times
-lick 1 one time
-lick 2 two times
-lick 3 three times
-lick 4 four times
-lick 5 five times
-lick 6 six times
-lick 7 seven times
-
-(Test Lick)
-Lick Alice five times
-Lick Bob four times
-Lick Charlie four times
-have Alice assert dominance over Bob
-Have Bob assert equality with Charlie
-
-(reset)
-worship Alice zero times
-worship Bob zero times
-worship Charlie zero times
-
-(Test Spank)
-Spank Alice five times (should be -5)
-Spank Bob four times (should be -4)
-Spank Charlie four times (should be -4)
-have Bob assert dominance over Alice (-4 > -5)
-Have Bob assert equality with Charlie
-
-(reset)
-worship Alice zero times
-worship Bob zero times
-worship Charlie zero times
-
-(Test Worship)
-spank Alice five times
-worship Alice five times
-spank Bob twenty five times
-Have Bob assert equality with Alice
-
-(reset)
-worship Alice zero times
-worship Bob zero times
-worship Charlie zero times
-
-(Test Flog)
-have alice assert equality with 0
-flog alice nine times
-have alice assert equality with 0
-lick alice one hundred times
-flog alice twenty times
-have alice assert equality with 5
-
-(reset)
-worship Alice zero times
-worship Bob zero times
-worship Charlie zero times
-
-(Test tickle)
-lick Alice two hundred and three times
-lick Bob five times
-lick Charlie three times
-have Bob tickle Alice
-have Alice assert equality with Charlie
-
-(general bind test)
-lick count zero times
-make chain moan "012"
-bind reference to chain
-	spank reference forty eight times
-	if count is 0
-		have reference assert equality with 0
-	if count is 1
-		have reference assert equality with 1
-	if count is 2
-		have reference assert equality with 2
-	lick count
-have reference assert equality with 0
-
-(Chain has been reduced now - so same test without subtracting)
-bind reference to chain
-	if count is 0
-		have reference assert equality with 0
-	if count is 1
-		have reference assert equality with 1
-	if count is 2
-		have reference assert equality with 2
-	lick count
+(I have a fetish for obedience)
 
 (file handling)
 make hello moan "That's *burp* right\nthey blew up\n"
@@ -107,19 +19,5 @@ have hello tie up goodbye
 have hello tie up fp
 have fp assert equality with goodbye
 
-
-
-(Some comparison)
-make flappy moan
-make floppy moan
-if flappy is not floppy:
-	make Dungeon Master scream "Empty chains failed to be compared as equivalent"
-	call safeword
-
 (Finish)
-make slave scream "Core unit test completed"
-
-(Make sure safeword breaks away)
-call safeword
-make Dungeon Master scream "Safeword was not obeyed"
-have 0 assert equality with 1
+make slave scream "Obedience unit test completed"

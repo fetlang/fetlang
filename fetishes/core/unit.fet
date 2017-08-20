@@ -89,25 +89,6 @@ bind reference to chain
 		have reference assert equality with 2
 	lick count
 
-(file handling)
-make hello moan "That's *burp* right\nthey blew up\n"
-make filename moan "test.text"
-have filename obey hello
-have filename demand obedience of contents
-have contents assert equality with hello
-
-(Stream file handling)
-make fp serve "test.text"
-make slave scream fp
-have fp assert equality with hello
-make goodbye moan "I'm gonna tell mama"
-make fp moan goodbye
-have fp assert equality with goodbye
-have hello tie up goodbye
-have hello tie up fp
-have fp assert equality with goodbye
-
-
 
 (Some comparison)
 make flappy moan
