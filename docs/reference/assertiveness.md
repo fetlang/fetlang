@@ -4,6 +4,7 @@ Runtime assertions - intended for unit testing
 ### assert dominance over
 Assert that the RHO is greater than the LHO  
 
+Grammar: have,   
 Examples:  
 `Have Alice assert dominance over Bob`  
 
@@ -15,6 +16,7 @@ C Code:
 ### assert equality with
 Assert that the LHO and RHO are equal  
 
+Grammar: have,   
 Examples:  
 `Have Alice assert equality with Eve`  
 

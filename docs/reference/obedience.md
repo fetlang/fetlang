@@ -4,6 +4,7 @@ File handling
 ### demand obedience of
 Read a file to a chain, given a filename  
 
+Grammar: have,   
 C Code:  
 
     /* chain/chain overload */
@@ -12,6 +13,7 @@ C Code:
 ### obey
 Write a chain to file, given a filename  
 
+Grammar: have,   
 C Code:  
 
     /* chain/chain overload */
@@ -20,6 +22,7 @@ C Code:
 ### serve
 Set LHO as a stream pointing to a file, given a filename  
 
+Grammar: make,   
 C Code:  
 
     /* stream/chain overload */
