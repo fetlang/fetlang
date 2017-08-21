@@ -1,6 +1,6 @@
 # Grammar
 There are three functional grammars, as well as a conditional grammar and bind
-grammar (see control flow)  
+grammar (see [control flow](control%20flow.md))  
 
 Functional grammars are used to perform operations between operands. Each
 operation has a left hand operand, and operator, and a right hand operand
