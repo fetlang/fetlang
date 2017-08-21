@@ -30,4 +30,9 @@ script:
   - meson src build
   - cd build
   - ninja test
+  - sudo ninja install
+  - cd ../fetishes/core
+  - fetlang unit.fet -o unit_test
+  - ./unit_test
+  - cd -
 
