@@ -50,4 +50,6 @@ public:
 	NodeException(const std::string& msg, SyntaxTree::Node& node_arg):
 		FetlangException(node_arg.getToken().getLine(), msg), node(node_arg){}
 	SyntaxTree::Node getNode() const{return node;}
+
+	void display() const override;
 };

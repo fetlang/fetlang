@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "KeyphraseCategory.h"
 #include "FetlangException.h"
-#include "FetlangManager.h"
 
 class Token {
 public:
@@ -53,4 +53,6 @@ public:
 		token = t;
 	}
 	inline Token getToken() const{return token;}
+
+	void display() const override;
 };

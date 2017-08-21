@@ -47,3 +47,8 @@ void Node::display(int level) const{
 		child.display(level+1);
 	}
 }
+
+void NodeException::display() const{
+	displayLineAndMessage();
+	node.display();
+}

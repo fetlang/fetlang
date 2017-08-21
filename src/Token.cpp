@@ -1,5 +1,6 @@
 #include "Token.h"
 #include "QuoteUtil.h"
+#include "FetlangManager.h"
 
 Token::Token(const std::string& original_string, int line){
 	this->line = line;
@@ -76,4 +77,9 @@ std::ostream& operator<<(std::ostream &out, Token const &in){
 	out << "{[" << in.value << "], [" << token_cat <<"]}";
 	return out;
 
+}
+
+void TokenException::display() const{
+	displayLineAndMessage();
+	std::cerr << "\t" << token << "\n";
 }

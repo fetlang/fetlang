@@ -5,25 +5,11 @@
 #include <vector>
 #include "FetType.h"
 #include "FetlangException.h"
+#include "KeyphraseCategory.h"
 #include "Gender.h"
 #include "Pronoun.h"
 #include "Operator.h"
 #include "Variable.h"
-
-// The type of keyphrase
-enum KeyphraseCategory {
-	CONTROL_KEYPHRASE, /* have, make, times, if, end if, etc */
-	OPERATOR_KEYPHRASE,/* all those naughty words ;) */
-	COMPARISON_OPERATOR_KEYPHRASE, /* is, is not, etc */
-	PRONOUN_KEYPHRASE, /*him, her, its own, etc, their */
-};
-
-// Let's use this exception for everything in this file and related
-// implementation file
-class KeyphraseException: public FetlangException{
-public:
-	KeyphraseException(const std::string& msg) : FetlangException(msg){}
-};
 
 // Represents a fetish/package loaded
 class Fetish{

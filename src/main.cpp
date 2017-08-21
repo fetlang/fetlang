@@ -6,18 +6,6 @@
 #include "Builder.h"
 #include "thirdparty/args.hxx"
 
-
-// Display error's what message, and the line number if it's valid
-void showError(const FetlangException& e)
-{
-	std::cerr << "Error: ";
-	if(e.getLine() > 0)
-	{
-		std::cerr<<"line "<<e.getLine()<<": ";
-	}
-	std::cerr << e.what()<<"\n";
-}
-
 int main(int argc, const char* argv[]){
 	args::ArgumentParser parser("Fetlang transpiler", "");
 	args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
@@ -29,6 +17,9 @@ int main(int argc, const char* argv[]){
 	args::Group required(parser, "", args::Group::Validators::AtLeastOne);
 	args::Positional<std::string> input_file(required, "input file", "The source file");
 	args::ValueFlag<std::string> output_file(parser, "output file", "The output file", {'o'});
+
+	// Don't show that "-- can be used to terminate.." thing
+	parser.helpParams.showTerminator = false;
 
 	try
 	{
@@ -72,16 +63,8 @@ int main(int argc, const char* argv[]){
 		if(scrub) bob.clean();
 		bob.setSource(args::get(input_file));
 		bob.build();
-	}catch(const TokenException& e){
-		showError(e);
-		std::cout<<"\t"<<e.getToken()<<"\n";
-		return 1;
-	}catch(const NodeException& e){
-		showError(e);
-		e.getNode().display();
-		return 1;
 	}catch(const FetlangException& e){
-		showError(e);
+		e.display();
 		return 1;
 	}catch(const std::exception& e){
 		std::cout<<"Generic Exception: "<<e.what()<<"\n";

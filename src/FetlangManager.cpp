@@ -15,7 +15,7 @@ bool FetlangManager::isKeyphrase(const std::string& phrase) const{
 
 KeyphraseCategory FetlangManager::getKeyphraseCategory(const std::string& phrase) const{
 	if(!isKeyphrase(phrase)){
-		throw KeyphraseException(phrase + " is not a keyphrase");
+		throw FetlangException(phrase + " is not a keyphrase");
 	}
 	return keyphrases.at(phrase);
 }
@@ -192,52 +192,64 @@ std::vector<Fetish> FetlangManager::getFetishes() const{
 }
 
 void FetlangManager::loadFetish(const std::string& fetishname){
-	{
-		for (const Fetish& fetish : fetishes)
+	try{
+		// Empty scope
 		{
-			if(fetish.getName() == fetishname)
+			for (const Fetish& fetish : fetishes)
 			{
+				if(fetish.getName() == fetishname)
+				{
+					return;
+				}
+			}
+		}
+		std::vector<std::string> directories_to_try;
+
+		directories_to_try.push_back(FileUtil::getExecutableParentPath()+"/../share/fetlang/fetishes/"+fetishname);
+		directories_to_try.push_back("../fetishes/"+fetishname);
+
+		// Fine out where exactly the fetish is located and load the fetish.json
+		// file
+		for(const std::string& directory: directories_to_try){
+			std::string filename = directory+"/fetish.json";
+			if(std::ifstream(filename)){
+				// Found it
+				Fetish fetish(fetishname, directory);
+				fetishes.push_back(fetish);
+
+				// Load json file
+				try{
+					loadFile(filename);
+				}catch(const std::exception& e){
+					throw FetlangException("Problem loading "+fetishname+"'s fetish file: "+e.what());
+				}
+
+				// Load headers and sources
+				for(const std::string& filename:
+					FileUtil::getFilesInDirectory(fetish.getIncludePath())){
+					fetish.addInclude(filename);
+				}
+				for(const std::string& filename:
+					FileUtil::getFilesInDirectory(fetish.getSourcePath())){
+					fetish.addSource(filename);
+				}
+				
+				fetishes.push_back(fetish);
+				doLoading();
 				return;
 			}
 		}
+		throw FetlangException("No fetish file for `"+fetishname+"` exists");
+	}catch(const FetlangException& e){
+		e.display();
+		exit(EXIT_FAILURE);
+	}catch(const std::exception& e){
+		std::cout<<"An exception occured: "<<e.what()<<"\n";
+		exit(EXIT_FAILURE);
+	}catch(...){
+		std::cerr<<"An unknown exception occured\n";
+		exit(EXIT_FAILURE);
 	}
-	std::vector<std::string> directories_to_try;
-
-	directories_to_try.push_back(FileUtil::getExecutableParentPath()+"/../share/fetlang/fetishes/"+fetishname);
-	directories_to_try.push_back("../fetishes/"+fetishname);
-
-	// Fine out where exactly the fetish is located and load the fetish.json
-	// file
-	for(const std::string& directory: directories_to_try){
-		std::string filename = directory+"/fetish.json";
-		if(std::ifstream(filename)){
-			// Found it
-			Fetish fetish(fetishname, directory);
-			fetishes.push_back(fetish);
-
-			// Load json file
-			try{
-				loadFile(filename);
-			}catch(const std::exception& e){
-				throw FetlangException("Problem loading "+fetishname+"'s fetish file: "+e.what());
-			}
-
-			// Load headers and sources
-			for(const std::string& filename:
-				FileUtil::getFilesInDirectory(fetish.getIncludePath())){
-				fetish.addInclude(filename);
-			}
-			for(const std::string& filename:
-				FileUtil::getFilesInDirectory(fetish.getSourcePath())){
-				fetish.addSource(filename);
-			}
-			
-			fetishes.push_back(fetish);
-			doLoading();
-			return;
-		}
-	}
-	throw FetlangException("No fetish file for `"+fetishname+"` exists");
 }
 
 void FetlangManager::doLoading()
