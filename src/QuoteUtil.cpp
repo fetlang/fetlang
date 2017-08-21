@@ -46,7 +46,7 @@ static char unescapeOctal(std::string octal_sequence){
 	char c = 0;
 	for(unsigned int i = 0; i<octal_sequence.size(); i++){
 		if(!isOctalCharacter(octal_sequence[i])){
-			throw QuoteUtilException("Not an octal character");
+			throw FetlangException("Not an octal character");
 		}
 		c += (octal_sequence[i] - '0') << (3*(octal_sequence.size() - i - 1));
 	}
@@ -95,7 +95,7 @@ std::string QuoteUtil::quote(const std::string& sequence){
 
 std::string QuoteUtil::unquote(const std::string& sequence){
 	if(sequence.size() < 2 || sequence[0] != '"' || sequence.back() != '"'){
-		throw QuoteUtilException("String must be surrounded by double quotes(\") to unquote");
+		throw FetlangException("String must be surrounded by double quotes(\") to unquote");
 	}
 
 	std::string new_sequence = "";
@@ -103,7 +103,7 @@ std::string QuoteUtil::unquote(const std::string& sequence){
 	for(unsigned int i = 1; ;i++){
 		if(sequence[i] == '"'){
 			if(i != sequence.size() - 1){
-				throw QuoteUtilException("Quote was prematurely ended");
+				throw FetlangException("Quote was prematurely ended");
 			}
 			break;
 		// We hit an escape character
@@ -126,7 +126,7 @@ std::string QuoteUtil::unquote(const std::string& sequence){
 				continue;
 			}
 		}else if(i >= sequence.size()){
-			throw QuoteUtilException("Quote is raw and uncontained - it must be terminated");
+			throw FetlangException("Quote is raw and uncontained - it must be terminated");
 		}
 		new_sequence += sequence[i];
 	}

@@ -6,6 +6,7 @@
 #include <map>
 #include <set>
 #include "FractionParser.h"
+#include "FetlangException.h"
 
 typedef std::deque<std::string> WordList;
 
@@ -25,7 +26,7 @@ static const std::set<std::string> SPECIAL_WORDS = {"zero", "negative", "positiv
 static FractionInt wordToInteger(const std::string& word){
 	auto word_pair = NUMBER_WORDS.find(word);
 	if (word_pair == NUMBER_WORDS.end()){
-		throw FractionParserException(word + " is not a valid number");
+		throw FetlangException(word + " is not a valid number");
 	}
 	return word_pair -> second;
 }
@@ -95,12 +96,12 @@ static FractionInt tripleToInteger(WordList& triple){
 	
 	for(const std::string& word : triple){
 		if(no_more_words){
-			throw FractionParserException("Triple is too long!");
+			throw FetlangException("Triple is too long!");
 		}
 		// And is allowed exist after "hundred"
 		if(word == "and"){
 			if(previous_word != "hundred"){
-				throw FractionParserException("'and' is out of place in triple");
+				throw FetlangException("'and' is out of place in triple");
 			}
 		}else if(word == "hundred"){
 			// Hundred can appear only once, after 1-9, if it is the second word (not including and)o
@@ -108,7 +109,7 @@ static FractionInt tripleToInteger(WordList& triple){
 				value *= 100;
 				hundred_can_appear = false ;
 			}else{
-				throw FractionParserException("'hundred' is out of place in triple");
+				throw FetlangException("'hundred' is out of place in triple");
 			}
 		}else if(isOnesPlace(word)){
 			// A ones place number must only appear before 100, after 'and', or after 'twenty', 'thirty' etc
@@ -120,7 +121,7 @@ static FractionInt tripleToInteger(WordList& triple){
 					no_more_words = true;
 				}
 			}else{
-				throw FractionParserException("A ones-place number can only appear in a triple before 100, after 'and', or after a ten's place number");
+				throw FetlangException("A ones-place number can only appear in a triple before 100, after 'and', or after a ten's place number");
 			}
 		}else if (isTeen(word)){
 			// A teen is similar, but it can't appear after a ten's place word
@@ -132,7 +133,7 @@ static FractionInt tripleToInteger(WordList& triple){
 				// But this word must be the last word!
 				no_more_words = true;
 			}else{
-				throw FractionParserException("A 'ten', 'eleven', 'twelve', or 'x-teen' can only appear by itself, or after 'and' in triple");
+				throw FetlangException("A 'ten', 'eleven', 'twelve', or 'x-teen' can only appear by itself, or after 'and' in triple");
 			}
 		}else if (isTensPlace(word)){
 			// So a tens place word is exactly the same as the teen word
@@ -141,7 +142,7 @@ static FractionInt tripleToInteger(WordList& triple){
 				hundred_can_appear = false;
 				value+= wordToInteger(word);
 			}else{
-				throw FractionParserException("A ten's place number can only appear by itself, or after 'and', in triple");
+				throw FetlangException("A ten's place number can only appear by itself, or after 'and', in triple");
 			}
 		}
 		
@@ -150,7 +151,7 @@ static FractionInt tripleToInteger(WordList& triple){
 	}
 	
 	if(value==0){
-		throw FractionParserException("Triple is empty");
+		throw FetlangException("Triple is empty");
 	}
 	return value;
 }
@@ -165,7 +166,7 @@ static Fraction numberListToBasicFraction(WordList& number){
 	}	
 
 	if(number.size() == 0){
-		throw FractionParserException("Number is empty");
+		throw FetlangException("Number is empty");
 	}
 
 	// Allow for some esoteric values
@@ -179,7 +180,7 @@ static Fraction numberListToBasicFraction(WordList& number){
 
 	// Forbid an initial and
 	if(number.front() == "and"){
-		throw FractionParserException("'And' is forbidden in this location");
+		throw FetlangException("'And' is forbidden in this location");
 	}
 		
 
@@ -197,7 +198,7 @@ static Fraction numberListToBasicFraction(WordList& number){
 			const FractionInt triple_value = tripleToInteger(triple_buffer);
 			const FractionInt separator_value = wordToInteger(word);
 			if(separator_value >= previous_separator_value){
-				throw FractionParserException("Triple separator values must be in descending order with no repeats");
+				throw FetlangException("Triple separator values must be in descending order with no repeats");
 			}
 			final_value += triple_value * separator_value;
 			previous_separator_value = separator_value;
@@ -227,7 +228,7 @@ Fraction FractionParser::stringToFraction(const std::string& fraction_string){
 			temp.push_back(word);	
 		}else{
 			if(switched_to_bottom){
-				throw FractionParserException("Over cannot appear twice in a fraction");
+				throw FetlangException("Over cannot appear twice in a fraction");
 			}
 
 			switched_to_bottom = true;

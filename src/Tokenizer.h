@@ -44,10 +44,3 @@ public:
 	/* Get line indents */
 	std::vector<int> getLineIndents() const;
 };
-
-class TokenizerException : public FetlangException{
-public:
-	TokenizerException(const std::string& message) : FetlangException(message) {}
-	TokenizerException(int line, const std::string& message) : FetlangException(line, message) {}
-
-};

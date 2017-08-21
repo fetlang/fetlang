@@ -39,7 +39,7 @@ std::vector<Token> Tokenizer::splitCode(){
 			parenthesis_on = true;
 		}else if(code[i] == ')'){
 			if(!parenthesis_on){
-				throw TokenizerException(line, "Did not expect ')' at this time (not in a comment)");
+				throw FetlangException(line, "Did not expect ')' at this time (not in a comment)");
 			}
 			tokens.push_back(Token(token, line));
 			token = "";
@@ -98,7 +98,7 @@ std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const
 	std::string load_string = "";
 	for(Token token : tokens){
 		if(token.isNullToken()){
-			throw TokenizerException("Encountered NULL token while removing gags");
+			throw FetlangException("Encountered NULL token while removing gags");
 		}
 	
 		// Non-nesting
@@ -165,7 +165,7 @@ std::vector<Token> Tokenizer::mergeTokens(const std::vector<Token>& tokens) cons
 	const int tokens_size = tokens.size();	
 	for(int i=0; i<tokens_size; i++){
 		if(tokens[i].isNullToken()){
-			throw TokenizerException("Encountered NULL token while merging tokens");
+			throw FetlangException("Encountered NULL token while merging tokens");
 		}
 		if(manager.isPartOfKeyphrase(tokens[i].getValue())){
 			// Current token is a keyword
@@ -209,7 +209,7 @@ std::vector<Token> Tokenizer::mergeTokens(const std::vector<Token>& tokens) cons
 		Token token = Token(tokens[i].getValue(), tokens[i].getLine());
 
 		if(tokens[i].getValue().length()<=0){
-			TokenizerException(tokens[i].getLine(), "Token has null value");
+			FetlangException(tokens[i].getLine(), "Token has null value");
 		}
 
 		// Could it be a chain literal!?

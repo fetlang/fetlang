@@ -16,8 +16,3 @@ namespace QuoteUtil{
 	std::string requote(const std::string& s);
 
 }
-
-class QuoteUtilException : public FetlangException{
-public:
-	QuoteUtilException(const std::string& msg) : FetlangException(msg){};
-};

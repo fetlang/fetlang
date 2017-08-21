@@ -18,9 +18,3 @@ namespace FractionParser {
 	// Or any part
 	bool partOfFractionLiteral(const std::string&);
 }
-
-class FractionParserException: public std::runtime_error {
-public:
-	FractionParserException(const std::string& message) : runtime_error(message){}
-};
-	
