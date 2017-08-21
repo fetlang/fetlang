@@ -36,7 +36,11 @@ void Node::display(int level) const{
 		std::cout<<"\t";
 	}
 	if(level == 0){
-		std::cout<<"Root:"<<token<<"\n";
+		if(token.isNullToken()){
+			std::cout<<"{Root}"<<"\n";
+		}else{
+			std::cout<<"Root:"<<token<<"\n";
+		}
 	}else{
 		std::cout<<token<<"\n";
 	}
