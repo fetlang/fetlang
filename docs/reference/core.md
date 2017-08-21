@@ -4,7 +4,7 @@ This is the core fetish. It effectively defines the language. You do not need to
 ### spank
 Subtract the RHO from the LHO  
 
-Grammar: haveplain,   
+Grammar: have, plain  
 Examples:  
 `Spank Linus nine times`  
 
@@ -18,7 +18,7 @@ C Code:
 ### worship
 Multiply the LHO with the RHO  
 
-Grammar: haveplain,   
+Grammar: have, plain  
 Examples:  
 `Worship Amanda's feet`  
 
@@ -32,7 +32,7 @@ C Code:
 ### flog
 Divide the LHO by the RHO  
 
-Grammar: haveplain,   
+Grammar: have, plain  
 Examples:  
 `Flog Amanda`  
 
@@ -46,7 +46,7 @@ C Code:
 ### lick
 Add the RHO from the LHO  
 
-Grammar: haveplain,   
+Grammar: have, plain  
 Examples:  
 `Lick Linus's face nine times`  
 
@@ -60,7 +60,7 @@ C Code:
 ### tickle
 Set the LHO to the remainder of the LHO divided by the RHO  
 
-Grammar: haveplain,   
+Grammar: have, plain  
 Examples:  
 `ticke Richard`  
 
@@ -74,7 +74,7 @@ C Code:
 ### moan
 Assign RHO to LHO  
 
-Grammar: make,   
+Grammar: make  
 C Code:  
 
     /* fraction/fraction overload */
@@ -92,7 +92,7 @@ C Code:
 ### scream
 Assign RHO to LHO, with new line  
 
-Grammar: make,   
+Grammar: make  
 C Code:  
 
     /* chain/fraction overload */
@@ -104,7 +104,7 @@ C Code:
 ### tie up
 Concat RHO to LHO  
 
-Grammar: have,   
+Grammar: have  
 C Code:  
 
     /* chain/fraction overload */
@@ -116,7 +116,7 @@ C Code:
 ### hogtie
 Concat RHO as fraction to LHO  
 
-Grammar: have,   
+Grammar: have  
 C Code:  
 
     /* chain/fraction overload */

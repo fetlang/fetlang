@@ -38,7 +38,7 @@ def getMarkdownSection(fetish_file, section):
 				if "grammars" in element:
 					markdown += "Grammar: "
 					for grammar in element["grammars"]:
-						markdown += grammar+ (", " if grammar == element["grammars"][-1] else "")
+						markdown += grammar+ (", " if grammar != element["grammars"][-1] else "")
 					markdown += "  \n"
 				if "examples" in element:
 					markdown += "Examples:  \n"
