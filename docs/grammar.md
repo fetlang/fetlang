@@ -17,20 +17,46 @@ Make grammar can follow these formats:
 `make` \<lho\> \<operator\> \<rho - mutable\>  
 `make` \<lho\> \<operator\> \<rho - chain literal\>  
 
-When there is no right-hand operand given, an implicit value of "" is used
+When there is no right-hand operand given, an implicit value of `""` is used
+
+Examples:  
+
+    (Assign an empty chain literal plus a newline to Linus)
+    Make Linus scream
+    
+	(Pipe Linus's value to stdout)
+	Make slave moan his name
+
+	(Assign "If I could just interject" to Richard)
+	Make Richard moan "If I could just interject"
 
 ## Plain Grammar:
 Plain grammar can follow these formats:  
 \<operator\> \<lho\>   
 \<operator\> \<lho\> \<rho - fraction literal\> time/s  
   
-Plain grammar without a given rho has an implicit value of 1. When the given
+Plain grammar without a given rho has an implicit value of `one`. When the given
 value of the rho is not one, `times` must be used. Otherwise, `time` is used
-for a value of 1.(which is not needed, since it is the implicit value, anyway)
+for a value of `one`, which is not actually needed, since it is the implicit
+value, anyway  
+
+Examples:  
+
+    (Subtract one from Luna)
+	Spank Luna
+
+	(Also subtract one from Luna)
+	Spank Luna one time
+
+	(And subtract 1023 from Luna)
+    Spank Luna one thousand and twenty three times
 
 ## Have Grammar
-Have grammar can follow this format  
-`have` \<lho\> \<operator\> \<rho - mutable\>
+Have grammar can only follow this format  
+`have` \<lho\> \<operator\> \<rho - mutable\>  
 
+Example:  
 
+	(Subtract Harry from Gina)
+    Have Harry spank Gina
 

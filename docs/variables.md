@@ -11,14 +11,12 @@ example:
 `Richard Stallman's sexy feet` is the same as `riCHard StallMAN`
 
 ## Types
-The type of a variable is implied by the first operation it is in. If it
+The [type](types.md) of a variable is implied by the first operation it is in. If it
 is in a situation in which it could either be a fraction or chain, it
 will default to fraction.
 
 Chain type variables are initiated to `""`, while fraction type variables
 are initiated to `zero`
-
-To see types, see [types.md](types.md)
 
 ## Gender
 Variables can be assigned one of four genders: male, female, neutral,

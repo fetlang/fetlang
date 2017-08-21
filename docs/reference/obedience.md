@@ -1,5 +1,5 @@
 # Obedience
-File handling
+Operators for manipulating files
 ## Operators
 ### demand obedience of
 Read a file to a chain, given a filename  

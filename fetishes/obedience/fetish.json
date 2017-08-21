@@ -1,6 +1,6 @@
 {
 	"name": "obedience",
-	"description": "File handling",
+	"description": "Operators for manipulating files",
 
 	"operators": [
 	{
