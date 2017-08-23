@@ -1,5 +1,5 @@
-#ifndef FETLANG_CHAIN_H_
-#define FETLANG_CHAIN_H_
+#ifndef FETLANG_CORE_CHAIN_H_
+#define FETLANG_CORE_CHAIN_H_
 #include "core/include/fraction.h"
 #include <stdio.h>
 #ifdef __cplusplus

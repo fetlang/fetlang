@@ -1,5 +1,5 @@
-#ifndef FETLANG_ERROR_H_
-#define FETLANG_ERROR_H_
+#ifndef FETLANG_CORE_ERROR_H_
+#define FETLANG_CORE_ERROR_H_
 #ifdef __cplusplus
 extern "C" {
 #endif

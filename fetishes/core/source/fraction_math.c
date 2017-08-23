@@ -6,58 +6,52 @@
 #define REDUCTION_ACCURACY (1<<20)	/*one million */
 
 
-void reduce_fraction(Fraction * a)
+void reduce_fraction(Fraction * frac)
 {
-	FractionInt max;
-	FractionInt i;
-
-
-	/* Check for negative error */
-	if (a->den < 0) {
-		runtime_error
-		    ("negative denominator (this shouldn't happen)");
+	// Make sure only numerator has negative
+	if(frac->den < 0){
+		frac->den = -frac->den;
+		frac->num = -frac->num;
 	}
 
-	/* Don't divide by zero */
-	if (a->den == 0) {
-		if (a->num == 0)
-			runtime_error("division of zero by zero");
+	// Fraction is basic
+	// Basic bitches go home early
+	if(frac->den == 1){
 		return;
 	}
 
-	/* Reduce if numerator and denominator are multiples of each other */
-	if (a->num % a->den == 0) {
-		a->num /= a->den;
-		a->den = 1;
+	// Fix "zero" & "infinity" issues
+	if(frac->den==0){
+		// Convert fraction to the standard infinity(1/0 or -1/0) or 0/0
+		frac->num = (frac->num == 0) ? 0 : (frac->num > 0) ? 1 : -1;
+		return; 
+	}
+
+	if(frac->num == 0){
+		// Convert fraction to the standard zero(0/1)
+		frac->den = 1;
 		return;
 	}
-	if (a->den % a->num == 0) {
-		a->den /= a->num;
-		a->num = 1;
-		return;
-	}
 
-	/* Reduce by 2 */
-	while ((a->num % 2 == 0) && (a->den % 2 == 0)) {
-		a->num /= 2;
-		a->den /= 2;
-	}
-
-	/* Get maximum */
-	max = (llabs(a->num) < a->den ? a->num : a->den) / 2 + 1;
-	max = max > 0 ? max : -max;
-
-	/* Reduce Max if too big */
-	max = (max > REDUCTION_ACCURACY) ? (REDUCTION_ACCURACY) : max;
-
-	/* Reduce by odd numbers */
-	for (i = 3; i < max; i += 2) {
-		while (((a->num % i) == 0) && ((a->den % i) == 0)) {
-			a->num /= i;
-			a->den /= i;
+	// Reduce the fraction something something greatest
+	// common denominator something something algorithm
+	//
+	// It's a good thing I took discrete math
+	FractionInt gcd;
+	FractionInt a;
+	FractionInt b; 
+	do{
+		a = frac->num;
+		b = frac->den;
+		gcd = a%b;
+		while(gcd != 0){
+			a = b;
+			b = gcd;
+			gcd = a%b;
 		}
-	}
-
+		frac->num /= b;
+		frac->den /=b;
+	}while(1 != b);
 }
 
 Fraction add_fractions(Fraction a, Fraction b)

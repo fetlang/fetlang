@@ -1,5 +1,5 @@
-#ifndef FETLANG_FRACTION_H_
-#define FETLANG_FRACTION_H_
+#ifndef FETLANG_CORE_FRACTION_H_
+#define FETLANG_CORE_FRACTION_H_
 #include "core/include/typedefs.h"
 #ifdef __cplusplus
 extern "C" {

@@ -1,5 +1,5 @@
-#ifndef FETLANG_FILEIO_H_
-#define FETLANG_FILEIO_H_
+#ifndef FETLANG_OBEDIENCE_FILEIO_H_
+#define FETLANG_OBEDIENCE_FILEIO_H_
 #include "core/include/chain.h"
 #ifdef __cplusplus
 extern "C"{

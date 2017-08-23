@@ -26,9 +26,11 @@ release_sources = common_sources + ['main.cpp']
 fetish_sources = [
 '../fetishes/core/source/chain.c', '../fetishes/core/source/error.c', '../fetishes/core/source/fraction.c',
 '../fetishes/core/source/fraction_math.c','../fetishes/obedience/source/fileio.c',
-'../fetishes/core/tests/chain.cpp', '../fetishes/obedience/tests/fileio.cpp']
+'../fetishes/core/tests/chain.cpp', '../fetishes/obedience/tests/fileio.cpp',
+'../fetishes/core/tests/fraction.cpp']
 test_sources = common_sources + fetish_sources + ['tests/main.cpp','tests/fraction_parser.cpp','tests/quote_util.cpp', 'tests/parser.cpp',
-'tests/tokenizer.cpp', 'tests/file_util.cpp', 'tests/compilation.cpp']
+'tests/tokenizer.cpp', 'tests/file_util.cpp', 'tests/compilation.cpp',
+'tests/fraction.cpp']
 
 install_subdir('../fetishes', install_dir:'share/fetlang')
 executable('fetlang', release_sources, include_directories: main_incdirs, install:true, install_dir: 'bin')

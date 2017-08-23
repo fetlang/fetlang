@@ -44,7 +44,8 @@ int main(int argc, const char* argv[]){
 
 		if(!input_file)
 		{
-			std::cerr<< "No input file" << std::endl;
+			std::cerr << "No input file\n" << std::endl;
+			std::cerr << parser;
 			return 1;
 		}
 		std::cerr << e.what() << std::endl;
