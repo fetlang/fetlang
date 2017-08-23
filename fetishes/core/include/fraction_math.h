@@ -1,5 +1,5 @@
-#ifndef FETLANG_FRACTION_MATH_H_
-#define FETLANG_FRACTION_MATH_H_
+#ifndef FETLANG_CORE_FRACTION_MATH_H_
+#define FETLANG_CORE_FRACTION_MATH_H_
 #include "core/include/fraction.h"
 #ifdef __cplusplus
 extern "C" {

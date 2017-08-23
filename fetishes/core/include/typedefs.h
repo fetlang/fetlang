@@ -1,5 +1,5 @@
-#ifndef FETLANG_TYPEDEFS_H_
-#define FETLANG_TYPEDEFS_H_
+#ifndef FETLANG_CORE_TYPEDEFS_H_
+#define FETLANG_CORE_TYPEDEFS_H_
 #include <stdint.h>
 #include <inttypes.h>
 /* Fraction Int Definition */
