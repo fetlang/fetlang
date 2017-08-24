@@ -1,6 +1,7 @@
 #ifndef FETLANG_OBEDIENCE_FILEIO_H_
 #define FETLANG_OBEDIENCE_FILEIO_H_
 #include "core/include/chain.h"
+#include "core/include/fraction.h"
 #ifdef __cplusplus
 extern "C"{
 #endif
@@ -37,6 +38,7 @@ void read_file_to_chain(Chain * chain, Chain filename);
  *
  * @param filename A chain holding the filename of the file we're opening
  * @param mode The fopen mode
+ * @return The file as a stream
  */
 FILE* open_file_as_stream(Chain filename, const char* mode);
 #ifdef __cplusplus

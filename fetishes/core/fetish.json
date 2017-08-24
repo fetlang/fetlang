@@ -75,7 +75,15 @@
             "chain/chain": "clear_chain(&LHO);append_chain_to_chain(&LHO, RHO);append_flink_to_chain(&LHO, construct_fraction(10,1));"
         }
 	},
-
+	{
+		"name": "torture",
+		"description": "Read the next byte from RHO and place it into LHO",
+		"grammars": ["have"],
+		"code":
+		{
+			"fraction/stream": "LHO = get_next_byte_of_stream(RHO)"
+		}
+	},
 	{
         "name": "tie up",
         "description": "Concat RHO to LHO",

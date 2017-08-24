@@ -20,23 +20,6 @@ typedef struct Fraction {
  * @return The fraction constructed
  */
 Fraction construct_fraction(FractionInt num, FractionInt den);
-
-/**
- * Get random fraction
- *
- *
- * @return A random fraction
- */
-Fraction random_fraction();
-
-/**
- * Get time as fraction
- *
- *
- * @return Unix time as fraction
- */
-Fraction time_fraction();
-
 #ifdef __cplusplus
 }
 #endif

@@ -453,26 +453,7 @@ int compare_chains(Chain a, Chain b)
 	return 0;
 }
 
-
-/*
-void print_chain_numerically(Chain chain)
+Fraction get_next_byte_of_stream(FILE * file)
 {
-	Link *it = chain.start;
-	printf("(");
-	while (it != NULL) {
-		// Display item numerator as integer
-		printf("%s%" FRACTION_INT_FORMATTER,
-		       it != chain.start ? ", " : "", it->value.num);
-
-		// Display denominator if not 1
-		if (it->value.den != 1) {
-			printf("/%" FRACTION_INT_FORMATTER, it->value.den);
-		}
-
-		// Forward iterator
-		it = it->next;
-	}
-	printf(")");
+	return construct_fraction(fgetc(file), 1);
 }
-*/
-

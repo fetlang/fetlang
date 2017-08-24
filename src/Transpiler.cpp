@@ -231,7 +231,7 @@ std::string Transpiler::transpileBranch(Node& node){
 
 		// Rvalues can be anything though
 		if(rho.getCategory() == Token::IDENTIFIER_TOKEN){
-			if(rho_type == STREAM_TYPE){
+			if(rho_type == STREAM_TYPE && !op.hasCodeForExactly(lho_type, STREAM_TYPE)){
 				// We have to convert the stream to a chain
 				rho_code = "temp_rho_stream_chain_"+std::to_string(rand());
 				pre_code += "/* Stream chain(rho) initialization */\n"

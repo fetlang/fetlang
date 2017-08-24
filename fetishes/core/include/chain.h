@@ -171,6 +171,8 @@ int compare_chains(Chain a, Chain b);
  */
 Fraction chain_to_fraction(Chain chain);
 
+Fraction get_next_byte_of_stream(FILE * file);
+
 #ifdef __cplusplus
 }
 #endif
