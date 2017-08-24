@@ -31,6 +31,6 @@ So, what's going on here? Well, let's analyze it token by token. Try the command
 will be the left hand operand (i.e, the mutable value in the operation),
 the token after that will be an operator, and a optional token after that will be a [chain](types.md) literal.  
 `slave` is the Fetlang wrapper around the UNIX stdout. This is what we're using as our left hand operand  
-`scream` is an [operator](operators.md) from the [core](reference/core.md) fetish, i.e the included-by-default part of
+`scream` is an operator from the [core](reference/core.md) fetish, i.e the included-by-default part of
 Fetlang's standard library  
 `"Hello! This is my first Fetlang program!"` is a chain literal, and the right hand operand of the operation
