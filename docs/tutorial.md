@@ -4,7 +4,7 @@
 
 Follow the directions in [README.md](../README.md)  
 
-## Hello World
+## Hello World Program
 
 Assuming you've got Fetlang nice and installed, let's try it out.
 Go to whatever directory you want(say `~/Documents`) and create a new file
@@ -34,6 +34,26 @@ the token after that will be an operator, and a optional token after that will b
 `scream` is an operator from the [core](reference/core.md) fetish, i.e the included-by-default part of
 Fetlang's standard library  
 `"Hello! This is my first Fetlang program!"` is a chain literal, and the right hand operand of the operation
+
+## Output
+
+Output in Fetlang is tied to two [stream](types.md) builtin variables: `slave`
+Mand `Dungeon Master`, which are wrappers for standard output and standard
+error, respectfully.  
+
+The most common operators for use with output streams are:  
+`moan` - assign the right hand operand to the left hand operand  
+`scream` - assign the right hand operand to the left hand operand, then add a new line  
+
+An example:  
+```
+Make slave moan "There is not a newline after this colon:"
+Make slave scream "But there is a newline after this one:"
+```
+
+## Chain manipulation
+
+A [chain](types.md) in Fetlang is simply an array of [fractions](types.md)
 
 ## Simple Cat Program
 
