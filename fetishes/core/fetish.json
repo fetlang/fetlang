@@ -47,7 +47,7 @@
         "name": "tickle",
         "description": "Set the LHO to the remainder of the LHO divided by the RHO",
         "grammars": ["have", "plain"],
-        "examples": ["ticke Richard", "Have Richard tickle Linus"],
+        "examples": ["tickle Richard", "Have Richard tickle Linus"],
         "code":
 		{
             "fraction/fraction": "LHO=modulus_fractions(LHO, RHO)"
@@ -78,6 +78,7 @@
 	{
 		"name": "torture",
 		"description": "Read the next byte from RHO and place it into LHO",
+		"examples": ["Have Mistress torture his cock"],
 		"grammars": ["have"],
 		"code":
 		{
