@@ -67,11 +67,15 @@ identifier is ignored
 We also don't have any equivalent to `while(true)`, so we can use `until amy is
 dominant towards alicia`. `Until` loops while a condition is false, and `amy is
 dominant towards alicia` is always false, assuming we have not used any of
-these two variables elsewhere. Why is this? `is dominant towards` is Fetlang's
+these two variables elsewhere.  
+
+Why is it always false? `is dominant towards` is Fetlang's
 version of "greater than" or ">". All fraction variables initiate to zero(and
 these are fractions because there is no other overload for `is dominant
 towards` other than `fraction/fraction`). Therefore, `Amy is dominant towards
-Alicia` equates to `0>0` which is obviously false
+Alicia` equates to `0>0` which is obviously false  
+
+We know how to print out the output. Just `make slave moan` with what we want as an output as the right hand operand.
 
 Alright, let's start converting
 ```
@@ -84,8 +88,47 @@ make Clara moan
 (while true)
 Until Amy is dominant towards Alicia
 	(put the rest of the code here)
+
+(print)
+Make slave scream Clara's name
 ```
 
 You may notice that we didn't convert `char byte;` to Fetlang. This is because
 you do not need to explicitly declare variables. Rather, they are implicitly
-declared when used in an operation.
+declared when used in an operation.  
+
+What else do we need to do? In the `until` loop, we need to get a byte from standard input, and, if that byte is a newline, break.  
+
+We can get a byte from standard input by using the `torture` operator as so:  
+`Have Mistress torture Brian`  
+
+Where `Mistress` is the standard input. Since we are using the `have` grammar, `Mistress` is the right hand operand, while Brian is the left hand operand. This means that Mistress is affecting Brian.  
+
+We can then check if the byte received (`Brian`) is 10(ASCII for a newline). If it is, we can break with `call safeword`  
+
+Finally, we can append the byte to the output using the `hogtie` operator: 
+
+```
+(Anything in parentheticals is a comment)
+(Set Trisha to 10)
+lick Trisha's toes ten times
+(Set Clara to "". She will be the final output)
+make Clara moan
+
+(while true)
+Until Amy is dominant towards Alicia
+	(Read a byte from standard input)
+	Have Mistress torture Brian's cock
+
+	(Break if newline)
+	If Brian is Trisha's fucktoy
+		call safeword
+
+	(Append byte to output)
+	Have Brian hogtie Clara
+
+(print)
+Make slave scream Clara's name
+```  
+
+And that's our cat program! If you want to clean it up a bit, you can remove the comments.
