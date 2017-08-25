@@ -68,10 +68,10 @@ int main(int argc, const char* argv[]){
 		e.display();
 		return 1;
 	}catch(const std::exception& e){
-		std::cout<<"Generic Exception: "<<e.what()<<"\n";
+		std::cerr<<"Generic Exception: "<<e.what()<<"\n";
 		return 1;
 	}catch(...){
-		std::cout<<"An unknown exception occured\n";
+		std::cerr<<"An unknown exception occured\n";
 		return 1;
 	}
 	return 0;
