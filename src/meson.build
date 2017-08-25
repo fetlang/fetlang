@@ -20,7 +20,7 @@ boost_sources = [
 common_sources = boost_sources+['Fraction.cpp', 'FractionParser.cpp', 'QuoteUtil.cpp', 'Token.cpp', 'Tokenizer.cpp',
 	'Variable.cpp', 'FetlangManager.cpp', 'Operator.cpp', 'Variable.cpp', 'VariableCollection.cpp',
 	'SyntaxTree.cpp', 'Parser.cpp', 'Grammar.cpp', 'Transpiler.cpp', 'FileUtil.cpp', 'Builder.cpp',
-	'thirdparty/whereami.cpp', 'FetlangException.cpp']
+	'thirdparty/whereami.cpp', 'FetlangException.cpp', 'CompilationProcess.cpp']
 release_sources = common_sources + ['main.cpp']
 
 fetish_sources = [
