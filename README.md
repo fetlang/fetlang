@@ -48,15 +48,16 @@ $ git clone https://github.com/Property404/fetlang
 $ cd fetlang
 $ meson --buildtype=release src build
 $ cd build
-$ # Build and runs tests
+$ # Build Fetlang and runs tests
 $ ninja test
-$ # Make sure it worked
-$ ./fetlang ../examples/hello.fet && ./a.out
 ```
 
-Install:  
+Install Fetlang:  
 ```shell
-    $ sudo ninja install
+$ sudo ninja install
+$ # Make sure it worked
+$ fetlang ../examples/hello.fet && ./a.out
+Hello World!
 ```
 
 ## Documentaton
