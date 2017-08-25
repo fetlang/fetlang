@@ -66,6 +66,7 @@ Hello World!
 [Fetishes](docs/fetishes.md)  
 [Fetish Reference](docs/reference.md)  
 [Grammar](docs/grammar.md)  
+[Tutorial](docs/tutorial.md)  
 [Types](docs/types.md)  
 [Variables](docs/variables.md)  
 
