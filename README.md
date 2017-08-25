@@ -22,7 +22,6 @@ The following example outputs the arguments given to the executable:
 ## Features
 * Input/output with standard streams and files
 * Statically typed
-* Only four types: fractions, chains, streams, and references
 * Gendered variables
 * Access previously mentioned variables using pronouns
 * Numbers represented internally as fractions instead of floating point
@@ -36,22 +35,29 @@ The following example outputs the arguments given to the executable:
 Requirements:
 * meson
 * ninja
-* gcc/g++ or clang
+* gcc/g++(>=5.0) or clang(>=3.5)
+
+Supported systems:  
+* macOS (tested with Travis CI)
+* GNU/Linux (tested with Travis CI)
+* Other modern Unix-like systems
 
 Build Fetlang:  
-
-    git clone https://github.com/Property404/fetlang
-	cd fetlang
-	meson src build
-	cd build
-	# Build and runs tests
-	ninja test
-	# Make sure it worked
-	./fetlang ../examples/hello.fet && ./a.out
+```shell
+$ git clone https://github.com/Property404/fetlang
+$ cd fetlang
+$ meson --buildtype=release src build
+$ cd build
+$ # Build and runs tests
+$ ninja test
+$ # Make sure it worked
+$ ./fetlang ../examples/hello.fet && ./a.out
+```
 
 Install:  
-
-    sudo ninja install
+```shell
+    $ sudo ninja install
+```
 
 ## Documentaton
 [Comments](docs/comments.md)  
