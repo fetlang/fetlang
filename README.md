@@ -28,7 +28,7 @@ The following example outputs the arguments given to the executable:
 * Transpiles to C
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
-* Probably turing complete, but not a tarpit
+* Probably Turing complete, but not a tarpit
 * Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building
@@ -60,7 +60,7 @@ $ fetlang ../examples/hello.fet && ./a.out
 Hello World!
 ```
 
-## Documentaton
+## Documentation
 [Comments](docs/comments.md)  
 [Control Flow](docs/control%20flow.md)  
 [Fetishes](docs/fetishes.md)  

@@ -21,11 +21,12 @@ Save it and run:
 Well, wasn't that exciting! (Hint, if you get a compiler/linker error, try transpiling with `-s`. That will clear the compiled fetishes)  
 
 So, what's going on here? Well, let's analyze it token by token. Try the command:
-
-    $ fetlang -t hello.fet # This shows the tokens
-    ...
-    $ fetlang -T hello.fet # This shows the syntax tree
-    ...
+```shell
+$ fetlang -t hello.fet # This shows the tokens
+...
+$ fetlang -T hello.fet # This shows the syntax tree
+...
+```
 
 `make` is the [grammar](grammar.md) that we are using for this operation. This tells Fetlang that the next token
 will be the left hand operand (i.e, the mutable value in the operation),
@@ -38,7 +39,7 @@ Fetlang's standard library
 ## Output
 
 Output in Fetlang is tied to two [stream](types.md) builtin variables: `slave`
-Mand `Dungeon Master`, which are wrappers for standard output and standard
+and `Dungeon Master`, which are wrappers for standard output and standard
 error, respectfully.  
 
 The most common operators for use with output streams are:  
@@ -60,6 +61,7 @@ The most common operators for use with fractions are:
 `spank` - subtract the right hand operand from the left hand operand  
 `lick` - add the right hand operand to the left hand operand  
 `worship` - multiply the left hand operand with the right hand operand  
+`flog` - divide the left hand operand by the right hand operand  
 
 Example:
 ```
@@ -67,24 +69,34 @@ Example:
 
 (Add 5 to Charlie [0+5 = 5])
 Lick Charlie's left nipple five times
-(print out "five")
-Make slave moan Charlie's name
+(Note that "Charlie's left nipple" is equivalent to "Charlie")
+
+(print out "five\n")
+Make slave scream Charlie's name
+
 (Multiply Charlie times 3 [5*3 = 15])
 Worship Charlie's cock three times
-(print out "fifteen")
-Make slave moan Charlie's name
+
+(print out "fifteen\n")
+Make slave scream Charlie's name
+
+
 
 (Add 1 to Ada [0+1 = 1])
 Lick Ada's toes one time
+
 (Add 2 to Euler [0+2 = 2])
 Lick Euler's belly button two times
+
 (Add Ada to Euler [2+1 = 3])
 (Note that Euler is the LHO because we are using 'have' grammar)
 Have Ada Lick Euler's throbbing cock
-(print "one")
-Make slave moan Ada's name
-(print "three")
-Make slave moan Euler's name
+
+(print "one\n")
+Make slave scream Ada's name
+
+(print "three\n")
+Make slave scream Euler's name
 ```
 
 ## Simple Cat Program
@@ -95,7 +107,7 @@ print(input())
 ```
 
 In Fetlang, this is less trivial. We have to read each byte from standard input
-and append that to our output as a chain. In psuedocode:
+and append that to our output as a chain. In pseudocode:
 
 ```C
 char byte;
@@ -112,9 +124,7 @@ print(output);
 
 We can almost translate this one-for-one to Fetlang, with some small changes.
 In Fetlang, we can't compare to a character or numeric literal, so we have to
-store '\n' in a fraction as an ASCII code: `lick Trisha's toes ten times`. The
-`'s toes` part of the code isn't necessary because anything after `'` in an
-identifier is ignored  
+store '\n' in a fraction as an ASCII code: `lick Trisha's toes ten times`.  
 
 We also don't have any equivalent to `while(true)`, so we can use `until amy is
 dominant towards alicia`. `Until` loops while a condition is false, and `amy is
