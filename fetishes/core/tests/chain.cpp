@@ -77,4 +77,12 @@ TEST_CASE("Chain Test", "[chain][core]"){
 		clear_chain(&chain);
 	}
 
+	SECTION("Random int test via /dev/urandom"){
+		FILE * fp = fopen("/dev/urandom", "r");
+		Fraction frac = get_next_byte_of_stream(fp);
+		REQUIRE(frac.den == 1);
+		frac = get_next_byte_of_stream(fp);
+		REQUIRE(frac.den == 1);
+	}
+
 }

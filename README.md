@@ -22,43 +22,51 @@ The following example outputs the arguments given to the executable:
 ## Features
 * Input/output with standard streams and files
 * Statically typed
-* Only four types: fractions, chains, streams, and references
 * Gendered variables
 * Access previously mentioned variables using pronouns
 * Numbers represented internally as fractions instead of floating point
 * Transpiles to C
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
-* Probably turing complete, but not a tarpit
+* Probably Turing complete, but not a tarpit
 * Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building
 Requirements:
 * meson
 * ninja
-* gcc/g++ or clang
+* gcc/g++(>=5.0) or clang(>=3.5)
+
+Supported systems:  
+* macOS (tested with Travis CI)
+* GNU/Linux (tested with Travis CI)
+* Other modern Unix-like systems
 
 Build Fetlang:  
+```shell
+$ git clone https://github.com/Property404/fetlang
+$ cd fetlang
+$ meson --buildtype=release src build
+$ cd build
+$ # Build Fetlang and runs tests
+$ ninja test
+```
 
-    git clone https://github.com/Property404/fetlang
-	cd fetlang
-	meson src build
-	cd build
-	# Build and runs tests
-	ninja test
-	# Make sure it worked
-	./fetlang ../examples/hello.fet && ./a.out
+Install Fetlang:  
+```shell
+$ sudo ninja install
+$ # Make sure it worked
+$ fetlang ../examples/hello.fet && ./a.out
+Hello World!
+```
 
-Install:  
-
-    sudo ninja install
-
-## Documentaton
+## Documentation
 [Comments](docs/comments.md)  
 [Control Flow](docs/control%20flow.md)  
 [Fetishes](docs/fetishes.md)  
 [Fetish Reference](docs/reference.md)  
 [Grammar](docs/grammar.md)  
+[Tutorial](docs/tutorial.md)  
 [Types](docs/types.md)  
 [Variables](docs/variables.md)  
 

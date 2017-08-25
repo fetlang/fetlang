@@ -62,7 +62,7 @@ Set the LHO to the remainder of the LHO divided by the RHO
 
 Grammar: have, plain  
 Examples:  
-`ticke Richard`  
+`tickle Richard`  
 
 `Have Richard tickle Linus`  
 
@@ -100,6 +100,18 @@ C Code:
 
     /* chain/chain overload */
     clear_chain(&LHO);append_chain_to_chain(&LHO, RHO);append_flink_to_chain(&LHO, construct_fraction(10,1));  
+
+### torture
+Read the next byte from RHO and place it into LHO  
+
+Grammar: have  
+Examples:  
+`Have Mistress torture his cock`  
+
+C Code:  
+
+    /* fraction/stream overload */
+    LHO = get_next_byte_of_stream(RHO)  
 
 ### tie up
 Concat RHO to LHO  

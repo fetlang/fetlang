@@ -95,4 +95,3 @@ FILE* open_file_as_stream(Chain filename, const char* mode)
 	}
 	return fp;
 }
-

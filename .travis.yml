@@ -30,6 +30,7 @@ script:
   - meson src build
   - cd build
   - ninja test
+  - rm test.text
   - sudo ninja install
   - cd ../fetishes/obedience
   - fetlang unit.fet -o unit_test

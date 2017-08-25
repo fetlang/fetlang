@@ -17,10 +17,9 @@
 `public void `[`read_file_to_chain`](#chain_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(`[`Chain`](#struct_chain)` * chain,`[`Chain`](#struct_chain)` filename)`            | Set chain contents to file's contents
 `public int `[`compare_chains`](#chain_8h_1aebea70af9ccbc3d25da67b8f836dba3d)`(`[`Chain`](#struct_chain)` a,`[`Chain`](#struct_chain)` b)`            | Compare chains
 `public `[`Fraction`](#struct_fraction)` `[`chain_to_fraction`](#chain_8h_1ae351d3cf295fd95456e64cb1bb9216da)`(`[`Chain`](#struct_chain)` chain)`            | Convert chain to fraction
+`public `[`Fraction`](#struct_fraction)` `[`get_next_byte_of_stream`](#chain_8h_1af64f25a456b3af7d9cbb635f6b56f20d)`(FILE * file)`            | 
 `public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)`            | Show error message and exit
 `public `[`Fraction`](#struct_fraction)` `[`construct_fraction`](#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf)`(FractionInt num,FractionInt den)`            | Construct [Fraction](#struct_fraction)
-`public `[`Fraction`](#struct_fraction)` `[`random_fraction`](#fraction_8h_1aff0108be8808ee831aaac374030930b4)`()`            | Get random fraction
-`public `[`Fraction`](#struct_fraction)` `[`time_fraction`](#fraction_8h_1a1287cf8ca974a6713dd6af32e2016524)`()`            | Get time as fraction
 `public void `[`reduce_fraction`](#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)`            | Reduce fraction to most basic form
 `public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction__math_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Add two fractions
 `public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction__math_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Subtract two fractions
@@ -196,6 +195,8 @@ Parse chain to convert to a fraction value. Return 0/1 if chain is invalid.
 #### Returns
 The fraction value of the chain
 
+#### `public `[`Fraction`](#struct_fraction)` `[`get_next_byte_of_stream`](#chain_8h_1af64f25a456b3af7d9cbb635f6b56f20d)`(FILE * file)` 
+
 #### `public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)` 
 
 Show error message and exit
@@ -218,20 +219,6 @@ Construct [Fraction](#struct_fraction)
 
 #### Returns
 The fraction constructed
-
-#### `public `[`Fraction`](#struct_fraction)` `[`random_fraction`](#fraction_8h_1aff0108be8808ee831aaac374030930b4)`()` 
-
-Get random fraction
-
-#### Returns
-A random fraction
-
-#### `public `[`Fraction`](#struct_fraction)` `[`time_fraction`](#fraction_8h_1a1287cf8ca974a6713dd6af32e2016524)`()` 
-
-Get time as fraction
-
-#### Returns
-Unix time as fraction
 
 #### `public void `[`reduce_fraction`](#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)` 
 
