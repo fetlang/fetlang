@@ -7,7 +7,7 @@ Using the phrase `I have a fetish for` in a [comment](comments.md) will load a f
 Will load the fetish `assertiveness`. Fetish loading takes place during tokenization, before any keyphrases are recognized, so it doesn't matter where you place the statement.
 
 ## Writing fetishes
-You can create your own custom fetishes to exend Fetlang. A fetish is a directory structured as follows
+You can create your own custom fetishes to extend Fetlang. A fetish is a directory structured as follows
 
     // Directory with name of fetish
     assertiveness 
