@@ -35,7 +35,7 @@ The following example outputs the arguments given to the executable:
 Requirements:
 * meson
 * ninja
-* gcc/g++(>=5.0) or clang(>=3.5)
+* gcc/g++(>=4.9) or clang(>=3.5)
 
 Supported systems:  
 * macOS (tested with Travis CI)
