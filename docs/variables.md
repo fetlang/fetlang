@@ -31,10 +31,10 @@ Female - `HER`/`HERSELF`/`HER`/`HER OWN`
 Neutral - `THEY`/`THEMSELF`/`THEIR`/`THEIR OWN`  
 Nonperson - `IT`/`ITSELF`/`ITS`/`ITS OWN`  
 
-`HIS` and `HIS OWN` are the possesive versions of `HIM` and `HIMSELF`,
+`HIS` and `HIS OWN` are the possessive versions of `HIM` and `HIMSELF`,
 respectively. `HIMSELF` is reflexive. `HIM` is objective.
 
-Male, female, and neutral are used for human-ly named variables,
+Male, female, and neutral are used for humanly named variables,
 like `Sasha Grey`
 Nonperson is used for object-ly named variables, like `violet wand`
 N/A is used for non-nouns
@@ -45,8 +45,8 @@ Using a pronoun to describe a variable will imply its gender if it does
 not have one yet. Use of an objective pronoun will use the last variable
 mentioned that is not in the left-sided operand (not LHO). Use of a
 reflexive pronoun will use the variable used in the left-sided operand
-(if it cannot, compilation will fail). Use of possesive pronouns act the
-same way as possesive identifiers.
+(if it cannot, compilation will fail). Use of possessive pronouns act the
+same way as possessive identifiers.
 
 Examples:
 
