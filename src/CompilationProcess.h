@@ -33,10 +33,10 @@ public:
 	CompilationProcess& clear();
 
 	// runCompiler without linking
-	void compile(const std::vector<std::string>& sources, const std::string& out) const;
+	void compile(const std::vector<std::string>& sources, const std::string& out) ;
 
 	// runCompiler with linking
-	void link(const std::vector<std::string>& objects, const std::string& out) const;
+	void link(const std::vector<std::string>& objects, const std::string& out) ;
 
 	// Optimize
 	CompilationProcess& setOptimization(bool do_optimize=true);

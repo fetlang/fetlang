@@ -49,11 +49,6 @@ class Builder{
 	// (Or something like that, anyway)
 	std::string build_path;
 
-	// Name of the compiler we're using. Likely will be "gcc" or "cc"
-	// Use "cc" by default on *nix, and I guess "gcc" on windows? idk
-	// I don't really understand Windows.
-	std::string compiler;
-
 	// Use the tokenizer, parser, and transpiler to generate C code
 	// from the Fetlang code in source_path
 	std::string transpile() const;
@@ -68,9 +63,6 @@ public:
 
 	// ...or compilation
 	inline void setCompilation(bool c = true){compilation = c;}
-
-	// Specify compiler
-	inline void setCompiler(const std::string& c){compiler = c;};
 
 	// Source and destination
 	inline void setSource(const std::string& s){source_path = s;}

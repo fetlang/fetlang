@@ -12,6 +12,7 @@
 #include "Transpiler.h"
 #include "QuoteUtil.h"
 #include "FileUtil.h"
+#include "CompilationProcess.h"
 static const char*const BUILD_FOLDER_RELATIVE = "/fetlang_build/";
 // Relative to BUILD_FOLDER_RELATIVE
 static const char*const RELEASE_FOLDER_RELATIVE = "/fet_obj_release/";
@@ -31,7 +32,6 @@ Builder::Builder(){
 	show_tree = false;
 	source_path="";
 	destination_path = DEFAULT_DESTINATION_PATH;
-	compiler = "cc";
 
 	// Now we have to find the temporary directory
 	//TODO: Fix for all operating systems
@@ -66,43 +66,11 @@ std::string Builder::transpile() const{
 	return transpiler.transpile();
 }
 
-// Make an argument string safe for consumption
-static std::string sanitize(const std::string& argument){
-	return QuoteUtil::quote(argument);
-}
-	
-int Builder::compile(const std::vector<std::string>& args, bool link){
-	std::string command = compiler;
-	if(optimization){
-		command += " -O2 "
-		#ifndef __APPLE__
-		"-s "
-		#endif
-		;
-	}
-
-	command += " -std=gnu99 ";
-
-	for(const std::string& arg : args)
-	{
-		command += " "+sanitize(arg);
-	}
-
-	#if defined(__linux__) || defined(linux)
-	if(link)
-	{
-		// Linux has a separate math library
-		command += " -lm";
-	}
-	#endif
-	
-	FILE* compiler_process = popen(command.c_str(), "r");
-	return pclose(compiler_process);
-}
 
 
 void Builder::build(){
 	std::string c_code = transpile();
+	CompilationProcess comp_proc;
 
 	// No compilation, just output C code
 	if(!compilation){
@@ -149,14 +117,8 @@ void Builder::build(){
 			FileUtil::ensureDirectoryExists(fetish_path+"/"+fetish.getName());
 			all_objects.push_back(fetish_path+"/"+fetish.getName()+"/"+source_file+".o");
 			std::string source_path = fetish.getSourcePath()+source_file;
-			if(!FileUtil::fileExists(all_objects.back())){
-				compile({
-					"-c", source_path,
-					"-I"+include_path,
-					"-I"+fetish.getIncludePath(),
-					"-o", all_objects.back()
-				});
-			}
+			comp_proc.clear().setOptimization(optimization).addIncludeDirectories({include_path,
+				fetish.getIncludePath()}).compile({source_path},all_objects.back());
 		}
 	}
 
@@ -168,11 +130,15 @@ void Builder::build(){
 	all_objects.push_back(c_file_path+".o");
 
 	// Compile the generated C file
+	comp_proc.clear().addIncludeDirectory(include_path+"/").setOptimization(optimization).compile({c_file_path}, all_objects.back());
+	/*
 	std::vector<std::string> c_args = {"-c", c_file_path, "-o", all_objects.back()};
 	c_args.push_back("-I"+include_path+"/");
 	compile(c_args);
+	*/
 
 	// And link to create the output
+	/*
 	c_args.clear();
 	for(const std::string& object: all_objects){
 		c_args.push_back(object);
@@ -180,6 +146,9 @@ void Builder::build(){
 	c_args.push_back("-o");
 	c_args.push_back(destination_path);
 	compile(c_args, true);
+	*/
+
+	comp_proc.clear().setOptimization(optimization).setLanguage("c").link(all_objects, destination_path);
 
 }
 

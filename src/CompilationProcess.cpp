@@ -1,6 +1,7 @@
 #include "CompilationProcess.h"
 #include "FetlangException.h"
 #include "QuoteUtil.h"
+#include "FileUtil.h"
 #include <stdio.h>
 
 CompilationProcess::CompilationProcess(){clear();}
@@ -75,10 +76,33 @@ CompilationProcess& CompilationProcess::addLibraries(const std::vector<std::stri
 	return *this;
 }
 
+void CompilationProcess::compile(const std::vector<std::string>& files, const std::string& out){
+	runCompiler(files, out, false);
+}
+void CompilationProcess::link(const std::vector<std::string>& files, const std::string& out){
+	runCompiler(files, out, true);
+}
 void CompilationProcess::runCompiler(const std::vector<std::string>& files, const std::string& out, int link_objects){
+	if(files.empty()){
+		throw FetlangException("No files in compilation process");
+	}
+
 	if (compiler == "" || language == "")
 	{
-		throw FetlangException("Need known compiler and language to compile or link");
+		std::string extension = FileUtil::extractFileExtension(files[0]);
+		if(extension == "c"){
+			setLanguage("c");
+		}else if(extension == "c++"){
+			setLanguage("c++");
+		}else if(extension == "cpp"){
+			setLanguage("c++");
+		}else if(extension == "cc"){
+			setLanguage("c++");
+		}
+
+		if (language == ""){
+			throw FetlangException("Can't infer language based on extension: "+extension+" of "+files[0]);
+		}
 	}
 
 	// This is the process we're calling
@@ -128,7 +152,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	if(process == NULL || process <= 0){
 		throw FetlangException("Issue with popen in compilation process");
 	}
-	if(!pclose(process)){
+	if(pclose(process)){
 		throw FetlangException("Issue closing compilation process");
 	}
 
