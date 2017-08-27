@@ -5,8 +5,8 @@
 #include "QuoteUtil.h"
 using namespace SyntaxTree;
 
-static const std::string first_temp_chain = "first_temp_chain";
-static const std::string second_temp_chain = "second_temp_chain";
+static const std::string lho_temp_chain = "lho_temp_chain";
+static const std::string rho_temp_chain = "rho_temp_chain";
 
 // Replace text within a string
 static void replaceText(std::string& str, const std::string& o, const
@@ -65,16 +65,14 @@ std::string Transpiler::transpileBranch(Node& node){
 				rho_code = variables.get(rho.getValue()).getCode();
 				if(rho_type == STREAM_TYPE)
 				{
-					rho_code = second_temp_chain;//"temp_chain_for_stream_for_bind"+std::to_string(rand());
-					pre_code += "init_chain(&"+rho_code+");\n";
+					rho_code = rho_temp_chain;//"temp_chain_for_stream_for_bind"+std::to_string(rand());
 					pre_code += "append_stream_to_chain(&"+rho_code+", "+variables.get(rho.getValue()).getCode()+");\n";
 					post_code += "chain_to_stream("+rho_code+", "+variables.get(rho.getValue()).getCode()+");\n";
 					post_code += "clear_chain(&"+rho_code+");\n";
 				}
 			}else if(rho.getCategory() == Token::CHAIN_LITERAL_TOKEN){
 				rho_type = CHAIN_TYPE;
-				rho_code = second_temp_chain;
-				pre_code += "init_chain("+rho_code+");\n";
+				rho_code = rho_temp_chain;
 				pre_code += "append_cstr_to_chain(&"+rho_code+", ";
 				pre_code += QuoteUtil::requote(rho.getValue())+");\n";
 				post_code += "clear_chain(&"+rho_code+");\n";
@@ -222,9 +220,8 @@ std::string Transpiler::transpileBranch(Node& node){
 				// Copy the stream to the temp chain
 				// do the operation
 				// Copy the temp chain to the stream
-				lho_code = first_temp_chain;
+				lho_code = lho_temp_chain;
 				pre_code += "/* Stream chain(lho) initialization */\n"
-							"init_chain(&"+lho_code+");\n"
 							"append_stream_to_chain(&"+lho_code+ ", "+
 							variables.get(lho.getValue()).getCode()+");\n\n";
 				post_code+= "/* Stream chain deconstruction */\n"
@@ -241,9 +238,8 @@ std::string Transpiler::transpileBranch(Node& node){
 		if(rho.getCategory() == Token::IDENTIFIER_TOKEN){
 			if(rho_type == STREAM_TYPE && !op.hasCodeForExactly(lho_type, STREAM_TYPE)){
 				// We have to convert the stream to a chain
-				rho_code = second_temp_chain;
+				rho_code = rho_temp_chain;
 				pre_code += "/* Stream chain(rho) initialization */\n"
-							"init_chain(&"+rho_code+");\n"
 							"append_stream_to_chain(&"+rho_code+ ", "+
 							variables.get(rho.getValue()).getCode()+");\n\n";
 				post_code += "/* Stream chain(rho) deconstruction */\n"
@@ -258,9 +254,8 @@ std::string Transpiler::transpileBranch(Node& node){
 						+std::to_string(fraction.getBottom())+")";
 		}else if(rho.getCategory() == Token::CHAIN_LITERAL_TOKEN){
 			// Chain literals have to be initialized and deinitialized 
-			rho_code = second_temp_chain;
+			rho_code = rho_temp_chain;
 			pre_code += "/* Chain literal initialization */\n"
-						"init_chain(&"+rho_code+");\n"
 						"append_cstr_to_chain(&"+rho_code+", "+QuoteUtil::requote(rho.getValue())+");\n\n";
 			post_code += "/* Chain literal deconstruction */\n"
 						"clear_chain(&"+rho_code+");\n\n";
@@ -302,8 +297,8 @@ std::string Transpiler::transpile(){
 
 	// Head code
 	code += std::string("int main(int argc, char* argv[]){\n")+
-	"Chain "+first_temp_chain+"; init_chain(&"+first_temp_chain+ ");\n"
-	"Chain "+second_temp_chain+";init_chain(&"+second_temp_chain+");\n";
+	"Chain "+lho_temp_chain+";init_chain(&"+lho_temp_chain+");\n"
+	"Chain "+rho_temp_chain+";init_chain(&"+rho_temp_chain+");\n";
 
 	// Declare Variables
 	code += "/* Initializing variables */\n";
@@ -364,6 +359,8 @@ std::string Transpiler::transpile(){
 	code += "\n";
 
 	// Tail code
+	code+= "clear_chain(&"+lho_temp_chain+");\n";
+	code+= "clear_chain(&"+rho_temp_chain+");\n";
 	code+= "/* Finished */\nreturn 0;\n}\n";
 
 	return code;

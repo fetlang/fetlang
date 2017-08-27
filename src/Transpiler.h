@@ -7,9 +7,6 @@
  * It does not handle compilation, linkage, or any other such nonsense
  */
 
- // NOTE TO DAGAN: You should optimize by only having two designated temporary
- // chains
-
 class Transpiler{
 	// The AST we received what was created by the parser
 	SyntaxTree::RootNode tree;
