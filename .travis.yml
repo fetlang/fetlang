@@ -36,5 +36,9 @@ script:
   - fetlang unit.fet -o unit_test
   - ./unit_test
   - rm test.text
+  - fetlang -O unit.fet -o unit_test_optimized
+  - ./unit_test_optimized
+  - rm test.text
+  - ! cmp unit_test unit_test_optimized
   - cd -
 
