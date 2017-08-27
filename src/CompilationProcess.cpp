@@ -129,10 +129,6 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	for(const auto& dir : include_directories){
 		command += " "+QuoteUtil::quote("-I"+dir);
 	}
-	// If we're not linking and on linux, just assume we need the math library
-	#ifdef __linux__
-	command += " -lm";
-	#endif
 
 	// add sources
 	for(const auto& src : files){
@@ -151,6 +147,10 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	#endif
 		command += " "+QuoteUtil::quote("-l"+lib);
 	}
+	// If we're not linking and on linux, just assume we need the math library
+	#ifdef __linux__
+	command += " -lm";
+	#endif
 
 	// Do the do
 	FILE* process = popen(command.c_str(), "r");
