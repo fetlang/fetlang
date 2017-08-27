@@ -7,12 +7,11 @@
 // these are not loaded based on an external file or anything,
 // like the operators and comparison operators
 class Pronoun {
-public:
 	// Affects the other
 	static const bool OBJECTIVE = true;
 	// Affects the self
 	static const bool REFLEXIVE = false;
-private:
+
 	std::string name;
 	Gender gender;
 	
