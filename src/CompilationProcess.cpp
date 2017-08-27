@@ -19,6 +19,7 @@ CompilationProcess& CompilationProcess::clear(){
 
 CompilationProcess& CompilationProcess::setCompiler(const std::string& new_compiler){
 	this->compiler = new_compiler;
+	// Infer language
 	if(this->language == ""){
 		if(compiler == "cc") setLanguage("c");
 		if(compiler == "gcc") setLanguage( "c");
@@ -128,6 +129,10 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	for(const auto& dir : include_directories){
 		command += " "+QuoteUtil::quote("-I"+dir);
 	}
+	// If we're not linking and on linux, just assume we need the math library
+	#ifdef __linux__
+	command += " -lm";
+	#endif
 
 	// add sources
 	for(const auto& src : files){
@@ -155,7 +160,6 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	if(pclose(process)){
 		throw FetlangException("Issue closing compilation process");
 	}
-
 
 }
 
