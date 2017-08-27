@@ -27,7 +27,6 @@ CompilationProcess& CompilationProcess::setCompiler(const std::string& new_compi
 		if(compiler == "clang++") setLanguage( "c++");
 		if(compiler == "c++") setLanguage( "c++");
 		if(compiler == "g++") setLanguage( "c++");
-		if(compiler == "rustc") setLanguage( "rust");
 	}
 
 	return *this;
@@ -41,7 +40,6 @@ CompilationProcess& CompilationProcess::setLanguage(const std::string& lang){
 	if(this->compiler == ""){
 		if(language == "c") setCompiler("cc");
 		if(language == "c++") setCompiler("c++");
-		if(language == "rust") setCompiler("rustc");
 	}
 	return *this;
 }
@@ -102,7 +100,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		}
 
 		if (language == ""){
-			throw FetlangException("Can't infer language based on extension: "+extension+" of "+files[0]);
+			throw FetlangException("Can't infer language based on extension: '"+extension+"' from file '"+files[0]+"'");
 		}
 	}
 
@@ -149,7 +147,9 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	}
 	// If we're not linking and on linux, just assume we need the math library
 	#ifdef __linux__
-	command += " -lm";
+	if(link_objects){
+		command += " -lm";
+	}
 	#endif
 
 	// Do the do
@@ -158,7 +158,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		throw FetlangException("Issue with popen in compilation process");
 	}
 	if(pclose(process)){
-		throw FetlangException("Issue closing compilation process");
+		throw FetlangException("Issue closing compilation process:" + command);
 	}
 
 }
