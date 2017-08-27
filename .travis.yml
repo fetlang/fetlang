@@ -39,6 +39,6 @@ script:
   - fetlang -O unit.fet -o unit_test_optimized
   - ./unit_test_optimized
   - rm test.text
-  - ! cmp unit_test unit_test_optimized
+  - bash ../../scripts/checkdiff.sh unit_test unit_test_optimized
   - cd -
 
