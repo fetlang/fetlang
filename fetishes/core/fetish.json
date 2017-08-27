@@ -1,6 +1,10 @@
 {
 	"name": "core",
 	"description": "This is the core fetish. It effectively defines the language. You do not need to manually include it.",
+	"dependencies": {
+		"libraries": [],
+		"fetishes": []
+	},
 
 	"operators": [
 	{

@@ -20,6 +20,9 @@ class Fetish{
 	std::vector<std::string> includes;
 	// And of the sources
 	std::vector<std::string> sources;
+	// Dependencies!
+	// Any libs we depend on
+	std::vector<std::string> libraries;
 public:
 	Fetish(const std::string& name_arg, const std::string& path_arg):
 		name(name_arg), root_path(path_arg){}
@@ -34,12 +37,15 @@ public:
 	// Regular getters
 	inline std::vector<std::string> getIncludes() const{return includes;}
 	inline std::vector<std::string> getSources() const{return sources;}
+	inline std::vector<std::string> getLibraries() const{return libraries;}
 
 	// used by the FetlangManager
 	inline void addInclude(const std::string&
 		filename){includes.push_back(filename);}
 	inline void addSource(const std::string&
 		filename){sources.push_back(filename);}
+	inline void addLibrary(const std::string&
+		lib){libraries.push_back(lib);}
 };
 
 // Singleton class for managing fetishes and keyphrases and other
@@ -82,7 +88,7 @@ private:
 	std::string postloop_code;
 
 	// Add operators etc
-	void loadFile(const std::string&);
+	void loadFetishFile(Fetish&, const std::string&);
 
 	// Keep track of what the longest keyphrase is
 	int max_keyphrase_size;
@@ -108,6 +114,8 @@ public:
 
 	// Get the list of fetishes
 	std::vector<Fetish> getFetishes() const;
+	// Or check if a specific fetish exists
+	bool hasFetish(const std::string&) const;
 
 	// Get the list of builtins
 	inline std::vector<BuiltinVariable> getBuiltins() const{return builtins;}

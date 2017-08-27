@@ -84,10 +84,25 @@ static json loadFileAsJson(const std::string& filename){
 	return return_value;
 }
 
-void FetlangManager::loadFile(const std::string& filename){
+void FetlangManager::loadFetishFile(Fetish& fetish, const std::string& filename){
 	json data = loadFileAsJson(filename);
-	// TODO(future) load headers and sources
 
+	// Load dependencies
+	if(data.find("dependencies") != data.end()){
+		auto dependencies = data["dependencies"];
+		if(dependencies.find("libraries") != dependencies.end()){
+			auto libraries = dependencies["libraries"];
+			for(const auto& lib : libraries){
+				fetish.addLibrary(lib.get<std::string>());
+			}
+		}
+		if(dependencies.find("fetishes") != dependencies.end()){
+			auto fetishes = dependencies["fetishes"];
+			for(const auto& fet : fetishes){
+				loadFetish(fet);
+			}
+		}
+	}
 	// load operators
 	for(const auto& operator_data : data["operators"]){
 		Operator op(operator_data["name"].get<std::string>());
@@ -190,8 +205,21 @@ void FetlangManager::loadFile(const std::string& filename){
 std::vector<Fetish> FetlangManager::getFetishes() const{
 	return fetishes;
 }
+bool FetlangManager::hasFetish(const std::string& fetish_name) const{
+	for(const Fetish& fetish: fetishes){
+		if(fetish.getName() == fetish_name){
+			return true;
+		}
+	}
+	return false;
+}
 
 void FetlangManager::loadFetish(const std::string& fetishname){
+	// Don't reload
+	if(hasFetish(fetishname)){
+		return;
+	}
+
 	try{
 		// Empty scope
 		{
@@ -219,7 +247,7 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 
 				// Load json file
 				try{
-					loadFile(filename);
+					loadFetishFile(fetish, filename);
 				}catch(const std::exception& e){
 					throw FetlangException("Problem loading "+fetishname+"'s fetish file: "+e.what());
 				}
@@ -244,7 +272,7 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 		e.display();
 		exit(EXIT_FAILURE);
 	}catch(const std::exception& e){
-		std::cout<<"An exception occured: "<<e.what()<<"\n";
+		std::cerr<<"An exception occured: "<<e.what()<<"\n";
 		exit(EXIT_FAILURE);
 	}catch(...){
 		std::cerr<<"An unknown exception occured\n";

@@ -119,7 +119,8 @@ void Builder::build(){
 			std::string source_path = fetish.getSourcePath()+source_file;
 			if(!FileUtil::fileExists(all_objects.back())){
 				comp_proc.clear().setOptimization(optimization).addIncludeDirectories({include_path,
-					fetish.getIncludePath()}).compile({source_path},all_objects.back());
+					fetish.getIncludePath()}).addLibraries(fetish.getLibraries()).
+						compile({source_path},all_objects.back());
 			}
 		}
 	}
