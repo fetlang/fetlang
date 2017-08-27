@@ -15,7 +15,7 @@ std::vector<Token> Tokenizer::splitCode(){
 	std::string token = "";
 	// Record line number 
 	int line = 1;// The convention is to start at 1
-	int parenthesis_on = 0; // Are we in parenthetical commment?
+	int parenthesis_level = 0; // Are we in parenthetical commment?
 
 	int i = 0;	
 	int indent = 0;
@@ -36,17 +36,17 @@ std::vector<Token> Tokenizer::splitCode(){
 		}else if(code[i] == '('){
 			token = "";
 			tokens.push_back(Token("(", line));
-			parenthesis_on = true;
+			parenthesis_level++;
 		}else if(code[i] == ')'){
-			if(!parenthesis_on){
+			if(parenthesis_level == 0){
 				throw FetlangException(line, "Did not expect ')' at this time (not in a comment)");
 			}
 			tokens.push_back(Token(token, line));
 			token = "";
 			tokens.push_back(Token(")", line));
-			parenthesis_on = false;
+			parenthesis_level--;
 			
-		}else if(parenthesis_on == false){
+		}else if(parenthesis_level == 0){
 			if(code[i] == '"'){
 				/* Chain literal */
 				//Record whole chain
@@ -93,7 +93,7 @@ std::vector<Token> Tokenizer::splitCode(){
 
 std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const{
 	std::vector<Token> new_tokens;
-	bool parenthesis_on = false;
+	int parenthesis_level = 0;
 	bool loading_fetishes = false;
 	std::string load_string = "";
 	for(Token token : tokens){
@@ -103,9 +103,9 @@ std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const
 	
 		// Non-nesting
 		if(token.getValue() == "("){
-			parenthesis_on = true;
+			parenthesis_level++;
 		}else if(token.getValue() == ")") {
-			parenthesis_on = false;
+			parenthesis_level--;
 
 			// Load fetishes specified
 			if(loading_fetishes)
@@ -122,7 +122,7 @@ std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const
 			continue;
 		}
 
-		if(!parenthesis_on)
+		if(parenthesis_level == 0)
 		{
 			new_tokens.push_back(token);
 		}

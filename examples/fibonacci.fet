@@ -4,7 +4,7 @@
 	int c;  // Charlie
 	int d = 10; // Duke
 
-	while a<d
+	while(a<d)
 	{
 		print a
 		c= a+b;
