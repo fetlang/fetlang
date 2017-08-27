@@ -345,6 +345,7 @@ void Parser::formBranch(Node& node){
 				//	if/while/until <lho> <comparison operator> <rho>
 				//		...
 				//		...
+				// + optional "otherwise"
 				
 				// We have to know exactly what we're doing
 				// For, like, error messages
