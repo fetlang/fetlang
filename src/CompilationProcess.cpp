@@ -119,6 +119,11 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		command += " -c";
 	}
 
+	// Optimize if needed
+	if(optimization){
+		command += " -O2";
+	}
+
 	// Extra
 	for(const auto& arg: extra_arguments){
 		command += " "+QuoteUtil::quote(arg);

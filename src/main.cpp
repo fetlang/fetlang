@@ -13,7 +13,7 @@ int main(int argc, const char* argv[]){
 	args::Flag show_tokens(parser, "show tokens", "Show tokens", {'t'});
 	args::Flag show_tree(parser, "show tree", "Show abstract syntax tree", {'T'});
 	args::Flag no_compile(parser, "no compile", "Export as C file(don't compile)", {'c'});
-	args::Flag scrub(parser, "scrub", "Clean /tmp/ fetlang folder", {'s'});
+	args::Flag scrub(parser, "scrub", "Scrub /tmp/ fetlang folder", {'s'});
 	args::Group required(parser, "", args::Group::Validators::AtLeastOne);
 	args::Positional<std::string> input_file(required, "input file", "The source file");
 	args::ValueFlag<std::string> output_file(parser, "output file", "The output file", {'o'});
