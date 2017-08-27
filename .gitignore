@@ -8,6 +8,7 @@
 !*.cpp
 !*.md
 !*.py
+!*.sh
 !.gitignore
 !.travis.yml
 !meson.build
