@@ -100,7 +100,8 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		}
 
 		if (language == ""){
-			throw FetlangException("Can't infer language based on extension: '"+extension+"' from file '"+files[0]+"'");
+			throw FetlangException("Can't infer language based on extension: '"
+				+extension+"' from fetish source file '"+files[0]+"'");
 		}
 	}
 
@@ -137,20 +138,20 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	command += " -o "+QuoteUtil::quote(out);
 
 	// Libraries
-	for(const auto& lib: libraries){
-	#ifndef __linux__
-		if(lib == "m"){
-			continue;
-		}
-	#endif
-		command += " "+QuoteUtil::quote("-l"+lib);
-	}
-	// If we're not linking and on linux, just assume we need the math library
-	#ifdef __linux__
 	if(link_objects){
-		command += " -lm";
+		for(const auto& lib: libraries){
+		#ifndef __linux__
+			if(lib == "m"){
+				continue;
+			}
+		#endif
+			command += " "+QuoteUtil::quote("-l"+lib);
+		}
+		// If we're not linking and on linux, just assume we need the math library
+		#ifdef __linux__
+			command += " -lm";
+		#endif
 	}
-	#endif
 
 	// Do the do
 	FILE* process = popen(command.c_str(), "r");
