@@ -136,7 +136,7 @@ void Builder::build(){
 		all_objects.back());
 
 	// And link to create the output
-	comp_proc.clear().setOptimization(optimization).setLanguage("c").link(all_objects,
+	comp_proc.clear().setOptimization(optimization).setLanguage("c++").link(all_objects,
 		destination_path);
 
 }
