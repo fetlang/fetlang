@@ -402,12 +402,14 @@ void Parser::formBranch(Node& node){
 				}
 
 				// 'else'/'otherwise' statement after if
-				if(token_iterator != tokens.end() && token_iterator->getValue() == "otherwise"){
+				if(token_iterator != tokens.end()
+					&& token_iterator->getValue() == "otherwise"
+						&& indent_level == getLineIndent(token_iterator->getLine())){
+
 					if(controller != "if"){
 						throw TokenException("Can only use `otherwise` after an `if` statement", *token_iterator);
 					}
 					Node& otherwise_node = node.addChild(*token_iterator);
-					indent_level = getLineIndent(token_iterator->getLine());
 					token_iterator++;
 					// Add all the otherwise'd children
 					while(token_iterator != tokens.end() && indent_level < getLineIndent(token_iterator->getLine())){
@@ -521,7 +523,8 @@ void Parser::formBranch(Node& node){
 				// And DONE
 				return;
 			}else{
-				throw TokenException("Parser does not know what to do with this keyphrase",*token_iterator);
+				throw TokenException("Parser does not know what to do with keyphrase `"
+					+token_iterator->getValue()+"`",*token_iterator);
 			}
 		}
 		case OPERATOR_KEYPHRASE:

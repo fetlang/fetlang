@@ -135,7 +135,7 @@ TEST_CASE("Parser Test 4 - Binding test"){
 
 }
 
-TEST_CASE("Parser Test 4 - yet another gender test", "[Parser]")
+TEST_CASE("Parser Test 5 - yet another gender test", "[Parser]")
 {
 	std::string code = "Have Rufus spank Ada\nHave Linus Worship her feet";
 	Tokenizer tokenizer(code);
@@ -149,4 +149,3 @@ TEST_CASE("Parser Test 4 - yet another gender test", "[Parser]")
 	REQUIRE(vars.get("linus").getGender() == UNASSIGNED_GENDER);
 }
 
-	

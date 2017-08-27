@@ -9,7 +9,7 @@ until Belinda is submissive to her
 
 	if Belinda is Gloria's bitch
 		make Rocky moan " bottle of beer on the wall, "
-	if Belinda is not Gloria's bitch
+	otherwise
 		make Rocky moan " bottles of beer on the wall, "
 
 	have Rocky tie up Peter's ankles
@@ -17,7 +17,7 @@ until Belinda is submissive to her
 
 	if Belinda is Gloria's bitch
 		make Rocky moan " bottle of beer! Take one down, pass it around, "
-	if Belinda is not Gloria's bitch
+	otherwise
 		make Rocky moan " bottles of beer! Take one down, pass it around, "
 
 	spank Belinda
@@ -26,7 +26,7 @@ until Belinda is submissive to her
 
 	if Belinda is Gloria's bitch
 		make Rocky scream " bottle of beer on the wall!"
-	if Belinda is not Gloria's bitch
+	otherwise
 		make Rocky scream " bottles of beer on the wall!"
 	
 	Have Rocky tie up Peter's balls

@@ -164,7 +164,9 @@ std::string Transpiler::transpileBranch(Node& node){
 			code+= "{\n";
 
 			// Transpile the middle stuff
-			for(int i=1; i<node.getNumberOfChildren();i++){
+			int i=0;
+			if(node.getToken().getValue() != "otherwise") i++;// Because of comparisons
+			for(; i<node.getNumberOfChildren();i++){
 				code += transpileBranch(node.getChild(i));
 			}
 
