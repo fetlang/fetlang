@@ -105,57 +105,63 @@ std::string Transpiler::transpileBranch(Node& node){
 		// Eh, these are all basically the same thing 
 		}else if(node.getToken().getValue() == "while" 
 			|| node.getToken().getValue() == "until"
-			|| node.getToken().getValue() == "if")
+			|| node.getToken().getValue() == "if"
+			|| node.getToken().getValue() == "otherwise")
 		{
 
 			if(node.getToken().getValue() == "while"){
 				code+="while((";
 			}else if(node.getToken().getValue() == "until"){
 				code+="while(!(";
-			}else{
+			}else if(node.getToken().getValue() == "if"){
 				code+="if((";
+			}else{
+				code+="else";
 			}
 
-			
-			// Perform some basic assertions
-			if(node.getNumberOfChildren() < 1)
-			{
-				throw NodeException("Expected this node to have at least one child", node);
-			}
-			if(node.getChild(0).getToken().getCategory() != Token::KEYPHRASE_TOKEN
-				|| node.getChild(0).getToken().getKeyphraseCategory() != COMPARISON_OPERATOR_KEYPHRASE)
-			{
-				throw NodeException("Expected this node to be a comparison"
-					" operator", node.getChild(0));
-			}
-			if(node.getChild(0).getNumberOfChildren() != 2)
-			{
-				throw NodeException("Expected this comparison operator node to"
-					" have exactly two children", node.getChild(0));
+			if(node.getToken().getValue() != "otherwise"){	
+				// Perform some basic assertions
+				if(node.getNumberOfChildren() < 1)
+				{
+					throw NodeException("Expected this node to have at least one child", node);
+				}
+				if(node.getChild(0).getToken().getCategory() != Token::KEYPHRASE_TOKEN
+					|| node.getChild(0).getToken().getKeyphraseCategory() != COMPARISON_OPERATOR_KEYPHRASE)
+				{
+					throw NodeException("Expected this node to be a comparison"
+						" operator", node.getChild(0));
+				}
+				if(node.getChild(0).getNumberOfChildren() != 2)
+				{
+					throw NodeException("Expected this comparison operator node to"
+						" have exactly two children", node.getChild(0));
+				}
+
+				ComparisonOperator op = manager.getComparisonOperator(node.getChild(0).getToken().getValue());
+				Token lho = node.getChild(0).getChild(0).getToken();
+				Token rho = node.getChild(0).getChild(1).getToken();
+
+				// We've stated before: we can only have identifier tokens 
+				if(lho.getCategory() != Token::IDENTIFIER_TOKEN){
+					throw TokenException("Expected the LHO in a comparison operation to be an identifier token", lho);
+				}
+				if(rho.getCategory() != Token::IDENTIFIER_TOKEN){
+					throw TokenException("Expected the RHO in a comparison operation to be an identifier token", rho);
+				}
+		
+				FetType lho_type = variables.get(lho.getValue()).getType();
+				FetType rho_type = variables.get(rho.getValue()).getType();
+
+				std::string comparison_code = op.getCodeFor(lho_type, rho_type);
+				std::string lho_code = variables.get(lho.getValue()).getCode();
+				std::string rho_code = variables.get(rho.getValue()).getCode();
+				replaceText(comparison_code, "LHO", lho_code);
+				replaceText(comparison_code, "RHO", rho_code);
+
+				code+=comparison_code + "))";
 			}
 
-			ComparisonOperator op = manager.getComparisonOperator(node.getChild(0).getToken().getValue());
-			Token lho = node.getChild(0).getChild(0).getToken();
-			Token rho = node.getChild(0).getChild(1).getToken();
-
-			// We've stated before: we can only have identifier tokens 
-			if(lho.getCategory() != Token::IDENTIFIER_TOKEN){
-				throw TokenException("Expected the LHO in a comparison operation to be an identifier token", lho);
-			}
-			if(rho.getCategory() != Token::IDENTIFIER_TOKEN){
-				throw TokenException("Expected the RHO in a comparison operation to be an identifier token", rho);
-			}
-	
-			FetType lho_type = variables.get(lho.getValue()).getType();
-			FetType rho_type = variables.get(rho.getValue()).getType();
-
-			std::string comparison_code = op.getCodeFor(lho_type, rho_type);
-			std::string lho_code = variables.get(lho.getValue()).getCode();
-			std::string rho_code = variables.get(rho.getValue()).getCode();
-			replaceText(comparison_code, "LHO", lho_code);
-			replaceText(comparison_code, "RHO", rho_code);
-
-			code+=comparison_code + ")){\n";
+			code+= "{\n";
 
 			// Transpile the middle stuff
 			for(int i=1; i<node.getNumberOfChildren();i++){

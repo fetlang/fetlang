@@ -397,11 +397,23 @@ void Parser::formBranch(Node& node){
 
 				// BUT we also have to add the other children, at least until
 				// we reach the same level of indent
-
 				while(token_iterator != tokens.end() && indent_level < getLineIndent(token_iterator->getLine())){
 					formBranch(conditional_node);
 				}
 
+				// 'else'/'otherwise' statement after if
+				if(token_iterator != tokens.end() && token_iterator->getValue() == "otherwise"){
+					if(controller != "if"){
+						throw TokenException("Can only use `otherwise` after an `if` statement", *token_iterator);
+					}
+					Node& otherwise_node = node.addChild(*token_iterator);
+					indent_level = getLineIndent(token_iterator->getLine());
+					token_iterator++;
+					// Add all the otherwise'd children
+					while(token_iterator != tokens.end() && indent_level < getLineIndent(token_iterator->getLine())){
+						formBranch(otherwise_node);
+					}
+				}
 				return;
 			}else if(token_iterator->getValue() == "have") {
 				// This is a have grammar operation

@@ -65,6 +65,25 @@ lick Charlie three times
 have Bob tickle Alice
 have Alice assert equality with Charlie
 
+(reset)
+worship Alice zero times
+worship Bob zero times
+worship Charlie zero times
+
+(if/otherwise test)
+lick Alice one time
+if Alice is 0
+	have Alice assert equality with 2
+	have Alice assert equality with 2
+otherwise
+	have Alice assert equality with 1
+	lick Alice one time
+	if Alice is 2
+		have Alice assert equality with 2
+	otherwise
+		have Alice assert equality with 8
+
+
 (general bind test)
 lick count zero times
 make chain moan "012"
