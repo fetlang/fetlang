@@ -29,11 +29,19 @@ def runDoxygen():
 
 	for fname in files:
 		os.system("doxygen ./doxygen/"+fname)
-
 def runMoxygen():
 	fetishes = getListOfFetishes()
 	for fetish in fetishes:
-		os.system(f"moxygen ./doxygen/output/{fetish}_c_reference_xml -o ../docs/c_reference/{fetish}.md")
+		filepath = f"../docs/c_reference/{fetish}.md"
+		os.system(f"moxygen ./doxygen/output/{fetish}_c_reference_xml -o {filepath}")
+		# Remove `public, cause this ain't C++
+		doc = open(filepath, "r");
+		new_contents = doc.read().replace("`public ", "`")
+		doc.close()
+		
+		doc = open(filepath, "w")
+		doc.write(new_contents)
+		doc.close()
 
 if __name__ == "__main__":
 	makeDoxygenConfigFiles()
