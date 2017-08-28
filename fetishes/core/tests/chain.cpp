@@ -89,7 +89,7 @@ TEST_CASE("Chain Test", "[chain][core]"){
 		REQUIRE(frac.den == 1);
 	}
 
-	SECTION("Chain/fractiont test"){
+	SECTION("Chain/fraction test"){
 		Chain chain;
 		init_chain(&chain);
 		char buffer[100] = {0};

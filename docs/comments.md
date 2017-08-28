@@ -1,5 +1,5 @@
 # Comments
-Comments are represented by anything between `(` and `)`  
+Comments are defined by anything between `(` and `)`  
 
 They can be nested like: `(still, (this is the (final (fronteir))))`
 
