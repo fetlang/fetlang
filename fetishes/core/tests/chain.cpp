@@ -90,6 +90,7 @@ TEST_CASE("Chain Test", "[chain][core]"){
 	}
 
 	SECTION("Chain/fraction test"){
+		/* Check converting fractions to chains */
 		Chain chain;
 		init_chain(&chain);
 		char buffer[100] = {0};
@@ -110,6 +111,45 @@ TEST_CASE("Chain Test", "[chain][core]"){
 			chain_to_cstr(chain, buffer);
 			REQUIRE(0 == strcmp(buffer, m.second.c_str()));
 			clear_chain(&chain);
+			memset(buffer, 0x00, sizeof(buffer));
+		}
+
+	}
+	SECTION("Fraction/chain test"){
+		/* Check converting user input to fraction chains*/
+		Chain input_chain;
+		init_chain(&input_chain);
+		Chain output_chain;
+		init_chain(&output_chain);
+		char buffer[100] = {0};
+
+		std::map<const std::string, const std::string> test_map = {
+		{"100", "one hundred"},
+		{"100/1", "one hundred"},
+		{"100/2", "fifty"},
+		{"101/2", "one hundred and one over two"},
+		{"2/2", "one"},
+		{"2000/2000", "one"},
+		{"-1", "negative one"},
+		{"-101/3", "negative one hundred and one over three"},
+		{"-1000000", "negative one million"},
+		{"-1000000000", "negative one billion"},
+		{"-1000000001", "negative one billion, and one"},
+		};
+
+		
+		for(const auto& m : test_map){
+			CAPTURE(m.first);
+			CAPTURE(m.second);
+			clear_chain(&input_chain);
+			clear_chain(&output_chain);
+
+			append_cstr_to_chain(&input_chain, m.first.c_str());
+			append_fraction_to_chain(&output_chain, chain_to_fraction(input_chain));
+
+			chain_to_cstr(output_chain, buffer);
+			CAPTURE(buffer);
+			REQUIRE(0 == strcmp(buffer, m.second.c_str()));
 			memset(buffer, 0x00, sizeof(buffer));
 		}
 
