@@ -94,14 +94,16 @@ TEST_CASE("Comments", "[Tokenizer]"){
 	std::string pass_code_2 = "(We (are (the crystal (gems))))()";
 	std::string pass_code_3 = "(())()()()(())";
 	std::string pass_code_4 = "(\n\n()\n\n)()";
+	std::string pass_code_5 = "(I have a fetish for obedience)";
 	std::string fail_code_1 = "We (are (the crystal (gems))))";
 	std::string fail_code_2 = "(We are (the crystal (gems))))";
 	std::string fail_code_3 = "(We ( are (the crystal (gems)))";
 
-	REQUIRE_NOTHROW(Tokenizer(pass_code_1).tokenize());
-	REQUIRE_NOTHROW(Tokenizer(pass_code_2).tokenize());
-	REQUIRE_NOTHROW(Tokenizer(pass_code_3).tokenize());
-	REQUIRE_NOTHROW(Tokenizer(pass_code_4).tokenize());
+	REQUIRE(Tokenizer(pass_code_1).tokenize().empty());
+	REQUIRE(Tokenizer(pass_code_2).tokenize().empty());
+	REQUIRE(Tokenizer(pass_code_3).tokenize().empty());
+	REQUIRE(Tokenizer(pass_code_4).tokenize().empty());
+	REQUIRE(Tokenizer(pass_code_5).tokenize().empty());
 	REQUIRE_THROWS(Tokenizer(fail_code_1).tokenize());
 	REQUIRE_THROWS(Tokenizer(fail_code_2).tokenize());
 	REQUIRE_THROWS(Tokenizer(fail_code_3).tokenize());
