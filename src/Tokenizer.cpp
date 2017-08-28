@@ -88,6 +88,11 @@ std::vector<Token> Tokenizer::splitCode(){
 		}
 	}
 
+	if(parenthesis_level != 0)
+	{
+		throw FetlangException("Reached end of program without comment terminator");
+	}
+
 	return tokens;
 }
 

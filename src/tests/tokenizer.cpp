@@ -89,3 +89,14 @@ TEST_CASE("Indents", "[Tokenizer]"){
 	REQUIRE(line_indents[5] == 3);
 }
 
+TEST_CASE("Comments", "[Tokenizer]"){
+	std::string passing_code = "(We (are (the crystal (gems))))";
+	std::string fail_code_1 = "We (are (the crystal (gems))))";
+	std::string fail_code_2 = "(We are (the crystal (gems))))";
+	std::string fail_code_3 = "(We ( are (the crystal (gems)))";
+
+	REQUIRE_NOTHROW(Tokenizer(passing_code).tokenize());
+	REQUIRE_THROWS(Tokenizer(fail_code_1).tokenize());
+	REQUIRE_THROWS(Tokenizer(fail_code_2).tokenize());
+	REQUIRE_THROWS(Tokenizer(fail_code_3).tokenize());
+}
