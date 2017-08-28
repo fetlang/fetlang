@@ -20,15 +20,15 @@
 `public `[`Fraction`](#struct_fraction)` `[`get_next_byte_of_stream`](#chain_8h_1af64f25a456b3af7d9cbb635f6b56f20d)`(FILE * file)`            | 
 `public void `[`runtime_error`](#error_8h_1aa4581c050961a458136ec8bdd556d5b5)`(const char * msg,...)`            | Show error message and exit
 `public `[`Fraction`](#struct_fraction)` `[`construct_fraction`](#fraction_8h_1affd36cedc3799420c2d6ddfbdbd81ddf)`(FractionInt num,FractionInt den)`            | Construct [Fraction](#struct_fraction)
-`public void `[`reduce_fraction`](#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)`            | Reduce fraction to most basic form
-`public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction__math_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Add two fractions
-`public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction__math_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Subtract two fractions
-`public `[`Fraction`](#struct_fraction)` `[`multiply_fractions`](#fraction__math_8h_1a4b4e5ede06559519a9a6894aeef10526)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Multiply two fractions
-`public `[`Fraction`](#struct_fraction)` `[`divide_fractions`](#fraction__math_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Divide two fractions
-`public `[`Fraction`](#struct_fraction)` `[`modulus_fractions`](#fraction__math_8h_1a8b3e9f3e279ccb842a61ae8490c96959)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Modulus fractions
-`public `[`Fraction`](#struct_fraction)` `[`factorial_fraction`](#fraction__math_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09)`(`[`Fraction`](#struct_fraction)` a)`            | Get factorial of fraction
-`public int `[`compare_fractions`](#fraction__math_8h_1a50c53ea17596e7cf28eb58aadd7042d2)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Compare fractions
-`public `[`Fraction`](#struct_fraction)` `[`pow_fractions`](#fraction__math_8h_1afa5a6802e6d6acfa2ac36cabce0574a1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Exponentiate fractions
+`public void `[`reduce_fraction`](#fraction_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)`            | Reduce fraction to most basic form
+`public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Add two fractions
+`public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Subtract two fractions
+`public `[`Fraction`](#struct_fraction)` `[`multiply_fractions`](#fraction_8h_1a4b4e5ede06559519a9a6894aeef10526)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Multiply two fractions
+`public `[`Fraction`](#struct_fraction)` `[`divide_fractions`](#fraction_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Divide two fractions
+`public `[`Fraction`](#struct_fraction)` `[`modulus_fractions`](#fraction_8h_1a8b3e9f3e279ccb842a61ae8490c96959)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Modulus fractions
+`public `[`Fraction`](#struct_fraction)` `[`factorial_fraction`](#fraction_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09)`(`[`Fraction`](#struct_fraction)` a)`            | Get factorial of fraction
+`public int `[`compare_fractions`](#fraction_8h_1a50c53ea17596e7cf28eb58aadd7042d2)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Compare fractions
+`public `[`Fraction`](#struct_fraction)` `[`pow_fractions`](#fraction_8h_1afa5a6802e6d6acfa2ac36cabce0574a1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)`            | Exponentiate fractions
 `struct `[`Chain`](#struct_chain) | 
 `struct `[`Fraction`](#struct_fraction) | 
 `struct `[`Link`](#struct_link) | 
@@ -220,14 +220,14 @@ Construct [Fraction](#struct_fraction)
 #### Returns
 The fraction constructed
 
-#### `public void `[`reduce_fraction`](#fraction__math_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)` 
+#### `public void `[`reduce_fraction`](#fraction_8h_1a945e863cbdcd274aef0eefb079d4b4d1)`(`[`Fraction`](#struct_fraction)` * a)` 
 
 Reduce fraction to most basic form
 
 #### Parameters
 * `a` The fraction to be reduced
 
-#### `public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction__math_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`add_fractions`](#fraction_8h_1a61a421cc3f02c994922da7b24aa4c4e1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Add two fractions
 
@@ -239,7 +239,7 @@ Add two fractions
 #### Returns
 a+b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction__math_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`subtract_fractions`](#fraction_8h_1aba98b22dcee1e4eb95a7ac2fe9281e8d)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Subtract two fractions
 
@@ -251,7 +251,7 @@ Subtract two fractions
 #### Returns
 a-b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`multiply_fractions`](#fraction__math_8h_1a4b4e5ede06559519a9a6894aeef10526)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`multiply_fractions`](#fraction_8h_1a4b4e5ede06559519a9a6894aeef10526)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Multiply two fractions
 
@@ -263,7 +263,7 @@ Multiply two fractions
 #### Returns
 a*b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`divide_fractions`](#fraction__math_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`divide_fractions`](#fraction_8h_1a94da26ba38d24c1688e08a9d8d7ae6c8)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Divide two fractions
 
@@ -275,7 +275,7 @@ Divide two fractions
 #### Returns
 a/b
 
-#### `public `[`Fraction`](#struct_fraction)` `[`modulus_fractions`](#fraction__math_8h_1a8b3e9f3e279ccb842a61ae8490c96959)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`modulus_fractions`](#fraction_8h_1a8b3e9f3e279ccb842a61ae8490c96959)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Modulus fractions
 
@@ -289,7 +289,7 @@ Get remainder after dividing two fractions. Throw an error if the fractions are 
 #### Returns
 ab
 
-#### `public `[`Fraction`](#struct_fraction)` `[`factorial_fraction`](#fraction__math_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09)`(`[`Fraction`](#struct_fraction)` a)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`factorial_fraction`](#fraction_8h_1a5a68b5e9f579eaf0e7ccc499fd55ab09)`(`[`Fraction`](#struct_fraction)` a)` 
 
 Get factorial of fraction
 
@@ -301,7 +301,7 @@ Return the factorial of a fraction. Throw an error if the fractions are non-inte
 #### Returns
 a!
 
-#### `public int `[`compare_fractions`](#fraction__math_8h_1a50c53ea17596e7cf28eb58aadd7042d2)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public int `[`compare_fractions`](#fraction_8h_1a50c53ea17596e7cf28eb58aadd7042d2)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Compare fractions
 
@@ -315,7 +315,7 @@ Return 0 if fractions are equal, -1 if a<b, and 1 if a>b
 #### Returns
 The comparison result
 
-#### `public `[`Fraction`](#struct_fraction)` `[`pow_fractions`](#fraction__math_8h_1afa5a6802e6d6acfa2ac36cabce0574a1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
+#### `public `[`Fraction`](#struct_fraction)` `[`pow_fractions`](#fraction_8h_1afa5a6802e6d6acfa2ac36cabce0574a1)`(`[`Fraction`](#struct_fraction)` a,`[`Fraction`](#struct_fraction)` b)` 
 
 Exponentiate fractions
 
