@@ -101,6 +101,7 @@ TEST_CASE("Chain Test", "[chain][core]"){
 		{{0,1}, "zero"},
 		{{123456789,1}, "one hundred and twenty three million, four hundred and fifty six thousand, seven hundred and eighty nine"},
 		{{123456089,1}, "one hundred and twenty three million, four hundred and fifty six thousand, and eighty nine"},
+		{{-123456089,1}, "negative one hundred and twenty three million, four hundred and fifty six thousand, and eighty nine"},
 		};
 
 		

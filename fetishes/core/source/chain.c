@@ -1,6 +1,6 @@
 #include "core/include/chain.h"
 #include "core/include/error.h"
-#include "core/include/fraction_math.h"
+#include "core/include/fraction.h"
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
