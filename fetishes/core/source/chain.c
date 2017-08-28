@@ -307,7 +307,11 @@ static void append_fraction_int_to_chain(Chain * chain, FractionInt num)
 		if (num / magnitude != 0) {
 			/* Add space */
 			if (started == 1) {
-				append_cstr_to_chain(chain, ", ");
+				if(magnitude == 1 && num/100 == 0){
+					append_cstr_to_chain(chain, ", and ");
+				}else{
+					append_cstr_to_chain(chain, ", ");
+				}
 			} else {
 				started = 1;
 			}
