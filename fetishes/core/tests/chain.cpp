@@ -2,6 +2,10 @@
 #include "core/include/chain.h"
 #include "FileUtil.h"
 #include <cstring>
+#include <map>
+#include <string>
+#include <utility>
+
 TEST_CASE("Chain Test", "[chain][core]"){
 	const char*const sample_text = "A human has fallen from\n\t the surface world\n";
 	const char*const sample_text2 = "Mama's scary; Mama hates\t\nyou\n";
@@ -83,6 +87,31 @@ TEST_CASE("Chain Test", "[chain][core]"){
 		REQUIRE(frac.den == 1);
 		frac = get_next_byte_of_stream(fp);
 		REQUIRE(frac.den == 1);
+	}
+
+	SECTION("Chain/fractiont test"){
+		Chain chain;
+		init_chain(&chain);
+		char buffer[100] = {0};
+
+		std::map<std::pair<FractionInt, FractionInt>, const std::string> test_map = {
+		{{100,1}, "one hundred"},
+		{{25,1}, "twenty five"},
+		{{-1,1}, "negative one"},
+		{{0,1}, "zero"},
+		{{123456789,1}, "one hundred and twenty three million, four hundred and fifty six thousand, seven hundred and eighty nine"},
+		{{123456089,1}, "one hundred and twenty three million, four hundred and fifty six thousand, and eighty nine"},
+		};
+
+		
+		for(const auto& m : test_map){
+			append_fraction_to_chain(&chain, construct_fraction(m.first.first, m.first.second));
+			chain_to_cstr(chain, buffer);
+			REQUIRE(0 == strcmp(buffer, m.second.c_str()));
+			clear_chain(&chain);
+			memset(buffer, 0x00, sizeof(buffer));
+		}
+
 	}
 
 }
