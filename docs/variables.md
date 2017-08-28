@@ -35,7 +35,7 @@ Nonperson - `IT`/`ITSELF`/`ITS`/`ITS OWN`
 respectively. `HIMSELF` is reflexive. `HIM` is objective.
 
 Male, female, and neutral are used for humanly named variables,
-like `Sasha Grey`
+like `Harry Potter`
 Nonperson is used for object-ly named variables, like `violet wand`
 N/A is used for non-nouns
 
@@ -50,19 +50,19 @@ same way as possessive identifiers.
 
 Examples:
 
-Subtract `Richard Stallman`(male) from `Richard Stallman`:
+Subtract `Albert Einstein`(male) from `Albert Einstein`:
 
-    Have Richard Stallman spank himself
+    Have Albert Einstein spank himself
 
-Subtract `Rufus Xavier Sarsaparilla` from `Ada Lovelace`
-Multiply `Ada Lovelace`(female) by `Linus Torvalds`(no gender):
+Subtract `Leonhard Euler` from `Ada Lovelace`
+Multiply `Ada Lovelace`(female) by `Aristotle`(unassigned gender):
 
-    Have Rufus Xavier Sarsaparilla spank Ada Lovelace
-    Have Linus Torvalds worship her feet
+    Have Leonhard Euler spank Ada Lovelace
+    Have Aristotle worship her feet
 
-Add `Guido Van Rossum`(male) to `Guido Van Rossum`
+Add `Isaac Newton`(male) to `Isaac Newton`
 
-    Have Guido Van Rossum lick his own cock
+    Have Isaac Newton lick his own cock
 
 You see, a pronoun was made to take the place of a noun, 'cause saying
 all those nouns over and over can really wear you down!
