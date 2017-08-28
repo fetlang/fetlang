@@ -2,13 +2,13 @@
 
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
-`public void `[`write_chain_to_file`](#fileio_8h_1a897accbfb97acae9ff091b3dc13921c2)`(Chain chain,Chain filename)`            | Set file contents to chain's contents
-`public void `[`read_file_to_chain`](#fileio_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(Chain * chain,Chain filename)`            | Set chain contents to file's contents
-`public FILE * `[`open_file_as_stream`](#fileio_8h_1a4bea31562c5e8ea9a9dbaece1203119f)`(Chain filename,const char * mode)`            | Open file as a stream
+`void `[`write_chain_to_file`](#fileio_8h_1a897accbfb97acae9ff091b3dc13921c2)`(Chain chain,Chain filename)`            | Set file contents to chain's contents
+`void `[`read_file_to_chain`](#fileio_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(Chain * chain,Chain filename)`            | Set chain contents to file's contents
+`FILE * `[`open_file_as_stream`](#fileio_8h_1a4bea31562c5e8ea9a9dbaece1203119f)`(Chain filename,const char * mode)`            | Open file as a stream
 
 ## Members
 
-#### `public void `[`write_chain_to_file`](#fileio_8h_1a897accbfb97acae9ff091b3dc13921c2)`(Chain chain,Chain filename)` 
+#### `void `[`write_chain_to_file`](#fileio_8h_1a897accbfb97acae9ff091b3dc13921c2)`(Chain chain,Chain filename)` 
 
 Set file contents to chain's contents
 
@@ -19,7 +19,7 @@ Open a file and set its contents to that of the chain's. As with other functions
 
 * `filename` A chain holding the filename of the file we're opening
 
-#### `public void `[`read_file_to_chain`](#fileio_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(Chain * chain,Chain filename)` 
+#### `void `[`read_file_to_chain`](#fileio_8h_1a008ca35b36cfa01cebd59a6dddd79671)`(Chain * chain,Chain filename)` 
 
 Set chain contents to file's contents
 
@@ -30,7 +30,7 @@ Open a file and read its contents to the chain's, replacing any previous values(
 
 * `filename` A chain holding the filename of the file we're opening
 
-#### `public FILE * `[`open_file_as_stream`](#fileio_8h_1a4bea31562c5e8ea9a9dbaece1203119f)`(Chain filename,const char * mode)` 
+#### `FILE * `[`open_file_as_stream`](#fileio_8h_1a4bea31562c5e8ea9a9dbaece1203119f)`(Chain filename,const char * mode)` 
 
 Open file as a stream
 

@@ -3,13 +3,13 @@
  Members                        | Descriptions                                
 --------------------------------|---------------------------------------------
 `define `[`FETLANG_ASSERTIVENESS_ASSERT_H_`](#assert_8h_1a28d5ebac4faa975fce6d2eae4621c292)            | 
-`public void `[`fetlang_assert`](#assert_8h_1a4fff71c9c919250017d104f73f2b82b7)`(int condition,const char * message)`            | Throw runtime_error if condition is not met
+`void `[`fetlang_assert`](#assert_8h_1a4fff71c9c919250017d104f73f2b82b7)`(int condition,const char * message)`            | Throw runtime_error if condition is not met
 
 ## Members
 
 #### `define `[`FETLANG_ASSERTIVENESS_ASSERT_H_`](#assert_8h_1a28d5ebac4faa975fce6d2eae4621c292) 
 
-#### `public void `[`fetlang_assert`](#assert_8h_1a4fff71c9c919250017d104f73f2b82b7)`(int condition,const char * message)` 
+#### `void `[`fetlang_assert`](#assert_8h_1a4fff71c9c919250017d104f73f2b82b7)`(int condition,const char * message)` 
 
 Throw runtime_error if condition is not met
 
