@@ -179,7 +179,7 @@ int compare_fractions(Fraction a, Fraction b)
 		return a.num > b.num ? 1 : a.num < b.num ? -1 : 0;
 	}
 
-	/* Infinitite number vs finite number */
+	/* Infinite number vs finite number */
 	if (a.den == 0) {
 		return a.num > 0 ? 1 : -1;
 	}

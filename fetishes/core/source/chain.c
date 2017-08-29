@@ -443,7 +443,7 @@ int compare_chains(Chain a, Chain b)
 			return 1;
 		}
 
-		/* Foward iterators */
+		/* Forward iterators */
 		a_iterator = a_iterator->next;
 		b_iterator = b_iterator->next;
 	}

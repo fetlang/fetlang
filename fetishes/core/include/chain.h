@@ -151,7 +151,7 @@ void read_file_to_chain(Chain * chain, Chain filename);
 /**
  * Compare chains
  *
- * Check if chaims are equivalent. Will return 0 if they are, and another value
+ * Check if chains are equivalent. Will return 0 if they are, and another value
  * if they are not.
  *
  * @param a The first chain
