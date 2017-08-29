@@ -48,7 +48,7 @@ TEST_CASE("Tokenizer, in general, works as expected", "[Tokenizer]"){
 	}
 }
 
-TEST_CASE("Possesives", "[Tokenizer]"){	
+TEST_CASE("Possessives", "[Tokenizer]"){	
 	std::string code = "Bob's Burgers\nher face\ntheir face";
 	Tokenizer tokenizer = Tokenizer(code);
 	auto tokens = tokenizer.tokenize();

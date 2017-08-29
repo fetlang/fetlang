@@ -3,7 +3,7 @@
 `is` - `==`  
 `is not` - `!=`  
 `is submissive to` - `>=`  
-`is dominant towardds` - `<=`  
+`is dominant towards` - `<=`  
 
 ## If statements
 The scope of if statements and the like are determined by preceding tabs or spaces,
