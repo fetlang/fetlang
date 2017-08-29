@@ -173,7 +173,7 @@ Open a file and read its contents to the chain's, replacing any previous values(
 
 Compare chains
 
-Check if chaims are equivalent. Will return 0 if they are, and another value if they are not.
+Check if chains are equivalent. Will return 0 if they are, and another value if they are not.
 
 #### Parameters
 * `a` The first chain 

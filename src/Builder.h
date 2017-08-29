@@ -16,7 +16,7 @@ class Builder{
 
 	// Do we enable compiler optimization?
 	// If this is set to true, we use the `-O2` and `-s` flags
-	// (only use `-s` if applicable, or surpress warning)
+	// (only use `-s` if applicable, or suppress warning)
 	//
 	// Off by default
 	bool optimization;

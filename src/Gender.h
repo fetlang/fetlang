@@ -6,11 +6,11 @@ enum Gender {
 
 	MALE_GENDER, FEMALE_GENDER, /* Applies to people (singular) only */
 
-	NEUTRAL_GENDER, /* Includes nonbinary and plural, mostly applies to
+	NEUTRAL_GENDER, /* Includes non-binary and plural, mostly applies to
 			 * people, rarely to a group of objects
 			 *
 			 * No technical distinction is made between singular
-			 * nonbinary and plural
+			 * non-binary and plural
 			 */
 
 	NONPERSON_GENDER, /* Singular object, applies to nouns only */

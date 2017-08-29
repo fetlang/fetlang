@@ -71,7 +71,7 @@ int main(int argc, const char* argv[]){
 		std::cerr<<"Generic Exception: "<<e.what()<<"\n";
 		return 1;
 	}catch(...){
-		std::cerr<<"An unknown exception occured\n";
+		std::cerr<<"An unknown exception ocurred\n";
 		return 1;
 	}
 	return 0;

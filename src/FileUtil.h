@@ -32,7 +32,7 @@ namespace FileUtil{
 	// Check if file exists
 	bool fileExists(const std::string& path);
 
-	// Recrusively destroy directory, but throw exception if it doesn't exist
+	// Recursively destroy directory, but throw exception if it doesn't exist
 	void destroyDirectory(const std::string& path);
 
 	// Destroy a file, throw an exception if it doesn't exist

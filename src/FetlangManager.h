@@ -103,7 +103,7 @@ private:
 	void initialize();
 
 	// This fills out all the properties of this class
-	// Called everytime a fetish is loaded (inc. core)
+	// Called every time a fetish is loaded (inc. core)
 	void doLoading();
 public:
 	// Create the singleton and initialize() it

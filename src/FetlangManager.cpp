@@ -45,7 +45,7 @@ Pronoun FetlangManager::getPronoun(const std::string& pronoun_name) const{
 // Fill the list of pronouns
 void FetlangManager::loadPronouns(){
 	Pronoun pronoun_array[] = {
-		// Objective pronounouns
+		// Objective pronouns
 		Pronoun("him", MALE_GENDER, true, false),
 		Pronoun("her", FEMALE_GENDER, true, true),// Special case, because her can be possessive or not
 		Pronoun("them", NEUTRAL_GENDER, true, false),
@@ -272,10 +272,10 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 		e.display();
 		exit(EXIT_FAILURE);
 	}catch(const std::exception& e){
-		std::cerr<<"An exception occured: "<<e.what()<<"\n";
+		std::cerr<<"An exception ocurred: "<<e.what()<<"\n";
 		exit(EXIT_FAILURE);
 	}catch(...){
-		std::cerr<<"An unknown exception occured\n";
+		std::cerr<<"An unknown exception ocurred\n";
 		exit(EXIT_FAILURE);
 	}
 }

@@ -61,7 +61,7 @@ class Parser {
 	// and operator to the node according to the given grammar("make",
 	// "have", "plain");
 	//
-	// It is the caller's responsibility to find the leftward and rightware
+	// It is the caller's responsibility to find the leftward and rightward
 	// (DIFFERENT FROM LHO AND RHO, which are lvalues and rvalues)
 	//
 	void parseOperation(const Grammar&, std::vector<Token>::iterator left, const Operator&, std::vector<Token>::iterator right, SyntaxTree::Node& node);

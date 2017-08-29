@@ -112,7 +112,7 @@ void Parser::transplaceIdentifierToken(std::vector<Token>::iterator& token,
 		Variable var(token->getValue(), actual_type);
 		variables.add(var);
 	}
-	// Note: We don't need to tranplace
+	// Note: We don't need to transplace
 	// BECAUSE, if we transplace, we would
 	// effectively replacing it with a copy of
 	// itself
@@ -172,7 +172,7 @@ void Parser::parseOperation(const Grammar& grammar, std::vector<Token>::iterator
 				" grammar does not allow leftward pronouns", *left);
 		}
 
-		// And replace with appropriae variable
+		// And replace with appropriate variable
 		transplacePronounToken(left);
 
 	}else if(left->getCategory() == Token::IDENTIFIER_TOKEN){
@@ -200,7 +200,7 @@ void Parser::parseOperation(const Grammar& grammar, std::vector<Token>::iterator
 				" grammar does not allow rightward pronouns", *right);
 		}
 
-		// And replace with appropriae variable
+		// And replace with appropriate variable
 		transplaceSecondPronounToken(right);
 
 	}else if(tokenIsReflexivePronoun(*right)){
@@ -422,7 +422,7 @@ void Parser::formBranch(Node& node){
 				// This is a have grammar operation
 				// It can take this form only:
 				//	have <rho> <operator> <lho>
-				//	Notice how this is revesed
+				//	Notice how this is reversed
 
 				// Make sure we have the next three tokens to work with
 				if(!nextTokensAreAvailable(3)){
