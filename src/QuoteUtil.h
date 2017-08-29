@@ -7,7 +7,7 @@ namespace QuoteUtil{
 	// Escape all non-trivial characters and place quotes around string
 	std::string quote(const std::string&);
 	
-	// Remove quotes and unescape escaped charactes
+	// Remove quotes and unescape escaped characters
 	// Throw QuoteUtilException if not surrounded by quotes
 	// -or- if there is a bad escape sequence
 	std::string unquote(const std::string&);

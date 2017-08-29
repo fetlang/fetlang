@@ -15,7 +15,7 @@ std::vector<Token> Tokenizer::splitCode(){
 	std::string token = "";
 	// Record line number 
 	int line = 1;// The convention is to start at 1
-	int parenthesis_level = 0; // Are we in parenthetical commment?
+	int parenthesis_level = 0; // Are we in parenthetical comment?
 
 	int i = 0;	
 	int indent = 0;
@@ -279,7 +279,7 @@ std::vector<Token> Tokenizer::removePossessions(const std::vector<Token>& old_to
 				}
 			}else if(tokenIsPossessivePronoun(*it)){
 				
-				// Possessive pronoun, so elimanate following identifiers
+				// Possessive pronoun, so eliminate following identifiers
 				int have_skipped = false;
 				if(it->getValue() == "her"){
 					have_skipped = true;// Because "her" can be possessive or not
@@ -292,7 +292,7 @@ std::vector<Token> Tokenizer::removePossessions(const std::vector<Token>& old_to
 					have_skipped=true;
 				}
 				if(!have_skipped){
-					throw TokenException("Expected possesions to follow possesive pronoun", *it);
+					throw TokenException("Expected possessions to follow possessive pronoun", *it);
 				}
 				
 			}

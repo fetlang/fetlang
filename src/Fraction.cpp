@@ -23,7 +23,7 @@ FractionInt Fraction::getBottom() const{
 }
 
 // Make sure we reduce the fraction
-// everytime we change its values
+// every time we change its values
 void Fraction::setTop(FractionInt top) {
 	this->top = top;
 	this->reduce();

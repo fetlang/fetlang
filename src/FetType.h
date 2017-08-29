@@ -18,7 +18,7 @@ enum FetType {
 	REFERENCE_TYPE,// Decays to fraction
 };
 
-// The two latter type decay into the more basic typses
+// The two latter type decay into the more basic types
 inline FetType decayFetType(FetType t){
 	if(t == REFERENCE_TYPE)
 		return FRACTION_TYPE;

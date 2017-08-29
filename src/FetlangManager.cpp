@@ -272,10 +272,10 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 		e.display();
 		exit(EXIT_FAILURE);
 	}catch(const std::exception& e){
-		std::cerr<<"An exception ocurred: "<<e.what()<<"\n";
+		std::cerr<<"An exception occurred: "<<e.what()<<"\n";
 		exit(EXIT_FAILURE);
 	}catch(...){
-		std::cerr<<"An unknown exception ocurred\n";
+		std::cerr<<"An unknown exception occurred\n";
 		exit(EXIT_FAILURE);
 	}
 }

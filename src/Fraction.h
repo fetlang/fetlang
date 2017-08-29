@@ -2,7 +2,7 @@
 /*
 	Fraction class:
 		Holds a numerator(top) and a denominator(bottom)
-		"Top" and "bottom" sacrifice clearity in favor 
+		"Top" and "bottom" sacrifice clarity in favor 
 		of keeping up with BDSM themes (obviously more important)
 */
 #include <stdint.h>

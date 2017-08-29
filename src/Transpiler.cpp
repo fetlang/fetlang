@@ -275,7 +275,7 @@ std::string Transpiler::transpileBranch(Node& node){
 		replaceText(middle_code, "LHO", lho_code);
 		replaceText(middle_code, "RHO", rho_code);
 
-		// And add the code for the whole operation(includign pre/post)
+		// And add the code for the whole operation(including pre/post)
 		code += pre_code+middle_code+"\n\n"+post_code;
 		break;
 	}

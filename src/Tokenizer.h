@@ -19,10 +19,10 @@ class Tokenizer {
 
 	std::string code;
 
-	/* Split string into real basic tokens, words and quote onlys*/
+	/* Split string into real basic tokens, words and quote only*/
 	std::vector<Token> splitCode();
 
-	/* Remove gag/ungag tokens and everything inbetween them */
+	/* Remove gag/ungag tokens and everything in between them */
 	std::vector<Token> removeGags(const std::vector<Token>&) const;
 
 	/* Merge by keyphrase */
@@ -31,7 +31,7 @@ class Tokenizer {
 	/* Return list of individual keywords (words that make up a keyphrase) */
 	std::unordered_set<std::string> getAllKeywords() const;
 
-	// Convert identifiers from possesive form into their true form
+	// Convert identifiers from possessive form into their true form
 	std::vector<Token> removePossessions(const std::vector<Token>& tokens);
 public:
 	Tokenizer(const std::string& code);
