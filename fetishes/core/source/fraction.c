@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "core/include/fraction.h"
 #include "core/include/error.h"
-#define POW_ACCURACY (1<<8)	/*256 */
+const FractionInt POW_ACCURACY = (1<<8);	/*256 */
 
 
 Fraction construct_fraction(FractionInt num, FractionInt den)

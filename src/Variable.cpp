@@ -20,7 +20,7 @@ void Variable::setName(const std::string& name){
 	*/
 	
 	// Make sure each var is given a unique identifier
-	static int unique_id = 0;
+	static unsigned int unique_id = 0;
 	unique_id++;
 
 	// First parts of C identifier

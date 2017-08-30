@@ -1,11 +1,11 @@
 # Fetlang
 Fetlang is a statically typed, procedural, esoteric programming language and
-reference implementation. It is designed such that source code, at first
-glance, might look like poorly written erotica.  
+reference implementation. It is designed such that source code looks like
+poorly written fetish erotica  
 
 Though Fetlang is in a working state, it is not recommended to use
 for production code at this moment, especially in medical or military
-applications.
+applications
 
 ## Example
 The following example outputs the arguments given to the executable:

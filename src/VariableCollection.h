@@ -26,7 +26,7 @@ public:
 	// If it does, return that variable, else throw FetlangException
 	Variable& get(const std::string&);
 
-	// Same as "get" adds to the access list
+	// Same as "get," but adds to the access list
 	Variable& access(const std::string&);
 
 	Variable& getLastAdded();

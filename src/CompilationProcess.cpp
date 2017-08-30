@@ -152,7 +152,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		#endif
 			command += " "+QuoteUtil::quote("-l"+lib);
 		}
-		// If we're not linking and on linux, just assume we need the math library
+		// If we're on linux and not linking, just assume we need the math library
 		#ifdef __linux__
 			command += " -lm";
 		#endif
