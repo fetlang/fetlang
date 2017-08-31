@@ -26,8 +26,6 @@ release_sources = common_sources + ['main.cpp']
 fetish_sources = [
 '../fetishes/core/source/chain.c', '../fetishes/core/source/error.c', '../fetishes/core/source/fraction.c',
 '../fetishes/obedience/source/fileio.c',
-'../fetishes/obedience/source/filemanip.rs',
-'../fetishes/obedience/source/filemanip.cpp',
 '../fetishes/core/tests/chain.cpp', '../fetishes/obedience/tests/fileio.cpp',
 '../fetishes/core/tests/fraction.cpp']
 test_sources = common_sources + fetish_sources + ['tests/main.cpp','tests/fraction_parser.cpp','tests/quote_util.cpp', 'tests/parser.cpp',

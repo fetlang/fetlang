@@ -39,14 +39,4 @@ TEST_CASE("Fileio Test", "[stream][file][obedience]"){
 
 	}
 
-	SECTION("Touchatouchatoucha touch me")
-	{
-		std::string filename = "Jane";
-		Chain chain;
-		init_chain(&chain);
-		append_cstr_to_chain(&chain, filename.c_str());
-		touch_file(chain);
-	}
-
-
 }
