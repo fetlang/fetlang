@@ -3,6 +3,7 @@
 !*.c
 !*.h
 !*.hpp
+!*.rs
 !*.hxx
 !*.ipp
 !*.cpp

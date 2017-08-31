@@ -1,4 +1,4 @@
-project('Fetlang', ['c', 'cpp', 'rust'], default_options : ['cpp_std=c++11'])
+project('Fetlang', ['c', 'cpp'], default_options : ['cpp_std=c++11'])
 boost_dir = include_directories('thirdparty/boost/')
 thirdparty_dir = include_directories('thirdparty')
 fetish_dir = include_directories('../fetishes')
