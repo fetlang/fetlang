@@ -1,0 +1,19 @@
+{
+	"name": "Manhandling",
+	"description": "Operators for filesystem manipulation",
+
+	"operators": [
+	{
+		"name": "touch",
+		"description": "Touch a file. The RHO does nothing",
+		"grammars": ["have"],
+		"code":
+		{
+			"chain/chain": "touch_file(LHO);",
+			"chain/fraction": "touch_file(LHO);"
+		}
+	}
+    ]
+
+
+}

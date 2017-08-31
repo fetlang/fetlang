@@ -1,9 +1,9 @@
 #include "catch.hpp"
 #include "core/include/chain.h"
 #include "obedience/include/fileio.h"
-#include "obedience/include/filemanip.h"
 #include "FileUtil.h"
 #include <cstring>
+
 TEST_CASE("Fileio Test", "[stream][file][obedience]"){
 	const char*const sample_text = "A human has fallen from\n\t the surface world\n";
 	const char*const sample_text2 = "Mama's scary; Mama hates\t\nyou\n";
