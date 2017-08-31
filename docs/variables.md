@@ -62,7 +62,7 @@ Multiply `Ada Lovelace`(female) by `Aristotle`(unassigned gender):
 
 Add `Isaac Newton`(male) to `Isaac Newton`
 
-    Have Isaac Newton lick his own cock
+    Have Isaac Newton lick his own paw
 
 You see, a pronoun was made to take the place of a noun, 'cause saying
 all those nouns over and over can really wear you down!

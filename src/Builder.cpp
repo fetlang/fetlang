@@ -15,8 +15,8 @@
 #include "CompilationProcess.h"
 static const char*const BUILD_FOLDER_RELATIVE = "/fetlang_build/";
 // Relative to BUILD_FOLDER_RELATIVE
-static const char*const RELEASE_FOLDER_RELATIVE = "/fet_obj_release/";
-static const char*const DEBUG_FOLDER_RELATIVE = "/fet_obj_debug/";
+static const char*const RELEASE_FOLDER_RELATIVE = "/fetish_obj_release/";
+static const char*const DEBUG_FOLDER_RELATIVE = "/fetish_obj_debug/";
 static const char*const STAGE_FOLDER_RELATIVE = "/output/";
 #ifndef __WIN32__
 static const char*const DEFAULT_DESTINATION_PATH = "a.out";

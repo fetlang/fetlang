@@ -1,10 +1,11 @@
 # Fetlang
 Fetlang is a statically typed, procedural, esoteric programming language and
-reference implementation. It is designed such that source code, at first
-glance, might look like poorly written erotica.  
+reference implementation. It is designed such that source code looks like
+poorly written fetish erotica  
 
-This is currently incomplete, but almost usable. It is not recommended to use
-this for production code at this moment.
+Though Fetlang is in a working state, it is not recommended to use
+for production code at this moment, especially in medical or military
+applications
 
 ## Example
 The following example outputs the arguments given to the executable:
@@ -28,7 +29,7 @@ The following example outputs the arguments given to the executable:
 * Transpiles to C
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
-* Probably Turing complete, but not a tarpit
+* Probably Turing complete
 * Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building
@@ -48,7 +49,7 @@ $ git clone https://github.com/Property404/fetlang
 $ cd fetlang
 $ meson --buildtype=release src build
 $ cd build
-$ # Build Fetlang and runs tests
+$ # Build Fetlang and run tests
 $ ninja test
 ```
 

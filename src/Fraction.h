@@ -9,7 +9,7 @@
 #include <string>
 
 // Numeric type of top and bottom
-typedef int64_t  FractionInt;//TODO: put this in a common header file...maybe
+typedef int64_t  FractionInt;
 
 class Fraction {
 	// Numerator
