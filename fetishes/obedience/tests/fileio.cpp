@@ -1,6 +1,7 @@
 #include "catch.hpp"
 #include "core/include/chain.h"
 #include "obedience/include/fileio.h"
+#include "obedience/include/filemanip.h"
 #include "FileUtil.h"
 #include <cstring>
 TEST_CASE("Fileio Test", "[stream][file][obedience]"){
@@ -37,5 +38,15 @@ TEST_CASE("Fileio Test", "[stream][file][obedience]"){
 		clear_chain(&filename_as_chain);
 
 	}
+
+	SECTION("Touchatouchatoucha touch me")
+	{
+		std::string filename = "Jane";
+		Chain chain;
+		init_chain(&chain);
+		append_cstr_to_chain(&chain, filename.c_str());
+		touch_file(chain);
+	}
+
 
 }

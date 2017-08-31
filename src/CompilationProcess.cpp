@@ -27,6 +27,7 @@ CompilationProcess& CompilationProcess::setCompiler(const std::string& new_compi
 		if(compiler == "clang++") setLanguage( "c++");
 		if(compiler == "c++") setLanguage( "c++");
 		if(compiler == "g++") setLanguage( "c++");
+		if(compiler == "rustc") setLanguage( "rust");
 	}
 
 	return *this;
@@ -40,6 +41,7 @@ CompilationProcess& CompilationProcess::setLanguage(const std::string& lang){
 	if(this->compiler == ""){
 		if(language == "c") setCompiler("cc");
 		if(language == "c++") setCompiler("c++");
+		if(language == "rust") setCompiler("rustc");
 	}
 	return *this;
 }
@@ -97,6 +99,8 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 			setLanguage("c++");
 		}else if(extension == "cc"){
 			setLanguage("c++");
+		}else if(extension == "rs"){
+			setLanguage("rust");
 		}
 
 		if (language == ""){
@@ -115,9 +119,12 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		command += " -std=c++11";
 	}
 
-	if(!link_objects){
+	if(!link_objects && language != "rust"){
 		command += " -c";
+	}else if(language == "rust"){
+		//command += " --emit-llvm";
 	}
+		
 
 	// Optimize if needed
 	if(optimization){
@@ -130,8 +137,10 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	}
 
 	// add includes
-	for(const auto& dir : include_directories){
-		command += " "+QuoteUtil::quote("-I"+dir);
+	if(language != "rust"){
+		for(const auto& dir : include_directories){
+			command += " "+QuoteUtil::quote("-I"+dir);
+		}
 	}
 
 	// add sources
@@ -156,6 +165,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		#ifdef __linux__
 			command += " -lm";
 		#endif
+			command += " -lpthread -lresolv";
 	}
 
 	// Do the do
