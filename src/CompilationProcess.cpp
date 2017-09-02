@@ -163,7 +163,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		}
 		// If we're on linux and not linking, just assume we need the math library
 		#ifdef __linux__
-			command += " -lm";
+			command += " -lm -ldl";
 		#endif
 			command += " -lresolv -lpthread";
 	}
