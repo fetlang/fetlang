@@ -165,7 +165,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		#ifdef __linux__
 			command += " -lm";
 		#endif
-			command += " -lresolv";
+			command += " -lresolv -lpthread";
 	}
 
 	// Do the do
