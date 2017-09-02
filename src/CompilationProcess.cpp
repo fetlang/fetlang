@@ -165,10 +165,11 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		#ifdef __linux__
 			command += " -lm";
 		#endif
-			command += " -lpthread -lresolv";
+			command += " -lresolv";
 	}
 
 	// Do the do
+	command += " > /dev/null";
 	FILE* process = popen(command.c_str(), "r");
 	if(process == NULL || process <= 0){
 		throw FetlangException("Issue with popen in compilation process");
