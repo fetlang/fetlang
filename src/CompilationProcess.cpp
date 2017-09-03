@@ -119,16 +119,20 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		command += " -std=c++11";
 	}
 
-	if(!link_objects && language != "rust"){
-		command += " -c";
-	}else if(language == "rust"){
-		//command += " --emit-llvm";
+	if(!link_objects){
+		if(language != "rust"){
+			command += " -c";
+		}else{
+			command += " --emit link";
+		}
 	}
-		
 
 	// Optimize if needed
 	if(optimization){
-		command += " -O2";
+		command += " -O";
+		if(language == "c" || language == "c++") {
+			command += "2";
+		}
 	}
 
 	// Extra
