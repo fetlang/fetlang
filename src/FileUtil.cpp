@@ -4,6 +4,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 
 namespace FileUtil {
 
@@ -25,6 +26,7 @@ std::vector<std::string> getFilesInDirectory(const std::string& directory_name){
 			filenames.push_back(it->path().filename().string());
 		}
 	}
+	std::sort(filenames.begin(), filenames.end());
 	return filenames;
 }
 
