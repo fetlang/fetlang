@@ -101,6 +101,9 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 			setLanguage("c++");
 		}else if(extension == "rs"){
 			setLanguage("rust");
+		}else if(extension == "text" || extension == "txt" || extension == "o"
+			|| extension == "out" || extension == "a"){
+			return;
 		}
 
 		if (language == ""){

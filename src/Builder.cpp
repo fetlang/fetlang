@@ -113,10 +113,12 @@ void Builder::build(){
 	// And compile each fetish
 	std::vector<std::string> all_objects;
 	for(const Fetish& fetish: manager.getFetishes()){
+		FileUtil::ensureDirectoryExists(fetish_path+"/"+fetish.getName());
+		// Each source file gets compiled independently
 		for(const std::string& source_file : fetish.getSources()){
-			FileUtil::ensureDirectoryExists(fetish_path+"/"+fetish.getName());
 			all_objects.push_back(fetish_path+"/"+fetish.getName()+"/"+source_file+".o");
 			std::string source_path = fetish.getSourcePath()+source_file;
+
 			if(!FileUtil::fileExists(all_objects.back())){
 				comp_proc.clear().setOptimization(optimization).addIncludeDirectories({include_path,
 					fetish.getIncludePath()}).addLibraries(fetish.getLibraries()).
