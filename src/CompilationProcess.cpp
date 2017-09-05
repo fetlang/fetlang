@@ -175,14 +175,21 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 			command += " -lresolv -lpthread";
 	}
 
+	// Silence rustc output
+	if(language == "rust")
+	{
+		command += " 2>&1 | grep -v -E '^[[:space:]]*$|^note';if [[ $? != 1 ]]; then (echo \"rustc failed\" 1>&2 && exit 42);fi";
+
+	}
+
 	// Do the do
-	command += " > /dev/null";
-	FILE* process = popen(command.c_str(), "r");
+	FILE* process = popen(command.c_str(), "w");
 	if(process == NULL || process <= 0){
 		throw FetlangException("Issue with popen in compilation process");
 	}
 	if(pclose(process)){
-		throw FetlangException("Issue closing compilation process:" + command);
+		throw FetlangException("Issue closing compilation process(errno "
+			+std::to_string(errno)+"): " + command);
 	}
 
 }
