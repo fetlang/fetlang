@@ -135,6 +135,10 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		command += " -O";
 		if(language == "c" || language == "c++") {
 			command += "2";
+			// Link time optimization
+			if(link_objects){
+				command += " -flto";
+			}
 		}
 	}
 
