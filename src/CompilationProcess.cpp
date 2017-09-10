@@ -192,7 +192,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 		throw FetlangException("Issue with popen in compilation process");
 	}
 	if(pclose(process)){
-		throw FetlangException("Issue closing compilation process(errno "
+		throw FetlangException("Compilation process failed (errno "
 			+std::to_string(errno)+"): " + command);
 	}
 
