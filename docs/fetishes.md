@@ -1,7 +1,7 @@
 # Fetishes
-A fetish is a loadable module written in C and/or C++ that extends Fetlang. By
-default, a fetish called `core` loads automatically and contains the main
-language functionality.
+A fetish is a loadable module written in C, C++ and/or Rust that extends
+Fetlang. By default, a fetish called `core` loads automatically and contains
+the main language functionality.
 
 ## Loading Fetishes
 Using the phrase `I have a fetish for` in a [comment](comments.md) will load a fetish. Example:  
@@ -22,7 +22,7 @@ You can create your own custom fetishes to extend Fetlang. A fetish is a directo
         // public C headers directory
         include
             ...
-        // C source and private C headers
+        // C/C++/Rust source and private headers
         source 
             ...
 
@@ -30,7 +30,10 @@ You can create your own custom fetishes to extend Fetlang. A fetish is a directo
 The C headers and source contains whatever you want. The files in `./include`
 should contain functions and the like you reference either from `fetish.json`
 or another fetish. To access another fetish's members, you can `#include
-"fetish_name/file_name"`
+"fetish_name/file_name"`  
+
+The C++ and Rust sources should export unmangled functions to be declared in
+the C headers.
 
 ### Fetish.json
 Every fetish must contain a fetish.json file. You can use
