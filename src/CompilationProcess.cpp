@@ -165,11 +165,6 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	// Libraries
 	if(link_objects){
 		for(const auto& lib: libraries){
-		#ifndef __linux__
-			if(lib == "m"){
-				continue;
-			}
-		#endif
 			command += " "+QuoteUtil::quote("-l"+lib);
 		}
 		// If we're on linux and not linking, just assume we need the math library
