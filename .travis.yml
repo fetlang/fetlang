@@ -23,6 +23,7 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo unzip ninja-linux.zip -d /usr/local/bin; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo chmod 755 /usr/local/bin/ninja; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl -sSf https://static.rust-lang.org/rustup.sh | sudo sh; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then pyenv shell 3.5; fi
   - pip3 install meson
   
 
