@@ -325,8 +325,8 @@ void Parser::formBranch(Node& node){
 
 				// Add those three nodes
 				Grammar bind_grammar("bind");
-				bind_grammar.setAllowedLeftwardOperands({Grammar::IDENTIFIER, Grammar::PRONOUN}); 
-				bind_grammar.setAllowedRightwardOperands({Grammar::IDENTIFIER, Grammar::PRONOUN, Grammar::CHAIN_LITERAL}); 
+				bind_grammar.addAllowedLeftwardOperands({Grammar::IDENTIFIER, Grammar::PRONOUN}); 
+				bind_grammar.addAllowedRightwardOperands({Grammar::IDENTIFIER, Grammar::PRONOUN, Grammar::CHAIN_LITERAL}); 
 				parseOperation(bind_grammar, lho, op, rho, bind_node);
 
 				// BUT we also have to add the other children, at least until
@@ -390,10 +390,10 @@ void Parser::formBranch(Node& node){
 
 				// Add comparison operator and its children
 				Grammar comparison_grammar("comparison");
-				comparison_grammar.setAllowedLeftwardOperands({Grammar::IDENTIFIER});
-				comparison_grammar.setAllowedRightwardOperands({Grammar::IDENTIFIER});
-				comparison_grammar.setAllowedRightwardOperands({Grammar::PRONOUN});
-				comparison_grammar.setAllowedRightwardOperands({Grammar::REFLEXIVE_PRONOUN});
+				comparison_grammar.addAllowedLeftwardOperands({Grammar::IDENTIFIER});
+				comparison_grammar.addAllowedRightwardOperands({Grammar::IDENTIFIER});
+				comparison_grammar.addAllowedRightwardOperands({Grammar::PRONOUN});
+				comparison_grammar.addAllowedRightwardOperands({Grammar::REFLEXIVE_PRONOUN});
 				parseOperation(comparison_grammar, lho, comparison_operator, rho, conditional_node);
 
 				// BUT we also have to add the other children, at least until
@@ -432,11 +432,11 @@ void Parser::formBranch(Node& node){
 				// Define our grammar
 				Grammar have_grammar("have");
 				have_grammar.setReversed(true);
-				have_grammar.setAllowedLeftwardOperands({
+				have_grammar.addAllowedLeftwardOperands({
 					Grammar::PRONOUN,
 					Grammar::IDENTIFIER
 				});
-				have_grammar.setAllowedRightwardOperands({
+				have_grammar.addAllowedRightwardOperands({
 					Grammar::PRONOUN,
 					Grammar::IDENTIFIER,
 					Grammar::REFLEXIVE_PRONOUN
@@ -473,11 +473,11 @@ void Parser::formBranch(Node& node){
 				
 				// Define our grammar
 				Grammar make_grammar("make");
-				make_grammar.setAllowedLeftwardOperands({
+				make_grammar.addAllowedLeftwardOperands({
 					Grammar::PRONOUN,
 					Grammar::IDENTIFIER
 				});
-				make_grammar.setAllowedRightwardOperands({
+				make_grammar.addAllowedRightwardOperands({
 					Grammar::PRONOUN,
 					Grammar::IDENTIFIER,
 					Grammar::REFLEXIVE_PRONOUN,
@@ -545,11 +545,11 @@ void Parser::formBranch(Node& node){
 
 			// Define our grammar
 			Grammar plain_grammar("plain");
-			plain_grammar.setAllowedLeftwardOperands({
+			plain_grammar.addAllowedLeftwardOperands({
 				Grammar::PRONOUN,
 				Grammar::IDENTIFIER
 			});
-			plain_grammar.setAllowedRightwardOperands({
+			plain_grammar.addAllowedRightwardOperands({
 				Grammar::FRACTION_LITERAL
 			});
 		

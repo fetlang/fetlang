@@ -11,13 +11,13 @@ bool Grammar::allowsRight(OperandType right) const{
 		allowed_rightward_operands.end();
 }
 
-void Grammar::setAllowedLeftwardOperands(const std::vector<OperandType>& operand_types){
+void Grammar::addAllowedLeftwardOperands(const std::vector<OperandType>& operand_types){
 	for(const auto& operand_type : operand_types){
 		allowed_leftward_operands.insert(operand_type);
 	}
 }
 
-void Grammar::setAllowedRightwardOperands(const std::vector<OperandType>& operand_types){
+void Grammar::addAllowedRightwardOperands(const std::vector<OperandType>& operand_types){
 	for(const auto& operand_type : operand_types){
 		allowed_rightward_operands.insert(operand_type);
 	}

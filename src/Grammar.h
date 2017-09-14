@@ -46,8 +46,8 @@ public:
 	// setAllowedLeftwardOperands({Grammar::IDENTIFIER,
 	// Grammar::CHAIN_LITERAL});
 	// These do not assign, but add to their respective fields 
-	void setAllowedLeftwardOperands(const std::vector<OperandType>&);
-	void setAllowedRightwardOperands(const std::vector<OperandType>&);
+	void addAllowedLeftwardOperands(const std::vector<OperandType>&);
+	void addAllowedRightwardOperands(const std::vector<OperandType>&);
 
 	inline bool isReversed() const {return is_reversed;}
 	
