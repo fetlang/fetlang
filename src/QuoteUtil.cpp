@@ -120,6 +120,7 @@ std::string QuoteUtil::unquote(const std::string& sequence){
 					i++;
 				}
 				new_sequence += unescapeOctal(octal_string);
+				i--;
 				continue;
 			}else{
 				new_sequence += unescape(sequence[i]);
