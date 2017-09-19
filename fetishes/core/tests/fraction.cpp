@@ -5,7 +5,7 @@ struct CFraction{
 	FractionInt num;
 	FractionInt den;
 
-	bool operator== (const CFraction& rho)
+	bool operator== (const CFraction& rho) const
 	{
 		return (rho.num == num);
 	}

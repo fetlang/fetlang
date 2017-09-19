@@ -81,7 +81,7 @@ void Fraction::reduce(){
 	}while(1 != b);
 }
 
-bool Fraction::operator==(const Fraction& rhs){
+bool Fraction::operator==(const Fraction& rhs) const{
 	return (this->top == rhs.top) && (this->bottom == rhs.bottom);
 }
 

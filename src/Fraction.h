@@ -35,7 +35,7 @@ public:
 	void setBottom(FractionInt);
 
 	// Numerical operations
-	bool operator==(const Fraction&);
+	bool operator==(const Fraction&) const;
 	Fraction& operator=(const Fraction&);
 	Fraction& operator/=(const Fraction&);
 	Fraction operator/(const Fraction&);
