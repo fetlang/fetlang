@@ -138,7 +138,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 			#ifdef FETLANG_LTO
 			// Link time optimization
 			if(link_objects){
-				//command += " -flto";
+				command += " -flto";
 			}
 			#endif
 		}
