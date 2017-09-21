@@ -14,6 +14,7 @@ TEST_CASE("FractionParser works correctly", "[FractionParser]"){
 		REQUIRE(stringToFraction("five million eight thousand and four") == Fraction(5008004));
 		REQUIRE(stringToFraction("zero") == Fraction(0));
 		REQUIRE(stringToFraction("infinity") == Fraction(1, 0));
+		REQUIRE_THROWS(stringToFraction("poop"));
 	}
 
 	SECTION("startsFractionLiteral works correctly"){

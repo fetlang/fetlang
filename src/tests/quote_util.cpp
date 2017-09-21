@@ -15,5 +15,6 @@ TEST_CASE("QuoteUtil works correctly", "[QuoteUtil]"){
 		REQUIRE(QuoteUtil::unquote("\"\\5\"") == "\5");
 		REQUIRE(QuoteUtil::unquote("\"\\5\n\t\a\"") == "\5\n\t\a");
 		REQUIRE(QuoteUtil::unquote("\"\\\"\"") == "\"");
+		REQUIRE(QuoteUtil::unquote("\"\"") == "");
 	}
 }
