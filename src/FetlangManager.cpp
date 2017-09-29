@@ -194,10 +194,12 @@ void FetlangManager::loadFetishFile(Fetish& fetish, const std::string& filename)
 
 	// Load extra code (preloop, postloop)
 	if(data.find("preloop_code") != data.end()){
-		preloop_code += data["preloop_code"];
+		std::string temp = data["preloop_code"];
+		preloop_code += temp;
 	}
 	if(data.find("postloop_code") != data.end()){
-		postloop_code += data["postloop_code"];
+		std::string temp = data["postloop_code"];
+		postloop_code += temp;
 	}
 
 }

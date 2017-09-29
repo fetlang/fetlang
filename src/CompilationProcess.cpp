@@ -185,7 +185,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 
 	// Do the do
 	FILE* process = popen(command.c_str(), "w");
-	if(process == NULL || process <= 0){
+	if(process == NULL || process <= static_cast<FILE*>(0)){
 		throw FetlangException("Issue with popen in compilation process");
 	}
 	if(pclose(process)){
