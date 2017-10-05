@@ -2,7 +2,7 @@
 #include "Tokenizer.h"
 #include "FetlangManager.h"
 #include "FractionParser.h"
-#include "thirdparty/boost/boost/algorithm/string/trim.hpp"
+#include <boost/algorithm/string/trim.hpp>
 
 
 Tokenizer::Tokenizer(const std::string& code){
