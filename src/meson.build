@@ -9,7 +9,7 @@ boost_dir = include_directories('thirdparty/boost/')
 main_incdirs = [boost_dir, thirdparty_dir]
 test_incdirs = [fetish_dir, boost_dir, thirdparty_dir]
 
-boost_dep = dependency('boost', modules:['algorithm', 'filesystem'], required:false)
+boost_dep = dependency('boost', modules:['algorithm', 'filesystem', 'system'], required:false)
 boost_test_dep = dependency('boost', modules:['test'], required:false)
 
 boost_sources = [
