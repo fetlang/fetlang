@@ -37,7 +37,7 @@ Requirements:
 * ninja
 * gcc/g++(>=4.9) or clang(>=3.5)  
 
-Optional Dependencies:
+Optional dependencies:
 * boost algorithm(>=1.62)
 * boost filesystem(>=1.62)
 * boost system(>=1.62)
