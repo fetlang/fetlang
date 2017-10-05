@@ -1,10 +1,17 @@
 project('Fetlang', ['c', 'cpp'], default_options : ['cpp_std=c++11'])
-boost_dir = include_directories('thirdparty/boost/')
+
+#include directories
 thirdparty_dir = include_directories('thirdparty')
 fetish_dir = include_directories('../fetishes')
+# This only used if use_system_boost is false
+boost_dir = include_directories('thirdparty/boost/')
 
 main_incdirs = [boost_dir, thirdparty_dir]
 test_incdirs = [fetish_dir, boost_dir, thirdparty_dir]
+
+boost_dep = dependency('boost', modules:['algorithm', 'filesystem'], required:false)
+boost_test_dep = dependency('boost', modules:['test'], required:false)
+
 boost_sources = [
 'thirdparty/boost/libs/filesystem/src/operations.cpp',
 'thirdparty/boost/libs/filesystem/src/path.cpp',
@@ -17,10 +24,15 @@ boost_sources = [
 'thirdparty/boost/libs/system/src/error_code.cpp'
 ]
 
-common_sources = boost_sources+['Fraction.cpp', 'FractionParser.cpp', 'QuoteUtil.cpp', 'Token.cpp', 'Tokenizer.cpp',
+raw_common_sources = ['Fraction.cpp', 'FractionParser.cpp', 'QuoteUtil.cpp', 'Token.cpp', 'Tokenizer.cpp',
 	'Variable.cpp', 'FetlangManager.cpp', 'Operator.cpp', 'Variable.cpp', 'VariableCollection.cpp',
 	'SyntaxTree.cpp', 'Parser.cpp', 'Grammar.cpp', 'Transpiler.cpp', 'FileUtil.cpp', 'Builder.cpp',
 	'thirdparty/whereami.cpp', 'FetlangException.cpp', 'CompilationProcess.cpp']
+if boost_dep.found()
+	common_sources = raw_common_sources
+else
+	common_sources = boost_sources + raw_common_sources
+endif
 release_sources = common_sources + ['main.cpp']
 
 fetish_sources = [
@@ -33,8 +45,13 @@ test_sources = common_sources + fetish_sources + ['tests/main.cpp','tests/fracti
 'tests/fraction.cpp']
 
 install_subdir('../fetishes', install_dir:'share/fetlang')
-executable('fetlang', release_sources, include_directories: main_incdirs, install:true, install_dir: 'bin')
 
+if boost_dep.found()
+	executable('fetlang', release_sources, include_directories: main_incdirs, install:true, install_dir: 'bin', dependencies: boost_dep)
+	unit_tests_executable = executable('unit_tests', test_sources, include_directories: test_incdirs, dependencies: boost_dep)
+else
+	executable('fetlang', release_sources, include_directories: main_incdirs, install:true, install_dir: 'bin')
+	unit_tests_executable = executable('unit_tests', test_sources, include_directories: test_incdirs)
+endif
 
-unit_tests_executable = executable('unit_tests', test_sources, include_directories: test_incdirs)
 test('unit_tests', unit_tests_executable)
