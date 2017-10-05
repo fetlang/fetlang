@@ -35,7 +35,12 @@ The following example outputs the arguments given to the executable:
 Requirements:
 * meson
 * ninja
-* gcc/g++(>=4.9) or clang(>=3.5)
+* gcc/g++(>=4.9) or clang(>=3.5)  
+
+Optional Dependencies:
+* boost algorithm(>=1.62)
+* boost filesystem(>=1.62)
+* boost system(>=1.62)
 
 Supported systems:  
 * macOS (tested with Travis CI)
