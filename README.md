@@ -9,14 +9,14 @@ medical or military applications
 ## Example
 The following example outputs the arguments given to the executable:
 
-    Make James moan
+    Make Sean moan
     Worship Carrie's feet
     
     Bind Amy to Saint Andrew's Cross
-        Have Amy hogtie James
+        Have Amy hogtie Sean
         If Amy is Carrie's bitch
-            Make Slave scream James's name
-            Make James moan
+            Make Slave scream Sean's name
+            Make Sean moan
 
 
 ## Features
