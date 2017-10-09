@@ -28,7 +28,7 @@ The following example outputs the arguments given to the executable:
 * Transpiles to C
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
-* Probably Turing complete
+* Turing complete (See [here](https://github.com/KjeldSchmidt/Fetlang__110) for a Rule 110 implementation in Fetlang by Kjeld Schmidt)
 * Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building
