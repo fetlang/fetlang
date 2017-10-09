@@ -59,6 +59,10 @@ $ # Run unit tests
 $ ninja test
 ```
 
+The build will use the version of Boost included in Fetlang by default. If you
+want to use your system's version of boost, you can run
+`meson configure -Duse_system_boost=true` in the build folder
+
 Install Fetlang:  
 ```shell
 $ sudo ninja install
