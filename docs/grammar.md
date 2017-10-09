@@ -13,9 +13,9 @@ The three functional grammars are: `make`, `have`, and `plain`
 
 ## Make Grammar:
 Make grammar can follow these formats:  
-`make` \<lho\> \<operator\>  
-`make` \<lho\> \<operator\> \<rho - mutable\>  
-`make` \<lho\> \<operator\> \<rho - chain literal\>  
+`make` \<lho - mutable\> \<operator\>  
+`make` \<lho - mutable\> \<operator\> \<rho - mutable\>  
+`make` \<lho - mutable\> \<operator\> \<rho - chain literal\>  
 
 When there is no right-hand operand given, an implicit value of `""` is used
 
@@ -32,8 +32,8 @@ Examples:
 
 ## Plain Grammar:
 Plain grammar can follow these formats:  
-\<operator\> \<lho\>   
-\<operator\> \<lho\> \<rho - fraction literal\> time/s  
+\<operator\> \<lho - mutable\>   
+\<operator\> \<lho - mutable\> \<rho - fraction literal\> time/s  
   
 Plain grammar without a given rho has an implicit value of `one`. When the given
 value of the rho is not one, `times` must be used. Otherwise, `time` is used
@@ -53,7 +53,7 @@ Examples:
 
 ## Have Grammar
 Have grammar can only follow this format  
-`have` \<lho\> \<operator\> \<rho - mutable\>  
+`have` \<rho - mutable\> \<operator\> \<lho - mutable\>  
 
 Example:  
 
