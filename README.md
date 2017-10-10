@@ -9,14 +9,14 @@ medical or military applications
 ## Example
 The following example outputs the arguments given to the executable:
 
-    Make Betty moan
+    Make Sean moan
     Worship Carrie's feet
     
     Bind Amy to Saint Andrew's Cross
-        Have Amy hogtie Betty
+        Have Amy hogtie Sean
         If Amy is Carrie's bitch
-            Make Slave scream Betty's name
-            Make Betty moan
+            Make Slave scream Sean's name
+            Make Sean moan
 
 
 ## Features
@@ -28,7 +28,7 @@ The following example outputs the arguments given to the executable:
 * Transpiles to C
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
-* Probably Turing complete
+* Turing complete (See [here](https://github.com/KjeldSchmidt/Fetlang__110) for a Rule 110 implementation by Kjeld Schmidt)
 * Extensible - just install your fetish in share/fetlang/fetishes
 
 ## Building

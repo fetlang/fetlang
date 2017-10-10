@@ -2,8 +2,8 @@
 ## Comparison operators
 `is` - `==`  
 `is not` - `!=`  
-`is submissive to` - `>=`  
-`is dominant towards` - `<=`  
+`is submissive to` - `<`  
+`is dominant towards` - `>`  
 
 ## If statements
 The scope of if statements and the like are determined by preceding tabs or spaces,
