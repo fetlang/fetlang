@@ -15,10 +15,8 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install clang; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ruby --version; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ruby-2.3.1 --version || echo "yee"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ruby-2.3.0 --version || echo "yee"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ruby-2.3.2 --version || echo "yee"; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ruby-2.3.3 --version || echo "yee"; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm install ruby-2.3.3; rvm --default use 2.3.3; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ruby --version; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python3; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install ninja; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install rust; fi
