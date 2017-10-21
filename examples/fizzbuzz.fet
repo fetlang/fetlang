@@ -1,0 +1,53 @@
+(
+Classic FizzBuzz program in Fetlang with characters from Buffy the Vampire
+Slayer
+
+Rules:
+	For numbers 1 to 100:
+		print "Fizz Buzz" if the number is divisible by 3 and 5
+		print "Fizz" if the number is divisible by 3 but not 5
+		print "Buzz" if the number is divisible by 5 but not 3
+		Otherwise, just print the number
+)
+
+(Our limit)
+Lick Spike's belly button one hundred times
+
+(This is our counter var...setting to one)
+lick Buffy's ears
+
+(We need to have a zero (and since Xander's kind of a loser...))
+Flog Xander
+
+Lick Giles five times
+Lick Angel three times
+
+(main loop)
+until Spike is submissive to Buffy
+	(Set willow to Buffy%5)
+	Have Xander worship Willow
+	Have Buffy lick Willow's nose
+	Have Giles tickle Willow (This seems a bit out of character...We might need to refactor)
+
+	if Willow is Xander's submissive
+		(Set willow to Buffy%3)
+		Have Xander worship Willow
+		Have Buffy lick Willow's nose
+		Have Angel tickle Willow
+
+		if Willow is Xander's submissive, still
+			make slave scream "Fizz Buzz"
+		otherwise
+			make slave scream "Buzz"
+	otherwise
+		(Set willow to Buffy%3)
+		Have Xander worship Willow
+		Have Buffy lick Willow's nose
+		Have Angel tickle Willow
+
+		if Willow is Xander's submissive, still
+			make slave scream "Fizz"
+		otherwise
+			make slave scream Buffy's name
+	
+	Lick Buffy's throat
