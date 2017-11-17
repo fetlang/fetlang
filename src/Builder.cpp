@@ -129,9 +129,9 @@ void Builder::build(){
 
 	// Write the generated C file
 	std::string c_file_path = build_path+STAGE_FOLDER_RELATIVE+"/stage.c";
-	std::ofstream generatedCFile(c_file_path);
-	generatedCFile << c_code;
-	generatedCFile.close();
+	std::ofstream generated_c_file(c_file_path);
+	generated_c_file<< c_code;
+	generated_c_file.close();
 	all_objects.push_back(c_file_path+".o");
 
 	// Compile the generated C file
