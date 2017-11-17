@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# This script creates markdown files in the docs directory documenting elements
+# of the C functions corresponding to each fetish
+#
+# Requires Python >=3.6
+
 from common import*
 import shutil
 
