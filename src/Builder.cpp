@@ -27,6 +27,7 @@ static const char*const DEFAULT_DESTINATION_PATH = "a.exe";
 Builder::Builder(){
 	// Just explicitly setting our defaults
 	optimization = false;
+	link_time_optimization = false;
 	compilation = true;
 	show_tokens = false;
 	show_tree = false;
@@ -120,9 +121,12 @@ void Builder::build(){
 			std::string source_path = fetish.getSourcePath()+source_file;
 
 			if(!FileUtil::fileExists(all_objects.back())){
-				comp_proc.clear().setOptimization(optimization).addIncludeDirectories({include_path,
-					fetish.getIncludePath()}).addLibraries(fetish.getLibraries()).
-						compile({source_path},all_objects.back());
+				comp_proc.
+					clear()
+					.setOptimization(optimization)
+					.addIncludeDirectories({include_path, fetish.getIncludePath()})
+					.addLibraries(fetish.getLibraries())
+					.compile({source_path},all_objects.back());
 			}
 		}
 	}
@@ -135,12 +139,18 @@ void Builder::build(){
 	all_objects.push_back(c_file_path+".o");
 
 	// Compile the generated C file
-	comp_proc.clear().addIncludeDirectory(include_path+"/").setOptimization(optimization).compile({c_file_path},
-		all_objects.back());
+	comp_proc
+		.clear()
+		.addIncludeDirectory(include_path+"/")
+		.setOptimization(optimization)
+		.compile({c_file_path}, all_objects.back());
 
 	// And link to create the output
-	comp_proc.clear().setOptimization(optimization).setLanguage("c++").link(all_objects,
-		destination_path);
+	comp_proc.clear()
+		.setOptimization(optimization)
+		.setLinkTimeOptimization(link_time_optimization)
+		.setLanguage("c++")
+		.link(all_objects, destination_path);
 
 }
 

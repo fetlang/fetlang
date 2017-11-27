@@ -10,6 +10,7 @@ int main(int argc, const char* argv[]){
 	args::ArgumentParser parser("Fetlang transpiler", "");
 	args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
 	args::Flag optimize(parser, "optimize", "Optimize binary", {'O'});
+	args::Flag link_time_optimize(parser, "link time optimize", "Link time optimization", {"lto"});
 	args::Flag show_tokens(parser, "show tokens", "Show tokens", {'t'});
 	args::Flag show_tree(parser, "show tree", "Show abstract syntax tree", {'T'});
 	args::Flag no_compile(parser, "no compile", "Export as C file(don't compile)", {'c'});
@@ -62,6 +63,7 @@ int main(int argc, const char* argv[]){
 		if(show_tokens) bob.showTokens();
 		if(show_tree) bob.showTree();
 		if(optimize) bob.setOptimization();
+		if(link_time_optimize) bob.setLinkTimeOptimization();
 		if(output_file) bob.setDestination(args::get(output_file));
 		if(scrub) bob.clean();
 		bob.setSource(args::get(input_file));

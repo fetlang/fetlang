@@ -20,6 +20,7 @@ class CompilationProcess{
 
 	// Do we optimize?
 	bool optimization;
+	bool link_time_optimization;
 
 	// Extra args
 	std::vector<std::string> extra_arguments;
@@ -40,6 +41,7 @@ public:
 
 	// Optimize
 	CompilationProcess& setOptimization(bool do_optimize=true);
+	CompilationProcess& setLinkTimeOptimization(bool do_optimize=true);
 
 	// Change actual compiler use
 	CompilationProcess& setCompiler(const std::string&);

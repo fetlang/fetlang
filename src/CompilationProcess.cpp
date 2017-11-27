@@ -11,6 +11,7 @@ CompilationProcess& CompilationProcess::clear(){
 	language = "";
 	compiler = "";
 	optimization = false;
+	link_time_optimization = false;
 	extra_arguments.clear();
 	include_directories.clear();
 	libraries.clear();
@@ -45,8 +46,14 @@ CompilationProcess& CompilationProcess::setLanguage(const std::string& lang){
 	}
 	return *this;
 }
-CompilationProcess& CompilationProcess::setOptimization(bool optimization){
-	this->optimization = optimization;
+
+CompilationProcess& CompilationProcess::setOptimization(bool optimize){
+	this->optimization = optimize;
+	return *this;
+}
+
+CompilationProcess& CompilationProcess::setLinkTimeOptimization(bool optimize){
+	this->link_time_optimization = optimize;
 	return *this;
 }
 
@@ -133,14 +140,13 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	// Optimize if needed
 	if(optimization){
 		command += " -O";
-		if(language == "c" || language == "c++") {
-			command += "2";
-			#ifdef FETLANG_LTO
-			// Link time optimization
-			if(link_objects){
-				command += " -flto";
-			}
-			#endif
+	}
+
+	// Optimizations specific to GCC-compatible compilers
+	if(language == "c" || language == "c++") {
+		if(optimization) command += "2";
+		if(link_objects && link_time_optimization){
+			command += " -flto";
 		}
 	}
 

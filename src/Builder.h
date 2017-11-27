@@ -20,6 +20,7 @@ class Builder{
 	//
 	// Off by default
 	bool optimization;
+	bool link_time_optimization;
 
 	// Do we actually compile? or do we just produce a .c file?
 	// On by default
@@ -60,6 +61,7 @@ public:
 
 	// Enable or disable optimization
 	inline void setOptimization(bool o = true){optimization = o;}
+	inline void setLinkTimeOptimization(bool o = true){link_time_optimization = o;}
 
 	// ...or compilation
 	inline void setCompilation(bool c = true){compilation = c;}
