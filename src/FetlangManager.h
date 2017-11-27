@@ -59,6 +59,9 @@ public:
 // in order to read from JSON files
 class FetlangManager{
 private:
+	// Directories where we look for fetishes
+	std::vector<std::string> fetish_directories;
+
 	// Fetishes we've loaded
 	std::vector<Fetish> fetishes;
 
@@ -125,6 +128,9 @@ public:
 
 	// Check if string is in keyphrases
 	bool isKeyphrase(const std::string&) const;
+
+	// Add an external directory location
+	void addFetishDirectory(const std::string&);
 
 	// Return as keyphrase category enum
 	KeyphraseCategory getKeyphraseCategory(const std::string&) const;

@@ -75,6 +75,11 @@ void FetlangManager::loadPronouns(){
 	}
 }
 
+// Add a new fetish directory
+void FetlangManager::addFetishDirectory(const std::string& path){
+	fetish_directories.push_back(path);
+}
+
 // Convert text from a file into a JSON object
 static json loadFileAsJson(const std::string& filename){
 	json return_value;
@@ -223,24 +228,10 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 	}
 
 	try{
-		// Empty scope
-		{
-			for (const Fetish& fetish : fetishes)
-			{
-				if(fetish.getName() == fetishname)
-				{
-					return;
-				}
-			}
-		}
-		std::vector<std::string> directories_to_try;
-
-		directories_to_try.push_back(FileUtil::getExecutableParentPath()+"/../share/fetlang/fetishes/"+fetishname);
-		directories_to_try.push_back("../fetishes/"+fetishname);
-
 		// Fine out where exactly the fetish is located and load the fetish.json
 		// file
-		for(const std::string& directory: directories_to_try){
+		for(std::string directory: fetish_directories){
+			directory += fetishname;
 			std::string filename = directory+"/fetish.json";
 			if(std::ifstream(filename)){
 				// Found it
@@ -326,6 +317,9 @@ void FetlangManager::initialize(){
 		throw FetlangException("Can't initialize FetlangManager twice");
 	}
 	initialized = true;
+
+	fetish_directories.push_back(FileUtil::getExecutableParentPath()+"/../share/fetlang/fetishes/");
+	fetish_directories.push_back("../fetishes/");
 	loadFetish("core");
 }
 
