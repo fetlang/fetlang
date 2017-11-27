@@ -233,7 +233,6 @@ void FetlangManager::loadFetish(const std::string& fetishname){
 		for(std::string directory: fetish_directories){
 			directory += "/"+fetishname;
 			std::string filename = directory+"/fetish.json";
-			std::cout<<filename<<std::endl;
 			if(std::ifstream(filename)){
 				// Found it
 				Fetish fetish(fetishname, directory);
