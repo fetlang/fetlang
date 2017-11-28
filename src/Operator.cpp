@@ -202,7 +202,7 @@ bool ComparisonOperator::hasGrammar(const std::string& s) const{
 	return s=="comparison";
 }
 
-void ComparisonOperator::addGrammar(const std::string& s){
+void ComparisonOperator::addGrammar(const std::string&){
 	throw FetlangException("ComparisonOperator can't add grammar");
 }
 
