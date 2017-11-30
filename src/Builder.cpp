@@ -143,6 +143,7 @@ void Builder::build(){
 				comp_proc
 					.clear()
 					.setOptimization(optimization)
+					.setLinkTimeOptimization(link_time_optimization)
 					.addIncludeDirectories(include_paths)
 					.addIncludeDirectory(fetish.getIncludePath())
 					.addLibraries(fetish.getLibraries())
@@ -163,6 +164,7 @@ void Builder::build(){
 		.clear()
 		.addIncludeDirectories(include_paths)
 		.setOptimization(optimization)
+		.setLinkTimeOptimization(link_time_optimization)
 		.compile({c_file_path}, all_objects.back());
 
 	// And link to create the output

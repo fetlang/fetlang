@@ -145,7 +145,7 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	// Optimizations specific to GCC-compatible compilers
 	if(language == "c" || language == "c++") {
 		if(optimization) command += "2";
-		if(link_objects && link_time_optimization){
+		if(link_time_optimization){
 			command += " -flto";
 		}
 	}
