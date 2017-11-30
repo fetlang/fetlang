@@ -61,6 +61,9 @@ std::string extractFileExtension(const std::string& filename){
 }
 
 std::string getFileContents(const std::string& filename){
+	if(!fileExists(filename)){
+		throw FetlangException("No such file "+filename);
+	}
 	std::ifstream fp(filename);
 	std::string contents;
 	std::stringstream buffer;

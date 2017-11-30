@@ -26,6 +26,7 @@ TEST_CASE("FileUtil function-integration test"){
 
 	// Create it
 	REQUIRE_NOTHROW(ensureDirectoryExists(path));
+	REQUIRE_THROWS(getFileContents(path));
 	REQUIRE(getFilesInDirectory(path).empty());
 
 	// Create a file
@@ -52,6 +53,9 @@ TEST_CASE("FileUtil function-integration test"){
 	// This is hard to test, since we basically need it to test it
 	REQUIRE(getExecutableParentPath() == getExecutableParentPath());
 	REQUIRE(getExecutableParentPath() != "");
+
+	// Make sure we don't accidently open a directory as a file somehow
+	REQUIRE_THROWS(getFileContents("."));
 
 }
 
