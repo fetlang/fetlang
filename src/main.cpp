@@ -18,7 +18,7 @@ int main(int argc, const char* argv[]){
 	args::Group required(parser, "", args::Group::Validators::AtLeastOne);
 	args::Positional<std::string> input_file(required, "input file", "The source file");
 	args::ValueFlag<std::string> output_file(parser, "output file", "The output file", {'o'});
-	args::ValueFlag<std::string> fetish_directory(parser, "fetish directory", "Look in an additional fetish directory", {'f'});
+	args::ValueFlag<std::string> fetish_directory(parser, "fetish directory", "Look in an additional directory for fetishes", {'f'});
 
 	// Don't show that "-- can be used to terminate.." thing
 	parser.helpParams.showTerminator = false;

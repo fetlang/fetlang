@@ -131,6 +131,7 @@ public:
 
 	// Add an external directory location
 	void addFetishDirectory(const std::string&);
+	inline std::vector<std::string> getFetishDirectories() const{return fetish_directories;}
 
 	// Return as keyphrase category enum
 	KeyphraseCategory getKeyphraseCategory(const std::string&) const;

@@ -29,7 +29,7 @@ The following example outputs the arguments given to the executable:
 * Case insensitive
 * Confusing English-like syntax and unhelpful error messages
 * Turing complete (See [here](https://github.com/KjeldSchmidt/Fetlang_110) for a Rule 110 implementation by Kjeld Schmidt)
-* Extensible - just install your fetish in share/fetlang/fetishes
+* Can be extended with C, C++, or Rust
 
 ## Building
 Requirements:

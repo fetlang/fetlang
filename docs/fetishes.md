@@ -26,6 +26,10 @@ You can create your own custom fetishes to extend Fetlang. A fetish is a directo
         source 
             ...
 
+You can use a user-written fetish in your code by compiling your .fet file with `fetlang {options} your_file.fet -f directory_of_your_fetish`  
+
+Remember that `directory_of_your_fetish` is the directory your fetish directory is located in
+
 ### C code
 The C headers and source contains whatever you want. The files in `./include`
 should contain functions and the like you reference either from `fetish.json`

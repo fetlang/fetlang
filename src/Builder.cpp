@@ -106,10 +106,17 @@ void Builder::build(){
 	FileUtil::ensureDirectoryExists(fetish_path);
 	FileUtil::ensureDirectoryExists(build_path+STAGE_FOLDER_RELATIVE);
 
-	// General include path
-	std::string include_path = manager.getFetishes()[0].getIncludePath();
-	include_path = FileUtil::getParentPath(include_path);
-	include_path = FileUtil::getParentPath(include_path);
+	// General include paths
+	std::vector<std::string> include_paths;
+	for(const Fetish& fetish : manager.getFetishes()){
+		std::string inc_path = fetish.getIncludePath();
+		if(std::find(include_paths.begin(), include_paths.end(), inc_path) == include_paths.end()){
+			inc_path = FileUtil::getParentPath(inc_path);
+			inc_path = FileUtil::getParentPath(inc_path) + "/";
+			include_paths.push_back(inc_path);
+		}
+	}
+	if(include_paths.empty()){throw FetlangException("Include paths should not be empty");}
 
 	// And compile each fetish
 	std::vector<std::string> all_objects;
@@ -121,10 +128,11 @@ void Builder::build(){
 			std::string source_path = fetish.getSourcePath()+source_file;
 
 			if(!FileUtil::fileExists(all_objects.back())){
-				comp_proc.
-					clear()
+				comp_proc
+					.clear()
 					.setOptimization(optimization)
-					.addIncludeDirectories({include_path, fetish.getIncludePath()})
+					.addIncludeDirectories(include_paths)
+					.addIncludeDirectory(fetish.getIncludePath())
 					.addLibraries(fetish.getLibraries())
 					.compile({source_path},all_objects.back());
 			}
@@ -141,11 +149,12 @@ void Builder::build(){
 	// Compile the generated C file
 	comp_proc
 		.clear()
-		.addIncludeDirectory(include_path+"/")
+		.addIncludeDirectories(include_paths)
 		.setOptimization(optimization)
 		.compile({c_file_path}, all_objects.back());
 
 	// And link to create the output
+<<<<<<< HEAD
 	comp_proc.clear()
 		.setOptimization(optimization)
 		.setLinkTimeOptimization(link_time_optimization)
