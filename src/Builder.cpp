@@ -13,16 +13,30 @@
 #include "QuoteUtil.h"
 #include "FileUtil.h"
 #include "CompilationProcess.h"
-static const char*const BUILD_FOLDER_RELATIVE = "/fetlang_build/";
-// Relative to BUILD_FOLDER_RELATIVE
-static const char*const RELEASE_FOLDER_RELATIVE = "/fetish_obj_release/";
-static const char*const DEBUG_FOLDER_RELATIVE = "/fetish_obj_debug/";
-static const char*const STAGE_FOLDER_RELATIVE = "/output/";
+// Where we store all the build directories
+static const std::string BUILD_ROOT = "/tmp/fetlang_build/";
+
+// Four directory combinations for fetishes: debug, optimized lto, lto only,
+// optimized only
+
+// The prefix for each combination. Or, in the case of a debug build, this is
+// just the directory name
+static const std::string FETISH_DIR_BASE = "/fetish_obj";
+// Add this to FETISH_DIR_BASE for -O
+static const std::string FETISH_OPT_SUFFIX = "_optimized";
+// Use this to FETISH_DIR_BASE for --lto
+static const std::string FETISH_LTO_SUFFIX = "_lto";
+
+// Where the compiled .fet file goes
+static const std::string STAGE_DIR = "/output/";
+
+// Default output names
 #ifndef __WIN32__
-static const char*const DEFAULT_DESTINATION_PATH = "a.out";
+static const std::string DEFAULT_OUTPUT = "a.out";
 #else
-static const char*const DEFAULT_DESTINATION_PATH = "a.exe";
+static const std::string DEFAULT_OUTPUT = "a.exe";
 #endif
+static const std::string DEFAULT_C_OUTPUT = "a.c";// for when invoked with -c
 
 Builder::Builder(){
 	// Just explicitly setting our defaults
@@ -32,11 +46,8 @@ Builder::Builder(){
 	show_tokens = false;
 	show_tree = false;
 	source_path="";
-	destination_path = DEFAULT_DESTINATION_PATH;
-
-	// Now we have to find the temporary directory
-	//TODO: Fix for all operating systems
-	build_path = std::string("/tmp/")+BUILD_FOLDER_RELATIVE;
+	destination_path = DEFAULT_OUTPUT;
+	build_path = BUILD_ROOT;
 }
 
 std::string Builder::transpile() const{
@@ -76,8 +87,8 @@ void Builder::build(){
 	// No compilation, just output C code
 	if(!compilation){
 		// Should end with ".c"
-		if(destination_path == DEFAULT_DESTINATION_PATH){
-			destination_path = "a.c";
+		if(destination_path == DEFAULT_OUTPUT){
+			destination_path = DEFAULT_C_OUTPUT;
 		}
 
 		// Write the c code
@@ -96,15 +107,16 @@ void Builder::build(){
 	// Let's compile fetishes first
 
 	// Get the general fetish path
-	std::string fetish_path;
+	std::string fetish_path = build_path + FETISH_DIR_BASE;
 	if(optimization)
-		fetish_path = build_path + RELEASE_FOLDER_RELATIVE;
-	else
-		fetish_path = build_path + DEBUG_FOLDER_RELATIVE;
+		fetish_path += FETISH_OPT_SUFFIX;
+	if(link_time_optimization)
+		fetish_path += FETISH_LTO_SUFFIX;
+	fetish_path += "/";
 
 	//  Let's make sure the build directories exist
 	FileUtil::ensureDirectoryExists(fetish_path);
-	FileUtil::ensureDirectoryExists(build_path+STAGE_FOLDER_RELATIVE);
+	FileUtil::ensureDirectoryExists(build_path+STAGE_DIR);
 
 	// General include paths
 	std::vector<std::string> include_paths;
@@ -140,7 +152,7 @@ void Builder::build(){
 	}
 
 	// Write the generated C file
-	std::string c_file_path = build_path+STAGE_FOLDER_RELATIVE+"/stage.c";
+	std::string c_file_path = build_path+STAGE_DIR+"/stage.c";
 	std::ofstream generated_c_file(c_file_path);
 	generated_c_file<< c_code;
 	generated_c_file.close();
