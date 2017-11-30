@@ -154,7 +154,6 @@ void Builder::build(){
 		.compile({c_file_path}, all_objects.back());
 
 	// And link to create the output
-<<<<<<< HEAD
 	comp_proc.clear()
 		.setOptimization(optimization)
 		.setLinkTimeOptimization(link_time_optimization)
