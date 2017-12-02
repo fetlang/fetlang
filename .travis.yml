@@ -39,7 +39,7 @@ script:
   - cd build
   - ninja test
   - rm test.text
-  - fetlang ../examples/bf2c.fet > fetlang_output
+  - ./fetlang ../examples/bf2c.fet > fetlang_output
   - echo -n "" > blank_output
   - diff fetlang_output blank_output
   - sudo ninja install
