@@ -29,11 +29,25 @@ TEST_CASE("Build and compile Fetish unit tests", "[Builder][Integration]"){
 	REQUIRE_NOTHROW(bob.clean());
 
 	SECTION("Build and compile unoptimized Fetish unit tests"){
+		bob.setLinkTimeOptimization(false);
 		bob.setOptimization(false);
 		runFetishUnitTests(bob);
 	}
 
+	SECTION("Build and compile link time optimized Fetish unit tests"){
+		bob.setLinkTimeOptimization(true);
+		bob.setOptimization(false);
+		runFetishUnitTests(bob);
+	}
+
+	SECTION("Build and compile fully optimized Fetish unit tests"){
+		bob.setLinkTimeOptimization(true);
+		bob.setOptimization(true);
+		runFetishUnitTests(bob);
+	}
+
 	SECTION("Build and compile optimized Fetish unit tests"){
+		bob.setLinkTimeOptimization(false);
 		bob.setOptimization(true);
 		runFetishUnitTests(bob);
 	}
