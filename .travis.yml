@@ -35,7 +35,7 @@ install:
   
 # Build steps
 script:
-  - meson src build
+  - meson --buildtype=release src build
   - cd build
   - ninja test
   - rm test.text
