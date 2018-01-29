@@ -26,9 +26,9 @@ The following example outputs the arguments given to the executable:
 * Access previously mentioned variables using pronouns
 * Numbers represented internally as fractions instead of floating point
 * Transpiles to C
-* Case insensitive
 * Confusing English-like syntax and unhelpful error messages
 * Turing complete (See [here](https://github.com/KjeldSchmidt/Fetlang_110) for a Rule 110 implementation by Kjeld Schmidt)
+* Has a [Vim plugin](https://github.com/kutsan/vim-fetlang) (thanks to Kutsan Kaplan)
 * Can be extended with C, C++, or Rust
 
 ## Building
