@@ -31,6 +31,13 @@ Variable& VariableCollection::getLastAdded(){
 	}
 	return *(variable_added_list.back());
 }
+Variable& VariableCollection::getLastAccessed(){
+	if(variable_added_list.empty())
+	{
+		throw FetlangException("Can't retrieve last variable accessed because the access list is empty");
+	}
+	return *(variable_access_list.back());
+}
 
 void VariableCollection::add(const Variable& variable){
 	if(has(variable.getName())){

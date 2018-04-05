@@ -211,7 +211,7 @@ void Parser::parseOperation(const Grammar& grammar, std::vector<Token>::iterator
 				"grammar does not allow rightward reflexive pronouns", *right);
 		}
 		// Same old
-		transplaceTokenWithVariable(right, variables.getLastAdded());
+		transplaceTokenWithVariable(right, variables.getLastAccessed());
 
 	}else if(right->getCategory() == Token::IDENTIFIER_TOKEN){
 		// Is an identifier

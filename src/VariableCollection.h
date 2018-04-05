@@ -30,6 +30,7 @@ public:
 	Variable& access(const std::string&);
 
 	Variable& getLastAdded();
+	Variable& getLastAccessed();
 
 	// Dealing with pronouns and gender
 	// Retrieves the last variable that is of that gender, or of an unassigned gender
