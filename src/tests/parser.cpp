@@ -104,10 +104,24 @@ TEST_CASE("Parser Test 3.1 - Elimination of reflexive pronoun bug", "[Parser]"){
 	Parser parser(tokens, tokenizer.getLineIndents());
 	REQUIRE_NOTHROW(parser.formTree());
 	auto vars = parser.getVariables();
-	parser.getTree().display();
 	REQUIRE(parser.getTree().getChild(0).getToken().getValue() == "spank");
 	REQUIRE(parser.getTree().getChild(0).getChild(0).getToken().getValue() == "register");
 	REQUIRE(parser.getTree().getChild(0).getChild(1).getToken().getValue() == "register");
+	REQUIRE(vars.get("register").getType() == FRACTION_TYPE);
+	REQUIRE(vars.get("register").getGender() == NONPERSON_GENDER);
+}
+TEST_CASE("Parser Test 3.2 - Elimination of reflexive pronoun bug", "[Parser]"){
+
+	std::string code = "worship register\nlick button\nhave register spank itself";
+	Tokenizer tokenizer(code);
+	std::vector<Token> tokens;
+	REQUIRE_NOTHROW(tokens = tokenizer.tokenize());
+	Parser parser(tokens, tokenizer.getLineIndents());
+	REQUIRE_NOTHROW(parser.formTree());
+	auto vars = parser.getVariables();
+	REQUIRE(parser.getTree().getChild(2).getToken().getValue() == "spank");
+	REQUIRE(parser.getTree().getChild(2).getChild(0).getToken().getValue() == "register");
+	REQUIRE(parser.getTree().getChild(2).getChild(1).getToken().getValue() == "register");
 	REQUIRE(vars.get("register").getType() == FRACTION_TYPE);
 	REQUIRE(vars.get("register").getGender() == NONPERSON_GENDER);
 }
