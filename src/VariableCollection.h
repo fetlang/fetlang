@@ -29,7 +29,10 @@ public:
 	// Same as "get," but adds to the access list
 	Variable& access(const std::string&);
 
+	// Return last variable added, error if no variables added
 	Variable& getLastAdded();
+
+	// Return last variable accessed, error if no variables accessed
 	Variable& getLastAccessed();
 
 	// Dealing with pronouns and gender
