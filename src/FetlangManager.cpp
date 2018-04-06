@@ -67,7 +67,7 @@ void FetlangManager::loadPronouns(){
 		Pronoun("his own", MALE_GENDER, false, true),
 		Pronoun("her own", FEMALE_GENDER, false, true),
 		Pronoun("their own", NEUTRAL_GENDER, false, true),
-		Pronoun("its own", NEUTRAL_GENDER, false, true),
+		Pronoun("its own", NONPERSON_GENDER, false, true),
 		};	
 
 	for(const Pronoun& pronoun : pronoun_array){
