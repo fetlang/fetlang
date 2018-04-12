@@ -9,15 +9,7 @@ medical or military applications
 ## Example
 The following example outputs the arguments given to the executable:
 
-    Make Sean moan
-    Worship Carrie's feet
-    
-    Bind Amy to Saint Andrew's Cross
-        Have Amy hogtie Sean
-        If Amy is Carrie's bitch
-            Make Slave scream Sean's name
-            Make Sean moan
-
+![](https://user-images.githubusercontent.com/10108377/38704049-b45aadae-3ead-11e8-9ecf-3c0756254c29.png)
 
 ## Features
 * Input/output with standard streams and files
