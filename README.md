@@ -49,7 +49,7 @@ Supported systems:
 
 Build Fetlang:  
 ```shell
-$ git clone https://github.com/Property404/fetlang
+$ git clone https://github.com/fetlang/fetlang
 $ cd fetlang
 $ meson --buildtype=release src build
 $ cd build
