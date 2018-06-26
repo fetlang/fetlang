@@ -2,7 +2,7 @@
 #include <map>
 #include <sstream>
 
-static const int MAX_OCTAL_STRING_SIZE = 3;
+static constexpr int MAX_OCTAL_STRING_SIZE = 3;
 static std::map<char, char> escapeMap= {
 {'a', '\a'},
 {'b', '\b'},

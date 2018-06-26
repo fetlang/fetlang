@@ -81,7 +81,7 @@ std::string getFileContents(const std::string& filename){
 }
 
 void setFileContents(const std::string& path, const std::string& contents){
-	fs::path fp = path;
+	const fs::path fp = path;
 	if(fs::exists(fp)){
 		if(!fs::is_regular_file(fp)){
 			throw FetlangException("Entity "+path+" exists, but is not a regular file. Refusing to overwrite.");
@@ -96,7 +96,7 @@ void setFileContents(const std::string& path, const std::string& contents){
 }
 
 void ensureDirectoryExists(const std::string& path){
-	fs::path directory = path;
+	const fs::path directory = path;
 	if(fs::exists(directory)){
 		if(fs::is_directory(directory)){
 			// all good
@@ -111,7 +111,7 @@ void ensureDirectoryExists(const std::string& path){
 }
 
 void ensureFileExists(const std::string& path){
-	fs::path fp = path;
+	const fs::path fp = path;
 	if(fs::exists(fp)){
 		if(!fs::is_regular_file(fp)){
 			throw FetlangException("Entity "+path+" exists, but is not a regular file. Refusing to overwrite.");
@@ -126,7 +126,7 @@ void ensureFileExists(const std::string& path){
 }
 
 bool fileExists(const std::string& path){
-	fs::path fp = path;
+	const fs::path fp = path;
 	if(fs::exists(fp)){
 		if(!fs::is_regular_file(fp)){
 			throw FetlangException("Entity "+path+" exists, but is not a regular file");
@@ -137,7 +137,7 @@ bool fileExists(const std::string& path){
 }
 
 void ensureFileDoesNotExist(const std::string& path){
-	fs::path fp = path;
+	const fs::path fp = path;
 	if(fs::exists(fp)){
 		// Destroy it >:(
 		if(!fs::is_regular_file(fp)){
@@ -188,7 +188,7 @@ std::string getParentPath(std::string path){
 		}
 	}
 
-	fs::path fp = path;
+	const fs::path fp = path;
 	if(!fs::exists(fp)){
 		throw FetlangException("Can't get parent directory of path that doesn't exist"+path);
 	}
