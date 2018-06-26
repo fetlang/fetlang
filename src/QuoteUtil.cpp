@@ -3,7 +3,7 @@
 #include <sstream>
 
 static constexpr int MAX_OCTAL_STRING_SIZE = 3;
-static std::map<char, char> escapeMap= {
+static const std::map<char, char> escapeMap= {
 {'a', '\a'},
 {'b', '\b'},
 {'f', '\f'},
@@ -16,12 +16,8 @@ static std::map<char, char> escapeMap= {
 {'\"', '"'},
 {'?', '?'},
 };
-// Escape any character
-/*inline static std::string escapeCharacterAsHex(char c){
-	std::stringstream escape_stream;
-	escape_stream << "\\x" << std::hex << c;
-	return escape_stream.str();
-}*/
+
+// Escape any character as Octal
 static std::string escapeCharacterAsOctal(char c){
 	char octal_string[5];
 	octal_string[0] = '\\';
@@ -37,6 +33,7 @@ static std::string escapeCharacterAsOctal(char c){
 	return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f')
 		|| (c >= 'A' && c <= 'F');
 }*/
+
 static bool isOctalCharacter(char c){
 	return (c >= '0' && c <= '7');
 }
@@ -80,7 +77,7 @@ static std::string escapeIfNecessary(char c){
 }
 
 inline static char unescape(char c){
-	return escapeMap[c];
+	return escapeMap.at(c);
 }
 
 
