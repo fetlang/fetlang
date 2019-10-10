@@ -28,20 +28,20 @@ int main(int argc, const char* argv[]){
 		parser.ParseCLI(argc, argv);
 	}
 	// Display help menu
-	catch(args::Help)
+	catch(const args::Help&)
 	{
 		std::cout << parser;
 		return 0;
 	}
 	// Some args related error
-	catch (args::ParseError e)
+	catch (const args::ParseError& e)
 	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << parser;
 		return 1;
 	}
 	// Some args validation related error
-	catch (args::ValidationError e)
+	catch (const args::ValidationError& e)
 	{
 
 		if(!input_file)

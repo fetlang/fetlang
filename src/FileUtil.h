@@ -1,11 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
-#include <boost/filesystem.hpp>
 
 namespace FileUtil{
-	namespace fs = boost::filesystem;
-
 	// Return list of files in a directory
 	// throw an exception if directory doesn't exist
 	// Non-recursive

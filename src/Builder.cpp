@@ -1,4 +1,5 @@
 #include <fstream>
+#include <algorithm>
 #include <string>
 #include <sstream>
 #ifdef __WIN32__
@@ -14,7 +15,7 @@
 #include "FileUtil.h"
 #include "CompilationProcess.h"
 // Where we store all the build directories
-static const std::string BUILD_ROOT = "/tmp/fetlang_build/";
+static const std::string BUILD_ROOT = "/tmp/fetlang_build";
 
 // Four directory combinations for fetishes: debug, optimized lto, lto only,
 // optimized only
@@ -28,7 +29,7 @@ static const std::string FETISH_OPT_SUFFIX = "_optimized";
 static const std::string FETISH_LTO_SUFFIX = "_lto";
 
 // Where the compiled .fet file goes
-static const std::string STAGE_DIR = "/output/";
+static const std::string STAGE_DIR = "/output";
 
 // Default output names
 #ifndef __WIN32__
@@ -112,7 +113,6 @@ void Builder::build(){
 		fetish_path += FETISH_OPT_SUFFIX;
 	if(link_time_optimization)
 		fetish_path += FETISH_LTO_SUFFIX;
-	fetish_path += "/";
 
 	//  Let's make sure the build directories exist
 	FileUtil::ensureDirectoryExists(fetish_path);
