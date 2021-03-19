@@ -46,6 +46,7 @@ Supported systems:
 * macOS (tested with Travis CI)
 * GNU/Linux (tested with Travis CI)
 * Other modern Unix-like systems
+* Windows 10 under [WSL/WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 Build Fetlang:  
 ```shell
