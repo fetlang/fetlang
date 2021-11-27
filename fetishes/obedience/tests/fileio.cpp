@@ -5,15 +5,13 @@
 #include <cstring>
 
 TEST_CASE("Fileio Test", "[stream][file][obedience]"){
-	const char*const sample_text = "A human has fallen from\n\t the surface world\n";
-	const char*const sample_text2 = "Mama's scary; Mama hates\t\nyou\n";
-	const char*const sample_text3 = "Welcome home, dear friends, how long we've all been waiting\n";
-	const char*const sample_text4 = "I am the mastermind; he's my apprentice.\nYou're only still alive because I made a promise\n";
+	const char*const sample_text = "Try our new edible tampons!\n\t A survival pasta where you bring the sauce!\n";
+	const char*const sample_text2 = "Um...are you sure about eating that melon?\nIt's been sitting there for at least a month.\n";
 	SECTION("FILE IO")
 	{
 		std::string filename = "/tmp/boop2.txt";
-		FileUtil::setFileContents(filename, sample_text4);
-		REQUIRE(FileUtil::getFileContents(filename) == sample_text4);
+		FileUtil::setFileContents(filename, sample_text2);
+		REQUIRE(FileUtil::getFileContents(filename) == sample_text2);
 
 		Chain filename_as_chain;
 		init_chain(&filename_as_chain);
@@ -25,18 +23,17 @@ TEST_CASE("Fileio Test", "[stream][file][obedience]"){
 
 		FILE* stream = open_file_as_stream(filename_as_chain, "r+b");
 		append_stream_to_chain(&chain, stream);
-		REQUIRE(chain.length == strlen(sample_text4));
+		REQUIRE(chain.length == strlen(sample_text2));
 		clear_chain(&chain);
 		append_cstr_to_chain(&chain, sample_text);
 		append_chain_to_stream(chain, stream);
 		clear_chain(&chain);
 		append_stream_to_chain(&chain, stream);
-		REQUIRE(chain.length== strlen(sample_text)+strlen(sample_text4));
+		REQUIRE(chain.length== strlen(sample_text)+strlen(sample_text2));
 
 		fclose(stream);
 		clear_chain(&chain);
 		clear_chain(&filename_as_chain);
-
 	}
 
 }
