@@ -2,8 +2,7 @@
 #include "Tokenizer.h"
 #include "FetlangManager.h"
 #include "FractionParser.h"
-#include <boost/algorithm/string/trim.hpp>
-
+#include <algorithm>
 
 Tokenizer::Tokenizer(const std::string& code){
 	this->code = code;
@@ -119,7 +118,17 @@ std::vector<Token> Tokenizer::removeGags(const std::vector<Token>& tokens) const
 				std::string fetish;
 				while(std::getline(ss, fetish, ','))
 				{
-					boost::algorithm::trim(fetish);
+					// Trim whitespace
+					fetish.erase(fetish.begin(), std::find_if(
+								fetish.begin(), fetish.end(), [](int ch){
+									return !std::isspace(ch);
+								}));
+					fetish.erase(std::find_if(
+								fetish.rbegin(), fetish.rend(), [](int ch){
+									return !std::isspace(ch);
+								}).base(),
+							fetish.end());
+
 					manager.loadFetish(fetish);
 				}
 			}

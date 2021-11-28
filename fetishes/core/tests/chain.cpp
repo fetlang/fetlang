@@ -7,10 +7,9 @@
 #include <utility>
 
 TEST_CASE("Chain Test", "[chain][core]"){
-	const char*const sample_text = "A human has fallen from\n\t the surface world\n";
-	const char*const sample_text2 = "Mama's scary; Mama hates\t\nyou\n";
-	const char*const sample_text3 = "Welcome home, dear friends, how long we've all been waiting\n";
-	const char*const sample_text4 = "I am the mastermind; he's my apprentice.\nYou're only still alive because I made a promise\n";
+	const char*const sample_text = "Please no more I'm so full\n\t well maybe just one more\n";
+	const char*const sample_text2 = "Uh what the heck Brian. I'm going to eat\t\nyou\n";
+	const char*const sample_text3 = "Mmmm, yeah, your wife and kids died in that car crash. You like that, baby?\n";
 
 	SECTION("Chain/Cstring test"){
 		Chain chain;

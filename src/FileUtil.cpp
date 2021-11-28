@@ -5,6 +5,9 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 namespace FileUtil {
 
@@ -104,8 +107,9 @@ void ensureDirectoryExists(const std::string& path){
 		}
 		throw FetlangException("Entity "+path+" exists, but is not a directory. Refusing to overwrite.");
 	}else{
-		if(!fs::create_directories(directory)){
-			throw FetlangException("Could not create directory at "+path);
+		std::error_code ec;
+		if(!fs::create_directories(directory, ec)){
+			throw FetlangException("Could not create directory at "+path+". Error code:" + ec.message());
 		}
 	}
 }

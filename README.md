@@ -35,12 +35,7 @@ The following example outputs the arguments given to the executable:
 Requirements:
 * meson
 * ninja
-* gcc/g++(>=4.9) or clang(>=3.5)  
-
-Optional dependencies:
-* boost algorithm(>=1.62)
-* boost filesystem(>=1.62)
-* boost system(>=1.62)
+* gcc/g++(>=9.1) or clang(>=12.0)
 
 Supported systems:  
 * macOS (tested with Travis CI)
@@ -59,10 +54,6 @@ $ ninja
 $ # Run unit tests
 $ ninja test
 ```
-
-The build will use the version of Boost included in Fetlang by default. If you
-want to use your system's version of boost, you can run
-`meson configure -Duse_system_boost=true` in the build folder
 
 Install Fetlang:  
 ```shell
