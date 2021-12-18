@@ -1,0 +1,9 @@
+---
+BasedOnStyle: Google
+UseTab: ForContinuationAndIndentation
+TabWidth: 4
+IndentWidth: 4
+ColumnLimit: 100
+IndentCaseLabels: false
+DerivePointerAlignment: false
+PointerAlignment: Left

@@ -10,11 +10,12 @@
 !*.md
 !*.py
 !*.sh
-!.gitignore
-!.travis.yml
-!meson.build
 !*.txt
 !*.fet
+
+!meson.build
+!.clang-format
+!.gitignore
 
 !*/
 build
