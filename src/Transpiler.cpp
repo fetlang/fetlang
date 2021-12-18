@@ -175,8 +175,8 @@ std::string Transpiler::transpileBranch(Node& node){
 
 			break;
 		}
-		// FALL THROUGH
 	}
+	/* FALLTHRU */
 	case OPERATOR_KEYPHRASE:
 	{
 		// Okay, it's an operator. That can only mean we're doing an operation (duh)
@@ -208,6 +208,8 @@ std::string Transpiler::transpileBranch(Node& node){
 			rho_type = FRACTION_TYPE;
 		}else if(rho.getCategory() == Token::CHAIN_LITERAL_TOKEN){
 			rho_type = CHAIN_TYPE;
+		} else {
+			throw TokenException("Cannot perform an operation on a right-hand operand of this type", rho);
 		}
 
 		// Pretty sure lvalues can only be identifiers at this point

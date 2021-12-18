@@ -121,7 +121,7 @@ void chain_to_stream(Chain chain, FILE * stream);
  * @param buffer The cstring being appended to
  * @return The length of the buffer.
  */
-int chain_to_cstr(Chain chain, char * buffer);
+size_t chain_to_cstr(Chain chain, char * buffer);
 
 /**
  * Set file contents to chain's contents

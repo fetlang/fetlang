@@ -147,11 +147,11 @@ void append_chain_to_stream(Chain chain, FILE * stream)
 	}
 }
 
-int chain_to_cstr(Chain chain, char * buffer)
+size_t chain_to_cstr(Chain chain, char * buffer)
 {
 	/* Iterator */
 	Link *it = chain.start;
-	int count = 0;
+	size_t count = 0;
 
 	/* Print out chain */
 	while (it != NULL) {

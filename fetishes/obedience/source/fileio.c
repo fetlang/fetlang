@@ -82,7 +82,7 @@ FILE* open_file_as_stream(Chain filename, const char* mode)
 		runtime_error("Could not allocate buffer for file");
 	}
 
-	int actual_size = chain_to_cstr(filename, buffer);
+	size_t actual_size = chain_to_cstr(filename, buffer);
 	if(actual_size > filename.length || actual_size <= 0)
 	{
 		runtime_error("Something's terribly wrong in open_file_as_stream");

@@ -25,6 +25,10 @@ public:
 	// Just create the Fraction, bro (and call reduce())
 	Fraction(FractionInt top, FractionInt bottom = 1);
 	Fraction(const std::string&);
+	Fraction(const Fraction& other) {
+		this->top = other.top;
+		this->bottom = other.bottom;
+	}
 	
 	// Getters
 	FractionInt getTop() const;
