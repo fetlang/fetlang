@@ -1,27 +1,26 @@
 #include "core/include/chain.h"
-#include "core/include/error.h"
-#include "core/include/fraction.h"
-#include <stdlib.h>
+
 #include <errno.h>
+#include <stdlib.h>
 #include <string.h>
 #include <tgmath.h>
 #include <unistd.h>
 
-void init_chain(Chain * chain)
-{
+#include "core/include/error.h"
+#include "core/include/fraction.h"
+
+void init_chain(Chain* chain) {
 	chain->length = 0;
 	chain->start = NULL;
 	chain->end = NULL;
 }
 
-void clear_chain(Chain * chain)
-{
+void clear_chain(Chain* chain) {
 	/* Make pointer to first link */
-	Link *temp = chain->start;
+	Link* temp = chain->start;
 
 	/* If it's null, it's already cleared(hopefully) */
-	if (chain->start == NULL)
-		return;
+	if (chain->start == NULL) return;
 
 	/* Free all except the last link */
 	while (temp->next != NULL) {
@@ -38,21 +37,16 @@ void clear_chain(Chain * chain)
 	chain->end = NULL;
 }
 
-void append_cstr_to_chain(Chain * chain, const char *text)
-{
+void append_cstr_to_chain(Chain* chain, const char* text) {
 	unsigned int k;
 	for (k = 0; text[k] != '\0'; k++) {
-		append_flink_to_chain(chain,
-				      construct_fraction((FractionInt)
-							 text[k], 1));
+		append_flink_to_chain(chain, construct_fraction((FractionInt)text[k], 1));
 	}
-
 }
 
-void append_flink_to_chain(Chain * chain, Fraction fraction)
-{
+void append_flink_to_chain(Chain* chain, Fraction fraction) {
 	/* Create new link */
-	Link *new_link = (Link *) malloc(sizeof(Link));
+	Link* new_link = (Link*)malloc(sizeof(Link));
 	new_link->value = fraction;
 
 	/* Insert at end */
@@ -69,22 +63,21 @@ void append_flink_to_chain(Chain * chain, Fraction fraction)
 	chain->length++;
 }
 
-void append_chain_to_chain(Chain * chain1, Chain chain2)
-{
-	Link *it = chain2.start;
+void append_chain_to_chain(Chain* chain1, Chain chain2) {
+	Link* it = chain2.start;
 	if (it == NULL) {
 		return;
 	}
 	if (chain1->start == NULL) {
 		/* Set up iterator as first node */
-		chain1->start = (Link *) malloc(sizeof(Link));
+		chain1->start = (Link*)malloc(sizeof(Link));
 		chain1->start->value = it->value;
 		chain1->start->prev = NULL;
 		chain1->start->next = NULL;
 		chain1->end = chain1->start;
 	} else {
 		/* Set up iterator at end */
-		chain1->end->next = (Link *) malloc(sizeof(Link));
+		chain1->end->next = (Link*)malloc(sizeof(Link));
 		chain1->end->next->prev = chain1->end;
 		chain1->end->next->next = NULL;
 		chain1->end = chain1->end->next;
@@ -94,7 +87,7 @@ void append_chain_to_chain(Chain * chain1, Chain chain2)
 		/* Forward iterator */
 		it = it->next;
 		/* Add node at end */
-		chain1->end->next = (Link *) malloc(sizeof(Link));
+		chain1->end->next = (Link*)malloc(sizeof(Link));
 		chain1->end->next->prev = chain1->end;
 		chain1->end->next->next = NULL;
 		chain1->end = chain1->end->next;
@@ -103,54 +96,45 @@ void append_chain_to_chain(Chain * chain1, Chain chain2)
 
 	/* Increment length */
 	chain1->length += chain2.length;
-
 }
 
-void clear_stream(FILE* stream)
-{
+void clear_stream(FILE* stream) {
 	// Don't bother with this standard stream nonsense
-	if(stream == stdin || stream == stdout || stream == stderr)
-	{
+	if (stream == stdin || stream == stdout || stream == stderr) {
 		return;
 	}
 
 	rewind(stream);
-	if(ftruncate(fileno(stream), 0))
-	{
+	if (ftruncate(fileno(stream), 0)) {
 		runtime_error("Failed to truncate stream");
 	}
 }
 
-void chain_to_stream(Chain chain, FILE* stream)
-{
+void chain_to_stream(Chain chain, FILE* stream) {
 	clear_stream(stream);
 	append_chain_to_stream(chain, stream);
 }
 
-void append_chain_to_stream(Chain chain, FILE * stream)
-{
-	if(stream == stdin)
-	{
+void append_chain_to_stream(Chain chain, FILE* stream) {
+	if (stream == stdin) {
 		return;
 	}
 	/* Iterator */
-	Link *it = chain.start;
+	Link* it = chain.start;
 
 	/* Print out chain */
 	while (it != NULL) {
 		/* Print character */
-		fprintf(stream, "%c",
-			(char) (it->value.num / it->value.den));
+		fprintf(stream, "%c", (char)(it->value.num / it->value.den));
 
 		/* Forward iterator */
 		it = it->next;
 	}
 }
 
-size_t chain_to_cstr(Chain chain, char * buffer)
-{
+size_t chain_to_cstr(Chain chain, char* buffer) {
 	/* Iterator */
-	Link *it = chain.start;
+	Link* it = chain.start;
 	size_t count = 0;
 
 	/* Print out chain */
@@ -163,93 +147,75 @@ size_t chain_to_cstr(Chain chain, char * buffer)
 
 		count++;
 	}
-	if(count != chain.length)
-	{
-		runtime_error("Chain length does not represent true chain length in chain_to_cstr (you should not see this)"); 
+	if (count != chain.length) {
+		runtime_error(
+			"Chain length does not represent true chain length in chain_to_cstr (you should not "
+			"see this)");
 	}
 	buffer[chain.length] = 0x00;
 	return count;
 }
-	
 
-void append_stream_to_chain(Chain * chain, FILE * stream)
-{
-	if(stream == stdout || stream == stderr)
-	{
+void append_stream_to_chain(Chain* chain, FILE* stream) {
+	if (stream == stdout || stream == stderr) {
 		return;
 	}
 	char character = 5;
 	errno = 0;
 
-	if(stream == NULL){
+	if (stream == NULL) {
 		runtime_error("Stream given does not exist");
 	}
-	if(stream != stdin)
-	{
+	if (stream != stdin) {
 		rewind(stream);
 	}
 
 	/* While not end of file */
-    character = (char) fgetc(stream);
-	while (character != EOF)
-	{
-		if(errno)
-			runtime_error("Stream read error");
+	character = (char)fgetc(stream);
+	while (character != EOF) {
+		if (errno) runtime_error("Stream read error");
 
 		/* Append to chain */
-		append_flink_to_chain(chain,
-				      construct_fraction((FractionInt)
-							 character, 1));
+		append_flink_to_chain(chain, construct_fraction((FractionInt)character, 1));
 
 		/* Get character from stream */
-		character = (char) fgetc(stream);
+		character = (char)fgetc(stream);
 	}
 }
 
-static void num_to_cstr(char *str, FractionInt num)
-{
+static void num_to_cstr(char* str, FractionInt num) {
 	/* List numeric literals */
-	const char *zero_to_nineteen[] = {
-		"zero", "one", "two", "three", "four", "five", "six",
-		"seven", "eight", "nine", "ten", "eleven",
-		"twelve", "thirteen", "fourteen", "fifteen", "sixteen",
-		"seventeen", "eighteen", "nineteen"
-	};
-	const char *twenty_to_ninety[] =
-	    { "twenty", "thirty", "forty", "fifty", "sixty", "seventy",
-		"eighty", "ninety"
-	};
-	const char *big_numbers[] =
-	    { "thousand", "million", "billion", "quadrillion",
-		"quintillion", "sextillion"
-	};
+	const char* zero_to_nineteen[] = {"zero",    "one",     "two",       "three",    "four",
+									  "five",    "six",     "seven",     "eight",    "nine",
+									  "ten",     "eleven",  "twelve",    "thirteen", "fourteen",
+									  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+	const char* twenty_to_ninety[] = {"twenty", "thirty",  "forty",  "fifty",
+									  "sixty",  "seventy", "eighty", "ninety"};
+	const char* big_numbers[] = {"thousand",    "million",     "billion",
+								 "quadrillion", "quintillion", "sextillion"};
 
 	/* Check for less-than-zero error */
 	if (num < 0) {
-		runtime_error
-		    ("num is less than zero in num_to_cstr(this shouldn't happen)");
+		runtime_error("num is less than zero in num_to_cstr(this shouldn't happen)");
 	} else
 		/* Singles and teens */
-	if (num < 20) {
+		if (num < 20) {
 		strcpy(str, zero_to_nineteen[num]);
 	} else
 		/* Adults */
-	if (num % 10 == 0 && num < 100) {
+		if (num % 10 == 0 && num < 100) {
 		strcpy(str, twenty_to_ninety[num / 10 - 2]);
 	} else
 		/* Mature */
-	if (num % 1000 == 0) {
-		strcpy(str, big_numbers[(FractionInt) log10(num) / 3 - 1]);
+		if (num % 1000 == 0) {
+		strcpy(str, big_numbers[(FractionInt)log10(num) / 3 - 1]);
 		/* Anything else returns an error */
 	} else {
-		runtime_error
-		    ("num(%ji) not valid for num_to_cstr(this shouldn't happen)",
-		     num);
+		runtime_error("num(%ji) not valid for num_to_cstr(this shouldn't happen)", num);
 	}
 }
 
-static void append_triple_to_chain(Chain * chain, FractionInt triple)
-{
+static void append_triple_to_chain(Chain* chain, FractionInt triple) {
 	char temp[50];
 	/* Error if triple is too big or too small */
 	if (triple > 999 || triple < 0) {
@@ -267,9 +233,7 @@ static void append_triple_to_chain(Chain * chain, FractionInt triple)
 		} else {
 			return;
 		}
-
 	}
-
 
 	/* Tens place */
 	if (triple / 10 != 0 && triple > 20) {
@@ -288,18 +252,17 @@ static void append_triple_to_chain(Chain * chain, FractionInt triple)
 		num_to_cstr(temp, triple);
 		append_cstr_to_chain(chain, temp);
 	}
-
 }
 
-static void append_fraction_int_to_chain(Chain * chain, FractionInt num)
-{
+static void append_fraction_int_to_chain(Chain* chain, FractionInt num) {
 	FractionInt magnitude = 0;
 	int started = 0;
 	char temp[50];
 
 	/* Find magnitude */
 	/* Magnitude overflows when num is 10^18 */
-	for (magnitude = 1; (num / magnitude) != 0; magnitude *= 1000);
+	for (magnitude = 1; (num / magnitude) != 0; magnitude *= 1000)
+		;
 
 	/* Write to chain */
 	while (magnitude > 0) {
@@ -307,9 +270,9 @@ static void append_fraction_int_to_chain(Chain * chain, FractionInt num)
 		if (num / magnitude != 0) {
 			/* Add space */
 			if (started == 1) {
-				if(magnitude == 1 && num<100){
+				if (magnitude == 1 && num < 100) {
 					append_cstr_to_chain(chain, ", and ");
-				}else{
+				} else {
 					append_cstr_to_chain(chain, ", ");
 				}
 			} else {
@@ -334,8 +297,7 @@ static void append_fraction_int_to_chain(Chain * chain, FractionInt num)
 	}
 }
 
-void append_fraction_to_chain(Chain * chain, Fraction fraction)
-{
+void append_fraction_to_chain(Chain* chain, Fraction fraction) {
 	/* Reduce fraction */
 	reduce_fraction(&fraction);
 
@@ -355,7 +317,6 @@ void append_fraction_to_chain(Chain * chain, Fraction fraction)
 		return;
 	}
 
-
 	/* Write numerator to chain */
 	append_fraction_int_to_chain(chain, fraction.num);
 
@@ -366,20 +327,19 @@ void append_fraction_to_chain(Chain * chain, Fraction fraction)
 	}
 }
 
-Fraction chain_to_fraction(Chain chain)
-{
+Fraction chain_to_fraction(Chain chain) {
 	/* Define starting fraction */
 	Fraction frac = construct_fraction(0, 0);
 
 	char value;
-	Link *it = chain.start;
+	Link* it = chain.start;
 
 	int place = 0;
 	int negative = 0;
 
 	/* Check for negatives */
 	if (it != NULL) {
-		if ('-' == (char) (it->value.num / it->value.den)) {
+		if ('-' == (char)(it->value.num / it->value.den)) {
 			negative = 1;
 			it = it->next;
 		}
@@ -387,7 +347,7 @@ Fraction chain_to_fraction(Chain chain)
 		/* Parse chain */
 		while (it != NULL) {
 			/* convert value to character */
-			value = (char) (it->value.num / it->value.den);
+			value = (char)(it->value.num / it->value.den);
 
 			/* parse digit */
 			if (value >= '0' && value <= '9') {
@@ -429,17 +389,15 @@ Fraction chain_to_fraction(Chain chain)
 	return frac;
 }
 
-
-int compare_chains(Chain a, Chain b)
-{
-	Link *a_iterator = a.start;
-	Link *b_iterator = b.start;
+int compare_chains(Chain a, Chain b) {
+	Link* a_iterator = a.start;
+	Link* b_iterator = b.start;
 
 	/* Compare until at least one node is NULL */
 	while (a_iterator != NULL && b_iterator != NULL) {
 		/* Compare the numerator and denominator */
-		if (a_iterator->value.num != b_iterator->value.num
-		    || a_iterator->value.den != b_iterator->value.den) {
+		if (a_iterator->value.num != b_iterator->value.num ||
+			a_iterator->value.den != b_iterator->value.den) {
 			return 1;
 		}
 
@@ -449,15 +407,11 @@ int compare_chains(Chain a, Chain b)
 	}
 
 	/* Check if one XOR the other is NULL */
-	if ((a_iterator == NULL || b_iterator == NULL)
-	    && a_iterator != b_iterator) {
+	if ((a_iterator == NULL || b_iterator == NULL) && a_iterator != b_iterator) {
 		return 1;
 	}
 
 	return 0;
 }
 
-Fraction get_next_byte_of_stream(FILE * file)
-{
-	return construct_fraction(fgetc(file), 1);
-}
+Fraction get_next_byte_of_stream(FILE* file) { return construct_fraction(fgetc(file), 1); }

@@ -7,8 +7,8 @@ extern "C" {
 
 /* Fraction structure for Fetlang */
 typedef struct Fraction {
-	FractionInt num;	/* numerator */
-	FractionInt den;	/* denominator */
+	FractionInt num; /* numerator */
+	FractionInt den; /* denominator */
 } Fraction;
 
 /**
@@ -38,7 +38,7 @@ Fraction construct_fraction(FractionInt num, FractionInt den);
  *
  * @param a The fraction to be reduced
  */
-void reduce_fraction(Fraction * a);
+void reduce_fraction(Fraction* a);
 
 /* Fraction math */
 /**

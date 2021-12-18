@@ -3,7 +3,7 @@
 #include "core/include/chain.h"
 #include "core/include/fraction.h"
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 /**
  * Set file contents to chain's contents
@@ -28,7 +28,7 @@ void write_chain_to_file(Chain chain, Chain filename);
  * @param chain The chain being overwritten
  * @param filename A chain holding the filename of the file we're opening
  */
-void read_file_to_chain(Chain * chain, Chain filename);
+void read_file_to_chain(Chain* chain, Chain filename);
 
 /**
  * Open file as a stream

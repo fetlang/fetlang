@@ -5,8 +5,8 @@ Standard Support:
 	C++11 and higher
 
 Compiler Support:
-    GCC
-    Clang
+	GCC
+	Clang
 */
 #ifndef __cplusplus
 #if __STDC_VERSION__ < 199901L

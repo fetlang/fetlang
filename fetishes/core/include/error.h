@@ -12,7 +12,7 @@ extern "C" {
  * @param msg The fprintf-style format string
  * @param ... Any values referenced by the format string
  */
-void runtime_error(const char *msg, ...);
+void runtime_error(const char* msg, ...);
 
 #ifdef __cplusplus
 }

@@ -1,12 +1,12 @@
+#include "core/include/fraction.h"
+
 #include <math.h>
 #include <stdlib.h>
-#include "core/include/fraction.h"
+
 #include "core/include/error.h"
-const FractionInt POW_ACCURACY = (1<<8);	/*256 */
+const FractionInt POW_ACCURACY = (1 << 8); /*256 */
 
-
-Fraction construct_fraction(FractionInt num, FractionInt den)
-{
+Fraction construct_fraction(FractionInt num, FractionInt den) {
 	Fraction frac;
 	frac.num = num;
 	frac.den = den;
@@ -14,28 +14,27 @@ Fraction construct_fraction(FractionInt num, FractionInt den)
 	return frac;
 }
 
-void reduce_fraction(Fraction * frac)
-{
+void reduce_fraction(Fraction* frac) {
 	// Make sure only numerator has negative
-	if(frac->den < 0){
+	if (frac->den < 0) {
 		frac->den = -frac->den;
 		frac->num = -frac->num;
 	}
 
 	// Fraction is basic
 	// Basic bitches go home early
-	if(frac->den == 1){
+	if (frac->den == 1) {
 		return;
 	}
 
 	// Fix "zero" & "infinity" issues
-	if(frac->den==0){
+	if (frac->den == 0) {
 		// Convert fraction to the standard infinity(1/0 or -1/0) or 0/0
 		frac->num = (frac->num == 0) ? 0 : (frac->num > 0) ? 1 : -1;
-		return; 
+		return;
 	}
 
-	if(frac->num == 0){
+	if (frac->num == 0) {
 		// Convert fraction to the standard zero(0/1)
 		frac->den = 1;
 		return;
@@ -47,23 +46,22 @@ void reduce_fraction(Fraction * frac)
 	// It's a good thing I took discrete math
 	FractionInt gcd;
 	FractionInt a;
-	FractionInt b; 
-	do{
+	FractionInt b;
+	do {
 		a = frac->num;
 		b = frac->den;
-		gcd = a%b;
-		while(gcd != 0){
+		gcd = a % b;
+		while (gcd != 0) {
 			a = b;
 			b = gcd;
-			gcd = a%b;
+			gcd = a % b;
 		}
 		frac->num /= b;
-		frac->den /=b;
-	}while(1 != b);
+		frac->den /= b;
+	} while (1 != b);
 }
 
-Fraction add_fractions(Fraction a, Fraction b)
-{
+Fraction add_fractions(Fraction a, Fraction b) {
 	Fraction new_frac;
 
 	/* Add fractions with different denominators */
@@ -75,15 +73,13 @@ Fraction add_fractions(Fraction a, Fraction b)
 	return new_frac;
 }
 
-Fraction subtract_fractions(Fraction a, Fraction b)
-{
+Fraction subtract_fractions(Fraction a, Fraction b) {
 	/* Just add a negative fraction */
 	b.num = -b.num;
 	return add_fractions(a, b);
 }
 
-Fraction multiply_fractions(Fraction a, Fraction b)
-{
+Fraction multiply_fractions(Fraction a, Fraction b) {
 	/* Multiply numerator to numerator and denominator to denominator */
 	a.num *= b.num;
 	a.den *= b.den;
@@ -91,8 +87,7 @@ Fraction multiply_fractions(Fraction a, Fraction b)
 	return a;
 }
 
-Fraction divide_fractions(Fraction a, Fraction b)
-{
+Fraction divide_fractions(Fraction a, Fraction b) {
 	/* Multiply numerator with denominator and denominator with numerator */
 	a.num *= b.den;
 	a.den *= b.num;
@@ -100,8 +95,7 @@ Fraction divide_fractions(Fraction a, Fraction b)
 	return a;
 }
 
-Fraction modulus_fractions(Fraction a, Fraction b)
-{
+Fraction modulus_fractions(Fraction a, Fraction b) {
 	/* Reduce fraction before checking errors */
 	reduce_fraction(&a);
 	if (a.den != 1 || b.den != 1) {
@@ -115,8 +109,7 @@ Fraction modulus_fractions(Fraction a, Fraction b)
 	return a;
 }
 
-Fraction pow_fractions(Fraction a, Fraction b)
-{
+Fraction pow_fractions(Fraction a, Fraction b) {
 	int reverse = 0;
 	FractionInt i = 0;
 	Fraction temp;
@@ -129,8 +122,7 @@ Fraction pow_fractions(Fraction a, Fraction b)
 
 	/* Check for 0^0 error */
 	if ((a.num == 0 || a.den == 0) && (b.num == 0 || b.num == 0)) {
-		runtime_error
-		    ("cannot exponentiate zero or infinity to zero or infinity");
+		runtime_error("cannot exponentiate zero or infinity to zero or infinity");
 	}
 
 	/* Check if inverse needs to be took */
@@ -150,16 +142,13 @@ Fraction pow_fractions(Fraction a, Fraction b)
 
 	/* Check if a's num can't be rooted by b's denominator */
 	if ((a.num < 0) && (b.den % 2 == 0)) {
-		runtime_error
-		    ("cannot take even-number root of a negative number");
+		runtime_error("cannot take even-number root of a negative number");
 	}
 
 	/* Root a */
 	if (b.den != 1) {
-		a.num = (FractionInt) powl((long double) a.num,
-					  1 / ((long double) b.den));
-		a.den = (FractionInt) powl((long double) a.den,
-					  1 / ((long double) b.den));
+		a.num = (FractionInt)powl((long double)a.num, 1 / ((long double)b.den));
+		a.den = (FractionInt)powl((long double)a.den, 1 / ((long double)b.den));
 	}
 
 	/* Reduce, and inverse if necessary */
@@ -172,8 +161,7 @@ Fraction pow_fractions(Fraction a, Fraction b)
 	return a;
 }
 
-int compare_fractions(Fraction a, Fraction b)
-{
+int compare_fractions(Fraction a, Fraction b) {
 	/* If whole numbers or infinities, just compare numerators */
 	if ((a.den == 1 && b.den == 1) || (a.den == 0 && b.den == 0)) {
 		return a.num > b.num ? 1 : a.num < b.num ? -1 : 0;
@@ -188,12 +176,10 @@ int compare_fractions(Fraction a, Fraction b)
 	}
 
 	/* Everything else - return 1 if a>b and -1 if b<a, else 0 */
-	return a.num * b.den > b.num * a.den ? 1 : a.num * b.den <
-	    b.num * a.den ? -1 : 0;
+	return a.num * b.den > b.num * a.den ? 1 : a.num * b.den < b.num * a.den ? -1 : 0;
 }
 
-Fraction factorial_fraction(Fraction a)
-{
+Fraction factorial_fraction(Fraction a) {
 	Fraction new_frac = construct_fraction(1, 1);
 	FractionInt n;
 
@@ -205,8 +191,7 @@ Fraction factorial_fraction(Fraction a)
 		runtime_error("cannot calculate factorial of non-integer");
 	}
 	if (a.num < 0) {
-		runtime_error
-		    ("cannot calculate factorial of negative integer");
+		runtime_error("cannot calculate factorial of negative integer");
 	}
 
 	/* Take factorial */

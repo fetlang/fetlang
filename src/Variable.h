@@ -1,17 +1,18 @@
 #pragma once
 #include <string>
+
 #include "FetType.h"
 #include "Gender.h"
 
 /* This class represents a dynamically created variable(or constant, technically,
 	but that shouldn't come up outside the derived class.)
 */
-class Variable{
+class Variable {
 	std::string code;
 	FetType type;
 	Gender gender;
-	
-protected:
+
+   protected:
 	// Should we construct the variable in C?
 	bool needs_constructing;
 
@@ -26,11 +27,10 @@ protected:
 
 	void setType(FetType);
 
-public:
-
-	Variable():needs_constructing(true) {}
+   public:
+	Variable() : needs_constructing(true) {}
 	Variable(const std::string& name, FetType);
-	virtual ~Variable(){}
+	virtual ~Variable() {}
 	// SETTERS
 	void setGender(Gender);
 
@@ -40,16 +40,14 @@ public:
 	std::string getRawCode() const;
 	FetType getType() const;
 	Gender getGender() const;
-	inline bool needsConstructing() const{return needs_constructing;}
-
-
+	inline bool needsConstructing() const { return needs_constructing; }
 };
 
 /* A builtin variable where the code is set before parsing */
-class BuiltinVariable: public Variable{
+class BuiltinVariable : public Variable {
 	void setName(const std::string&) override;
 	using Variable::setGender;
-public:
-	BuiltinVariable(const std::string& name, FetType, const std::string& code,
-		Gender gender);
+
+   public:
+	BuiltinVariable(const std::string& name, FetType, const std::string& code, Gender gender);
 };

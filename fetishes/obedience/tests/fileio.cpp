@@ -1,14 +1,18 @@
-#include "catch.hpp"
-#include "core/include/chain.h"
 #include "obedience/include/fileio.h"
-#include "FileUtil.h"
+
 #include <cstring>
 
-TEST_CASE("Fileio Test", "[stream][file][obedience]"){
-	const char*const sample_text = "Try our new edible tampons!\n\t A survival pasta where you bring the sauce!\n";
-	const char*const sample_text2 = "Um...are you sure about eating that melon?\nIt's been sitting there for at least a month.\n";
-	SECTION("FILE IO")
-	{
+#include "FileUtil.h"
+#include "catch.hpp"
+#include "core/include/chain.h"
+
+TEST_CASE("Fileio Test", "[stream][file][obedience]") {
+	const char* const sample_text =
+		"Try our new edible tampons!\n\t A survival pasta where you bring the sauce!\n";
+	const char* const sample_text2 =
+		"Um...are you sure about eating that melon?\nIt's been sitting there for at least a "
+		"month.\n";
+	SECTION("FILE IO") {
 		std::string filename = "/tmp/boop2.txt";
 		FileUtil::setFileContents(filename, sample_text2);
 		REQUIRE(FileUtil::getFileContents(filename) == sample_text2);
@@ -29,11 +33,10 @@ TEST_CASE("Fileio Test", "[stream][file][obedience]"){
 		append_chain_to_stream(chain, stream);
 		clear_chain(&chain);
 		append_stream_to_chain(&chain, stream);
-		REQUIRE(chain.length== strlen(sample_text)+strlen(sample_text2));
+		REQUIRE(chain.length == strlen(sample_text) + strlen(sample_text2));
 
 		fclose(stream);
 		clear_chain(&chain);
 		clear_chain(&filename_as_chain);
 	}
-
 }

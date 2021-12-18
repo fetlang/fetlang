@@ -8,7 +8,7 @@
  * Basically, load up the source file, and bam you get your executable
  */
 
-class Builder{
+class Builder {
 	// Debug options: display tokens or syntax tree
 	// Off by default
 	bool show_tokens;
@@ -25,7 +25,7 @@ class Builder{
 	// Do we actually compile? or do we just produce a .c file?
 	// On by default
 	bool compilation;
-	
+
 	// Where is the original (fetlang) source file?
 	std::string source_path;
 	// And where are we putting this? (defaults to ./a.out)
@@ -53,35 +53,31 @@ class Builder{
 	// Use the tokenizer, parser, and transpiler to generate C code
 	// from the Fetlang code in source_path
 	std::string transpile() const;
-	
+
 	int compile(const std::vector<std::string>& args = {}, bool link = false);
-public:
+
+   public:
 	// Set defaults
 	Builder();
 
 	// Enable or disable optimization
-	inline void setOptimization(bool o = true){optimization = o;}
-	inline void setLinkTimeOptimization(bool o = true){link_time_optimization = o;}
+	inline void setOptimization(bool o = true) { optimization = o; }
+	inline void setLinkTimeOptimization(bool o = true) { link_time_optimization = o; }
 
 	// ...or compilation
-	inline void setCompilation(bool c = true){compilation = c;}
+	inline void setCompilation(bool c = true) { compilation = c; }
 
 	// Source and destination
-	inline void setSource(const std::string& s){source_path = s;}
-	inline void setDestination(const std::string& d){destination_path = d;}
+	inline void setSource(const std::string& s) { source_path = s; }
+	inline void setDestination(const std::string& d) { destination_path = d; }
 
 	// Remove everything in fet_Debug and fet_release
 	void clean() const;
 
 	// Debug
-	inline void showTokens(bool s = true){show_tokens = s;}
-	inline void showTree(bool s = true){show_tree = s;}
+	inline void showTokens(bool s = true) { show_tokens = s; }
+	inline void showTree(bool s = true) { show_tree = s; }
 
 	// Do the do
 	void build();
-
-
 };
-
-
-

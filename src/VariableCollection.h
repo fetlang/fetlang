@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <vector>
+
 #include "Variable.h"
 
 /* Class represents a collections of variables
@@ -16,7 +17,7 @@ class VariableCollection {
 	// That is, be the parameter to the function "access"
 	std::vector<Variable*> variable_access_list;
 
-public:
+   public:
 	VariableCollection(){};
 
 	// Returns true if a variable with that name exists
@@ -46,11 +47,11 @@ public:
 	// Like the previous method, but does not count the last added variable
 	bool hasLastOfGenderExcludingLast(Gender);
 
-	inline bool empty(){return variables.empty();}
+	inline bool empty() { return variables.empty(); }
 
 	inline std::vector<Variable> getAll() const {
 		std::vector<Variable> output;
-		for(const auto& varpair : variables){
+		for (const auto& varpair : variables) {
 			output.push_back(varpair.second);
 		}
 		return output;

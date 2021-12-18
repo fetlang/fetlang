@@ -1,21 +1,22 @@
 #ifndef FETLANG_CORE_CHAIN_H_
 #define FETLANG_CORE_CHAIN_H_
-#include "core/include/fraction.h"
 #include <stdio.h>
+
+#include "core/include/fraction.h"
 #ifdef __cplusplus
-extern "C"{
+extern "C" {
 #endif
 
 /* Chains (strings) are represented as doubly linked lists */
 typedef struct Link {
 	Fraction value;
-	struct Link *prev;	/* Starts at NULL */
-	struct Link *next;	/* Ends at NULL */
+	struct Link* prev; /* Starts at NULL */
+	struct Link* next; /* Ends at NULL */
 } Link;
 typedef struct Chain {
 	ChainLengthInt length;
-	Link *start;
-	Link *end;
+	Link* start;
+	Link* end;
 } Chain;
 
 /**
@@ -25,7 +26,7 @@ typedef struct Chain {
  *
  * @param chain The chain being constructed
  */
-void init_chain(Chain * chain);
+void init_chain(Chain* chain);
 
 /**
  * Clear chain
@@ -34,7 +35,7 @@ void init_chain(Chain * chain);
  *
  * @param chain The chain being cleared
  */
-void clear_chain(Chain * chain);
+void clear_chain(Chain* chain);
 
 /**
  * Append a cstring to a chain
@@ -44,7 +45,7 @@ void clear_chain(Chain * chain);
  * @param chain The chain being modified
  * @param text The string being added to the chain
  */
-void append_cstr_to_chain(Chain * chain, const char *text);
+void append_cstr_to_chain(Chain* chain, const char* text);
 
 /**
  * Append fraction as single Link to chain
@@ -52,7 +53,7 @@ void append_cstr_to_chain(Chain * chain, const char *text);
  * @param chain The chain being modified
  * @param fraction The fraction being added to the chain
  */
-void append_flink_to_chain(Chain * chain, Fraction fraction);
+void append_flink_to_chain(Chain* chain, Fraction fraction);
 
 /**
  * Append fraction as string to chain
@@ -63,7 +64,7 @@ void append_flink_to_chain(Chain * chain, Fraction fraction);
  * @param chain The chain being modified
  * @param fraction The fraction being added to the chain
  */
-void append_fraction_to_chain(Chain * chain, Fraction fraction);
+void append_fraction_to_chain(Chain* chain, Fraction fraction);
 
 /**
  * Append the contents in one chain to another
@@ -71,7 +72,7 @@ void append_fraction_to_chain(Chain * chain, Fraction fraction);
  * @param chain1 The chain being modified
  * @param chain2 The chain being appended to chain1
  */
-void append_chain_to_chain(Chain * chain1, Chain chain2);
+void append_chain_to_chain(Chain* chain1, Chain chain2);
 
 /**
  * Append the contents of a stream to a chain
@@ -81,24 +82,24 @@ void append_chain_to_chain(Chain * chain1, Chain chain2);
  * @param chain The chain being modified
  * @param stream The stream whose contents are read
  */
-void append_stream_to_chain(Chain * chain, FILE * stream);
+void append_stream_to_chain(Chain* chain, FILE* stream);
 
 /**
  * Erase stream contents
  *
  * @param stream The stream being cleared
  */
-void clear_stream(FILE * stream);
+void clear_stream(FILE* stream);
 
 /**
  * Append chain to stream
  *
- * Print each fraction of chain to the stream to be appended as a char 
+ * Print each fraction of chain to the stream to be appended as a char
  *
  * @param chain The chain being read
  * @param stream The stream being appended to
  */
-void append_chain_to_stream(Chain chain, FILE * stream);
+void append_chain_to_stream(Chain chain, FILE* stream);
 
 /**
  * Assign chain to stream
@@ -108,12 +109,12 @@ void append_chain_to_stream(Chain chain, FILE * stream);
  * @param chain The chain being read
  * @param stream The stream being copied to
  */
-void chain_to_stream(Chain chain, FILE * stream);
+void chain_to_stream(Chain chain, FILE* stream);
 
 /**
  * Convert chain to cstring
  *
- * Print each fraction of chain to the cstring buffer to be appended as a char 
+ * Print each fraction of chain to the cstring buffer to be appended as a char
  * This function is not safe. If buffer is too small to hold the contents of
  * chain, a segfault will occur
  *
@@ -121,7 +122,7 @@ void chain_to_stream(Chain chain, FILE * stream);
  * @param buffer The cstring being appended to
  * @return The length of the buffer.
  */
-size_t chain_to_cstr(Chain chain, char * buffer);
+size_t chain_to_cstr(Chain chain, char* buffer);
 
 /**
  * Set file contents to chain's contents
@@ -146,7 +147,7 @@ void write_chain_to_file(Chain chain, Chain filename);
  * @param chain The chain being overwritten
  * @param filename A chain holding the filename of the file we're opening
  */
-void read_file_to_chain(Chain * chain, Chain filename);
+void read_file_to_chain(Chain* chain, Chain filename);
 
 /**
  * Compare chains
@@ -171,7 +172,7 @@ int compare_chains(Chain a, Chain b);
  */
 Fraction chain_to_fraction(Chain chain);
 
-Fraction get_next_byte_of_stream(FILE * file);
+Fraction get_next_byte_of_stream(FILE* file);
 
 #ifdef __cplusplus
 }

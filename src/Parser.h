@@ -1,11 +1,12 @@
 #pragma once
 #include <vector>
-#include "VariableCollection.h"
-#include "SyntaxTree.h"
+
 #include "Grammar.h"
+#include "SyntaxTree.h"
+#include "VariableCollection.h"
 
 /* This class uses the output from the lexer to create an
-   Abstract Syntax Tree (AST) which is then passed to the 
+   Abstract Syntax Tree (AST) which is then passed to the
    transpiler
  */
 
@@ -15,12 +16,11 @@ class Parser {
 
 	std::vector<int> line_indents;
 
-	inline int getLineIndent(int line){
-		if(line<0 || static_cast<unsigned int>(line) >
-				line_indents.size()){
+	inline int getLineIndent(int line) {
+		if (line < 0 || static_cast<unsigned int>(line) > line_indents.size()) {
 			throw FetlangException("Invalid line number while getting indent level");
 		}
-		return line_indents.at(line-1);
+		return line_indents.at(line - 1);
 	}
 
 	// Where we currently are in tokens
@@ -48,7 +48,8 @@ class Parser {
 	// If the variable doesn't exist, create it
 	// Okay, this technically doesn't transplace anything,
 	// But I may be slightly drunk
-	void transplaceIdentifierToken(std::vector<Token>::iterator&, FetType, const Operator&, bool, bool);
+	void transplaceIdentifierToken(std::vector<Token>::iterator&, FetType, const Operator&, bool,
+								   bool);
 
 	// Return the KNOWN FetType of token
 	// if unknown, return UNKNOWN_TYPE
@@ -64,29 +65,28 @@ class Parser {
 	// It is the caller's responsibility to find the leftward and rightward
 	// (DIFFERENT FROM LHO AND RHO, which are lvalues and rvalues)
 	//
-	void parseOperation(const Grammar&, std::vector<Token>::iterator left, const Operator&, std::vector<Token>::iterator right, SyntaxTree::Node& node);
+	void parseOperation(const Grammar&, std::vector<Token>::iterator left, const Operator&,
+						std::vector<Token>::iterator right, SyntaxTree::Node& node);
 
 	// Create an AST branch from the tokens list
 	// Recursive by nature
-	// 
+	//
 	// Before calling anything, it creates a new
 	// child on the given Node, it DOES NOT edit
 	// the token of the given Node
 	// NOR does it create sibling nodes
 	void formBranch(SyntaxTree::Node&);
 
-public:
-	Parser(std::vector<Token> tokens_arg, std::vector<int> line_indent_args) : tokens(tokens_arg), line_indents(line_indent_args){}
+   public:
+	Parser(std::vector<Token> tokens_arg, std::vector<int> line_indent_args)
+		: tokens(tokens_arg), line_indents(line_indent_args) {}
 
 	// Calls fromBranch iteratively
 	void formTree();
 
 	// returns the root node as a tree structure
-	inline SyntaxTree::RootNode getTree(){return tree;}
+	inline SyntaxTree::RootNode getTree() { return tree; }
 
 	// Returns the list of variables
-	inline VariableCollection getVariables(){return variables;}
+	inline VariableCollection getVariables() { return variables; }
 };
-
-
-

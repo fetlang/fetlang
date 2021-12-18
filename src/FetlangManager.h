@@ -1,20 +1,21 @@
 #pragma once
 #include <map>
 #include <set>
+#include <sstream>
 #include <string>
 #include <string_view>
-#include <sstream>
 #include <vector>
+
 #include "FetType.h"
 #include "FetlangException.h"
-#include "KeyphraseCategory.h"
 #include "Gender.h"
-#include "Pronoun.h"
+#include "KeyphraseCategory.h"
 #include "Operator.h"
+#include "Pronoun.h"
 #include "Variable.h"
 
 // Represents a fetish/package loaded
-class Fetish{
+class Fetish {
 	std::string name;
 	// The absolute root file path of the fetish
 	std::string root_path;
@@ -25,29 +26,27 @@ class Fetish{
 	// Dependencies!
 	// Any libs we depend on
 	std::vector<std::string> libraries;
-public:
-	Fetish(const std::string& name_arg, const std::string& path_arg):
-		name(name_arg), root_path(path_arg){}
 
-	inline std::string getName() const {return name;}
+   public:
+	Fetish(const std::string& name_arg, const std::string& path_arg)
+		: name(name_arg), root_path(path_arg) {}
+
+	inline std::string getName() const { return name; }
 
 	// Get header and source paths
-	inline std::string getIncludePath() const{return root_path+"/include/";}
-	inline std::string getSourcePath() const{return root_path+"/source/";}
-	inline std::string getRootPath() const{return root_path;}
+	inline std::string getIncludePath() const { return root_path + "/include/"; }
+	inline std::string getSourcePath() const { return root_path + "/source/"; }
+	inline std::string getRootPath() const { return root_path; }
 
 	// Regular getters
-	inline std::vector<std::string> getIncludes() const{return includes;}
-	inline std::vector<std::string> getSources() const{return sources;}
-	inline std::vector<std::string> getLibraries() const{return libraries;}
+	inline std::vector<std::string> getIncludes() const { return includes; }
+	inline std::vector<std::string> getSources() const { return sources; }
+	inline std::vector<std::string> getLibraries() const { return libraries; }
 
 	// used by the FetlangManager
-	inline void addInclude(const std::string&
-		filename){includes.push_back(filename);}
-	inline void addSource(const std::string&
-		filename){sources.push_back(filename);}
-	inline void addLibrary(const std::string&
-		lib){libraries.push_back(lib);}
+	inline void addInclude(const std::string& filename) { includes.push_back(filename); }
+	inline void addSource(const std::string& filename) { sources.push_back(filename); }
+	inline void addLibrary(const std::string& lib) { libraries.push_back(lib); }
 };
 
 // Singleton class for managing fetishes and keyphrases and other
@@ -59,8 +58,8 @@ public:
 // Contains as well the aforementioned data collection
 // Must be initialized before the Tokenizer class is used
 // in order to read from JSON files
-class FetlangManager{
-private:
+class FetlangManager {
+   private:
 	// Directories where we look for fetishes
 	std::vector<std::string> fetish_directories;
 
@@ -71,7 +70,7 @@ private:
 	std::vector<BuiltinVariable> builtins;
 
 	// All keyphrases with assigned category
-	std::map<std::string, KeyphraseCategory> keyphrases; 
+	std::map<std::string, KeyphraseCategory> keyphrases;
 
 	// Just all keywords - used for the tokenizer class when trying to merge
 	// keyphrases together
@@ -83,7 +82,7 @@ private:
 
 	// These are more used by the parser, and transpiler
 	// For actually figuring what the language is doing
-	std::map<std::string, Operator> operators; 
+	std::map<std::string, Operator> operators;
 	std::map<std::string, ComparisonOperator> comparison_operators;
 
 	// Code inserted into the final .c file
@@ -97,7 +96,7 @@ private:
 
 	// Keep track of what the longest keyphrase is
 	int max_keyphrase_size;
-	
+
 	// Load pronouns (these don't change)
 	void loadPronouns();
 
@@ -110,7 +109,8 @@ private:
 	// This fills out all the properties of this class
 	// Called every time a fetish is loaded (inc. core)
 	void doLoading();
-public:
+
+   public:
 	// Create the singleton and initialize() it
 	static FetlangManager& getInstance();
 
@@ -123,7 +123,7 @@ public:
 	bool hasFetish(const std::string&) const;
 
 	// Get the list of builtins
-	inline std::vector<BuiltinVariable> getBuiltins() const{return builtins;}
+	inline std::vector<BuiltinVariable> getBuiltins() const { return builtins; }
 
 	// Check if string is part of a string in keyphrases
 	bool isPartOfKeyphrase(const std::string&) const;
@@ -133,7 +133,7 @@ public:
 
 	// Add an external directory location
 	void addFetishDirectory(const std::string&);
-	inline std::vector<std::string> getFetishDirectories() const{return fetish_directories;}
+	inline std::vector<std::string> getFetishDirectories() const { return fetish_directories; }
 
 	// Return as keyphrase category enum
 	KeyphraseCategory getKeyphraseCategory(const std::string&) const;
@@ -146,9 +146,8 @@ public:
 	int getMaxKeyphraseSize() const;
 
 	// Return code
-	inline std::string getPreloopCode() const{return preloop_code;}
-	inline std::string getPostloopCode() const{return postloop_code;}
-
+	inline std::string getPreloopCode() const { return preloop_code; }
+	inline std::string getPostloopCode() const { return postloop_code; }
 };
 
 // THE fetlang manager object

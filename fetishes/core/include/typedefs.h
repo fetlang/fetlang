@@ -1,7 +1,7 @@
 #ifndef FETLANG_CORE_TYPEDEFS_H_
 #define FETLANG_CORE_TYPEDEFS_H_
-#include <stdint.h>
 #include <inttypes.h>
+#include <stdint.h>
 /* Fraction Int Definition */
 typedef int64_t FractionInt;
 

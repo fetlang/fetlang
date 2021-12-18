@@ -1,7 +1,8 @@
 #pragma once
-#include <vector>
 #include <string>
 #include <unordered_set>
+#include <vector>
+
 #include "FetlangException.h"
 #include "Token.h"
 
@@ -12,7 +13,6 @@ class Tokenizer {
 
 	/* Check if we've tokenized yet */
 	bool have_tokenized;
-
 
 	/*  List of the indent level per line */
 	std::vector<int> line_indents;
@@ -33,9 +33,10 @@ class Tokenizer {
 
 	// Convert identifiers from possessive form into their true form
 	std::vector<Token> removePossessions(const std::vector<Token>& tokens);
-public:
+
+   public:
 	Tokenizer(const std::string& code);
-	
+
 	std::vector<Token> tokenize();
 
 	/* Get tokens */
