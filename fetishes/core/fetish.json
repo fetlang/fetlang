@@ -21,7 +21,7 @@
         "name": "worship",
         "description": "Multiply the LHO with the RHO",
         "grammars": ["have", "plain"],
-        "examples": ["Worship Amanda's feet", "Have Amanda worship Bruce's throbbing cock"],
+        "examples": ["Worship Mary's feet", "Have Mary worship Gary's throbbing cock"],
         "code":
 		{
             "fraction/fraction": "LHO=multiply_fractions(LHO, RHO)"
@@ -31,7 +31,7 @@
         "name": "flog",
         "description": "Divide the LHO by the RHO",
         "grammars": ["have", "plain"],
-        "examples": ["Flog Amanda", "Have Amanda flog Bruce"],
+        "examples": ["Flog Mary", "Have Mary flog Gary"],
         "code":
 		{
             "fraction/fraction": "LHO=divide_fractions(LHO, RHO)"

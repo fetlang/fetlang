@@ -20,9 +20,9 @@ Multiply the LHO with the RHO
 
 Grammar: have, plain  
 Examples:  
-`Worship Amanda's feet`  
+`Worship Mary's feet`  
 
-`Have Amanda worship Bruce's throbbing cock`  
+`Have Mary worship Gary's throbbing cock`  
 
 C Code:  
 
@@ -34,9 +34,9 @@ Divide the LHO by the RHO
 
 Grammar: have, plain  
 Examples:  
-`Flog Amanda`  
+`Flog Mary`  
 
-`Have Amanda flog Bruce`  
+`Have Mary flog Gary`  
 
 C Code:  
 
