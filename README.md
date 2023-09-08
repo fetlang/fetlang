@@ -47,7 +47,7 @@ Build Fetlang:
 ```shell
 $ git clone https://github.com/fetlang/fetlang
 $ cd fetlang
-$ meson --buildtype=release src build
+$ meson setup --buildtype=release src build
 $ cd build
 $ # Build Fetlang
 $ ninja
@@ -75,4 +75,3 @@ Hello World!
 
 ## License
 Fetlang is licensed under the BSDM (BSD, modified) license
-
