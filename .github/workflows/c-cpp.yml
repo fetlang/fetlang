@@ -20,6 +20,6 @@ jobs:
     - name: Install packages for macOS
       run: which brew && brew install ninja || echo no
     - name: configure
-      run: meson --buildtype=release src build --werror
+      run: meson setup --buildtype=release src build --werror
     - name: Test
       run: cd build && ninja test
