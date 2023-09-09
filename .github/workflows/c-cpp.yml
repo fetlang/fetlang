@@ -1,3 +1,4 @@
+---
 name: C/C++ CI
 
 on: [push, pull_request]
@@ -12,14 +13,14 @@ jobs:
         os: [ubuntu-latest, macos-latest]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Install meson
-      run: pip3 install meson
-    - name: Install packages for Linux
-      run: which apt && sudo apt update && sudo apt install -y ninja-build clang || echo no
-    - name: Install packages for macOS
-      run: which brew && brew install ninja || echo no
-    - name: configure
-      run: meson setup --buildtype=release src build --werror
-    - name: Test
-      run: cd build && ninja test
+      - uses: actions/checkout@v4
+      - name: Install meson
+        run: pip3 install meson
+      - name: Install packages for Linux
+        run: which apt && sudo apt install -y ninja-build clang || echo no
+      - name: Install packages for macOS
+        run: which brew && brew install ninja || echo no
+      - name: configure
+        run: meson setup --buildtype=release src build --werror
+      - name: Test
+        run: cd build && ninja test
