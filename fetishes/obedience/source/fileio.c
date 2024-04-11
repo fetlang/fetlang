@@ -24,6 +24,7 @@ void write_chain_to_file(Chain chain, Chain filename_as_chain) {
 	if (fp == NULL) {
 		runtime_error("Could not open file %s for writing", filename);
 	}
+	free(filename);
 
 	// Write
 	Link* it = chain.start;
@@ -53,6 +54,7 @@ void read_file_to_chain(Chain* chain, Chain filename_as_chain) {
 	if (fp == NULL) {
 		runtime_error("Could not open file %s for reading", filename);
 	}
+	free(filename);
 
 	// Read
 	while (1) {
@@ -82,5 +84,6 @@ FILE* open_file_as_stream(Chain filename, const char* mode) {
 		perror("perror result: ");
 		runtime_error("Could not open file %s", buffer);
 	}
+	free(buffer);
 	return fp;
 }
