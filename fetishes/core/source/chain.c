@@ -5,17 +5,20 @@
 #include <string.h>
 #include <tgmath.h>
 #include <unistd.h>
+#include <assert.h>
 
 #include "core/include/error.h"
 #include "core/include/fraction.h"
 
 void init_chain(Chain* chain) {
+	assert(chain != NULL);
 	chain->length = 0;
 	chain->start = NULL;
 	chain->end = NULL;
 }
 
 void clear_chain(Chain* chain) {
+	assert(chain != NULL);
 	/* Make pointer to first link */
 	Link* temp = chain->start;
 
@@ -38,6 +41,7 @@ void clear_chain(Chain* chain) {
 }
 
 void append_cstr_to_chain(Chain* chain, const char* text) {
+	assert(text != NULL);
 	unsigned int k;
 	for (k = 0; text[k] != '\0'; k++) {
 		append_flink_to_chain(chain, construct_fraction((FractionInt)text[k], 1));
@@ -45,6 +49,7 @@ void append_cstr_to_chain(Chain* chain, const char* text) {
 }
 
 void append_flink_to_chain(Chain* chain, Fraction fraction) {
+	assert(chain != NULL);
 	/* Create new link */
 	Link* new_link = (Link*)malloc(sizeof(Link));
 	new_link->value = fraction;
@@ -64,6 +69,7 @@ void append_flink_to_chain(Chain* chain, Fraction fraction) {
 }
 
 void append_chain_to_chain(Chain* chain1, Chain chain2) {
+	assert(chain1 != NULL);
 	Link* it = chain2.start;
 	if (it == NULL) {
 		return;
@@ -99,6 +105,7 @@ void append_chain_to_chain(Chain* chain1, Chain chain2) {
 }
 
 void clear_stream(FILE* stream) {
+	assert(stream != NULL);
 	// Don't bother with this standard stream nonsense
 	if (stream == stdin || stream == stdout || stream == stderr) {
 		return;
@@ -111,11 +118,13 @@ void clear_stream(FILE* stream) {
 }
 
 void chain_to_stream(Chain chain, FILE* stream) {
+	assert(stream != NULL);
 	clear_stream(stream);
 	append_chain_to_stream(chain, stream);
 }
 
 void append_chain_to_stream(Chain chain, FILE* stream) {
+	assert(stream != NULL);
 	if (stream == stdin) {
 		return;
 	}
@@ -133,6 +142,7 @@ void append_chain_to_stream(Chain chain, FILE* stream) {
 }
 
 size_t chain_to_cstr(Chain chain, char* buffer) {
+	assert(buffer != NULL);
 	/* Iterator */
 	Link* it = chain.start;
 	size_t count = 0;
@@ -157,6 +167,8 @@ size_t chain_to_cstr(Chain chain, char* buffer) {
 }
 
 void append_stream_to_chain(Chain* chain, FILE* stream) {
+	assert(chain != NULL);
+	assert(stream != NULL);
 	if (stream == stdout || stream == stderr) {
 		return;
 	}
@@ -184,14 +196,15 @@ void append_stream_to_chain(Chain* chain, FILE* stream) {
 }
 
 static void num_to_cstr(char* str, FractionInt num) {
+	assert(str != NULL);
 	/* List numeric literals */
-	const char* zero_to_nineteen[] = {"zero",    "one",     "two",       "three",    "four",
-									  "five",    "six",     "seven",     "eight",    "nine",
-									  "ten",     "eleven",  "twelve",    "thirteen", "fourteen",
+	const char* zero_to_nineteen[] = {"zero",	"one",	 "two",	   "three",	"four",
+									  "five",	"six",	 "seven",	 "eight",	"nine",
+									  "ten",	 "eleven",  "twelve",	"thirteen", "fourteen",
 									  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 	const char* twenty_to_ninety[] = {"twenty", "thirty",  "forty",  "fifty",
 									  "sixty",  "seventy", "eighty", "ninety"};
-	const char* big_numbers[] = {"thousand",    "million",     "billion",
+	const char* big_numbers[] = {"thousand",	"million",	 "billion",
 								 "quadrillion", "quintillion", "sextillion"};
 
 	/* Check for less-than-zero error */
@@ -216,6 +229,7 @@ static void num_to_cstr(char* str, FractionInt num) {
 }
 
 static void append_triple_to_chain(Chain* chain, FractionInt triple) {
+	assert(chain != NULL);
 	char temp[50];
 	/* Error if triple is too big or too small */
 	if (triple > 999 || triple < 0) {
@@ -255,6 +269,7 @@ static void append_triple_to_chain(Chain* chain, FractionInt triple) {
 }
 
 static void append_fraction_int_to_chain(Chain* chain, FractionInt num) {
+	assert(chain != NULL);
 	FractionInt magnitude = 0;
 	int started = 0;
 	char temp[50];
@@ -298,6 +313,7 @@ static void append_fraction_int_to_chain(Chain* chain, FractionInt num) {
 }
 
 void append_fraction_to_chain(Chain* chain, Fraction fraction) {
+	assert(chain != NULL);
 	/* Reduce fraction */
 	reduce_fraction(&fraction);
 
