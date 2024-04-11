@@ -141,8 +141,6 @@ void CompilationProcess::runCompiler(const std::vector<std::string>& files, cons
 	// Optimize if needed
 	if (optimization) {
 		command += " -O";
-	} else {
-		command += " -fsanitize=address";
 	}
 
 	// Optimizations specific to GCC-compatible compilers
