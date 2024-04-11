@@ -179,9 +179,8 @@ std::vector<Token> Tokenizer::mergeTokens(const std::vector<Token>& tokens) cons
 			potential_phrases.clear();
 			potential_phrases.push_back(tokens[i].getValue());
 			// Also have to make sure it's all on the same line :P
-			for (int j = 0;
-                    j < manager.getMaxKeyphraseSize() && i + j < tokens_size &&
-						(tokens.at(i).getLine() == tokens.at(i + j).getLine());
+			for (int j = 0; j < manager.getMaxKeyphraseSize() && i + j < tokens_size &&
+							(tokens.at(i).getLine() == tokens.at(i + j).getLine());
 				 j++) {
 				// Chain words into phrases
 				if (j > 0) {

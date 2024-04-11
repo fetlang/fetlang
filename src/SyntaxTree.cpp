@@ -29,8 +29,7 @@ void Node::display(int level) const {
 	}
 	if (level == 0) {
 		if (token.isNullToken()) {
-			std::cout << "{Root}"
-					  << "\n";
+			std::cout << "{Root}" << "\n";
 		} else {
 			std::cout << "Root:" << token << "\n";
 		}

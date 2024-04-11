@@ -1,11 +1,11 @@
 #include "core/include/chain.h"
 
+#include <assert.h>
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 #include <tgmath.h>
 #include <unistd.h>
-#include <assert.h>
 
 #include "core/include/error.h"
 #include "core/include/fraction.h"
@@ -198,13 +198,13 @@ void append_stream_to_chain(Chain* chain, FILE* stream) {
 static void num_to_cstr(char* str, FractionInt num) {
 	assert(str != NULL);
 	/* List numeric literals */
-	const char* zero_to_nineteen[] = {"zero",	"one",	 "two",	   "three",	"four",
-									  "five",	"six",	 "seven",	 "eight",	"nine",
-									  "ten",	 "eleven",  "twelve",	"thirteen", "fourteen",
+	const char* zero_to_nineteen[] = {"zero",    "one",     "two",       "three",    "four",
+									  "five",    "six",     "seven",     "eight",    "nine",
+									  "ten",     "eleven",  "twelve",    "thirteen", "fourteen",
 									  "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 	const char* twenty_to_ninety[] = {"twenty", "thirty",  "forty",  "fifty",
 									  "sixty",  "seventy", "eighty", "ninety"};
-	const char* big_numbers[] = {"thousand",	"million",	 "billion",
+	const char* big_numbers[] = {"thousand",    "million",     "billion",
 								 "quadrillion", "quintillion", "sextillion"};
 
 	/* Check for less-than-zero error */
@@ -213,19 +213,19 @@ static void num_to_cstr(char* str, FractionInt num) {
 	} else
 		/* Singles and teens */
 		if (num < 20) {
-		strcpy(str, zero_to_nineteen[num]);
-	} else
-		/* Adults */
-		if (num % 10 == 0 && num < 100) {
-		strcpy(str, twenty_to_ninety[num / 10 - 2]);
-	} else
-		/* Mature */
-		if (num % 1000 == 0) {
-		strcpy(str, big_numbers[(FractionInt)log10(num) / 3 - 1]);
-		/* Anything else returns an error */
-	} else {
-		runtime_error("num(%ji) not valid for num_to_cstr(this shouldn't happen)", num);
-	}
+			strcpy(str, zero_to_nineteen[num]);
+		} else
+			/* Adults */
+			if (num % 10 == 0 && num < 100) {
+				strcpy(str, twenty_to_ninety[num / 10 - 2]);
+			} else
+				/* Mature */
+				if (num % 1000 == 0) {
+					strcpy(str, big_numbers[(FractionInt)log10(num) / 3 - 1]);
+					/* Anything else returns an error */
+				} else {
+					runtime_error("num(%ji) not valid for num_to_cstr(this shouldn't happen)", num);
+				}
 }
 
 static void append_triple_to_chain(Chain* chain, FractionInt triple) {
@@ -276,8 +276,7 @@ static void append_fraction_int_to_chain(Chain* chain, FractionInt num) {
 
 	/* Find magnitude */
 	/* Magnitude overflows when num is 10^18 */
-	for (magnitude = 1; (num / magnitude) != 0; magnitude *= 1000)
-		;
+	for (magnitude = 1; (num / magnitude) != 0; magnitude *= 1000);
 
 	/* Write to chain */
 	while (magnitude > 0) {
