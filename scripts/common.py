@@ -1,5 +1,6 @@
 import os
 
+
 # Top level directory where fetishes are held
 def getFetishDirectory():
     return "../fetishes/"
