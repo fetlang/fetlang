@@ -21,7 +21,7 @@ TEST_CASE("Chain Test", "[chain][core]") {
 		append_cstr_to_chain(&chain, sample_text);
 		REQUIRE(chain.length == strlen(sample_text));
 
-		char* buffer = new char[chain.length];
+		char* buffer = new char[chain.length + 1];
 		chain_to_cstr(chain, buffer);
 		REQUIRE(0 == strcmp(buffer, sample_text));
 
@@ -91,10 +91,10 @@ TEST_CASE("Chain Test", "[chain][core]") {
 	}
 
 	SECTION("Chain/fraction test") {
-		/* Check converting fractions to chains */
+		// Check converting fractions to chains
 		Chain chain;
 		init_chain(&chain);
-		char buffer[100] = {0};
+		char buffer[150] = {0};
 
 		std::map<std::pair<FractionInt, FractionInt>, const std::string> test_map = {
 			{{100, 1}, "one hundred"},
@@ -121,7 +121,7 @@ TEST_CASE("Chain Test", "[chain][core]") {
 		}
 	}
 	SECTION("Fraction/chain test") {
-		/* Check converting user input to fraction chains*/
+		// Check converting user input to fraction chains
 		Chain input_chain;
 		init_chain(&input_chain);
 		Chain output_chain;
@@ -145,8 +145,6 @@ TEST_CASE("Chain Test", "[chain][core]") {
 		for (const auto& m : test_map) {
 			CAPTURE(m.first);
 			CAPTURE(m.second);
-			clear_chain(&input_chain);
-			clear_chain(&output_chain);
 
 			append_cstr_to_chain(&input_chain, m.first.c_str());
 			append_fraction_to_chain(&output_chain, chain_to_fraction(input_chain));
@@ -155,6 +153,9 @@ TEST_CASE("Chain Test", "[chain][core]") {
 			CAPTURE(buffer);
 			REQUIRE(0 == strcmp(buffer, m.second.c_str()));
 			memset(buffer, 0x00, sizeof(buffer));
+
+			clear_chain(&input_chain);
+			clear_chain(&output_chain);
 		}
 	}
 }
