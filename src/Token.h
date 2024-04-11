@@ -24,7 +24,7 @@ class Token {
 	std::string value;
 
 	/* Line word/s was/were originally found on */
-	int line;
+	int line{};
 
 	// Raise exception if token is null
 	void checkNull(const std::string& msg = "get") const;
