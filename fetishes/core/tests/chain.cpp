@@ -88,6 +88,7 @@ TEST_CASE("Chain Test", "[chain][core]") {
 		REQUIRE(frac.den == 1);
 		frac = get_next_byte_of_stream(fp);
 		REQUIRE(frac.den == 1);
+		fclose(fp);
 	}
 
 	SECTION("Chain/fraction test") {
