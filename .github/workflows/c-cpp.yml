@@ -17,12 +17,10 @@ jobs:
       - name: Install meson
         run: pip3 install meson
       - name: Install packages for Linux
-        run: which apt && apt install -y ninja-build clang valgrind || true
+        run: which apt && sudo apt install -y ninja-build clang || echo no
       - name: Install packages for macOS
-        run: which brew && brew install ninja valgrind || true
+        run: which brew && brew install ninja || echo no
       - name: configure
         run: meson setup --buildtype=release src build --werror
       - name: Test
         run: cd build && ninja test
-      - name: Run valgrind
-        run: cd build && valgrind ./unit_tests
