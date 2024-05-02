@@ -14,12 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Install meson
-        run: pip3 install meson
       - name: Install packages for Linux
-        run: which apt && sudo apt install -y ninja-build clang || echo no
+        run: which apt && sudo apt install -y meson clang || echo no
       - name: Install packages for macOS
-        run: which brew && brew install ninja || echo no
+        run: which brew && brew install meson ninja || echo no
       - name: configure
         run: meson setup --buildtype=release src build --werror
       - name: Test
