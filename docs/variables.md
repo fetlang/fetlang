@@ -1,8 +1,10 @@
 # Variables
+
 ## Tokenizing/Identifiers
-Variables names are case insensitive. Characters that can be used in an identifier
-can be, but is not limited to: alphanumeric, an underscore, a hyphen, or a
-space may be used. Tokenization ends at a newline, a keyphrase, or the
+
+Variable names are case-insensitive. Characters that can be used in an
+identifier can be, but are not limited to: alphanumeric ASCII, underscores,
+hyphens, or spaces. Tokenization ends at a newline, a keyphrase, or at the
 start of a literal.
 
 Identifiers expressing possession are the same as their possessor. For
@@ -11,19 +13,21 @@ example:
 `Richard Stallman's sexy feet` is the same as `riCHard StallMAN`
 
 ## Types
-The [type](types.md) of a variable is implied by the first operation it is in. If it
-is in a situation in which it could either be a fraction or chain, it
+
+The [type](types.md) of a variable is implied by the first operation it is in.
+If it is in a situation in which it could either be a fraction or chain, it
 will default to fraction.
 
-Chain type variables are initiated to `""`, while fraction type variables
-are initiated to `zero`
+Chain type variables are initiated to `""`, while fraction type variables are
+initiated to `zero`
 
 ## Gender
-Variables can be assigned one of four genders: male, female, neutral,
- and nonperson. Additionally, an N/A (not applicable) gender exists, but
- cannot be assigned to a variable by the programmer. No variable starts
- with a gender (that is, they start with `UNASSIGNED_GENDER`), but once a gender is
-assigned, it cannot be changed.
+
+Variables can be assigned one of four genders: male, female, neutral, and
+nonperson. Additionally, an N/A (not applicable) gender exists, but cannot be
+assigned to a variable by the programmer. No variable starts with a gender
+(that is, they start with `UNASSIGNED_GENDER`), but is assigned one by an
+initial use of a pronoun.
 
 Each gender is associated with a group of pronouns:  
 Male - `HIM`/`HIMSELF`/`HIS`/`HIS OWN`  
@@ -34,13 +38,12 @@ Nonperson - `IT`/`ITSELF`/`ITS`/`ITS OWN`
 `HIS` and `HIS OWN` are the possessive versions of `HIM` and `HIMSELF`,
 respectively. `HIMSELF` is reflexive. `HIM` is objective.
 
-Male, female, and neutral are used for humanly named variables,
-like `Harry Potter`
-Nonperson is used for object-ly named variables, like `violet wand`
+Male, female, and neutral are used for humanly named variables, like `Harry
+Potter`. Nonperson is used for object-ly named variables, like `violet wand`.
 N/A is used for non-nouns
 
-
 ## Pronouns
+
 Using a pronoun to describe a variable will imply its gender if it does
 not have one yet. Use of an objective pronoun will use the last variable
 mentioned that is not in the left-sided operand (not LHO). Use of a
