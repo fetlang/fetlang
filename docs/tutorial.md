@@ -53,6 +53,7 @@ Make slave scream "But there is a newline after this one:"
 ```
 
 ## Math
+
 Math in Fetlang is handled through [fractions](types.md). That is,
 a numerator over a denominator. Fractions, like all types in Fetlang,
 are declared implicitly.  

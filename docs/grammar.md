@@ -1,4 +1,5 @@
 # Grammar
+
 There are three functional grammars, as well as a conditional grammar and bind
 grammar (see [control flow](control%20flow.md))  
 
@@ -12,6 +13,7 @@ operator will be on the right. A left hand operator must be a mutable value
 The three functional grammars are: `make`, `have`, and `plain`
 
 ## Make Grammar:
+
 Make grammar can follow these formats:  
 `make` \<lho - mutable\> \<operator\>  
 `make` \<lho - mutable\> \<operator\> \<rho - mutable\>  
@@ -31,6 +33,7 @@ Examples:
 	Make Richard moan "If I could just interject"
 
 ## Plain Grammar:
+
 Plain grammar can follow these formats:  
 \<operator\> \<lho - mutable\>   
 \<operator\> \<lho - mutable\> \<rho - fraction literal\> time/s  
@@ -52,6 +55,7 @@ Examples:
     Spank Luna one thousand and twenty three times
 
 ## Have Grammar
+
 Have grammar can only follow this format  
 `have` \<rho - mutable\> \<operator\> \<lho - mutable\>  
 
